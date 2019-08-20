@@ -16,12 +16,12 @@
 			<td width="350"><p align="center" /> <a href='ch01/serverTime'>系統時間</a></td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='products'>查詢產品資料</a>
+			<td width="350"><p align="center" /> <a href='products'>&nbsp;</a>
 			</td>
-			<td width="350"><p align="center" /> <a href='update/stock'>更新多筆產品的庫存數量</a>
+			<td width="350"><p align="center" /> <a href='update/stock'>&nbsp;</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='queryByCategory'>分類查詢</a>
+			<td width="350"><p align="center" /> <a href='queryByCategory'>&nbsp;</a>
 			</td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
