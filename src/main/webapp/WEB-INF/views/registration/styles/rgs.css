@@ -1,0 +1,33 @@
+form input:focus{
+    background: #d8dfed;
+}
+
+input {
+    width: 300px;
+}
+
+.form{
+    width: 300px;
+    padding: 30px ;
+  
+    margin: auto;
+    border  : 2px solid orange;
+    border-radius: 20px;
+}
+
+form button{
+    float: right;
+}
+h3{
+    float: left;
+}
+
+.avatar{
+    width: 150px;
+   margin: 50px; 
+   
+}
+
+#errPw{
+    color: red;
+}

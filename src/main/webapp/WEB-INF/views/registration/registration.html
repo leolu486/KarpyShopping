@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>註冊會員</title>
+    <link rel="stylesheet" href="styles/rgs.css">
+    <!-- datepicker ui -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="jquery-ui-1.11.2/datepicker-zh-TW.js"></script>
+    
+    <script>
+        $( function() {
+          $( "#datepicker" ).datepicker({
+            showOn: "button",
+            buttonImage: "images/calendar2.jpg",
+            buttonImageOnly: true,
+            buttonText: "請選擇日期",
+            changeMonth : true,
+            changeYear : true,
+            yearRange: '-100y:c+nn',
+            maxDate: -1,
+            showMonthAfterYear: true,
+            yearSuffix : "年",
+            monthNamesShort : [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ],
+            dateFormat: "yy年m月d日",
+            
+          });
+        } );
+
+            // $(".ui-datepicker-month").after("月");
+
+
+        $(document).ready(function(){   
+           $("#checkpwd").blur(function(){
+                if($("#checkpwd").val() != $("#password").val()){
+                    document.getElementById("errPw").innerHTML= `<strong>密碼不一致，請再次確認!</strong>`;
+                    // alert($("#checkpwd").val() + "incorrect");
+                }else{
+                    document.getElementById("errPw").innerText=``;
+                }
+           });
+
+        });
+        </script>
+</head>
+
+<body>
+    <div class="form">
+        <form action=""> <!--to do: action value -->
+            <div>
+                <h3>註冊</h3>
+            </div>
+            <div>
+                <img src="images/avatar.png" class="avatar">
+            </div>
+
+            <label for="account">使用者帳號</label><br>
+            <input id="account" type="text" placeholder="使用者帳號" required><p>
+            <label for="password" >密碼</label><br>
+            <input id="password" type="password" placeholder="密碼" required pattern="(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$" title="請輸入6-10位數，密碼需包含至少一個大寫及小寫英文字母、數字、特殊符號"><p>
+            <input id="checkpwd" type="password" placeholder="請再次確認您的密碼" required><span id="errPw"></span><p>
+            <label for="name">姓名</label><br>
+            <input id="name" type="text" placeholder="請輸入您的姓名"><p>
+            <label for="email">電子信箱</label><br>
+            <input id="email" type="email" placeholder="請輸入您的電子信箱"><p>
+            <label for="tel">手機號碼</label><br>
+            <input id="tel" type="text"> <p>
+            <label for="addr">住址</label><br>
+            <input id="addr" type="text" placeholder="請輸入您的住址"><p>
+            <label for="gender">性別</label><br>
+            <select id="gender">
+                <option>男</option>
+                <option>女</option>
+            </select><p>
+            <label for="datepicker">生日</label><br>
+            <input type="text" id="datepicker"><p>
+                                  
+            <button id="btn">送出資料</button>                                    
+        </form>
+    </div>
+
+</body>
+
+</html>
