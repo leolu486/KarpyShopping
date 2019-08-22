@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name = "Product")
 public class ProductBean implements Serializable {
@@ -29,7 +32,17 @@ public class ProductBean implements Serializable {
 	private String fileName; // image name
 
 	private VendorBean vendorBean;
+	
+	private MultipartFile productImg;
+	@Transient
+	public MultipartFile getProductImg() {
+		return productImg;
+	}
 
+	public void setProductImg(MultipartFile productImg) {
+		this.productImg = productImg;
+	}
+	
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
 			String sdate, String expdate, Blob productImage, String fileName) {
 		this.pId = pId;
@@ -207,4 +220,6 @@ public class ProductBean implements Serializable {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+
+
 }
