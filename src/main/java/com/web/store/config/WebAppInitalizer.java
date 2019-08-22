@@ -1,5 +1,8 @@
 package com.web.store.config;
 
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitalizer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -20,6 +23,15 @@ public class WebAppInitalizer extends AbstractAnnotationConfigDispatcherServletI
 	protected String[] getServletMappings() {
 		// TODO Auto-generated method stub
 		return new String[] { "/" };
+	}
+	
+	// 經由下列Filter通知Spring，輸入資料的編碼
+	@Override
+	protected Filter[] getServletFilters() {
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+
+		return new Filter[] { characterEncodingFilter };
 	}
 
 }
