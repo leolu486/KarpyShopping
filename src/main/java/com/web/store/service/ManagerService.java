@@ -6,18 +6,14 @@ import com.web.store.model.ManagerBean;
 
 public interface ManagerService {
 
-	ManagerBean select(Integer id);
-
-	ManagerBean select(String name);
-
-	List<ManagerBean> select();
-
-	ManagerBean insertManager(ManagerBean bean);
-
-	int delete(Integer id);
-
-	long getRecordCounts();
+	List<ManagerBean> getAllManager();
 	
-	void close();
+	ManagerBean getManagerByAccount(String account);
+	
+	void addManager(ManagerBean manager);
+	
+	boolean checkIdPassword(String account, String password);
+
+	void changePassWord(String account, String oldPW, String newPW);
 
 }

@@ -2,59 +2,47 @@ package com.web.store.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.web.store.dao.ManagerDao;
-import com.web.store.dao.impl.ManagerDaoImpl;
 import com.web.store.model.ManagerBean;
 import com.web.store.service.ManagerService;
-
+@Service
 public class ManagerServiceImpl implements ManagerService {
-
-	ManagerDao dao = null;
-
-	public ManagerServiceImpl() {
-		dao = new ManagerDaoImpl();
-	}
-
-	public ManagerServiceImpl(String dbString) {
-		dao = new ManagerDaoImpl(dbString);
-	}
-
-	public ManagerServiceImpl(String url, String account, String password) {
-		dao = new ManagerDaoImpl(url,account, password);
-	}
-
+	@Autowired
+	ManagerDao dao;
+	@Transactional
 	@Override
-	public ManagerBean select(Integer id) {
-		return dao.select(id);
+	public List<ManagerBean> getAllManager() {
+		// TODO Auto-generated method stub
+		return dao.getAllManager();
 	}
+	@Transactional
 	@Override
-	public ManagerBean select(String name) {
-		return dao.select(name);
+	public ManagerBean getManagerByAccount(String account) {
+		return dao.getManagerByAccount(account);
 	}
+	@Transactional
 	@Override
-	public List<ManagerBean> select() {
-		return dao.select();
+	public void addManager(ManagerBean manager) {
+		// TODO Auto-generated method stub
+		dao.addManager(manager);
 	}
-
+	@Transactional
 	@Override
-	public ManagerBean insertManager(ManagerBean bean){
-		return dao.insertManager(bean);
+	public boolean checkIdPassword(String account, String password) {
+		// TODO Auto-generated method stub
+		return dao.checkIdPassword(account, password);
 	}
-	
+	@Transactional
 	@Override
-	public long getRecordCounts() {
-		return dao.getRecordCounts();
+	public void changePassWord(String account, String oldPW, String newPW) {
+		// TODO Auto-generated method stub
+		dao.changePassWord(account, oldPW, newPW);
 	}
 
-	@Override
-	public int delete(Integer id) {
-		return dao.delete(id);
-	}
-	
-	@Override
-	public void close() {
-		dao.close();
-	}
 
 
 }

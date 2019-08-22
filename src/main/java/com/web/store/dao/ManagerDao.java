@@ -3,21 +3,17 @@ package com.web.store.dao;
 import java.util.List;
 
 import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 
 public interface ManagerDao {
 
-	ManagerBean select(Integer id);
-
-	ManagerBean select(String name);
-
-	List<ManagerBean> select();
-
-	ManagerBean insertManager(ManagerBean bean);
-
-	Integer delete(Integer id);
-
-	long getRecordCounts();
+	List<ManagerBean> getAllManager();
 	
-	void close();
+	ManagerBean getManagerByAccount(String account);
+	
+	void addManager(ManagerBean manager);
+	
+	boolean checkIdPassword(String account, String password);
 
+	void changePassWord(String account, String oldPW, String newPW);
 }
