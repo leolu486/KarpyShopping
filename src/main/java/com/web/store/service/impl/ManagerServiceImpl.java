@@ -11,6 +11,7 @@ import com.web.store.model.ManagerBean;
 import com.web.store.service.ManagerService;
 @Service
 public class ManagerServiceImpl implements ManagerService {
+	
 	@Autowired
 	ManagerDao dao;
 	@Transactional

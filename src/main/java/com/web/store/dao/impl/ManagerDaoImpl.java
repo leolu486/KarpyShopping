@@ -32,7 +32,7 @@ public class ManagerDaoImpl implements ManagerDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ManagerBean> getAllManager() {
-		String hql = "FROM MangerBean";
+		String hql = "FROM ManagerBean";
 		Session session = null;
 		List<ManagerBean> list = new ArrayList<>();
 		session = factory.getCurrentSession();
