@@ -33,7 +33,7 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 	@Transactional
 	@Override
-	public boolean checkIdPassword(String account, String password) {
+	public ManagerBean checkIdPassword(String account, String password) {
 		// TODO Auto-generated method stub
 		return dao.checkIdPassword(account, password);
 	}

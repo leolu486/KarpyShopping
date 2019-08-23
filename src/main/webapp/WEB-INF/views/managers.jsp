@@ -30,7 +30,7 @@
 					<div class="thumbnail" style="width: 320px; height: 340px">
 						<div class="caption">
 							<p>
-								<b style='font-size: 16px;'>{manager.name}</b>
+								<b style='font-size: 16px;'>管理員 : ${manager.name}</b>
 							</p>
 							<a href="<spring:url value='manager?account=${manager.account}'/>"
 								class="btn btn-primary"> <span

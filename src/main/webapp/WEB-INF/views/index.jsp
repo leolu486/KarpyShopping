@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>欸你過來一下</title>
 </head>
 <body>
 	<h1 style="text-align: center;">MVC Exercise</h1>
@@ -18,10 +18,10 @@
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='managers'>管理員清單</a>
 			</td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='managerLogin'>管理員登入測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='manager/add'>新增管理員測試</a>
 			</td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>

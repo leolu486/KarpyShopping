@@ -12,7 +12,7 @@ public interface ManagerService {
 	
 	void addManager(ManagerBean manager);
 	
-	boolean checkIdPassword(String account, String password);
+	ManagerBean checkIdPassword(String account, String password);
 
 	void changePassWord(String account, String oldPW, String newPW);
 
