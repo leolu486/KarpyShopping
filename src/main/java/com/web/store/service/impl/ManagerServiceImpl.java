@@ -39,9 +39,9 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 	@Transactional
 	@Override
-	public void changePassWord(String account, String oldPW, String newPW) {
+	public void changePassWord(ManagerBean mb,String newPW) {
 		// TODO Auto-generated method stub
-		dao.changePassWord(account, oldPW, newPW);
+		dao.changePassWord(mb,newPW);
 	}
 
 

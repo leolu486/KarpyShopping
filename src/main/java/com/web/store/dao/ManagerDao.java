@@ -15,5 +15,5 @@ public interface ManagerDao {
 	
 	ManagerBean checkIdPassword(String account, String password);
 
-	void changePassWord(String account, String oldPW, String newPW);
+	void changePassWord(ManagerBean mb,String newPW);
 }

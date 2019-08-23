@@ -84,16 +84,18 @@ public class ManagerDaoImpl implements ManagerDao {
 	}
 
 	@Override
-	public void changePassWord(String account, String oldPW, String newPW) {
+	public void changePassWord(ManagerBean mb,String newPW) {
 		// TODO Auto-generated method stub
+		if(newPW.equalsIgnoreCase("")) {
+			throw new ManagerNotFoundException("新密碼不可為空白");
+		}
 		Session session = factory.getCurrentSession();
-		ManagerBean bb = null;
-		bb = checkIdPassword(account, oldPW);
-		bb.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(newPW)));
+		mb.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(newPW)));
 		try {
-			session.saveOrUpdate(bb);
+			session.saveOrUpdate(mb);
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new ManagerNotFoundException("修改密碼發生錯誤");
 		}
 
 	}

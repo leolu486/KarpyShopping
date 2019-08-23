@@ -25,10 +25,11 @@ import com.web.store.service.ManagerService;
 
 @Controller
 public class ManagerController {
-	
-	//TODO: Input String check -> should not include space or special symbol(like sql command)
-	//TODO: Password should be save in encoding form
-	
+
+	// TODO: Input String check -> should not include space or special symbol which likes
+	// sql command (pending)
+	// TODO: Password should be save in encoding form (finish)
+
 	@Autowired
 	ManagerService service;
 
@@ -40,7 +41,7 @@ public class ManagerController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("invalidAccount", exception.getAccount());
 		mv.addObject("exception", exception);
-		mv.addObject("errorMessage",exception.getMessage());
+		mv.addObject("errorMessage", exception.getMessage());
 		// 查詢單一管理員發生例外
 		if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/manager")) {
 			mv.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
@@ -52,9 +53,19 @@ public class ManagerController {
 			mv.setViewName("errorPage/managerLoginError");
 		}
 		// 管理員新增發生例外
-		else if(request.getRequestURI().equalsIgnoreCase("/KarpyShopping/manager/add")) {
+		else if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/manager/add")) {
 			mv.addObject("url", request.getRequestURL());
 			mv.setViewName("errorPage/managerRegistrationError");
+		}
+		
+		//其他
+		else if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/manager/change")) {
+			mv.addObject("url", request.getRequestURL());
+			mv.setViewName("errorPage/managerChangePasswordError");
+		}
+		else{
+			mv.addObject("url", request.getRequestURL());
+			mv.setViewName("errorPage/managerNotFound");
 		}
 		return mv;
 	}
@@ -98,6 +109,20 @@ public class ManagerController {
 	public String processAddNewManagerForm(@ModelAttribute("managerBean") ManagerBean mb, BindingResult result,
 			HttpServletRequest request) {
 		service.addManager(mb);
+		return "redirect:/managers";
+	}
+
+	@RequestMapping(value = "/manager/change", method = RequestMethod.GET)
+	public String getChangeManagerForm(Model model) {
+		ManagerBean mb = new ManagerBean();
+		model.addAttribute("managerBean", mb);
+		return "account/changeMgrPassword";
+	}
+
+	@RequestMapping(value = "/manager/change", method = RequestMethod.POST)
+	public String processChangeManagerForm(@ModelAttribute("managerBean") ManagerBean mb,@RequestParam("newPW") String newPW, BindingResult result,
+			HttpServletRequest request) {
+		service.changePassWord(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
 		return "redirect:/managers";
 	}
 
