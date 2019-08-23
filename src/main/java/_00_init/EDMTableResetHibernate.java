@@ -18,7 +18,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-
+import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 
 import _00_init.util.GlobalService;
@@ -38,28 +38,30 @@ public class EDMTableResetHibernate {
 		try {
 			tx = session.beginTransaction();
 			
-			// 1. 由"data/bookCompany.dat"逐筆讀入BookCompany表格內的初始資料，
-			// 然後依序新增到BookCompany表格中
-//			try (
-//				FileReader fr = new FileReader("data/bookCompany.dat"); 
-//				BufferedReader br = new BufferedReader(fr);
-//			) {
-//				while ((line = br.readLine()) != null) {
-//					if (line.startsWith(UTF8_BOM)) {
-//						line = line.substring(1);
-//					}
-//					String[] token = line.split("\\|");
-//					String name = token[0];
-//					String address = token[1];
-//					String url = token[2];
-//					CompanyBean cb = new CompanyBean(null, name, address, url);
-//					session.save(cb);
-//				}
-//			} catch (IOException e) {
-//				System.err.println("新建BookCompany表格時發生IO例外: " + e.getMessage());
-//			}
+			// 1. 由"data/manager.txt"逐筆讀入BookCompany表格內的初始資料，
+			// 然後依序新增到Manager表格中
+			try (
+				FileReader fr = new FileReader("data/manager.txt"); 
+				BufferedReader br = new BufferedReader(fr);
+			) {
+				while ((line = br.readLine()) != null) {
+					if (line.startsWith(UTF8_BOM)) {
+						line = line.substring(1);
+					}
+					String[] token = line.split("\\|");
+					String account = token[0];
+					
+					String password = GlobalService.getMD5Endocing(GlobalService.encryptString(token[1]));
+					String name = token[2];
+					
+					ManagerBean mb = new ManagerBean(null, account, password, name);
+					session.save(mb);
+				}
+			} catch (IOException e) {
+				System.err.println("新建Manager表格時發生IO例外: " + e.getMessage());
+			}
 			session.flush();
-//			System.out.println("BookCompany 資料新增成功");
+			System.out.println("Manager 資料新增成功");
 //
 //			File file = new File("data/book.dat");
 //			// 2. 由"data/book.dat"逐筆讀入Book表格內的初始資料，然後依序新增

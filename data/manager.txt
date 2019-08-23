@@ -1,0 +1,7 @@
+mgr1|a1|Peter
+mgr2|a2|Leo
+mgr3|a3|小安
+mgr4|a4|Vincent
+mgr5|a5|Tim
+mgr6|a6|咖啡
+mgr7|a7|鬼哥

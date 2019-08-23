@@ -79,7 +79,7 @@ public class ManagerBean implements Serializable {
 		this.password = password;
 	}
 
-	public ManagerBean(Integer id, String name, String account, String password) {
+	public ManagerBean(Integer id,  String account, String password,String name) {
 		super();
 		this.id = id;
 		this.name = name;
