@@ -3,7 +3,6 @@ package com.web.store.exception;
 public class ManagerNotFoundException extends RuntimeException {
 	String account;
 
-
 	public String getAccount() {
 		return account;
 	}

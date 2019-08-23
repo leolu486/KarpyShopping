@@ -10,37 +10,33 @@
 	type="text/css" />
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Products</title>
+<title>Manager</title>
 </head>
 <body>
 	<section>
 		<div>
 			<div class="container" style="text-align: center">
-				<h1>管理清單</h1>
-
+				<h2>管理員資料</h2>
 			</div>
 		</div>
 	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
 	<section class="container">
 		<div class="row">
-			<c:forEach var="manager" items='${managers}'>
-				<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px">
-					<div class="thumbnail" style="width: 320px; height: 340px">
-						<div class="caption">
-							<p>
-								<b style='font-size: 16px;'>{manager.name}</b>
-							</p>
-							<a href="<spring:url value='manager?account=${manager.account}'/>"
-								class="btn btn-primary"> <span
-								class="glyphicon-info-sigh glyphicon"></span>詳細資料
 
-							</a>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+			<div class="col-md-5">
+				<p>
+					<b style='font-size: 16px;'>管理員Id:${manager.id}</b>
+				</p>
+				<p>姓名:${manager.name}</p>
+				<p>帳號:${manager.account}</p>
+				<p>密碼:${manager.password}</p>
+
+				<p>
+					<a href="<spring:url value='/manager' />" class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span>返回
+					</a>
+				</p>
+			</div>
 		</div>
 	</section>
 </body>

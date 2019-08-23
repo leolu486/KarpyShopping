@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.store.exception.ManagerNotFoundException;
@@ -25,21 +26,27 @@ public class ManagerController {
 
 	@Autowired
 	ServletContext context;
-//	@ExceptionHandler({ManagerNotFoundException.class})
-//	public ModelAndView handleError(HttpServletRequest request, ProductNotFoundException exception) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("invalidBookId", exception.getBookId());
-//		mv.addObject("exception" , exception);
-//		mv.addObject("url", request.getRequestURL()+"?"+ request.getQueryString());
-//		mv.setViewName("productNotFound");
-//		return mv;
-//	}
+	@ExceptionHandler({ManagerNotFoundException.class})
+	public ModelAndView handleError(HttpServletRequest request, ManagerNotFoundException exception) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("invalidAccount", exception.getAccount());
+		mv.addObject("exception" , exception);
+		mv.addObject("url", request.getRequestURL()+"?"+ request.getQueryString());
+		mv.setViewName("errorPage/managerNotFound");
+		return mv;
+	}
 	
 	@RequestMapping("/managers")
 	public String list(Model model) {
 		List<ManagerBean> list = service.getAllManager();
 		model.addAttribute("managers", list);
 		return "managers";
+	}
+	
+	@RequestMapping("/manager")
+	public String getProductsById(@RequestParam("account") String account, Model model) {
+		model.addAttribute("manager", service.getManagerByAccount(account));
+		return "manager";
 	}
 
 }

@@ -12,6 +12,7 @@ import java.util.Vector;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.persistence.NoResultException;
 import javax.sql.DataSource;
 
 import org.hibernate.Session;
@@ -42,10 +43,14 @@ public class ManagerDaoImpl implements ManagerDao {
 
 	@Override
 	public ManagerBean getManagerByAccount(String account) {
+		ManagerBean bb = null;
 		Session session = factory.getCurrentSession();
-		ManagerBean bb = session.get(ManagerBean.class, account);
-		if (bb == null) {
-			throw new ManagerNotFoundException("查無帳號為" + account + "的管理員", account);
+		String hql = "FROM ManagerBean WHERE account =:account";
+		try {
+			bb = (ManagerBean) session.createQuery(hql).setParameter("account", account).getSingleResult();
+
+		} catch (NoResultException e) {
+			throw new ManagerNotFoundException("查無帳號為 " + account + " 的管理員", account);
 		}
 		return bb;
 	}
@@ -70,14 +75,14 @@ public class ManagerDaoImpl implements ManagerDao {
 	@Override
 	public void changePassWord(String account, String oldPW, String newPW) {
 		// TODO Auto-generated method stub
-		if(checkIdPassword(account,oldPW)) {
+		if (checkIdPassword(account, oldPW)) {
 			Session session = factory.getCurrentSession();
 			ManagerBean bb = session.get(ManagerBean.class, account);
 			bb.setPassword(newPW);
 			session.saveOrUpdate(bb);
-		}else {
+		} else {
 			throw new ManagerNotFoundException("帳號或密碼錯誤");
-			
+
 		}
 
 	}
