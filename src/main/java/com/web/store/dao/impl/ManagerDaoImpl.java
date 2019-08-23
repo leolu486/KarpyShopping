@@ -12,6 +12,8 @@ import com.web.store.dao.ManagerDao;
 import com.web.store.exception.ManagerNotFoundException;
 import com.web.store.model.ManagerBean;
 
+import _00_init.util.GlobalService;
+
 @Repository
 public class ManagerDaoImpl implements ManagerDao {
 
@@ -58,6 +60,8 @@ public class ManagerDaoImpl implements ManagerDao {
 			bb = null;
 		}
 		if (bb == null) {
+			//將密碼加密後
+			manager.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(manager.getPassword())));
 			session.save(manager);
 		}else {
 			throw new ManagerNotFoundException("此帳號已存在 : ",manager.getAccount());
@@ -71,7 +75,7 @@ public class ManagerDaoImpl implements ManagerDao {
 		String hql = "FROM ManagerBean WHERE account =:account and password =:password";
 		try {
 			mb = (ManagerBean) session.createQuery(hql).setParameter("account", account)
-					.setParameter("password", password).getSingleResult();
+					.setParameter("password", GlobalService.getMD5Endocing(GlobalService.encryptString(password))).getSingleResult();
 		} catch (NoResultException e) {
 			throw new ManagerNotFoundException("帳號或是密碼錯誤 : ", account);
 		}
@@ -85,7 +89,7 @@ public class ManagerDaoImpl implements ManagerDao {
 		Session session = factory.getCurrentSession();
 		ManagerBean bb = null;
 		bb = checkIdPassword(account, oldPW);
-		bb.setPassword(newPW);
+		bb.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(newPW)));
 		try {
 			session.saveOrUpdate(bb);
 		} catch (Exception e) {

@@ -50,7 +50,6 @@ public class EDMTableResetHibernate {
 					}
 					String[] token = line.split("\\|");
 					String account = token[0];
-					
 					String password = GlobalService.getMD5Endocing(GlobalService.encryptString(token[1]));
 					String name = token[2];
 					
