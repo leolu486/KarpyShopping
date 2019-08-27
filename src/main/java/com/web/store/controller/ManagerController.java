@@ -26,9 +26,8 @@ import com.web.store.service.ManagerService;
 @Controller
 public class ManagerController {
 
-	// TODO: Input String check -> should not include space or special symbol which likes
-	// sql command (pending)
-	// TODO: Password should be save in encoding form (finish)
+	// TODO: Input String check -> should not include space or special symbol which
+	// likes SQL command (pending)
 
 	@Autowired
 	ManagerService service;
@@ -57,13 +56,13 @@ public class ManagerController {
 			mv.addObject("url", request.getRequestURL());
 			mv.setViewName("errorPage/managerRegistrationError");
 		}
-		
-		//其他
+		// 管理員變更密碼發生例外
 		else if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/manager/change")) {
 			mv.addObject("url", request.getRequestURL());
 			mv.setViewName("errorPage/managerChangePasswordError");
 		}
-		else{
+		// 其他
+		else {
 			mv.addObject("url", request.getRequestURL());
 			mv.setViewName("errorPage/managerNotFound");
 		}
@@ -112,6 +111,7 @@ public class ManagerController {
 		return "redirect:/managers";
 	}
 
+//變更密碼控制器
 	@RequestMapping(value = "/manager/change", method = RequestMethod.GET)
 	public String getChangeManagerForm(Model model) {
 		ManagerBean mb = new ManagerBean();
@@ -120,8 +120,8 @@ public class ManagerController {
 	}
 
 	@RequestMapping(value = "/manager/change", method = RequestMethod.POST)
-	public String processChangeManagerForm(@ModelAttribute("managerBean") ManagerBean mb,@RequestParam("newPW") String newPW, BindingResult result,
-			HttpServletRequest request) {
+	public String processChangeManagerForm(@ModelAttribute("managerBean") ManagerBean mb,
+			@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
 		service.changePassWord(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
 		return "redirect:/managers";
 	}

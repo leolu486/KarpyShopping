@@ -21,21 +21,18 @@ public class VendorBean implements Serializable {
 	private String addr; // vendor address
 	private String tel; // vendor telephone
 	private String email; // vendor email
-	private String c_person;// contact person
-	private String c_tel; // contact phone
+
 	private Set<ProductBean> products = new LinkedHashSet<>();
 	public VendorBean() {
 		
 	}
 	
-	public VendorBean(Integer vId, String vname, String addr, String tel, String email, String c_person, String c_tel) {
+	public VendorBean(Integer vId, String vname, String addr, String tel, String email) {
 		this.vId = vId;
 		this.vname = vname;
 		this.addr = addr;
 		this.tel = tel;
 		this.email = email;
-		this.c_person = c_person;
-		this.c_tel = c_tel;
 	}
 
 	@Id
@@ -83,7 +80,7 @@ public class VendorBean implements Serializable {
 	 * @return the tel
 	 */
 	public String getTel() {
-		return tel.toString();
+		return tel;
 	}
 
 	/**
@@ -108,38 +105,9 @@ public class VendorBean implements Serializable {
 		this.email = email;
 	}
 
-	/**
-	 * @return the c_person
-	 */
-	public String getC_person() {
-		return c_person;
-	}
-
-	/**
-	 * @param c_person the c_person to set
-	 */
-	public void setC_person(String c_person) {
-		this.c_person = c_person;
-	}
-
-	/**
-	 * @return the c_tel
-	 */
-	public String getC_tel() {
-		return c_tel.toString();
-	}
-
-	/**
-	 * @param c_tel the c_tel to set
-	 */
-	
-
-	public void setC_tel(String c_tel) {
-		this.c_tel = c_tel;
-	}
 
 	public String toString() {
-		return "[" + vId + "," + vname + "," + addr + "," + this.getTel() + "," + email + "," + c_person +","+this.getC_tel()+ "]";
+		return "[" + vId + "," + vname + "," + addr + "," + this.getTel() + "," + email + "]";
 	}
 	@OneToMany(mappedBy="vendorBean")
 	public Set<ProductBean> getProducts() {

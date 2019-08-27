@@ -20,6 +20,7 @@ import org.hibernate.Transaction;
 
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.VendorBean;
 
 import _00_init.util.GlobalService;
 import _00_init.util.HibernateUtils;
@@ -38,7 +39,7 @@ public class EDMTableResetHibernate {
 		try {
 			tx = session.beginTransaction();
 			
-			// 1. 由"data/manager.txt"逐筆讀入BookCompany表格內的初始資料，
+			// 1. 由"data/manager.txt"逐筆讀入Manager表格內的初始資料，
 			// 然後依序新增到Manager表格中
 			try (
 				FileReader fr = new FileReader("data/manager.txt"); 
@@ -61,6 +62,36 @@ public class EDMTableResetHibernate {
 			}
 			session.flush();
 			System.out.println("Manager 資料新增成功");
+			
+			
+			//------------
+			// 1. 由"data/vendor.txt"逐筆讀入Vendor表格內的初始資料，
+			// 然後依序新增到Vendor表格中
+			try (
+					FileReader fr = new FileReader("data/vendor.txt"); 
+					BufferedReader br = new BufferedReader(fr);
+				) {
+					while ((line = br.readLine()) != null) {
+						if (line.startsWith(UTF8_BOM)) {
+							line = line.substring(1);
+						}
+						System.out.println(line);
+						String[] token = line.split("\\|");
+						String vname = token[0];
+						String addr = token[1];
+						String tel = token[2];
+ 						String email = token[3];
+						
+						VendorBean vb = new VendorBean(null, vname, addr, tel,email);
+						session.save(vb);
+					}
+				} catch (IOException e) {
+					System.err.println("新建Vendor表格時發生IO例外: " + e.getMessage());
+				}
+				session.flush();
+				System.out.println("Vendor 資料新增成功");
+			
+			//------------
 //
 //			File file = new File("data/book.dat");
 //			// 2. 由"data/book.dat"逐筆讀入Book表格內的初始資料，然後依序新增

@@ -47,8 +47,8 @@
 
 
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='vendors'>廠商清單</a></td>
+			<td width="350"><p align="center" /> <a href='vendor/add'>新增廠商</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>

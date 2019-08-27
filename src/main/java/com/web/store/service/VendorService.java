@@ -6,18 +6,11 @@ import com.web.store.model.VendorBean;
 
 public interface VendorService {
 
-	VendorBean select(Integer vId);
 
-	VendorBean select(String vName);
+	List<VendorBean> getAllVendor();
 
-	List<VendorBean> select();
+	void addVendor(VendorBean vb);
 
-	VendorBean insertVendor(VendorBean bean);
-
-	Integer delete(Integer vId);
-
-	long getRecordCounts();
-	
-	void close();
+	VendorBean getVendorByvname(String vname);
 
 }
