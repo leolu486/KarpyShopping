@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.web.store.dao.VendorDao;
 import com.web.store.exception.ManagerNotFoundException;
+import com.web.store.exception.VendorErrorException;
 import com.web.store.model.ManagerBean;
 import com.web.store.model.VendorBean;
 
@@ -38,7 +39,13 @@ public class VendorDaoImpl implements Serializable, VendorDao {
 	@Override
 	public void addVendor(VendorBean vb) {
 		Session session = factory.getCurrentSession();
-		session.save(vb);
+		String hql = "FROM VendorBean WHERE vname =:vname";
+		try {
+			session.createQuery(hql).setParameter("vname", vb.getVname()).getSingleResult();
+			throw new VendorErrorException("此廠商已存在 : ", vb.getVname());
+		} catch (NoResultException e) {
+			session.save(vb);
+		}
 	}
 
 	@Override
@@ -50,7 +57,7 @@ public class VendorDaoImpl implements Serializable, VendorDao {
 			vb = (VendorBean) session.createQuery(hql).setParameter("vname", vname).getSingleResult();
 
 		} catch (NoResultException e) {
-			e.printStackTrace();
+			throw new VendorErrorException("資料庫內無此廠商 : ", vname);
 		}
 		return vb;
 	}

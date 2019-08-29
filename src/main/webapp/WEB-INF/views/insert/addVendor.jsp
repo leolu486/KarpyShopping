@@ -18,7 +18,7 @@ fieldset {
 	margin: auto;
 }
 </style>
-<title>Managers</title>
+<title>Vendor</title>
 <link rel='stylesheet' href='css/styles.css' type="text/css" />
 </head>
 <body>
