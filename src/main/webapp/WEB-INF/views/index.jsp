@@ -8,7 +8,9 @@
 </head>
 <body>
 	<h1 style="text-align: center;">MVC Exercise</h1>
+	<p align="center" /> <a href='chat'>WebSocket Test</a>
 	<hr>
+	
 	<table border="1" style="margin: 0px auto;">
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='welcome'>Hello
