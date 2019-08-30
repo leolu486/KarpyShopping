@@ -20,6 +20,7 @@ public class HomeController {
 		return "index";
 	}
 
+
 	@RequestMapping("/ch01/serverTime")
 	public String serverTime(Model model) {
 		model.addAttribute("now",
