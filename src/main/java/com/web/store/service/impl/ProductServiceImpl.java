@@ -3,59 +3,73 @@ package com.web.store.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.web.store.dao.ProductDao;
 import com.web.store.dao.impl.ProductDaoImpl;
 import com.web.store.model.ProductBean;
 import com.web.store.service.ProductService;
 
+@Service
 public class ProductServiceImpl implements ProductService {
-	
-	ProductDao dao = null;
-	
-	public ProductServiceImpl() {
-		dao = new ProductDaoImpl();
-	}	
-	
-	public ProductServiceImpl(String dbString) {
-		dao = new ProductDaoImpl(dbString);
-	}	
-	
-	public ProductServiceImpl(String url, String account, String password) {
-		dao = new ProductDaoImpl(url, account, password);
-	}
-	
+	@Autowired
+	ProductDao dao;
+
+	@Transactional
 	@Override
-	public ProductBean select(Integer pId) {
-		return dao.select(pId);
-	}
-	
-	@Override
-	public ProductBean select(String pname) {
-		return dao.select(pname);
-	}
-	
-	@Override
-	public List<ProductBean> select() {
-		return dao.select();
+	public ProductBean getProductById(Integer pId) {	
+		return dao.getProductById(pId);
 	}
 
+	@Transactional
 	@Override
-	public ProductBean insertProduct(ProductBean bean){
-		return dao.insertProduct(bean);
-	}
-	
-	@Override
-	public long getRecordCounts() {
-		return dao.getRecordCounts();
+	public ProductBean getProductByName(String pname) {
+		return dao.getProductByName(pname);
 	}
 
+	@Transactional
 	@Override
-	public Integer delete(Integer pId) {
-		return dao.delete(pId);
+	public List<ProductBean> getProductByVendor(Integer vId) {
+		return dao.getProductByVendor(vId);
+	}
+
+	@Transactional
+	@Override
+	public List<ProductBean> getProductByCategory(String category) {
+		return dao.getProductByCategory(category);
+	}
+
+	@Transactional
+	@Override
+	public List<ProductBean> getAllProducts() {
+		return dao.getAllProducts();
+	}
+
+	@Transactional
+	@Override
+	public Double getProductRankAVGById(Integer pId) {
+		return dao.getProductRankAVGById(pId);
+	}
+
+	@Transactional
+	@Override
+	public void addProduct(ProductBean bean) {
+		dao.addProduct(bean);
+	}
+
+	@Transactional
+	@Override
+	public void updateProduct(ProductBean bean) {
+		dao.updateProduct(bean);
+	}
+
+	@Transactional
+	@Override
+	public void deleteProduct(Integer pId) {
+		dao.deleteProduct(pId);
 	}
 	
-	@Override
-	public void close() {
-		dao.close();
-	}
+
 }

@@ -29,7 +29,7 @@
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='managers'>管理員清單</a>
+			<td width="350"><p align="center" /> <a href='managers'>管理員清單aaaa</a>
 			</td>
 			<td width="350"><p align="center" /> <a href='managerLogin'>管理員登入測試</a>
 		</tr>
@@ -39,7 +39,7 @@
 			<td width="350"><p align="center" /> <a href='manager/change'>管理員密碼變更測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href='productDetail'>產品詳細頁面</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 
@@ -106,12 +106,12 @@
 			<td colspan="2"><p align="center" />ProductTesting</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='products'>商品清單</a></td>
+			<td width="350"><p align="center" /> <a href='productById'>找商品:ID</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='product/add'>新增商品</a></td>
+			<td width="350"><p align="center" /> <a href=''></a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>

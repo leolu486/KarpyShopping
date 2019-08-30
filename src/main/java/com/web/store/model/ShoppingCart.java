@@ -15,25 +15,25 @@ public class ShoppingCart {
 		return cart;
 	}
 
-	public void addToCart(int bookID, OrderItemBean oi) {
+	public void addToCart(int pId, OrderItemBean oi) {
 		if (oi.getQuantity() <= 0) {
 			return;
 		}
 		// 如果客戶在伺服器端沒有此項商品的資料，則客戶第一次購買此項商品
-		if (cart.get(bookID) == null) {
-			cart.put(bookID, oi);
+		if (cart.get(pId) == null) {
+			cart.put(pId, oi);
 		} else {
 			// 如果客戶在伺服器端已有此項商品的資料，則客戶『加購』此項商品
-			OrderItemBean oib = cart.get(bookID);
+			OrderItemBean oib = cart.get(pId);
 			// 加購的數量：oi.getQty()
 			// 原有的數量：oib.getQty()
 			oib.setQuantity(oi.getQuantity() + oib.getQuantity());
 		}
 	}
 
-	public boolean modifyQty(int bookID, int newQty) {
-		if (cart.get(bookID) != null) {
-			OrderItemBean oi = cart.get(bookID);
+	public boolean modifyQty(int pId, int newQty) {
+		if (cart.get(pId) != null) {
+			OrderItemBean oi = cart.get(pId);
 			oi.setQuantity(newQty);
 			// cart.put(bookID, oi);
 			return true;
@@ -43,9 +43,9 @@ public class ShoppingCart {
 	}
 
 	// 刪除某項商品
-	public int deleteBook(int bookID) {
-		if (cart.get(bookID) != null) {
-			cart.remove(bookID); // Map介面的remove()方法
+	public int deleteProduct(int pId) {
+		if (cart.get(pId) != null) {
+			cart.remove(pId); // Map介面的remove()方法
 			return 1;
 		} else {
 			return 0;
@@ -72,7 +72,7 @@ public class ShoppingCart {
 	public void listCart() {
 		Set<Integer> set = cart.keySet();
 		for (Integer k : set) {
-			System.out.printf("BookID=%3d,  Qty=%3d,  price=%5.2f,  discount=%6.2f\n", k, cart.get(k).getQuantity(),
+			System.out.printf("ProductId=%3d,  Qty=%3d,  price=%5.2f,  discount=%6.2f\n", k, cart.get(k).getQuantity(),
 					cart.get(k).getUnitPrice(), cart.get(k).getDiscount());
 		}
 		System.out.println("------------------");

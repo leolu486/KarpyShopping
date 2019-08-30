@@ -74,6 +74,7 @@ public class ManagerController {
 		List<ManagerBean> list = service.getAllManager();
 		model.addAttribute("managers", list);
 		return "managers";
+
 	}
 
 	@RequestMapping("/manager")

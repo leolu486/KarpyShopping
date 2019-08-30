@@ -20,7 +20,17 @@ public class HomeController {
 		return "index";
 	}
 
+<<<<<<< HEAD
 
+=======
+	
+	@RequestMapping("/productDetail")
+	public String pd() {
+		System.out.println("pd test");
+		return "productDetail/pd";
+	}
+	
+>>>>>>> refs/remotes/Upstream/master
 	@RequestMapping("/ch01/serverTime")
 	public String serverTime(Model model) {
 		model.addAttribute("now",
