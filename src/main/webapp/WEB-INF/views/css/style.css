@@ -371,7 +371,7 @@ a.action:hover {
   width: 100%;
 }
 .search_box_area input[type="submit"] {
- background: #ffb128 url("img/icon/icon-search.png") no-repeat scroll 100% 50%;
+ background: #ffb128 url("../images/icon/icon-search.png") no-repeat scroll 100% 50%;
  border: 0 none;
  height: 52px;
  position: absolute;
@@ -3138,12 +3138,12 @@ textarea {
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
-  background: #fa7c63 url("img/icon/btn.png") no-repeat scroll 100% 50%;
+  background: #fa7c63 no-repeat scroll 100% 50%;
   border-color: -moz-use-text-color -moz-use-text-color #f85332;
   border-image: none;
   border-radius: 100%;
   border-style: none none solid;
-  border-width: 0 0 2px;
+  border-width: 0 0 0px;
   height: 35px;
   margin: 0;
   padding: 0;
