@@ -20,6 +20,7 @@ public class HomeController {
 		return "index";
 	}
 
+	
 	@RequestMapping("/productDetail")
 	public String pd() {
 		System.out.println("pd test");
