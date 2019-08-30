@@ -135,6 +135,11 @@
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
+		
+		<tr height="52" bgcolor="lightblue" align="center">
+			<td width="350"><p align="center" /> <a href='index1'>hello 卡痞購物網</a></td>
+		</tr>
+
 	</table>
 
 

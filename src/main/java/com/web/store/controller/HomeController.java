@@ -20,6 +20,9 @@ public class HomeController {
 		return "index";
 	}
 
+<<<<<<< HEAD
+
+=======
 	
 	@RequestMapping("/productDetail")
 	public String pd() {
@@ -27,6 +30,7 @@ public class HomeController {
 		return "productDetail/pd";
 	}
 	
+>>>>>>> refs/remotes/Upstream/master
 	@RequestMapping("/ch01/serverTime")
 	public String serverTime(Model model) {
 		model.addAttribute("now",

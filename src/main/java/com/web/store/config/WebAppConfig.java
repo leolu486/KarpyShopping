@@ -40,11 +40,23 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	// 只要請求路徑是以/css/開頭的任何請求，都轉到/WEB-INF/views/css/去尋找
 	// 只要請求路徑是以/images/開頭的任何請求，都轉到/WEB-INF/views/images/去尋找
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+<<<<<<< HEAD
+		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/views/css/");
+		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/views/images/");
+//		registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/views/js/");
+	}
+
+	
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer)
+	{
+		configurer.enable();
+=======
 
 		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/views/css/");
 		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/views/images/");
 //			registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/views/js/");
 
+>>>>>>> refs/remotes/Upstream/master
 	}
 
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
