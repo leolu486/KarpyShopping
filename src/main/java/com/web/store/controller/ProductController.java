@@ -128,6 +128,8 @@ public class ProductController {
 	@RequestMapping(value = "/product/update", method = RequestMethod.POST)
 	public String processUpdateProductForm(@ModelAttribute("productBean") ProductBean pb, BindingResult result,
 			HttpServletRequest request) {
+//		VendorBean vb = pb.getvId()
+//		
 		service.updateProduct(pb);
 		return "redirect:/products";
 	}

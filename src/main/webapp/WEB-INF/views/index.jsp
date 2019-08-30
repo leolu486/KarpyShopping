@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>欸你過來一下</title>
 </head>
 <body>
+
 	<h1 style="text-align: center;">MVC Exercise</h1>
 	<p align="center" /> <a href='chat'>WebSocket Test</a>
 	<hr>
@@ -26,7 +29,7 @@
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='managers'>管理員清單</a>
+			<td width="350"><p align="center" /> <a href='managers'>管理員清單aaaa</a>
 			</td>
 			<td width="350"><p align="center" /> <a href='managerLogin'>管理員登入測試</a>
 		</tr>
@@ -36,7 +39,7 @@
 			<td width="350"><p align="center" /> <a href='manager/change'>管理員密碼變更測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href='productDetail'>產品詳細頁面</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 
@@ -53,7 +56,7 @@
 			<td width="350"><p align="center" /> <a href='vendor/add'>新增廠商</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href='vendor/update'>更新廠商</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">

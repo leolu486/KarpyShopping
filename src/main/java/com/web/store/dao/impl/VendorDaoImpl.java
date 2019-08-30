@@ -1,7 +1,6 @@
 ﻿package com.web.store.dao.impl;
 
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.web.store.dao.VendorDao;
-import com.web.store.exception.ManagerNotFoundException;
 import com.web.store.exception.VendorErrorException;
-import com.web.store.model.ManagerBean;
 import com.web.store.model.VendorBean;
 
 @Repository
@@ -60,6 +58,25 @@ public class VendorDaoImpl implements Serializable, VendorDao {
 			throw new VendorErrorException("資料庫內無此廠商 : ", vname);
 		}
 		return vb;
+	}
+
+	@Override
+	public VendorBean getVendorByvId(Integer vId) {
+		Session session = factory.getCurrentSession();
+		VendorBean vb = session.get(VendorBean.class, vId);
+		if (vb == null) {
+			throw new VendorErrorException("查無此廠商", vId.toString());
+		}
+		return vb;
+	}
+
+	@Override
+	public void updateVendor(VendorBean vb) {
+		Session session = factory.getCurrentSession();
+
+		VendorBean vbb = getVendorByvId(vb.getvId());
+		vbb.setVname(vb.getVname());
+		session.saveOrUpdate(vbb);
 	}
 
 }

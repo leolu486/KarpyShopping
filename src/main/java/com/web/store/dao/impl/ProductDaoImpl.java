@@ -92,9 +92,11 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 	}
 
 	@Override
-	public void updateProduct(ProductBean bean) {
+	public void updateProduct(ProductBean pb) {
 		Session session = factory.getCurrentSession();
-		session.update(bean);
+		VendorBean vb = session.get(VendorBean.class, pb.getvId());
+		pb.setVendorBean(vb);
+		session.update(pb);
 	}
 
 	@Override
