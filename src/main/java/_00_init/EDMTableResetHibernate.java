@@ -20,6 +20,7 @@ import org.hibernate.Transaction;
 
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.ProductBean;
 import com.web.store.model.VendorBean;
 
 import _00_init.util.GlobalService;
@@ -90,6 +91,37 @@ public class EDMTableResetHibernate {
 				}
 				session.flush();
 				System.out.println("Vendor 資料新增成功");
+				
+				//----------------------products data insert
+//				try (
+//						FileReader fr = new FileReader("data/products.txt"); 
+//						BufferedReader br = new BufferedReader(fr);
+//					) {
+//						while ((line = br.readLine()) != null) {
+//							if (line.startsWith(UTF8_BOM)) {
+//								line = line.substring(1);
+//							}
+//							System.out.println(line);
+//							String[] token = line.split("\\|");
+//							String pname = token[0];
+//							Integer price = Integer.parseInt(token[1]);
+//							Integer vId = Integer.parseInt(token[2]);
+//							Integer amount = Integer.parseInt(token[3]);
+//							String category = token[4];
+//							java.sql.Timestamp sdate = token[5]; 
+//							java.sql.Timestamp expdate = token[6]; 
+//							Double rankSum = token[7]; 
+//							Integer rankCount = token[8]; 
+//							
+//							
+//							ProductBean mb = new ProductBean(null, pname, price, vId, amount, category, sdate, expdate, rankSum, rankCount);
+//							session.save(mb);
+//						}
+//					} catch (IOException e) {
+//						System.err.println("新建Manager表格時發生IO例外: " + e.getMessage());
+//					}
+//					session.flush();
+//					System.out.println("Manager 資料新增成功");
 			
 			//------------
 //

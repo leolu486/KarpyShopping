@@ -6,18 +6,23 @@ import com.web.store.model.ProductBean;
 
 public interface ProductService {
 
-	ProductBean select(Integer pId);
+	ProductBean getProductById(Integer pId);
 
-	ProductBean select(String pname);
-
-	List<ProductBean> select();
-
-	ProductBean insertProduct(ProductBean bean);
-
-	Integer delete(Integer pId);
-
-	long getRecordCounts();
+	ProductBean getProductByName(String pname);
 	
-	void close();
+	List<ProductBean> getProductByVendor(Integer vId);
+	
+	List<ProductBean> getProductByCategory(String category);
+
+	List<ProductBean> getAllProducts();
+	
+	Double getProductRankAVGById(Integer pId);
+
+	void addProduct(ProductBean bean);
+	
+	void updateProduct(ProductBean bean);
+
+	void deleteProduct(Integer pId);
+	
 
 }

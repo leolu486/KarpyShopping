@@ -3,21 +3,29 @@ package com.web.store.dao;
 import java.util.List;
 
 import com.web.store.model.ProductBean;
+import com.web.store.model.VendorBean;
 
 public interface ProductDao {
 
-	ProductBean select(Integer pId);
+	ProductBean getProductById(Integer pId);
 
-	ProductBean select(String pname);
-
-	List<ProductBean> select();
-
-	ProductBean insertProduct(ProductBean bean);
-
-	Integer delete(Integer pId);
+	ProductBean getProductByName(String pname);
 	
-	long getRecordCounts();
+	List<ProductBean> getProductByVendor(Integer vId);
+	
+	List<ProductBean> getProductByCategory(String category);
 
-	void close();
+	List<ProductBean> getAllProducts();
+	
+	Double getProductRankAVGById(Integer pId);
+
+	void addProduct(ProductBean bean);
+	
+	void updateProduct(ProductBean bean);
+
+	void deleteProduct(Integer pId);
+	
+	
+	
 
 }
