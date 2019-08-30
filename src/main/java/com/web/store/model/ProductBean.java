@@ -28,23 +28,14 @@ public class ProductBean implements Serializable {
 	private String category; // category
 	private java.sql.Timestamp sdate; // storage date
 	private java.sql.Timestamp expdate; // expired date
-	private Blob productImage; // productImage
-	private String fileName; // image name
+	private Double rankSum; //rank point summary
+	private Integer rankCount; //rank user summary
 
 	private VendorBean vendorBean;
 	
-	private MultipartFile productImg;
-	@Transient
-	public MultipartFile getProductImg() {
-		return productImg;
-	}
-
-	public void setProductImg(MultipartFile productImg) {
-		this.productImg = productImg;
-	}
 	
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
-			String sdate, String expdate, Blob productImage, String fileName) {
+			String sdate, String expdate, Double rankSum, Integer rankCount) {
 		this.pId = pId;
 		this.pname = pname;
 		this.price = price;
@@ -53,12 +44,12 @@ public class ProductBean implements Serializable {
 		this.category = category;
 		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
 		this.expdate = new Timestamp(java.sql.Date.valueOf(expdate).getTime());
-		this.productImage = productImage;
-		this.fileName = fileName;
+		this.rankSum = rankSum;
+		this.rankCount = rankCount;	
 	}
 
 	public ProductBean(Integer pId, String pname, Integer price, VendorBean vendorBean, Integer amount, String category,
-			String sdate, String expdate, Blob productImage, String fileName) {
+			String sdate, String expdate, Double rankSum, Integer rankCount) {
 		this.pId = pId;
 		this.pname = pname;
 		this.price = price;
@@ -67,8 +58,8 @@ public class ProductBean implements Serializable {
 		this.category = category;
 		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
 		this.expdate = new Timestamp(java.sql.Date.valueOf(expdate).getTime());
-		this.productImage = productImage;
-		this.fileName = fileName;
+		this.rankSum = rankSum;
+		this.rankCount = rankCount;
 	}
 
 	public ProductBean() {
@@ -78,7 +69,7 @@ public class ProductBean implements Serializable {
 	@Override
 	public String toString() {
 		return "[" + pId + "," + pname + "," + price + "," + vId + "," + amount + "," + category + "," + sdate + ","
-				+ expdate + "]";
+				+ expdate + "," + rankSum + "," + rankCount + "]";
 	}
 
 	/**
@@ -195,14 +186,6 @@ public class ProductBean implements Serializable {
 		this.expdate = expdate;
 	}
 
-	public Blob getProductImage() {
-		return productImage;
-	}
-
-	public void setProductImage(Blob productImage) {
-		this.productImage = productImage;
-	}
-
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FK_VendorBean_Id")
 	public VendorBean getVendorBean() {
@@ -213,12 +196,20 @@ public class ProductBean implements Serializable {
 		this.vendorBean = vendorBean;
 	}
 
-	public String getFileName() {
-		return fileName;
+	public Double getRankSum() {
+		return rankSum;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setRankSum(Double rankSum) {
+		this.rankSum = rankSum;
+	}
+
+	public Integer getRankCount() {
+		return rankCount;
+	}
+
+	public void setRankCount(Integer rankCount) {
+		this.rankCount = rankCount;
 	}
 
 
