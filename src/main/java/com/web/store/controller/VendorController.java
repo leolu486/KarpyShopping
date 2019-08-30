@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.web.store.exception.ManagerNotFoundException;
 import com.web.store.exception.VendorErrorException;
-import com.web.store.model.ManagerBean;
 import com.web.store.model.VendorBean;
 import com.web.store.service.VendorService;
 
@@ -55,23 +53,37 @@ public class VendorController {
 	}
 
 	@RequestMapping("/vendor")
-	public String getProductsById(@RequestParam("vname") String vname, Model model) {
+	public String getVendorById(@RequestParam("vname") String vname, Model model) {
 		model.addAttribute("vendor", service.getVendorByvname(vname));
 		return "vendor";
 	}
 
-//新增管理員控制器
+//新增廠商控制器
 	@RequestMapping(value = "/vendor/add", method = RequestMethod.GET)
-	public String getAddNewManagerForm(Model model) {
+	public String getAddNewVendorForm(Model model) {
 		VendorBean mb = new VendorBean();
 		model.addAttribute("vendorBean", mb);
 		return "insert/addVendor";
 	}
 
 	@RequestMapping(value = "/vendor/add", method = RequestMethod.POST)
-	public String processAddNewManagerForm(@ModelAttribute("vendorBean") VendorBean vb, BindingResult result,
+	public String processAddNewVendorForm(@ModelAttribute("vendorBean") VendorBean vb, BindingResult result,
 			HttpServletRequest request) {
 		service.addVendor(vb);
+		return "redirect:/vendors";
+	}
+//更新廠商控制器
+	@RequestMapping(value = "/vendor/update", method = RequestMethod.GET)
+	public String getUpdateVendorForm(Model model) {
+		VendorBean vb = new VendorBean();
+		model.addAttribute("vendorBean", vb);
+		return "update/updateVendor";
+	}
+
+	@RequestMapping(value = "/vendor/update", method = RequestMethod.POST)
+	public String processUpdateVendorForm(@ModelAttribute("vendorBean") VendorBean vb, BindingResult result,
+			HttpServletRequest request) {
+		service.updateVendor(vb);
 		return "redirect:/vendors";
 	}
 }

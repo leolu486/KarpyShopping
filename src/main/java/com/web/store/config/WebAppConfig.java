@@ -36,11 +36,11 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	@Override 
 	// 應用系統必須透過ResourceHandlerRegistry的輔助，以便處理靜態檔案：
 	// 只要請求路徑是以/css/開頭的任何請求，都轉到/WEB-INF/views/css/去尋找
-	// 只要請求路徑是以/image/開頭的任何請求，都轉到/WEB-INF/views/images/去尋找
+	// 只要請求路徑是以/images/開頭的任何請求，都轉到/WEB-INF/views/images/去尋找
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	     registry.addResourceHandler("/css/**")
 	             .addResourceLocations("/WEB-INF/views/css/");
-	     registry.addResourceHandler("/image/**")
+	     registry.addResourceHandler("/images/**")
 	             .addResourceLocations("/WEB-INF/views/images/");
 	}
 	
