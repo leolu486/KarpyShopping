@@ -36,4 +36,18 @@ public class VendorServiceImpl implements VendorService {
 		return dao.getVendorByvname(vname);
 	}
 
+	@Transactional
+	@Override
+	public VendorBean getVendorByvId(Integer vId) {
+		// TODO Auto-generated method stub
+		return dao.getVendorByvId(vId);
+	}
+
+	@Transactional
+	@Override
+	public void updateVendor(VendorBean vb) {
+		dao.updateVendor(vb);
+
+	}
+
 }
