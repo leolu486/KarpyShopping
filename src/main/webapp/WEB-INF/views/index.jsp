@@ -130,16 +130,16 @@
 			<td colspan="2"><p align="center" />MemberTesting</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='members'>會員清單</a></td>
+			<td width="350"><p align="center" /> <a href='memberLogin'>會員登入測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='member/add'>新增會員測試</a></td>
+			<td width="350"><p align="center" /> <a href='member/change'>會員變更密碼測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='idExists'>會員資料檢查</a></td>
+			<td width="350"><p align="center" /> <a href='member/delete'>會員刪除</a>
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">

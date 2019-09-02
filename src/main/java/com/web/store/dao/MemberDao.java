@@ -6,26 +6,20 @@ import com.web.store.model.MemberBean;
 
 public interface MemberDao {
 
-	MemberBean select(Integer mId);
+List<MemberBean> getAllMember();
 
-	MemberBean select(String name);
+MemberBean getMemberByAccount(String account);
 
-	List<MemberBean> select();
+int updateMember(MemberBean mb);
 
-	MemberBean insertMember(MemberBean bean);
-	
-	MemberBean insertMember_With_memberImage(MemberBean bean);
+int deleteMember(MemberBean mb);
 
-	MemberBean checkAccountPassword(String userAccount, String password);
-	
-	Integer delete(Integer mId);
+void addMember(MemberBean member);
 
-	long getRecordCounts();
-	
-	void close();
+void changePassword(MemberBean mb, String newPw);
 
+MemberBean checkIdPassword(String account,String password);
 
-
-
+boolean idExists(Integer mId);
 
 }
