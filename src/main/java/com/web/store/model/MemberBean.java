@@ -22,6 +22,7 @@ public class MemberBean implements Serializable {
 	private String name; // member name
 	private String tel; // phone
 	private String addr; // address
+	private String saddr; // send address
 	private java.sql.Timestamp rdate; // register date
 	private String account; // account
 	private String password; // password
@@ -60,6 +61,14 @@ public class MemberBean implements Serializable {
 
 	public void setAddr(String addr) {
 		this.addr = addr;
+	}
+
+	public String getSaddr() {
+		return saddr;
+	}
+
+	public void setSaddr(String saddr) {
+		this.saddr = saddr;
 	}
 
 	public java.sql.Timestamp getRdate() {
@@ -120,7 +129,7 @@ public class MemberBean implements Serializable {
 
 	public String toString() {
 
-		return "[" + mId + "," + name + "," + tel + "," + addr + "," + rdate + "," + account + "," + password + ","
+		return "[" + mId + "," + name + "," + tel + "," + addr + "," + saddr + "," + rdate + "," + account + "," + password + ","
 				+ email + "," + birthday + "," + gender + "," + memberImage + "]";
 	}
 
@@ -128,13 +137,14 @@ public class MemberBean implements Serializable {
 
 	}
 
-	public MemberBean(Integer mId, String name, String tel, String addr, Timestamp rdate, String account,
+	public MemberBean(Integer mId, String name, String tel, String addr, String saddr ,Timestamp rdate, String account,
 			String password, String email, String birthday, String gender, Blob memberImage) {
 
 		this.mId = mId;
 		this.name = name;
 		this.tel = (tel);
 		this.addr = addr;
+		this.saddr = saddr;
 		this.rdate = rdate;
 		this.account = account;
 		this.password = password;
@@ -156,5 +166,4 @@ public class MemberBean implements Serializable {
 		}
 		return result;
 	}
-
 }

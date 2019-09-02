@@ -5,22 +5,19 @@ import java.util.List;
 import com.web.store.model.MemberBean;
 
 public interface MemberService {
+	List<MemberBean> getAllMember();
 
-	MemberBean select(Integer mId);
+	MemberBean getMemberByAccount(String account);
 
-	MemberBean select(String name);
+	int updateMember(MemberBean mb);
 
-	List<MemberBean> select();
+	int deleteMember(MemberBean mb);
 
-	MemberBean insertMember(MemberBean bean);
-
-	Integer delete(Integer mId);
-
-	long getRecordCounts();
+	void changePassword(MemberBean mb, String newPw);
 	
+	void addMember(MemberBean member);
 
-	void close();
+	MemberBean checkIdPassword(String account, String password);
 
-	MemberBean checkAccountPassword(String userId, String password);
-
+	boolean idExists(Integer mId);
 }
