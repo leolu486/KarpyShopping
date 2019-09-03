@@ -13,19 +13,20 @@ import javax.persistence.Table;
 public class OrderItemBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer seqno;
-	private Integer orderNo;
-	private Integer productId;
-	private String description;
-	private Integer quantity;
-	private Double unitPrice;
-	private Double discount;
+	private Integer seqno; // 流水號
+	private Integer orderNo;  //訂單號
+	private Integer productId;  //商絣ID
+	private String description;  //描述
+	private Integer quantity;  //數量
+	private Double unitPrice;  //單價
+	private Double discount;  //折扣
+	private Boolean mark;  // 標記
 	@ManyToOne
 	@JoinColumn(name = "FK_OrderBean_orderNo")
 	private OrderBean orderBean;
 
 	public OrderItemBean(Integer seqno, Integer orderNo, Integer productId, String description, Integer quantity,
-			Double unitPrice, Double discount) {
+			Double unitPrice, Double discount , Boolean mark) {
 		super();
 		this.seqno = seqno;
 		this.orderNo = orderNo;
@@ -34,10 +35,11 @@ public class OrderItemBean {
 		this.quantity = quantity;
 		this.unitPrice = unitPrice;
 		this.discount = discount;
+		this.mark = mark;
 	}
 
 	public OrderItemBean(Integer orderNo, Integer productId, String description, Integer quantity, Double unitPrice,
-			Double discount) {
+			Double discount , Boolean mark) {
 		super();
 
 		this.orderNo = orderNo;
@@ -46,6 +48,7 @@ public class OrderItemBean {
 		this.quantity = quantity;
 		this.unitPrice = unitPrice;
 		this.discount = discount;
+		this.mark = mark;
 	}
 	public OrderItemBean() {
 
@@ -113,5 +116,13 @@ public class OrderItemBean {
 
 	public void setProductId(Integer productId) {
 		this.productId = productId;
+	}
+	
+	public Boolean getmark() {
+		return mark;                 
+	}
+
+	public void setmark(Boolean mark) {
+		this.mark = mark;
 	}
 }
