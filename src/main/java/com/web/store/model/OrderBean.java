@@ -23,24 +23,84 @@ public class OrderBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer oId; // Order ID
-	public Integer getPrice() {
+	private Timestamp odate; // Order Date
+	private Double price; // total
+	private String status="未出貨"; // processing status
+	private String tel;
+	private String shippingNo="尚無單號"; // 新增貨單號碼
+	private String consignee; //新增收貨人
+	private String addr; //新增地址
+	private Integer mId;
+	
+
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FK_mId")
+	private MemberBean memberBean;
+	
+	@OneToMany(mappedBy="orderBean", cascade=CascadeType.ALL)
+	private Set<OrderItemBean> items = new LinkedHashSet<>();
+	
+	public Integer getmId() {
+		return mId;
+	}
+	
+	public void setmId(Integer mId) {
+		this.mId = mId;
+	}
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="mId")
-	MemberBean memberBean;
 	
-	private Timestamp odate; // Order Date
-	private Integer price; // total
-	private String status; // processing status
+	
+	public MemberBean getMemberBean() {
+		return memberBean;
+	}
 
-	@OneToMany(mappedBy="orderBean", cascade=CascadeType.ALL)
-	private Set<OrderItemBean> items = new LinkedHashSet<>();
+	public void setMemberBean(MemberBean memberBean) {
+		this.memberBean = memberBean;
+	}
+
+	
+	
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	public String getConsignee() {
+		return consignee;
+	}
+
+	public void setConsignee(String consignee) {
+		this.consignee = consignee;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getShippingNo() {
+		return shippingNo;
+	}
+
+	public void setShippingNo(String shippingNo) {
+		this.shippingNo = shippingNo;
+	}
+
+
+
 	
 	public Integer getoId() {
 		return oId;
@@ -80,7 +140,7 @@ public class OrderBean implements Serializable {
 	public OrderBean() {
 	}
 
-	public OrderBean(Integer oId, Set<OrderItemBean> items, Timestamp date, Integer price, String status, MemberBean memberBean) {
+	public OrderBean(Integer oId, Set<OrderItemBean> items, Timestamp date, Double price, String status, MemberBean memberBean) {
 		super();
 		this.oId = oId;
 		this.items = items;

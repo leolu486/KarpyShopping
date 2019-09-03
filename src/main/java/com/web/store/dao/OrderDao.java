@@ -1,23 +1,31 @@
 package com.web.store.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import com.web.store.model.OrderBean;
+import com.web.store.model.OrderItemBean;
+
 
 public interface OrderDao {
 
-	OrderBean select(Integer oId);
-
-	OrderBean select_by_pid(Integer pid);
-
-	List<OrderBean> select();
-
 	OrderBean insertOrder(OrderBean bean);
-
+	
+	//TODO--刪除錯誤程式碼
+//	OrderBean insertOrder(OrderBean bean,Set<OrderItemBean> items);
+	
 	Integer delete(Integer oId);
 
-	long getRecordCounts();
+	OrderBean select(Integer oId);
+	List<OrderBean> select();
+	List<OrderBean> selectMemberOrders(Integer mId);
 	
-	void close();
+	List<OrderItemBean> queryItems(Integer oId);
+
+	Integer updateOrder(OrderBean ob);
+	Integer VendorUpdateOrder(OrderBean ob);
+
+	
+	
 
 }

@@ -73,16 +73,17 @@
 
 		<!-- Order Method Test Area -->
 
+		
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td colspan="2"><p align="center" />OrderTesting</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='orderPage'>單筆訂單查詢測試</a></td>
+			<td width="350"><p align="center" /> <a href='orders'>多筆訂單查詢測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='productsAddCart'>新增訂單測試</a></td>
+			<td width="350"><p align="center" /> <a href='ordersBymIdQuery'>會員全部訂單查詢</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
