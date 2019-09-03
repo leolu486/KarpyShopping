@@ -47,6 +47,19 @@ public class ProductBean implements Serializable {
 		this.rankSum = rankSum;
 		this.rankCount = rankCount;	
 	}
+	
+	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
+			String sdate, Double rankSum, Integer rankCount) {
+		this.pId = pId;
+		this.pname = pname;
+		this.price = price;
+		this.vId = vId;
+		this.amount = amount;
+		this.category = category;
+		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
+		this.rankSum = rankSum;
+		this.rankCount = rankCount;	
+	}
 
 	public ProductBean(Integer pId, String pname, Integer price, VendorBean vendorBean, Integer amount, String category,
 			String sdate, String expdate, Double rankSum, Integer rankCount) {
