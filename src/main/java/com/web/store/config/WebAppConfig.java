@@ -9,10 +9,14 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+
+import com.web.store.interceptor.LoginCheckingInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -53,6 +57,16 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		resolver.setDefaultEncoding("UTF-8");
 		resolver.setMaxUploadSize(81920000); // 78.12MB
 		return resolver;
+	}
+
+	@Bean
+	LoginCheckingInterceptor getLoginCheckingFilter() {
+		return new LoginCheckingInterceptor();
+	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(getLoginCheckingFilter()).addPathPatterns("/managers");
 	}
 
 }

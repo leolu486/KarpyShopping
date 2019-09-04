@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -92,9 +93,20 @@ public class ManagerController {
 	}
 
 	@RequestMapping(value = "/managerLogin", method = RequestMethod.POST)
-	public String processManagerLoginForm(@ModelAttribute("managerBean") ManagerBean mb) {
-		service.checkIdPassword(mb.getAccount(), mb.getPassword());
-		return "login/ManagerLoginSuccess";
+	public String processManagerLoginForm(@ModelAttribute("managerBean") ManagerBean mb, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ManagerBean manager = service.checkIdPassword(mb.getAccount(), mb.getPassword());
+		
+		session.setAttribute("LoginOK", manager);
+		System.out.println("Name : " + manager.getName());
+//		return "login/ManagerLoginSuccess";
+		return "index";
+	}
+//登出控制器
+	@RequestMapping("/managerLogout")
+	public String manageLogout(Model model) {
+		System.out.println("Mout");
+		return "login/managerLogout";
 	}
 
 //新增管理員控制器

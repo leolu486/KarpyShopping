@@ -7,12 +7,52 @@
 <head>
 <meta charset="UTF-8">
 <title>欸你過來一下</title>
+<style>
+.box {
+	float: right;
+	margin-right:10px;
+}
+
+.Tlog {
+	margin-left: 100px;
+}
+
+.TNlog {
+	margin-left: 50px;
+}
+</style>
 </head>
 <body>
 
-	<h1 style="text-align: center;">MVC Exercise</h1>
+	<div>
+		<!-- login -->
+		<c:if test="${! empty LoginOK }">
+			<div class="box">
+				你好，${LoginOK.name} <a href="managerLogout">登出</a>
+			</div>
+			<div class="Tlog">
+				<h1 style="text-align: center;">MVC Exercise</h1>
+			</div>
+		</c:if>
+		<!-- no login -->
+		<c:if test="${ empty LoginOK }">
+			<div class='box'>
+				<a href="managerLogin">登入</a>
+			</div>
+			<div class="TNlog">
+				<h1 style="text-align: center;">MVC Exercise</h1>
+			</div>
+		</c:if>
+
+
+
+
+
+	</div>
+
 	<p align="center" />
 	<a href='chat'>WebSocket Test</a>
+
 	<hr>
 
 	<table border="1" style="margin: 0px auto;">
@@ -32,7 +72,7 @@
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='managers'>管理員清單</a>
 			</td>
-			<td width="350"><p align="center" /> <a href='managerLogin'>管理員登入測試</a>
+			<td width="350"><p align="center" /> <a href=''>管理員登入測試右上角登入</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='manager/add'>新增管理員測試</a>
@@ -73,7 +113,7 @@
 
 		<!-- Order Method Test Area -->
 
-		
+
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td colspan="2"><p align="center" />OrderTesting</td>
 		</tr>
@@ -154,7 +194,5 @@
 
 
 	</table>
-
-
 </body>
 </html>
