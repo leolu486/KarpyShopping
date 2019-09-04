@@ -10,7 +10,7 @@
 <style>
 .box {
 	float: right;
-	margin-right:10px;
+	margin-right: 10px;
 }
 
 .Tlog {
@@ -72,7 +72,7 @@
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='managers'>管理員清單</a>
 			</td>
-			<td width="350"><p align="center" /> <a href=''>管理員登入測試右上角登入</a>
+			<td width="350"><p align="center" /> 管理員登入測試右上角登入
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='manager/add'>新增管理員測試</a>

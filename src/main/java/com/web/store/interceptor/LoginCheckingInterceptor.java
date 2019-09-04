@@ -34,7 +34,7 @@ public class LoginCheckingInterceptor implements HandlerInterceptor {
 			requestURI = req.getRequestURI();
 			isRequestedSessionIdValid = req.isRequestedSessionIdValid();
 			System.out.println("filter prehandle");
-			System.out.println("a");
+
 			if (checkLogin(req)) {
 				// 需要登入，但已經登入
 				System.out.println("b");
@@ -49,6 +49,7 @@ public class LoginCheckingInterceptor implements HandlerInterceptor {
 				} else {
 					// 記住原本的"requestURI"，稍後如果登入成功，系統可以自動轉入
 					// 原本要執行的程式。
+					System.out.println("handle uri:"+requestURI);
 					session.setAttribute("requestURI", requestURI);
 				}
 				resp.sendRedirect(contextPath + "/managerLogin");

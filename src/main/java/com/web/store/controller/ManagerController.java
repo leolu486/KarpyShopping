@@ -96,12 +96,18 @@ public class ManagerController {
 	public String processManagerLoginForm(@ModelAttribute("managerBean") ManagerBean mb, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ManagerBean manager = service.checkIdPassword(mb.getAccount(), mb.getPassword());
-		
 		session.setAttribute("LoginOK", manager);
-		System.out.println("Name : " + manager.getName());
-//		return "login/ManagerLoginSuccess";
-		return "index";
+		System.out.println("Manager Name : " + manager.getName());
+		String uri = (String) session.getAttribute("requestURI");
+		System.out.println("uri : " + uri);
+		if (uri == null) {
+			return "index";
+		} else {
+			session.removeAttribute("requestURI");
+			return "redirect:/" + uri.substring(15);
+		}
 	}
+
 //登出控制器
 	@RequestMapping("/managerLogout")
 	public String manageLogout(Model model) {
