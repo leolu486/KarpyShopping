@@ -25,8 +25,8 @@
       </div>
       <div class="container">
            <p>
-             <a href="<spring:url value='/manager/add' />"  class='btn btn-primary' >
-             <span class='glyphicon-left-hand glyphicon'></span>回註冊頁面</a></p>
+             <a href="<spring:url value='/AddorLogin' />"  class='btn btn-primary' >
+             <span class='glyphicon-left-hand glyphicon'></span>回登入/註冊頁面</a></p>
            <p>${exceptiom}</p>
       </div>
    </section>

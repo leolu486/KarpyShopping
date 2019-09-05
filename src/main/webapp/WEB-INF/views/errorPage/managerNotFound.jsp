@@ -14,7 +14,7 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h2>查無此項管理員的資料: ${invalidAccount}</h2>
+				<h2>${errorMessage} : ${invalidAccount}</h2>
 			</div>
 		</div>
 	</section>

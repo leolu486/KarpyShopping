@@ -37,7 +37,7 @@
 		<!-- no login -->
 		<c:if test="${ empty LoginOK }">
 			<div class='box'>
-				<a href="managerLogin">登入</a>
+				<a href="AddorLogin">登入/註冊</a>
 			</div>
 			<div class="TNlog">
 				<h1 style="text-align: center;">MVC Exercise</h1>
@@ -72,12 +72,11 @@
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='managers'>管理員清單</a>
 			</td>
-			<td width="350"><p align="center" /> 管理員登入測試右上角登入
+			<td width="350"><p align="center" /> <a href='manager/change'>管理員密碼變更測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='manager/add'>新增管理員測試</a>
-			</td>
-			<td width="350"><p align="center" /> <a href='manager/change'>管理員密碼變更測試</a>
+			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 
