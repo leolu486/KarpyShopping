@@ -26,12 +26,18 @@ public class HomeController {
 		System.out.println("pd test");
 		return "productDetail/pd";
 	}
-	
+
 	@RequestMapping("/ch01/serverTime")
 	public String serverTime(Model model) {
 		model.addAttribute("now",
 				new SimpleDateFormat("yyyy年MM月dd日HH時mm分ss秒SSS毫秒").format(new java.util.Date()) + ", Spring MVC版");
 		return "ch01/serverTime";
+	}
+
+	@RequestMapping("/membercentre")
+	public String membercentre() {
+
+		return "membercentre";
 	}
 
 }

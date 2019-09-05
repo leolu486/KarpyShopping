@@ -50,335 +50,333 @@
 </head>
 <body>
 
-
+	<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 
 
 	<!--header top area start-->
-	<div class="header_area">
-		<div class="header_border">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-						<div class="header_heaft_area">
-							<div class="header_left_all">
-								<div class="mean_al_dv">
-									<div class="littele_menu">
-										<a href="#">回首頁<i class="fa fa-caret-down"></i></a>
-									</div>
-									<ul class="option">
+	<!-- 	<div class="header_area"> -->
+	<!-- 		<div class="header_border"> -->
+	<!-- 			<div class="container"> -->
+	<!-- 				<div class="row"> -->
+	<!-- 					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12"> -->
+	<!-- 						<div class="header_heaft_area"> -->
+	<!-- 							<div class="header_left_all"> -->
+	<!-- 								<div class="mean_al_dv"> -->
+	<!-- 									<div class="littele_menu"> -->
+	<!-- 										<a href="#">回首頁<i class="fa fa-caret-down"></i></a> -->
+	<!-- 									</div> -->
+	<!-- 									<ul class="option"> -->
 
-									</ul>
-								</div>
-								<div class="usd_area">
-									<div class="littele_menu">
-										<a href="#"> 我是賣家 <i class="fa fa-caret-down"></i>
-										</a>
-									</div>
-									<ul class="option">
-										<li><a href="#">賣場管理</a></li>
-										<li><a href="#">交易紀錄</a></li>
-										<li><a href="#">我的賣場</a></li>
-									</ul>
-								</div>
-								<div class="usd_area">
-									<div class="littele_menu">
-										<a href="#"> 我是買家 <i class="fa fa-caret-down"></i>
-										</a>
-									</div>
-									<ul class="option">
-										<li><a href="#">訂單查詢</a></li>
-										<li><a href="#">交易紀錄</a></li>
-										<li><a href="#">歷史紀錄</a></li>
-									</ul>
-								</div>
-							</div>
+	<!-- 									</ul> -->
+	<!-- 								</div> -->
+	<!-- 								<div class="usd_area"> -->
+	<!-- 									<div class="littele_menu"> -->
+	<!-- 										<a href="#"> 我是賣家 <i class="fa fa-caret-down"></i> -->
+	<!-- 										</a> -->
+	<!-- 									</div> -->
+	<!-- 									<ul class="option"> -->
+	<!-- 										<li><a href="#">賣場管理</a></li> -->
+	<!-- 										<li><a href="#">交易紀錄</a></li> -->
+	<!-- 										<li><a href="#">我的賣場</a></li> -->
+	<!-- 									</ul> -->
+	<!-- 								</div> -->
+	<!-- 								<div class="usd_area"> -->
+	<!-- 									<div class="littele_menu"> -->
+	<!-- 										<a href="#"> 我是買家 <i class="fa fa-caret-down"></i> -->
+	<!-- 										</a> -->
+	<!-- 									</div> -->
+	<!-- 									<ul class="option"> -->
+	<!-- 										<li><a href="#">訂單查詢</a></li> -->
+	<!-- 										<li><a href="#">交易紀錄</a></li> -->
+	<!-- 										<li><a href="#">歷史紀錄</a></li> -->
+	<!-- 									</ul> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12"> -->
+	<!-- 						<div class="header_right_area"> -->
+	<!-- 							<ul> -->
+	<!-- <!-- 								<li><a class="account" href="#">登入/註冊</a></li> -->
+	<!-- <!-- 								<li><a class="wishlist" href="#">訂單查詢</a></li> -->
+	<!-- <!-- 								<li><a class="Shopping cart" href="#">購物車</a></li> -->
+	<!-- 								<li><a class="Checkout" href="#">會員中心</a></li> -->
+	<!-- 							</ul> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!--header top area end-->
+	<!--header middle area start-->
+	<div class="header_middle">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="logo_area">
+						<a href="index1.html"><img
+							src="<c:url value="/images/logo-pic/logo.png" />" alt="image" /></a>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="header_all search_box_area">
+
+						<form class="new_search" role="search" method="get" action="#">
+							<input id="mix_search" class="search-field"
+								placeholder="請輸入搜尋資料..." value="" name="s" title="Search for:"
+								type="search"> <input value="Search" type="submit">
+							<input name="post_type" value="product" type="hidden">
+						</form>
+						<div class="Test2">
+
+							<ul>
+								<spen style="margin-left:50px">熱門☆</spen>
+								<li><a href="#">美妝</a></li>
+								<li><a href="#">保健</a></li>
+								<li><a href="#">食品</a></li>
+								<li><a href="#">旅遊</a></li>
+								<li><a href="#">婦幼</a></li>
+								<li><a href="#">富田</a></li>
+								<li><a href="#">姊妹</a></li>
+								<li><a href="#">NYKD54</a></li>
+								<li><a href="#">3C</a></li>
+
+							</ul>
+
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-						<div class="header_right_area">
-							<ul>
-								<li><a class="account" href="#">登入</a></li>
-								<li><a class="wishlist" href="#">註冊</a></li>
-								<li><a class="Shopping cart" href="#">購物車</a></li>
-								<li><a class="Checkout" href="#">查詢訂單</a></li>
-							</ul>
+					<div class="header_all shopping_cart_area">
+						<div class="widget_shopping_cart_content">
+							<div class="topcart">
+
+								<a class="cart-toggler" href=""> <img class="icon"
+									src="<c:url value="/images/icon/icon_cart.png"/>"> <span
+									class="my-cart">購物車</span> <span class="qty">2 件</span> <span
+									class="fa fa-angle-down"></span>
+								</a>
+								<div class="new_cart_section">
+									<ol class="new-list">
+										<!-- single item -->
+										<li class="wimix_area"><a class="pix_product" href="">
+
+												<img alt=""
+												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
+										</a>
+											<div class="product-details">
+												<a href="#">Adipiscing cursus eu</a> <span class="sig-price">1×$300.00</span>
+											</div>
+											<div class="cart-remove">
+												<a class="action" href="#"> <i class="fa fa-close"></i>
+												</a>
+											</div></li>
+										<!-- single item -->
+										<!-- single item -->
+										<li class="wimix_area"><a class="pix_product" href="#">
+												<img alt=""
+												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
+										</a>
+											<div class="product-details">
+												<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span>
+											</div>
+											<div class="cart-remove">
+												<a class="action" href="#"> <i class="fa fa-close"></i>
+												</a>
+											</div></li>
+										<!-- single item -->
+									</ol>
+									<div class="top-subtotal">
+										Subtotal: <span class="sig-price">$400.00</span>
+									</div>
+									<div class="cart-button">
+										<ul>
+											<li><a href="#">View my cart <i
+													class="fa fa-angle-right"></i></a></li>
+											<li><a href="#">Checkout <i
+													class="fa fa-angle-right"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!--header top area end-->
-		<!--header middle area start-->
-		<div class="header_middle">
+	</div>
+	<!--header footer area start 購物車結束-->
+	<div class="all_menu_area">
+		<div class="menu_inner">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="logo_area">
-							<a href="index1.html"><img
-								src="<c:url value="/images/logo-pic/logo.png" />" alt="image" /></a>
-						</div>
-					</div>
-					<div class="col-md-9">
-						<div class="header_all search_box_area">
+				<div class="full_menu clearfix">
+					<div class="new_menu">
+						<div class="drp-menu">
+							<div class="col-md-3 pr pl">
+								<div class="all_catagories">
+									<div class="enable_catagories">
+										<i class="fa fa-bars"></i> <span>3C/精品分類區</span> <i
+											class="fa fa-angle-down"></i>
+									</div>
+								</div>
+								<div class="catagory_menu_area">
+									<div class="catagory_mega_menu">
+										<div class="cat_mega_start">
+											<ul class="list">
+												<li class="next_area"><a class="item_link" href="#">
+														<i class="fa fa-television"></i> <span
+														class="link_content"> <span class="link_text">
+																電腦用品 <span class="link_descr">3C/桌機/筆電/電競相關產品 </span>
+														</span>
+													</span>
+												</a>
+													<ul class="electronics_drpdown">
+														<li class="parent"><a href="#"></a>
+															<div class="mega_menu">
+																<div class="mega_menu_coloumn">
+																	<ul>
+																		<li><a href="#">電競產品</a></li>
+																		<li><a href="#">電競滑鼠</a></li>
+																		<li><a href="#">電競桌機</a></li>
+																		<li><a href="#">電競周邊</a></li>
+																	</ul>
+																</div>
+																<div class="mega_menu_coloumn">
+																	<ul>
+																		<li><a href="#">筆記型電腦</a></li>
+																		<li><a href="#">滑鼠</a></li>
+																		<li><a href="#">鍵盤</a></li>
+																		<li><a href="#">福利品出清</a></li>
+																	</ul>
+																</div>
+																<div class="mega_menu_coloumn">
+																	<ul>
+																		<li class="mega_content"><a href="#">3C家電</a></li>
+																		<li><a href="#">家電用品</a></li>
+																		<li><a href="#">Dyson系列</a></li>
+																		<li><a href="#">三星產品</a></li>
+																		<li><a href="#">相關家電</a></li>
+																	</ul>
+																</div>
+																<div class="mega_menu_coloumn">
+																	<ul>
+																		<li><a href="#">數位周邊</a></li>
+																		<li><a href="#">喇叭/藍芽喇叭</a></li>
+																		<li><a href="#">繪圖/手寫板</a></li>
+																		<li><a href="#">電腦周邊/線材</a></li>
+																		<li><a href="#">隨身碟/硬碟</a></li>
+																	</ul>
+																</div>
+															</div></li>
+													</ul></li>
+												<li class="differ_sec_area"><a class="item_link"
+													href="#"> <i class="fa fa-mobile"></i> <span
+														class="link_content"> <span class="link_text">
+																手機周邊 <span class="link_descr">手機/耳機/蘋果/安卓周邊產品 </span>
+														</span>
+													</span>
+												</a>
+													<ul class="another_drop_menu">
+														<li class="discrip"><a class="new_link_2 with_icon"
+															href="#" tabindex="1">手機</a>
+															<ul class="new_miup_menu">
+																<li>
+																	<ul class="new_mixup_tm">
+																		<li class="exact"><a class=" with_icon" href="#"
+																			tabindex="1">蘋果手機</a></li>
+																		<li><a href="#">安卓手機</a></li>
+																	</ul>
+																</li>
+															</ul></li>
+														<li class="risk"><a
+															class="new_link_2 new_link_3 with_icon" href="#"
+															tabindex="1">Apple周邊產品 </a>
+															<ul class="new_miup_menu">
+																<li>
+																	<ul class="new_mixup_tm">
+																		<li><a href="#">Apple watchs</a></li>
+																	</ul>
+																</li>
+																<li><a href="#">Air pods</a></li>
+																<li><a href="#">iPhone Lightning</a></li>
+															</ul></li>
+														<li><a href="#">蘋果3C周邊</a></li>
+														<li><a href="#">安卓3C周邊</a></li>
+													</ul></li>
+												<li class="differ_sec_area"><a class="item_link "
+													href="#"> <i class="fa fa-gift"></i> <span
+														class="link_content"> <span class="link_text">
+																送禮專區 <span class="link_descr">精緻禮品/小資禮品/最佳禮物</span>
+														</span>
+													</span>
+												</a>
+													<ul class="another_drop_menu">
+														<li class="discrip"><a
+															class="new_link_2 new_link_4 with_icon" href="#"
+															tabindex="1"> 精美卡片區 </a></li>
+														<li class="discrip"><a
+															class="new_link_2 new_link_4 with_icon" href="#"
+															tabindex="1"> 手工皮夾/包/名片夾 </a></li>
+														<li class="discrip"><a
+															class="new_link_2 new_link_4 with_icon" href="#"
+															tabindex="1"> 精緻小禮品</a></li>
+														<li class="discrip"><a
+															class="new_link_2 new_link_4 with_icon" href="#"
+															tabindex="1"> 精緻小點</a></li>
 
-							<form class="new_search" role="search" method="get" action="#">
-								<input id="mix_search" class="search-field"
-									placeholder="請輸入搜尋資料..." value="" name="s" title="Search for:"
-									type="search"> <input value="Search" type="submit">
-								<input name="post_type" value="product" type="hidden">
-							</form>
-							<div class="Test2">
-
-								<ul>
-									<spen style="margin-left:50px">熱門☆</spen>
-									<li><a href="#">美妝</a></li>
-									<li><a href="#">保健</a></li>
-									<li><a href="#">食品</a></li>
-									<li><a href="#">旅遊</a></li>
-									<li><a href="#">婦幼</a></li>
-									<li><a href="#">富田</a></li>
-									<li><a href="#">姊妹</a></li>
-									<li><a href="#">NYKD54</a></li>
-									<li><a href="#">3C</a></li>
-
-								</ul>
-
-							</div>
-						</div>
-						<div class="header_all shopping_cart_area">
-							<div class="widget_shopping_cart_content">
-								<div class="topcart">
-
-									<a class="cart-toggler" href=""> <img class="icon"
-										src="<c:url value="/images/icon/icon_cart.png"/>"> <span
-										class="my-cart">購物車</span> <span class="qty">2 件</span> <span
-										class="fa fa-angle-down"></span>
-									</a>
-									<div class="new_cart_section">
-										<ol class="new-list">
-											<!-- single item -->
-											<li class="wimix_area"><a class="pix_product" href="">
-
-													<img alt=""
-													src="<c:url value="/images/product-pic/7-150x98.jpg" />">
-											</a>
-												<div class="product-details">
-													<a href="#">Adipiscing cursus eu</a> <span
-														class="sig-price">1×$300.00</span>
-												</div>
-												<div class="cart-remove">
-													<a class="action" href="#"> <i class="fa fa-close"></i>
-													</a>
-												</div></li>
-											<!-- single item -->
-											<!-- single item -->
-											<li class="wimix_area"><a class="pix_product" href="#">
-													<img alt=""
-													src="<c:url value="/images/product-pic/7-150x98.jpg" />">
-											</a>
-												<div class="product-details">
-													<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span>
-												</div>
-												<div class="cart-remove">
-													<a class="action" href="#"> <i class="fa fa-close"></i>
-													</a>
-												</div></li>
-											<!-- single item -->
-										</ol>
-										<div class="top-subtotal">
-											Subtotal: <span class="sig-price">$400.00</span>
-										</div>
-										<div class="cart-button">
-											<ul>
-												<li><a href="#">View my cart <i
-														class="fa fa-angle-right"></i></a></li>
-												<li><a href="#">Checkout <i
-														class="fa fa-angle-right"></i></a></li>
+													</ul></li>
+												<li><a class="item_link item_link_2" href="#"> <i
+														class="fa fa-heart"></i> <span class="link_content">
+															<span class="link_text"> 男士精品區 <span
+																class="link_descr">精品名錶/皮夾/包/皮帶</span>
+														</span>
+													</span>
+												</a></li>
+												<li><a class="item_link item_link_2" href="#"> <i
+														class="fa fa-star"></i> <span class="link_content">
+															<span class="link_text"> 女士精品區 <span
+																class="link_descr">名牌名包/皮夾/手飾/項鍊/福利品</span>
+														</span>
+													</span>
+												</a></li>
+												<li><a class="item_link item_link_2" href="#"> <i
+														class="fa fa-lightbulb-o"></i> <span class="link_content">
+															<span class="link_text"> NYKD54 <span
+																class="link_descr">EEIT10804陳同學推薦專區</span>
+														</span>
+													</span>
+												</a></li>
+												<li class="cost-menu"><a class="item_link item_link_2"
+													href="#"> <i class="fa fa-pie-chart"></i> <span
+														class="link_content"> <span class="link_text">
+																LEO <span class="link_descr">您今天LEO了嗎?</span>
+														</span>
+													</span>
+												</a></li>
+												<li class="showmore-items shwitm"><i
+													class="fa fa-plus-square-o"></i> <span>More
+														Categories</span></li>
 											</ul>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--header footer area start 購物車結束-->
-		<div class="all_menu_area">
-			<div class="menu_inner">
-				<div class="container">
-					<div class="full_menu clearfix">
-						<div class="new_menu">
-							<div class="drp-menu">
-								<div class="col-md-3 pr pl">
-									<div class="all_catagories">
-										<div class="enable_catagories">
-											<i class="fa fa-bars"></i> <span>3C/精品分類區</span> <i
-												class="fa fa-angle-down"></i>
-										</div>
-									</div>
-									<div class="catagory_menu_area">
-										<div class="catagory_mega_menu">
-											<div class="cat_mega_start">
-												<ul class="list">
-													<li class="next_area"><a class="item_link" href="#">
-															<i class="fa fa-television"></i> <span
-															class="link_content"> <span class="link_text">
-																	電腦用品 <span class="link_descr">3C/桌機/筆電/電競相關產品 </span>
-															</span>
-														</span>
-													</a>
-														<ul class="electronics_drpdown">
-															<li class="parent"><a href="#"></a>
-																<div class="mega_menu">
-																	<div class="mega_menu_coloumn">
-																		<ul>
-																			<li><a href="#">電競產品</a></li>
-																			<li><a href="#">電競滑鼠</a></li>
-																			<li><a href="#">電競桌機</a></li>
-																			<li><a href="#">電競周邊</a></li>
-																		</ul>
-																	</div>
-																	<div class="mega_menu_coloumn">
-																		<ul>
-																			<li><a href="#">筆記型電腦</a></li>
-																			<li><a href="#">滑鼠</a></li>
-																			<li><a href="#">鍵盤</a></li>
-																			<li><a href="#">福利品出清</a></li>
-																		</ul>
-																	</div>
-																	<div class="mega_menu_coloumn">
-																		<ul>
-																			<li class="mega_content"><a href="#">3C家電</a></li>
-																			<li><a href="#">家電用品</a></li>
-																			<li><a href="#">Dyson系列</a></li>
-																			<li><a href="#">三星產品</a></li>
-																			<li><a href="#">相關家電</a></li>
-																		</ul>
-																	</div>
-																	<div class="mega_menu_coloumn">
-																		<ul>
-																			<li><a href="#">數位周邊</a></li>
-																			<li><a href="#">喇叭/藍芽喇叭</a></li>
-																			<li><a href="#">繪圖/手寫板</a></li>
-																			<li><a href="#">電腦周邊/線材</a></li>
-																			<li><a href="#">隨身碟/硬碟</a></li>
-																		</ul>
-																	</div>
-																</div></li>
-														</ul></li>
-													<li class="differ_sec_area"><a class="item_link"
-														href="#"> <i class="fa fa-mobile"></i> <span
-															class="link_content"> <span class="link_text">
-																	手機周邊 <span class="link_descr">手機/耳機/蘋果/安卓周邊產品 </span>
-															</span>
-														</span>
-													</a>
-														<ul class="another_drop_menu">
-															<li class="discrip"><a class="new_link_2 with_icon"
-																href="#" tabindex="1">手機</a>
-																<ul class="new_miup_menu">
-																	<li>
-																		<ul class="new_mixup_tm">
-																			<li class="exact"><a class=" with_icon" href="#"
-																				tabindex="1">蘋果手機</a></li>
-																			<li><a href="#">安卓手機</a></li>
-																		</ul>
-																	</li>
-																</ul></li>
-															<li class="risk"><a
-																class="new_link_2 new_link_3 with_icon" href="#"
-																tabindex="1">Apple周邊產品 </a>
-																<ul class="new_miup_menu">
-																	<li>
-																		<ul class="new_mixup_tm">
-																			<li><a href="#">Apple watchs</a></li>
-																		</ul>
-																	</li>
-																	<li><a href="#">Air pods</a></li>
-																	<li><a href="#">iPhone Lightning</a></li>
-																</ul></li>
-															<li><a href="#">蘋果3C周邊</a></li>
-															<li><a href="#">安卓3C周邊</a></li>
-														</ul></li>
-													<li class="differ_sec_area"><a class="item_link "
-														href="#"> <i class="fa fa-gift"></i> <span
-															class="link_content"> <span class="link_text">
-																	送禮專區 <span class="link_descr">精緻禮品/小資禮品/最佳禮物</span>
-															</span>
-														</span>
-													</a>
-														<ul class="another_drop_menu">
-															<li class="discrip"><a
-																class="new_link_2 new_link_4 with_icon" href="#"
-																tabindex="1"> 精美卡片區 </a></li>
-															<li class="discrip"><a
-																class="new_link_2 new_link_4 with_icon" href="#"
-																tabindex="1"> 手工皮夾/包/名片夾 </a></li>
-															<li class="discrip"><a
-																class="new_link_2 new_link_4 with_icon" href="#"
-																tabindex="1"> 精緻小禮品</a></li>
-															<li class="discrip"><a
-																class="new_link_2 new_link_4 with_icon" href="#"
-																tabindex="1"> 精緻小點</a></li>
+							<!--menu area start-->
+							<div class="col-md-9 pl">
+								<div class="menu_area">
+									<div class="menu1">
+										<nav>
+											<ul>
+												<li><a href="index.html">美妝</a></li>
+												<li><a href="#">鞋包配飾</a></li>
+												<li><a href="#">食品</a></li>
+												<li><a href="#">日常用品</a></li>
+												<li><a href="#">居家生活</a></li>
+												<li><a href="#">運動休閒</a></li>
+												<li><a href="#">書店</a></li>
+												<li><a href="#">保健</a></li>
+												<li><a href="#">內衣</a></li>
 
-														</ul></li>
-													<li><a class="item_link item_link_2" href="#"> <i
-															class="fa fa-heart"></i> <span class="link_content">
-																<span class="link_text"> 男士精品區 <span
-																	class="link_descr">精品名錶/皮夾/包/皮帶</span>
-															</span>
-														</span>
-													</a></li>
-													<li><a class="item_link item_link_2" href="#"> <i
-															class="fa fa-star"></i> <span class="link_content">
-																<span class="link_text"> 女士精品區 <span
-																	class="link_descr">名牌名包/皮夾/手飾/項鍊/福利品</span>
-															</span>
-														</span>
-													</a></li>
-													<li><a class="item_link item_link_2" href="#"> <i
-															class="fa fa-lightbulb-o"></i> <span class="link_content">
-																<span class="link_text"> NYKD54 <span
-																	class="link_descr">EEIT10804陳同學推薦專區</span>
-															</span>
-														</span>
-													</a></li>
-													<li class="cost-menu"><a class="item_link item_link_2"
-														href="#"> <i class="fa fa-pie-chart"></i> <span
-															class="link_content"> <span class="link_text">
-																	LEO <span class="link_descr">您今天LEO了嗎?</span>
-															</span>
-														</span>
-													</a></li>
-													<li class="showmore-items shwitm"><i
-														class="fa fa-plus-square-o"></i> <span>More
-															Categories</span></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!--menu area start-->
-								<div class="col-md-9 pl">
-									<div class="menu_area">
-										<div class="menu1">
-											<nav>
-												<ul>
-													<li><a href="index.html">美妝</a></li>
-													<li><a href="#">鞋包配飾</a></li>
-													<li><a href="#">食品</a></li>
-													<li><a href="#">日常用品</a></li>
-													<li><a href="#">居家生活</a></li>
-													<li><a href="#">運動休閒</a></li>
-													<li><a href="#">書店</a></li>
-													<li><a href="#">保健</a></li>
-													<li><a href="#">內衣</a></li>
-
-												</ul>
-											</nav>
-										</div>
+											</ul>
+										</nav>
 									</div>
 								</div>
 							</div>
@@ -387,6 +385,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- mobile-menu-area-start -->
 	<!-- <div class="mobile-menu-area hidden-md hidden-lg">
@@ -599,9 +598,10 @@
 										</div>
 										<div class="sinle_pic">
 											<a href="#"> <img class="primary-img"
-												src="<c:url value="/images/product-pic/product_pic_2.jpg" />"alt="">
-												<img class="secondary-img"
-													src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+												src="<c:url value="/images/product-pic/product_pic_2.jpg" />"
+												alt=""> <img class="secondary-img"
+												src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+												alt="">
 											</a>
 										</div>
 										<div class="product-action" data-toggle="modal"
@@ -670,10 +670,10 @@
 										</div>
 										<div class="sinle_pic">
 											<a href="#"> <img class="primary-img"
-												src="<c:url value="/images/product-pic/product_pic_3.jpg" />"alt="">
-												<img
-												class="secondary-img"
-												src="<c:url value="/images/product-pic/product_pic_4.jpg" />"alt="">
+												src="<c:url value="/images/product-pic/product_pic_3.jpg" />"
+												alt=""> <img class="secondary-img"
+												src="<c:url value="/images/product-pic/product_pic_4.jpg" />"
+												alt="">
 											</a>
 										</div>
 										<div class="product-action" data-toggle="modal"
@@ -741,9 +741,10 @@
 										</div>
 										<div class="sinle_pic">
 											<a href="#"> <img class="primary-img"
-												src="<c:url value="/images/product-pic/product_pic_5.jpg" />"alt=""> <img
-												class="secondary-img"
-												src="<c:url value="/images/product-pic/product_pic_4.jpg" />"alt="">
+												src="<c:url value="/images/product-pic/product_pic_5.jpg" />"
+												alt=""> <img class="secondary-img"
+												src="<c:url value="/images/product-pic/product_pic_4.jpg" />"
+												alt="">
 											</a>
 										</div>
 										<div class="product-action" data-toggle="modal"
@@ -816,9 +817,10 @@
 										</div>
 										<div class="sinle_pic">
 											<a href="#"> <img class="primary-img"
-												src="<c:url value="/images/product-pic/product_pic_7.jpg" />"alt=""> <img
-												class="secondary-img"
-												src="<c:url value="/images/product-pic/product_pic_6.jpg" />"alt="">
+												src="<c:url value="/images/product-pic/product_pic_7.jpg" />"
+												alt=""> <img class="secondary-img"
+												src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
+												alt="">
 											</a>
 										</div>
 										<div class="product-action" data-toggle="modal"
@@ -886,9 +888,10 @@
 										</div>
 										<div class="sinle_pic">
 											<a href="#"> <img class="primary-img"
-												src="<c:url value="/images/product-pic/product_pic_8.jpg" />"alt=""> <img
-												class="secondary-img"
-												src="<c:url value="/images/product-pic/product_pic_9.jpg" />"alt="">
+												src="<c:url value="/images/product-pic/product_pic_8.jpg" />"
+												alt=""> <img class="secondary-img"
+												src="<c:url value="/images/product-pic/product_pic_9.jpg" />"
+												alt="">
 											</a>
 										</div>
 										<div class="product-action" data-toggle="modal"
@@ -969,10 +972,10 @@
 										</div>
 										<div class="sinle_pic">
 											<a href="#"> <img class="primary-img"
-											src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"alt="">
-												 <img
-												class="secondary-img"
-												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"alt="">
+												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
+												alt=""> <img class="secondary-img"
+												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
+												alt="">
 											</a>
 										</div>
 										<div class="product-action" data-toggle="modal"
@@ -1016,9 +1019,10 @@
 										</div>
 										<div class="sinle_pic">
 											<a href="#"> <img class="primary-img"
-												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"alt=""> <img
-												class="secondary-img"
-											src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"alt="">
+												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"
+												alt=""> <img class="secondary-img"
+												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"
+												alt="">
 											</a>
 										</div>
 										<div class="product-action" data-toggle="modal"
@@ -1060,9 +1064,10 @@
 										</div>
 										<div class="sinle_pic">
 											<a href="#"> <img class="primary-img"
-											src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"alt=""><img
-												class="secondary-img"
-												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt="">
+												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
+												alt=""><img class="secondary-img"
+												src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+												alt="">
 											</a>
 										</div>
 										<div class="product-action" data-toggle="modal"
@@ -1114,15 +1119,18 @@
 				<div class="col-md-6">
 					<div class="plus_pic">
 						<div class="pix_new">
-							<a href="#"> <img src="<c:url value="/images/differ-pic/1.jpg" />"alt="">
-							</a>  
+							<a href="#"> <img
+								src="<c:url value="/images/differ-pic/1.jpg" />" alt="">
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="plus_pic">
 						<div class="pix_new">
-							<a class="#" href="#"> <img src="<c:url value="/images/differ-pic/differ_pic_5.jpg" />"alt="">
+							<a class="#" href="#"> <img
+								src="<c:url value="/images/differ-pic/differ_pic_5.jpg" />"
+								alt="">
 							</a>
 						</div>
 					</div>
@@ -1169,9 +1177,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1243,10 +1252,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-													
-														src="<c:url value="/images/product-pic/product_pic_3.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_4.jpg" />"alt=""> 
+														src="<c:url value="/images/product-pic/product_pic_3.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_4.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1315,9 +1324,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_8.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_9.jpg" />"alt=""> 
+														src="<c:url value="/images/product-pic/product_pic_8.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_9.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1387,9 +1397,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_10.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""> 
+														src="<c:url value="/images/product-pic/product_pic_10.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1459,10 +1470,11 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_11.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
-														
+														src="<c:url value="/images/product-pic/product_pic_11.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
+
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1532,9 +1544,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1611,9 +1624,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1683,9 +1697,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1759,9 +1774,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1832,9 +1848,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_10.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_10.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1904,9 +1921,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -1977,9 +1995,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_12.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_13.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_12.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_13.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2055,9 +2074,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_4.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_4.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2127,9 +2147,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> <img
-														class="secondary-img"
-													src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2203,9 +2224,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_7.jpg" />"alt="">  <img
-														class="secondary-img"
-													src="<c:url value="/images/cosmatics-pic/cosmatic_pix_6.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_7.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_6.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2276,9 +2298,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2348,9 +2371,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2420,9 +2444,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt="">  <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2502,8 +2527,10 @@
 				<div class="col-md-4">
 					<div class="plus_pic">
 						<div class="pix_new">
-							<a href="#"> <img src="<c:url value="/images/differ-pic/differ_pic_1.jpg" />"alt=""> 
-								
+							<a href="#"> <img
+								src="<c:url value="/images/differ-pic/differ_pic_1.jpg" />"
+								alt="">
+
 							</a>
 						</div>
 					</div>
@@ -2511,8 +2538,10 @@
 				<div class="col-md-4">
 					<div class="plus_pic">
 						<div class="pix_new">
-							<a href="#"> <img src="<c:url value="/images/differ-pic/differ_pic_2.jpg" />"alt=""> 
-								
+							<a href="#"> <img
+								src="<c:url value="/images/differ-pic/differ_pic_2.jpg" />"
+								alt="">
+
 							</a>
 						</div>
 					</div>
@@ -2520,7 +2549,9 @@
 				<div class="col-md-4">
 					<div class="plus_pic">
 						<div class="pix_new">
-							<a href="#"> <img src="<c:url value="/images/differ-pic/differ_pic_3.jpg" />"alt=""> 
+							<a href="#"> <img
+								src="<c:url value="/images/differ-pic/differ_pic_3.jpg" />"
+								alt="">
 							</a>
 						</div>
 					</div>
@@ -2567,9 +2598,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2639,9 +2671,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_5.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_5.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2715,9 +2748,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_7.jpg" />"alt=""><img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_7.jpg" />"
+														alt=""><img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2788,9 +2822,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_10.jpg" />"alt=""> <img
-														class="secondary-img"
-													src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_10.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2860,10 +2895,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-												
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"alt="">
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -2934,10 +2969,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-													
-														src="<c:url value="/images/product-pic/product_pic_12.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_13.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_12.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_13.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3013,9 +3048,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_3.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_4.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_3.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_4.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3085,9 +3121,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_5.jpg" />"alt=""><img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_5.jpg" />"
+														alt=""><img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3160,9 +3197,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_7.jpg" />"alt=""> <img
-														class="secondary-img"
-													src="<c:url value="/images/product-pic/product_pic_6.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_7.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3233,9 +3271,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3305,9 +3344,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3377,9 +3417,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3455,9 +3496,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3528,9 +3570,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3600,9 +3643,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3672,9 +3716,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""><img
-														class="secondary-img"
-													src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt=""><img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3744,9 +3789,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt=""><img
-														class="secondary-img"
-													src="<c:url value="/images/product-pic/product_pic_1.jpg" />"alt="">
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt=""><img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3816,10 +3862,10 @@
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-													
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"alt=""> <img
-														class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"alt=""> 
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
+														alt="">
 													</a>
 												</div>
 												<div class="product-action" data-toggle="modal"
@@ -3900,9 +3946,10 @@
 				<div class="col-md-12">
 					<div class="plus_pic">
 						<div class="pix_new">
-						
-							<a href="#"> <img src="<c:url value="/images/differ-pic/differ_pic_6.jpg" />"alt=""> 
-								alt="">
+
+							<a href="#"> <img
+								src="<c:url value="/images/differ-pic/differ_pic_6.jpg" />"
+								alt=""> 
 							</a>
 						</div>
 					</div>
@@ -3931,9 +3978,10 @@
 										<div class="llc_pro">
 											<div class="sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-											
-													src="<c:url value="/images/top-pic/top_pic_1.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_5.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_1.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_5.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -3966,8 +4014,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_2.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_3.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_2.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_3.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -3999,8 +4049,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_4.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_5.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_4.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_5.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4032,8 +4084,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_6.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_7.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_6.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_7.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4067,8 +4121,10 @@
 										<div class="llc_pro">
 											<div class="sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_8.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_9.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_8.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_9.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4100,8 +4156,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_10.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_8.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_10.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_8.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4133,8 +4191,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_11.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_12.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_11.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_12.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4166,8 +4226,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_12.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_11.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_12.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_11.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4201,8 +4263,10 @@
 										<div class="llc_pro">
 											<div class="sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_1.jpg" />"alt=""> <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_5.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_1.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_5.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4235,8 +4299,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_2.jpg" />"alt=""> <img
-													class="secondary-img"src="<c:url value="/images/top-pic/top_pic_3.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_2.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_3.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4268,8 +4334,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_4.jpg" />"alt="">  <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_5.jpg" />"alt=""> 
+													src="<c:url value="/images/top-pic/top_pic_4.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_5.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4301,8 +4369,10 @@
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
 												<a href="#"> <img class="primary-img"
-													src="<c:url value="/images/top-pic/top_pic_6.jpg" />"alt=""> <img
-													class="secondary-img" src="<c:url value="/images/top-pic/top_pic_7.jpg" />"alt="">
+													src="<c:url value="/images/top-pic/top_pic_6.jpg" />"
+													alt=""> <img class="secondary-img"
+													src="<c:url value="/images/top-pic/top_pic_7.jpg" />"
+													alt="">
 												</a>
 											</div>
 										</div>
@@ -4357,8 +4427,10 @@
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-										
-												<img src="<c:url value="/images/featured-pic/f_pix_1.jpg" />"alt="">
+
+												<img
+													src="<c:url value="/images/featured-pic/f_pix_1.jpg" />"
+													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
@@ -4371,7 +4443,9 @@
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img 	src="<c:url value="/images/featured-pic/f_pix_2.jpg" />"alt="">
+												<img
+													src="<c:url value="/images/featured-pic/f_pix_2.jpg" />"
+													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
@@ -4384,7 +4458,9 @@
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img 	src="<c:url value="/images/featured-pic/f_pix_3.jpg" />"alt="">
+												<img
+													src="<c:url value="/images/featured-pic/f_pix_3.jpg" />"
+													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
@@ -4397,7 +4473,9 @@
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img 	src="<c:url value="/images/featured-pic/f_pix_4.jpg" />"alt="">
+												<img
+													src="<c:url value="/images/featured-pic/f_pix_4.jpg" />"
+													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
@@ -4410,7 +4488,9 @@
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img 	src="<c:url value="/images/featured-pic/f_pix_5.jpg" />"alt="">
+												<img
+													src="<c:url value="/images/featured-pic/f_pix_5.jpg" />"
+													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
@@ -4423,7 +4503,9 @@
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img 	src="<c:url value="/images/featured-pic/f_pix_5.jpg" />"alt="">
+												<img
+													src="<c:url value="/images/featured-pic/f_pix_5.jpg" />"
+													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
@@ -4436,7 +4518,9 @@
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img 	src="<c:url value="/images/featured-pic/f_pix_3.jpg" />"alt="">
+												<img
+													src="<c:url value="/images/featured-pic/f_pix_3.jpg" />"
+													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
@@ -4466,8 +4550,10 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										
-										<a href="#"> <img src="<c:url value="/images/blog-pic/blog_pic_1.jpg" />"alt="">
+
+										<a href="#"> <img
+											src="<c:url value="/images/blog-pic/blog_pic_1.jpg" />"
+											alt="">
 										</a>
 										<div class="blogdate">
 											<div>
@@ -4490,8 +4576,9 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										<a href="#"><img src="<c:url value="/images/blog-pic/blog_pic_2.jpg" />"alt="">
-										</a>
+										<a href="#"><img
+											src="<c:url value="/images/blog-pic/blog_pic_2.jpg" />"
+											alt=""> </a>
 										<div class="blogdate">
 											<div>
 												<span class="day">19</span> <span class="month">Jan</span>
@@ -4513,7 +4600,9 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										<a href="#"> <img src="<c:url value="/images/blog-pic/blog_pic_3.jpg" />"alt="">
+										<a href="#"> <img
+											src="<c:url value="/images/blog-pic/blog_pic_3.jpg" />"
+											alt="">
 										</a>
 										<div class="blogdate">
 											<div>
@@ -4536,7 +4625,8 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										<a href="#"> src="<c:url value="/images/blog-pic/blog_pic_6.jpg" />"alt="">
+										<a href="#"> src="<c:url
+												value="/images/blog-pic/blog_pic_6.jpg" />"alt="">
 										</a>
 										<div class="blogdate">
 											<div>
@@ -4559,7 +4649,8 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										<a href="#"> src="<c:url value="/images/blog-pic/blog_pic_5.jpg" />"alt="">
+										<a href="#"> src="<c:url
+												value="/images/blog-pic/blog_pic_5.jpg" />"alt="">
 										</a>
 										<div class="blogdate">
 											<div>
@@ -4586,63 +4677,7 @@
 		</div>
 	</div>
 	<!--blog area end-->
-	<!--brand area start-->
-	<div class="logo_area">
-		<div class="container">
-			<div class="row">
-				<div class="brand brand-2 brand-sth">
-					<div class="new_product new_product_nx new_product_nx_et ">
-						<div class="product_heading product_heading_tf">
-							<i class="fa fa-coffee"></i> <span>使用的軟體</span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="main_brand main_brand_tf main_brand_sw">
-						<div class="all_brand indicator-brand indicator-brand-7">
-							<div class="col-md-12">
-								<div class="brand_pix">
-								
-									<img src="<c:url value="/images/brand-logo/logo_1.jpg"  />"alt="">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="brand_pix">
-									<img src="<c:url value="/images/brand-logo/logo_2.jpg"  />"alt="">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="brand_pix">
-									<img src="<c:url value="/images/brand-logo/logo_3.jpg"  />"alt="">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="brand_pix">
-									<img src="<c:url value="/images/brand-logo/logo_4.jpg"  />"alt="">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="brand_pix">
-									<img src="<c:url value="/images/brand-logo/logo_5.jpg"  />"alt="">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="brand_pix">
-									<img src="<c:url value="/images/brand-logo/logo_6.jpg"  />"alt="">
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="brand_pix">
-									<img src="<c:url value="/images/brand-logo/logo_3.jpg"  />"alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--brand area end-->
+
 	<!--newsletter area start-->
 	<div class="all_news_letter">
 		<div class="news_letter">
@@ -4708,90 +4743,91 @@
 	</div>
 	<!--newsletter area end-->
 	<!--footer top area start-->
-	<div class="footer_area">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-sm-6">
-					<div class="footer_menu">
-						<div class="news_heading_2">
-							<h3>關於我們</h3>
-						</div>
-						<div class="footer_menu">
-							<ul>
-								<li><a href="#">加入我們</a></li>
-								<li><a href="#">招商專區</a></li>
-								<li><a href="#">隱私權政策</a></li>
-								<li><a href="#">關於卡痞</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="footer_menu">
-						<div class="news_heading_2">
-							<h3>會員權益</h3>
-						</div>
-						<div class="footer_menu">
-							<ul>
-								<li><a href="#">個人隱私保密政策</a></li>
-								<li><a href="#">客戶權利義務</a></li>
-								<li><a href="#">網路安全標章</a></li>
-								<li><a href="#">防詐騙須知</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="footer_menu">
-						<div class="news_heading_2">
-							<h3>系列網站</h3>
-						</div>
-						<div class="footer_menu">
-							<ul>
-								<li><a href="#">卡痞旅遊網</a></li>
-								<li><a href="#">卡痞購物商城</a></li>
-								<li><a href="#">卡痞團購網</a></li>
+	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
+	<!-- 	<div class="footer_area"> -->
+	<!-- 		<div class="container"> -->
+	<!-- 			<div class="row"> -->
+	<!-- 				<div class="col-md-3 col-sm-6"> -->
+	<!-- 					<div class="footer_menu"> -->
+	<!-- 						<div class="news_heading_2"> -->
+	<!-- 							<h3>關於我們</h3> -->
+	<!-- 						</div> -->
+	<!-- 						<div class="footer_menu"> -->
+	<!-- 							<ul> -->
+	<!-- 								<li><a href="#">加入我們</a></li> -->
+	<!-- 								<li><a href="#">招商專區</a></li> -->
+	<!-- 								<li><a href="#">隱私權政策</a></li> -->
+	<!-- 								<li><a href="#">關於卡痞</a></li> -->
+	<!-- 							</ul> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="col-md-3 col-sm-6"> -->
+	<!-- 					<div class="footer_menu"> -->
+	<!-- 						<div class="news_heading_2"> -->
+	<!-- 							<h3>會員權益</h3> -->
+	<!-- 						</div> -->
+	<!-- 						<div class="footer_menu"> -->
+	<!-- 							<ul> -->
+	<!-- 								<li><a href="#">個人隱私保密政策</a></li> -->
+	<!-- 								<li><a href="#">客戶權利義務</a></li> -->
+	<!-- 								<li><a href="#">網路安全標章</a></li> -->
+	<!-- 								<li><a href="#">防詐騙須知</a></li> -->
+	<!-- 							</ul> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="col-md-3 col-sm-6"> -->
+	<!-- 					<div class="footer_menu"> -->
+	<!-- 						<div class="news_heading_2"> -->
+	<!-- 							<h3>系列網站</h3> -->
+	<!-- 						</div> -->
+	<!-- 						<div class="footer_menu"> -->
+	<!-- 							<ul> -->
+	<!-- 								<li><a href="#">卡痞旅遊網</a></li> -->
+	<!-- 								<li><a href="#">卡痞購物商城</a></li> -->
+	<!-- 								<li><a href="#">卡痞團購網</a></li> -->
 
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="footer_menu footer_menu_2">
-						<div class="news_heading_2">
-							<h3>客戶服務</h3>
-						</div>
-						<ul>
-							<li><i class="fa fa-home"></i>
-								<p>取消訂單/退貨</p></li>
-							<li><i class="fa fa-phone"></i>
-								<p>FAQ常見問題</p></li>
-							<li><i class="fa fa-envelope"></i>
-								<P>FAQ常見問題</P></li>
-							<li><i class="fa fa-FAQ"></i>
-								<p>聯絡我們</p></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--footer top area end-->
-		<!--footer middle area start-->
-		<div class="footer_middle">
-			<div class="container">
-				<div class="fotter_inner"></div>
-			</div>
-		</div>
-	</div>
-	<!--footer middle area end-->
-	<!--footer bottom area start-->
-	<div class="footer-bottom">
-		<div class="container">
-			<div class="widget-copyright text-center">
-				防詐騙提醒，卡痞購物絕不會以電話或簡訊通知訂單/分期出錯、或變更付款方式,更不會
-				要您前往ATM進行操作與轉帳!不應在卡痞以外的地方輸入卡痞的帳號密碼，以免影響您的權益。</div>
-		</div>
-	</div>
+	<!-- 							</ul> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="col-md-3 col-sm-6"> -->
+	<!-- 					<div class="footer_menu footer_menu_2"> -->
+	<!-- 						<div class="news_heading_2"> -->
+	<!-- 							<h3>客戶服務</h3> -->
+	<!-- 						</div> -->
+	<!-- 						<ul> -->
+	<!-- 							<li><i class="fa fa-home"></i> -->
+	<!-- 								<p>取消訂單/退貨</p></li> -->
+	<!-- 							<li><i class="fa fa-phone"></i> -->
+	<!-- 								<p>FAQ常見問題</p></li> -->
+	<!-- 							<li><i class="fa fa-envelope"></i> -->
+	<!-- 								<P>FAQ常見問題</P></li> -->
+	<!-- 							<li><i class="fa fa-FAQ"></i> -->
+	<!-- 								<p>聯絡我們</p></li> -->
+	<!-- 						</ul> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!--footer top area end-->
+	<!--footer middle area start-->
+	<!-- 		<div class="footer_middle"> -->
+	<!-- 			<div class="container"> -->
+	<!-- 				<div class="fotter_inner"></div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+	<!-- 	<!--footer middle area end-->
+	<!-- 	<!--footer bottom area start-->
+	<!-- 	<div class="footer-bottom"> -->
+	<!-- 		<div class="container"> -->
+	<!-- 			<div class="widget-copyright text-center"> -->
+	<!-- 				防詐騙提醒，卡痞購物絕不會以電話或簡訊通知訂單/分期出錯、或變更付款方式,更不會 -->
+	<!-- 				要您前往ATM進行操作與轉帳!不應在卡痞以外的地方輸入卡痞的帳號密碼，以免影響您的權益。</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 	<!--footer bottom area end-->
 	<!--modal content start-->
 	<!-- Modal -->
