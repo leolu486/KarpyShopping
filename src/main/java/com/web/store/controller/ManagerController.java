@@ -43,19 +43,9 @@ public class ManagerController {
 		mv.addObject("exception", exception);
 		mv.addObject("errorMessage", exception.getMessage());
 		// 查詢單一管理員發生例外
-		if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/manager")) {
-			mv.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
-			mv.setViewName("errorPage/managerNotFound");
-		}
-		// 管理員登入發生例外
-		else if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/managerLogin")) {
+		if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/AddorLogin")) {
 			mv.addObject("url", request.getRequestURL());
-			mv.setViewName("errorPage/managerLoginError");
-		}
-		// 管理員新增發生例外
-		else if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/manager/add")) {
-			mv.addObject("url", request.getRequestURL());
-			mv.setViewName("errorPage/managerRegistrationError");
+			mv.setViewName("errorPage/managerLoRError");
 		}
 		// 管理員變更密碼發生例外
 		else if (request.getRequestURI().equalsIgnoreCase("/KarpyShopping/manager/change")) {
@@ -64,12 +54,13 @@ public class ManagerController {
 		}
 		// 其他
 		else {
-			mv.addObject("url", request.getRequestURL());
+			mv.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
 			mv.setViewName("errorPage/managerNotFound");
 		}
 		return mv;
 	}
 
+	// 列出所有管理員
 	@RequestMapping("/managers")
 	public String list(Model model) {
 		List<ManagerBean> list = service.getAllManager();
@@ -78,26 +69,36 @@ public class ManagerController {
 
 	}
 
+	// 單筆管理員查詢
 	@RequestMapping("/manager")
 	public String getProductsById(@RequestParam("account") String account, Model model) {
 		model.addAttribute("manager", service.getManagerByAccount(account));
 		return "manager";
 	}
 
-//登入控制器
-	@RequestMapping(value = "/managerLogin", method = RequestMethod.GET)
-	public String getManagerLoginForm(Model model) {
+// 新增登入管理員控制器
+	@RequestMapping(value = "/AddorLogin", method = RequestMethod.GET)
+	public String getManagerForm(Model model) {
 		ManagerBean mb = new ManagerBean();
 		model.addAttribute("managerBean", mb);
 		return "login/managerLogin";
 	}
 
-	@RequestMapping(value = "/managerLogin", method = RequestMethod.POST)
-	public String processManagerLoginForm(@ModelAttribute("managerBean") ManagerBean mb, HttpServletRequest request) {
+	@RequestMapping(value = "/AddorLogin", method = RequestMethod.POST)
+	public String processManagerForm(@ModelAttribute("managerBean") ManagerBean mb, @RequestParam("form") boolean form,
+			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		ManagerBean manager = service.checkIdPassword(mb.getAccount(), mb.getPassword());
-		session.setAttribute("LoginOK", manager);
-		System.out.println("Manager Name : " + manager.getName());
+		ManagerBean manager = new ManagerBean();
+		System.out.println("form :" + form);
+		if (!form) {
+			service.addManager(mb);
+			session.setAttribute("LoginOK", mb);
+			System.out.println("Manager Name : " + mb.getName());
+		} else {
+			manager = service.checkIdPassword(mb.getAccount(), mb.getPassword());
+			session.setAttribute("LoginOK", manager);
+			System.out.println("Manager Name : " + manager.getName());
+		}
 		String uri = (String) session.getAttribute("requestURI");
 		System.out.println("uri : " + uri);
 		if (uri == null) {
@@ -115,21 +116,6 @@ public class ManagerController {
 		return "login/managerLogout";
 	}
 
-//新增管理員控制器
-	@RequestMapping(value = "/manager/add", method = RequestMethod.GET)
-	public String getAddNewManagerForm(Model model) {
-		ManagerBean mb = new ManagerBean();
-		model.addAttribute("managerBean", mb);
-		return "registration/addManager";
-	}
-
-	@RequestMapping(value = "/manager/add", method = RequestMethod.POST)
-	public String processAddNewManagerForm(@ModelAttribute("managerBean") ManagerBean mb, BindingResult result,
-			HttpServletRequest request) {
-		service.addManager(mb);
-		return "redirect:/managers";
-	}
-
 //變更密碼控制器
 	@RequestMapping(value = "/manager/change", method = RequestMethod.GET)
 	public String getChangeManagerForm(Model model) {
@@ -141,7 +127,7 @@ public class ManagerController {
 	@RequestMapping(value = "/manager/change", method = RequestMethod.POST)
 	public String processChangeManagerForm(@ModelAttribute("managerBean") ManagerBean mb,
 			@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
-		service.changePassWord(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
+		service.changePassWord(service.getManagerByAccount(mb.getAccount()), newPW);
 		return "redirect:/managers";
 	}
 
