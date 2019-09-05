@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 public class HomeController {
@@ -25,7 +26,7 @@ public class HomeController {
 		System.out.println("pd test");
 		return "productDetail/pd";
 	}
-
+	
 	@RequestMapping("/ch01/serverTime")
 	public String serverTime(Model model) {
 		model.addAttribute("now",

@@ -6,6 +6,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import com.web.store.config.RootAppConfig;
 
 public class WebAppInitalizer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
