@@ -3,7 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
+<link rel="stylesheet" href="<c:url value="/css/style.css" />"
+	type="text/css" />
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/vendor/modernizr-2.8.3.min.js"></script>
+<link rel="stylesheet"
+	href="<c:url value="/css/font-awesome.min.css" />" type="text/css" />
+<meta charset="UTF-8">
+
+
+<link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css" />"
+	type="text/css" />
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -42,6 +55,10 @@ input, input::-webkit-input-placeholder {
 #setting {
 	font-size: 10px;
 }
+.p1{
+	text-align: center;
+	font-size: 12px;
+}
 
 #submit {
 	background-color: #5599FF;
@@ -63,6 +80,7 @@ input, input::-webkit-input-placeholder {
 </style>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 	<form:form method='POST' modelAttribute="MemberBean"
 		class='form-horizontal' enctype="multipart/form-data">
 		<h1 align="center">會員登入</h1>
@@ -84,7 +102,10 @@ input, input::-webkit-input-placeholder {
 					style="font-size: 25px; width: 450px; height: 60px;"></a>
 			</dd>
 		</dl>
+		<p class="p1">卡痞 不會以任何理由要求您轉帳，嚴防詐騙，請勿上當。<p>
 	</form:form>
+	
+<%-- 	<jsp:include page="/WEB-INF/views/footer/footer.jsp" /> --%>
 </body>
 
 </html>
