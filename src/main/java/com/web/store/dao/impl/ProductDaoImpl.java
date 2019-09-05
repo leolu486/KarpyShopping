@@ -39,11 +39,11 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 		String hql = "FROM ProductBean WHERE pname = :productName";
 		ProductBean pb = new ProductBean();
 		Session session = factory.getCurrentSession();
-		try {
+//		try {
 			pb = (ProductBean) session.createQuery(hql).setParameter("productName", pname).getSingleResult();
-		} catch (NoResultException e) {
-			throw new ProductNotFoundException("查無名稱為 " + pname + " 的商品", pname);
-		}
+//		} catch (NoResultException e) {
+//			throw new ProductNotFoundException("查無名稱為 " + pname + " 的商品", pname);
+//		}
 		return pb;
 	}
 
@@ -54,6 +54,23 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 		List<ProductBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		list = session.createQuery(hql).setParameter("vendorId", vId).getResultList();
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ProductBean> getProductByVendorName(String vname) {
+		VendorBean vb = null;
+		List<ProductBean> list = new ArrayList<>();
+		Session session = factory.getCurrentSession();
+		String hql = "FROM VendorBean WHERE vname =:vname";
+		List<VendorBean> vlist = new ArrayList<>();
+		vlist = session.createQuery(hql).setParameter("vname", vname).getResultList();
+		if(vlist.isEmpty() != true) {
+		vb = vlist.get(0);	
+		list = getProductByVendor(vb.getvId());
+		}
+		
 		return list;
 	}
 

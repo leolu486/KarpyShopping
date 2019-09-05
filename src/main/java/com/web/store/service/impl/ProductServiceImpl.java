@@ -34,7 +34,13 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductBean> getProductByVendor(Integer vId) {
 		return dao.getProductByVendor(vId);
 	}
-
+	
+	@Transactional
+	@Override
+	public List<ProductBean> getProductByVendorName(String vname) {
+		return dao.getProductByVendorName(vname);
+	}
+	
 	@Transactional
 	@Override
 	public List<ProductBean> getProductByCategory(String category) {

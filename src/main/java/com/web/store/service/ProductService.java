@@ -23,6 +23,8 @@ public interface ProductService {
 	void updateProduct(ProductBean bean);
 
 	void deleteProduct(Integer pId);
+
+	List<ProductBean> getProductByVendorName(String vname);
 	
 
 }
