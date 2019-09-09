@@ -114,7 +114,7 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="logo_area">
-						<a href="index1.html"><img
+						<a href="home"><img
 							src="<c:url value="/images/logo-pic/logo.png" />" alt="image" /></a>
 					</div>
 				</div>

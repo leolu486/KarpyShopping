@@ -88,16 +88,18 @@ public class ManagerController {
 	public String processManagerForm(@ModelAttribute("managerBean") ManagerBean mb, @RequestParam("form") boolean form,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		ManagerBean manager = new ManagerBean();
+
 		System.out.println("form :" + form);
 		if (!form) {
-			service.addManager(mb);
+			int Id = service.addManager(mb);
+			mb.setId(Id);
 			session.setAttribute("LoginOK", mb);
-			System.out.println("Manager Name : " + mb.getName());
+			System.out.println(mb.toString());
 		} else {
+			ManagerBean manager = new ManagerBean();
 			manager = service.checkIdPassword(mb.getAccount(), mb.getPassword());
 			session.setAttribute("LoginOK", manager);
-			System.out.println("Manager Name : " + manager.getName());
+			System.out.println(manager.toString());
 		}
 		String uri = (String) session.getAttribute("requestURI");
 		System.out.println("uri : " + uri);

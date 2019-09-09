@@ -34,6 +34,11 @@ public class HomeController {
 		return "ch01/serverTime";
 	}
 
+	@RequestMapping("home")
+	public String home() {
+		return "index1";
+	}
+	
 	@RequestMapping("/membercentre")
 	public String membercentre() {
 

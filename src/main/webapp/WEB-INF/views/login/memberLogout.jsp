@@ -15,7 +15,7 @@
 </head>
 <body>
 	<!-- 先將使用者名稱取出 -->
-	<c:set var="managerName" value="${ memberLoginok.name }" />
+	<c:set var="memberName" value="${memberLoginOK.name}" />
 	<!-- 移除放在session物件內的屬性物件 -->
 	<c:remove var="memberLoginOK" scope="session" />
 	<!-- 下列敘述設定變數funcName的值為OUT，top.jsp 會用到此變數 -->
@@ -28,7 +28,7 @@
 
 
 	<p>
-		<a href="<spring:url value='index1' />" class="btn btn-default"> 回首頁 </a>
+		<a href="<spring:url value='home' />" class="btn btn-default"> 回首頁 </a>
 	</p>
 </body>
 </html>

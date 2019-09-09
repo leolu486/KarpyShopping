@@ -27,9 +27,9 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 	@Transactional
 	@Override
-	public void addManager(ManagerBean manager) {
+	public int addManager(ManagerBean manager) {
 		// TODO Auto-generated method stub
-		dao.addManager(manager);
+		return dao.addManager(manager);
 	}
 	@Transactional
 	@Override

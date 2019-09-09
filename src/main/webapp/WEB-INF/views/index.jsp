@@ -51,7 +51,7 @@
 	</div>
 
 	<p align="center" />
-	<a href='chat'>WebSocket Test</a>
+	<a href='home'>hello卡痞購物網</a>
 
 	<hr>
 
@@ -183,11 +183,10 @@
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td colspan="2"><p align="center" />MainPage</td>
+			<td colspan="2"><p align="center" />聊天室測試</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='index1'>hello
-					卡痞購物網</a></td>
+			<td width="350"><p align="center" /> <a href='chat'>WebSocket Test</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
 		</tr>
 

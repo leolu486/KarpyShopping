@@ -14,7 +14,7 @@ int updateMember(MemberBean mb);
 
 int deleteMember(MemberBean mb);
 
-void addMember(MemberBean member);
+int addMember(MemberBean member);
 
 void changePassword(MemberBean mb, String newPw);
 

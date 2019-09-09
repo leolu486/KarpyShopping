@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 
 import com.web.store.interceptor.LoginCheckingInterceptor;
+import com.web.store.interceptor.MemberLoginCheckingInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -63,10 +64,16 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	LoginCheckingInterceptor getLoginCheckingFilter() {
 		return new LoginCheckingInterceptor();
 	}
-
+	
+	@Bean
+	MemberLoginCheckingInterceptor getMemberLoginCheckingFilter() {
+		return new MemberLoginCheckingInterceptor();
+	}
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(getLoginCheckingFilter()).addPathPatterns("/managers" ,"/manager/change");
+		registry.addInterceptor(getMemberLoginCheckingFilter()).addPathPatterns("/membercentre");
 	}
 
 }
