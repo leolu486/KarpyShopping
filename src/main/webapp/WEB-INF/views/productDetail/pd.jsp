@@ -11,24 +11,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
         
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-      
-        <link rel="stylesheet" href="css/animate.css">
-        
-        <link rel="stylesheet" href="css/jquery-ui.min.css">
-      
-        <link rel="stylesheet" href="css/meanmenu.min.css">
-      
-        <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css" />
-        <link rel="stylesheet" href="lib/css/preview.css" type="text/css" />
-        
-        <link rel="stylesheet" href="css/owl.carousel.css">
-       
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        
-        <link rel="stylesheet" href="style.css">
-      
-        <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css" />"
+	type="text/css" />
+<!-- animate css -->
+<link rel="stylesheet" href="<c:url value="/css/animate.css" />"
+	type="text/css" />
+<!-- jquery-ui.min css -->
+<link rel="stylesheet" href="<c:url value="/css/jquery-ui.min.css" />"
+	type="text/css" />
+<!-- meanmenu css -->
+<link rel="stylesheet" href="<c:url value="/css/meanmenu.min.css" />"
+	type="text/css" />
+<!-- nivo slider css -->
+<link rel="stylesheet" href="<c:url value="/css/nivo-slider.css" />"
+	type="text/css" />
+<link rel="stylesheet" href="<c:url value="/css/preview.css" />"
+	type="text/css" />
+<!-- owl.carousel css -->
+<link rel="stylesheet" href="<c:url value="/css/owl.carousel.css" />"
+	type="text/css" />
+<!-- font-awesome css -->
+<link rel="stylesheet"
+	href="<c:url value="/css/font-awesome.min.css" />" type="text/css" />
+<!-- style css -->
+<link rel="stylesheet" href="<c:url value="/css/style.css" />"
+	type="text/css" />
+<!-- responsive css -->
+<link rel="stylesheet" href="<c:url value="/css/responsive.css" />"
+	type="text/css" />
+<!-- modernizr js -->
         
         <script src="js/vendor/modernizr-2.8.3.min.js"></script> 
     <body>

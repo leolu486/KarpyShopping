@@ -102,7 +102,7 @@ public class MemberController {
 	public String getChangeMemberForm(Model model) {
 		MemberBean mb = new MemberBean();
 		model.addAttribute("MemberBean", mb);
-		return "account/changeMemberPassword";
+		return "changeMemberPassword/changeMemberPassword2";
 	}
 
 	@RequestMapping(value = "/member/change", method = RequestMethod.POST)
@@ -111,6 +111,12 @@ public class MemberController {
 		service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
 		return "redirect:/members";
 	}
+	
+	
+	
+	
+	
+	
 
 	// 刪除會員控制器
 	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
