@@ -11,7 +11,7 @@
 <!-- style css -->
 <link rel="stylesheet" href="<c:url value="/css/style.css" />"
 	type="text/css" />
-	<script type="text/javascript"
+<script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -58,9 +58,17 @@
 					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 						<div class="header_right_area">
 							<ul>
-								<li><a class="account" href="#">登入/註冊</a></li> 
-<!-- 								<li><a class="wishlist" href="#">訂單查詢</a></li> -->
-<!-- 								<li><a class="Shopping cart" href="#">購物車</a></li> -->
+
+								<!-- 								 login -->
+								<c:if test="${! empty memberLoginOK }">
+									<li>你好，${memberLoginOK.name} <a href="memberLogout">登出</a> </li>
+								</c:if>
+								<!-- 								no login -->
+								<c:if test="${ empty memberLoginOK }">
+								<li><a class="account" href="memberLogin">登入/註冊</a></li>
+								</c:if>
+								<!-- 								<li><a class="wishlist" href="#">訂單查詢</a></li> -->
+								<!-- 								<li><a class="Shopping cart" href="#">購物車</a></li> -->
 								<li><a class="Checkout" href="membercentre">會員中心</a></li>
 							</ul>
 						</div>

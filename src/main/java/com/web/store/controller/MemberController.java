@@ -3,6 +3,8 @@ package com.web.store.controller;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
 
@@ -69,20 +72,39 @@ public class MemberController {
 
 //登入控制器
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.GET)
-	public String getMemberLoginForm(Model model) {
+	public String getManagerForm(Model model1) {
 		MemberBean mb = new MemberBean();
-		model.addAttribute("MemberBean", mb);
+		model1.addAttribute("memberBean", mb);
 		return "login/memberLogin";
 	}
-
+	
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.POST)
-	public String processMemberLoginForm(@ModelAttribute("MemberBean") MemberBean mb) {
-		System.out.println(mb.getAccount() + " ," + mb.getPassword());
-		service.checkIdPassword(mb.getAccount(), mb.getPassword());
-		return "login/MemberLoginSuccess";
+	public String processManagerForm(@ModelAttribute("memberBean") MemberBean mb, @RequestParam("form") boolean form,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean Member = new MemberBean();
+		System.out.println("form :" + form);
+		if (!form) {
+			service.addMember(mb);
+			session.setAttribute("memberLoginOK", mb);
+			System.out.println("Member Name : " + mb.getName());
+		} else {
+			Member = service.checkIdPassword(mb.getAccount(), mb.getPassword());
+			session.setAttribute("memberLoginOK", Member);
+			System.out.println("Member Name : " + Member.getName());
+		}
+		String uri = (String) session.getAttribute("requestURI");
+		System.out.println("uri : " + uri);
+		if (uri == null) {
+			return "index1";
+		} else {
+			session.removeAttribute("requestURI");
+			return "redirect:/members" + uri.substring(15);
+		}
 	}
+	
 
-//新增會員控制器
+//註冊會員控制器
 	@RequestMapping(value = "/member/add", method = RequestMethod.GET)
 	public String getAddNewMemberForm(Model model) {
 		MemberBean mb = new MemberBean();
@@ -97,6 +119,14 @@ public class MemberController {
 		return "redirect:/members";
 	}
 
+	
+	
+	
+	
+	
+	
+
+	
 //變更密碼控制器
 	@RequestMapping(value = "/member/change", method = RequestMethod.GET)
 	public String getChangeMemberForm(Model model) {
@@ -126,5 +156,13 @@ public class MemberController {
 		service.deleteMember(mb);
 		return "redirect:/members";
 	}
+	
+	
+	//登出控制器
+		@RequestMapping("/memberLogout")
+		public String manageLogout(Model model) {
+			System.out.println("Mout");
+			return "login/memberLogout";
+		}
 
 }
