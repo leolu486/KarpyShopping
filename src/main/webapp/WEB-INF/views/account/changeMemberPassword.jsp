@@ -5,70 +5,72 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<link rel='stylesheet'
-	href='${pageContext.request.contextPath}/css/styles.css'
-	type="text/css" />
-<meta charset="UTF-8">
+<meta charset="utf-8">
+
+<title>更改會員資料</title>
+<link rel="stylesheet" href="<c:url value= "/css/reset.css" />"
+	type=" text/css" />
+<link rel="stylesheet" href="<c:url value="/css/common.css" />"
+	type=" text/css" />
 <link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<style type="text/css">
-fieldset {
-	border: 1px solid rgb(255, 232, 57);
-	width: 400px;
-	margin: auto;
+	href="<c:url value="/css/font-awesome2.min.css" />" type=" text/css" />
+<style>
+input::placeholder {
+	text-align: center;
+}
+
+input:focus::-webkit-input-placeholder {
+	opacity: 0;
 }
 </style>
-<title>Members</title>
-<link rel='stylesheet' href='css/styles.css' type="text/css" />
+
 </head>
 <body>
-	<section>
-		<div class="container">
-			<h1 style="text-align: center">會員密碼變更</h1>
+	<div class="wrap login_wrap">
+		<div class="content">
+
+			<div class="logo"></div>
+
+			<div class="login_box">
+
+				<div class="login_form">
+					<div class="login_title">★會員更改密碼★</div>
+					<form:form method='POST' class='form-horizontal'
+						enctype="multipart/form-data">
+
+						<div class="form_text_ipt">
+							<input name="oldPW" type="password" placeholder="舊密碼">
+						</div>
+
+						<div class="form_text_ipt">
+							<input name="newPW" type="password" placeholder="新密碼">
+						</div>
+
+						<div class="form_text_ipt">
+							<input name="renewPW" type="password" placeholder="再次輸入新密碼">
+						</div>
+
+						<div class="form_text_ipt">
+							<input name="code" type="text" placeholder="輸入驗證碼">
+						</div>
+						<div class="form_btn">
+							<button>確認更改</button>
+						</div>
+						<div class="form_reg_btn">
+							<a href="<c:url value='/home'/>">回首頁 </a>
+						</div>
+					</form:form>
+				</div>
+			</div>
 		</div>
-	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
-		<!--       三個地方要完全一樣 -->
-		<form:form method='POST' modelAttribute="MemberBean"
-			class='form-horizontal' enctype="multipart/form-data">
-			<!-- <form>加入enctype="multipart/form-data"才有檔案上傳功能 -->
-			<fieldset>
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='account'>
-						帳號: </label>
-					<div class="col-lg-10">
-						<form:input id="account" path="account" type='text'
-							class='form:input-large' />
-					</div>
-				</div>
 
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='password'>
-						密碼: </label>
-					<div class="col-lg-10">
-						<form:input id="password" path="password" type='password'
-							class='form:input-large' />
-					</div>
-				</div>
+		<script type="text/javascript"
+			src="${pageContext.request.contextPath} /js/jquery.min.js"></script>
+		<script type="text/javascript"
+			src="${pageContext.request.contextPath}/js/common.js"></script>
+		<!-- 		<div style="text-align:center;"> -->
 
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='newPW'>
-						新密碼: </label>
-					<div class="col-lg-10">
-						<input id="newPW" name="newPW" type='password'
-							class='form:input-large' />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class='col-lg-offset-2 col-lg-10'>
-						<input id="btnAdd" type='submit' class='btn btn-primary'
-							value="確認"/>
-					</div>
-				</div>
-			</fieldset>
-		</form:form>
-	</section>
+	</div>
+
 </body>
 </html>

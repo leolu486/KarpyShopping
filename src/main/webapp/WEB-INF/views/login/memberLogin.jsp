@@ -117,6 +117,9 @@ input::placeholder {
 	text-align: center;
 }
 
+input:focus::-webkit-input-placeholder {
+	opacity: 0;
+}
 /* footer { */
 /* 	height: 40px; */
 /* 	box-aizing: border-box; */
@@ -190,7 +193,7 @@ input::placeholder {
 						<dl>
 							<dd>
 								<form:input id="password" path="password" class="text"
-									type="password" placeholder="請輸入密碼 ( 英文大小寫有差別 )" tabindex="2"
+									type="password" placeholder="請輸入密碼 ( 英文大小寫有區別 )" tabindex="2"
 									autocomplete="off" maxlength="50" />
 						</dl>
 						<dl>

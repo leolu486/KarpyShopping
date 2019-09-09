@@ -122,18 +122,32 @@ public class MemberController {
 //變更密碼控制器
 	@RequestMapping(value = "/member/change", method = RequestMethod.GET)
 	public String getChangeMemberForm(Model model) {
-		MemberBean mb = new MemberBean();
-		model.addAttribute("MemberBean", mb);
-		return "changeMemberPassword/changeMemberPassword2";
+		return "account/changeMemberPassword";
 	}
 
 	@RequestMapping(value = "/member/change", method = RequestMethod.POST)
-	public String processChangeMemberForm(@ModelAttribute("MemberBean") MemberBean mb,
-			@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
-		service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
+	public String processChangeMemberForm(@RequestParam("oldPW") String oldPW,@RequestParam("newPW") String newPW,@RequestParam("renewPW") String renewPW, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		service.changePassword(service.checkIdPassword(mb.getAccount(), oldPW), newPW);
 		return "redirect:/members";
 	}
 	
+	
+	//變更密碼控制器測試
+		@RequestMapping(value = "/member/changetest", method = RequestMethod.GET)
+		public String getChangeMemberFormTest(Model model) {
+			MemberBean mb = new MemberBean();
+			model.addAttribute("MemberBean", mb);
+			return "account/changeMemberPasswordTest";
+		}
+
+		@RequestMapping(value = "/member/changetest", method = RequestMethod.POST)
+		public String processChangeMemberFormTest(@ModelAttribute("MemberBean") MemberBean mb,
+				@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
+			service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
+			return "redirect:/members";
+		}
 	
 	
 	
