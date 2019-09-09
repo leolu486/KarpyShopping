@@ -181,6 +181,10 @@
 			<td width="350"><p align="center" /> <a href='idExists'>會員資料檢查</a></td>
 			<td width="350"><p align="center" /> <a href='member/delete'>會員刪除</a>
 		</tr>
+				<tr height="52" bgcolor="lightblue" align="center">
+			<td width="350"><p align="center" /> <a href='member/change'>會員更改密碼測試★</a></td>
+			<td width="350"><p align="center" /> <a href='member/delete'>&nbsp;</a>
+		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td colspan="2"><p align="center" />聊天室測試</td>
