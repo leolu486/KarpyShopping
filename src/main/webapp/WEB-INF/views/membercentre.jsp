@@ -50,10 +50,10 @@
 
 						<div class="my_account_areadiv">
 							<ul>
-								<li><a href="#">訂單查詢</a></li>
-								<li><a href="#">退訂/退款查詢</a></li>
-								<li><a href="#">換貨/查詢</a></li>
-								<li><a href="#">買過商品查詢</a></li>
+								<li><a href="#">折價卷查詢</a></li>
+								<li><a href="#">信用卡分期付款查詢</a></li>
+								<li><a href="#">買貴通報！降價佈告欄</a></li>
+								<li><a href="#">最近看過商品</a></li>
 							</ul>
 						</div>
 
@@ -64,10 +64,10 @@
 
 						<div class="my_account_areadiv">
 							<ul>
-								<li><a href="#">訂單查詢</a></li>
-								<li><a href="#">退訂/退款查詢</a></li>
-								<li><a href="#">換貨/查詢</a></li>
-								<li><a href="#">買過商品查詢</a></li>
+								<li><a href="#">商品追蹤清單</a></li>
+								<li><a href="#">會員中心</a></li>
+								<li><a href="#">公司統編備忘錄管理</a></li>
+								<li><a href="#">發票載具</a></li>
 							</ul>
 						</div>
 
@@ -80,26 +80,11 @@
 
 						<div class="my_account_areadiv">
 							<ul>
-								<li><a href="#">訂單查詢</a></li>
-								<li><a href="#">退訂/退款查詢</a></li>
-								<li><a href="#">換貨/查詢</a></li>
-								<li><a href="#">買過商品查詢</a></li>
+								<li><a href="#">新手上路</a></li>
+								<li><a href="#">購物流程/付款說明</a></li>
+								<li><a href="#">常見問題Q & A</a></li>
+								<li><a href="#">行銷規劃規則查詢</a></li>
 							</ul>
-						</div>
-
-					</aside>
-					<aside class="single-sidebar">
-						<h3>海外顧客常見問題</h3>
-						<hr>
-
-						<div class="my_account_areadiv">
-							<ul>
-								<li><a href="#">訂單查詢</a></li>
-								<li><a href="#">退訂/退款查詢</a></li>
-								<li><a href="#">換貨/查詢</a></li>
-								<li><a href="#">買過商品查詢</a></li>
-							</ul>
-
 						</div>
 
 					</aside>
@@ -109,20 +94,55 @@
 
 						<div class="my_account_areadiv">
 							<ul>
-								<li><a href="#">訂單查詢</a></li>
-								<li><a href="#">退訂/退款查詢</a></li>
-								<li><a href="#">換貨/查詢</a></li>
-								<li><a href="#">買過商品查詢</a></li>
+								<li><a href="#">禮卷歸戶作業</a></li>
+								<li><a href="#">禮卷查詢</a></li>
+							
+							</ul>
+
+						</div>
+
+					</aside>
+					<aside class="single-sidebar">
+						<h3>我要儲值</h3>
+						<hr>
+
+						<div class="my_account_areadiv">
+							<ul>
+								<li><a href="#">如何儲值</a></li>
+								<li><a href="#">儲值優惠查詢</a></li>
+								
 							</ul>
 						</div>
 
 					</aside>
 				</div>
+				
+				
 			</div>
 
-
-
 		</div>
+		
+				
+<!-- 		<div style="margin:10px 0 20px;text-align:cetner;"> -->
+<!-- 		<dl style="display: block"> -->
+<!-- 		<dd> -->
+<!-- 		<ol> -->
+<!-- 		<li><a href="#">卡痞線上購物</a></li> -->
+<!-- 		<li>網路家庭國際資訊股份有限公司</li> -->
+<!-- 		<li>版權所有</li> -->
+<!-- 		<li>翻載必究</li> -->
+<!-- 		<li><a href="#" >聯絡我們</a></li> -->
+<!-- 		<li><a href="#" >隱私權聲明</a></li> -->
+<!-- 		<li><a href="#" >服務條款</a></li> -->
+<!-- 		</ol> -->
+<!-- 		</dd> -->
+		
+		
+		
+		
+<!-- 		</dl> -->
+<!-- 		</div> -->
+
 	</div>
 
 	<!--my account area end-->

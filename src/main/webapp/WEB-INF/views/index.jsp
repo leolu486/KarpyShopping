@@ -125,7 +125,7 @@
 			<td width="350"><p align="center" /> <a href='ordersBymIdQuery'>會員全部訂單查詢</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href=''></a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 
@@ -171,7 +171,7 @@
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='members'>會員清單</a></td>
-			<td width="350"><p align="center" /> <a href='memberLogin'>會員登入測試</a>
+			<td width="350"><p align="center" /> <a href='memberLogin'>會員登入註冊測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='member/add'>新增會員測試</a></td>
