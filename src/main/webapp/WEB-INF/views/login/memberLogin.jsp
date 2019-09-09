@@ -216,8 +216,8 @@ input::placeholder {
 		<div class="button1">
 			<a href="#"><img src="<c:url value="/images/logo-pic/logo.png" />" alt="" class="img" /></a>
 			<div class="center">
-				<button class="button" id="blogin" onclick="ShowL()">登入</button>
-				<button class="button2" id="rlogin" onclick="ShowR()">註冊</button>
+				<button class="button" id="blogin" >登入</button>
+				<button class="button2" id="rlogin" >註冊</button>
 			</div>
 			<div class="rigth1">
 				<div id="login">
