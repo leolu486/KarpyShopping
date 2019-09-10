@@ -16,11 +16,12 @@ public class CreditCardBean implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cId;
 	private Integer mId;
-	private Integer CNumber; // CreditCard Number
-	private String OName; // CreditCard name
+	private Integer cnumber; // CreditCard Number
+
+	private String oname; // CreditCard name
 	private String pin; // CreditCard pin
-	private String CName; // CreditName
-	private java.sql.Timestamp VDate; // CreditCard ValidDate
+	private String cname; // CreditName
+	private java.sql.Timestamp vdate; // CreditCard ValidDate
 
 	public Integer getcId() {
 		return cId;
@@ -38,42 +39,20 @@ public class CreditCardBean implements Serializable {
 		this.mId = mId;
 	}
 
-	public Integer getCNumber() {
-		return CNumber;
+	public Integer getCnumber() {
+		return cnumber;
 	}
 
-	public void setCNumber(Integer cNumber) {
-		CNumber = cNumber;
+	public void setCnumber(Integer cnumber) {
+		this.cnumber = cnumber;
 	}
 
-	public String getOName() {
-		return OName;
+	public String getOname() {
+		return oname;
 	}
 
-	public void setOName(String oName) {
-		OName = oName;
-	}
-
-
-
-	public java.sql.Timestamp getVDate() {
-		return VDate;
-	}
-
-	public void setVDate(java.sql.Timestamp vDate) {
-		VDate = vDate;
-	}
-
-	public CreditCardBean() {
-
-	}
-
-	public String getCName() {
-		return CName;
-	}
-
-	public void setCName(String cName) {
-		CName = cName;
+	public void setOname(String oname) {
+		this.oname = oname;
 	}
 
 	public String getPin() {
@@ -82,6 +61,27 @@ public class CreditCardBean implements Serializable {
 
 	public void setPin(String pin) {
 		this.pin = pin;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public java.sql.Timestamp getVdate() {
+		return vdate;
+	}
+
+	public void setVdate(java.sql.Timestamp vdate) {
+		this.vdate = vdate;
+	}
+
+	@Override
+	public String toString() {
+		return "[" + cId + ", " + mId + ", " + cnumber + ", " + oname + ", " + pin + ", " + cname + ", " + vdate + "]";
 	}
 
 }

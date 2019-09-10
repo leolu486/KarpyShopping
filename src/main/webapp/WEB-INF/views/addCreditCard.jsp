@@ -27,46 +27,46 @@
 		<form:form method='POST' modelAttribute="CreditCardBean"
 			class='form-horizontal' enctype="multipart/form-data">
 			<div class="form-group">
-				<label class="control-label col-lg-2 col-lg-2" for='Cname' >
+				<label class="control-label col-lg-2 col-lg-2" for='cname' >
 					信用卡名稱: </label>
 				<div class="col-lg-10">
-					<form:input id="CName" path="CName" type='text'
+					<form:input id="cname" path="cname" type='text'
 						class='form:input-large' />
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2 col-lg-2" for='CNumber'>
+				<label class="control-label col-lg-2 col-lg-2" for='cnumber'>
 					信用卡卡號: </label>
 				<div class="col-lg-10">
-					<form:input id="CNumber" path="CNumber" type='text'
+					<form:input id="cnumber" path="cnumber" type='text'
 						class='form:input-large' />
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2 col-lg-2" for='OName'>
+				<label class="control-label col-lg-2 col-lg-2" for='oname'>
 					持有者姓名: </label>
 				<div class="col-lg-10">
-					<form:input id="OName" path="OName" type='text'
+					<form:input id="oname" path="oname" type='text'
 						class='form:input-large' />
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2 col-lg-2" for='Pin'>
+				<label class="control-label col-lg-2 col-lg-2" for='pin'>
 					Pin: </label>
 				<div class="col-lg-10">
-					<form:input id="Pin" path="Pin" type='password'
+					<form:input id="pin" path="pin" type='password'
 						class='form:input-large' />
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-lg-2 col-lg-2" for='VDate'>
+				<label class="control-label col-lg-2 col-lg-2" for='date'>
 					到期日: </label>
 				<div class="col-lg-10">
-					<form:input id="VDate" path="VDate" type='text'
+					<input id="date" name="date" type='date'
 						class='form:input-large' />
 				</div>
 			</div>
