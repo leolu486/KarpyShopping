@@ -23,8 +23,9 @@ public interface OrderService {
 	Integer updateOrder(OrderBean ob);
 	Integer VendorUpdateOrder(OrderBean ob);
 	
-	//TODO--刪除錯誤程式碼
-//	OrderBean insertOrder(OrderBean bean,Set<OrderItemBean> items) throws SQLException;
+	//0905 Add for stock verification 
+	public void checkStock(OrderBean ob);	
+
 
 	
 	

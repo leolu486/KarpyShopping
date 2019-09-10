@@ -29,12 +29,12 @@
 	<section class="container">
 	<form:form modelAttribute="order" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
 		<div class="row">
-				<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px">
-					<div class="thumbnail" style="width: 320px; height: 340px">
+				<div class="col-sm-6 col-md-3" style="width: auto; height: auto">
+					<div class="thumbnail" style="width: auto; height: auto">
 						<div class="caption">
 										
-							<p>會員編號:${member.mId}</p>
-							<p>會員姓名:${member.name}</p>	
+							<p>會員編號:${memberLoginOK.mId}</p>
+							<p>會員姓名:${memberLoginOK.name}</p>	
 							<p>						
 							總金額:<fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###,###" />元
 							</p>
@@ -44,21 +44,10 @@
 								數量${entry.value.quantity}<p>			
 							</c:forEach>
 							<p>運送狀態:${order.status}</p>
-							<p>連絡電話:<form:input type='text' id="tel" path="tel" value='${member.tel}'/></p>
-							<p>取貨人:<form:input type='text' id="consignee" path="consignee" value='${member.name}'/></p>
+							<p>連絡電話:<form:input type='text' id="tel" path="tel" value='${loginOK.tel}'/></p>
+							<p>取貨人:<form:input type='text' id="consignee" path="consignee" value='${loginOK.name}'/></p>
 							<p>地址:<form:input  type='text' id="addr" path="addr" /></p>
-							
-							<p>				
-							
-<%-- 							<form:input id="price" path="price"  type="hidden"/> --%>
-<%-- 							<form:input id="status" path="status"  type="hidden"/> --%>
-<%-- 							<form:input id="shippingNo" path="shippingNo"  type="hidden"/> --%>
-<%-- 							<form:input id="mId" path="mId" type="hidden"/> --%>
-							
-							
-							
-							</p>							
-							
+
 							<p>
 								
 								<a href="<c:url value='../cartConfirm' />"
@@ -79,6 +68,8 @@
 		</div>
 	</form:form>
 	</section>
+	
+
 	
 </body>
 </html>

@@ -1,21 +1,30 @@
 package com.web.store.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.model.CreditCardBean;
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
@@ -31,6 +40,12 @@ public class MemberController {
 
 	@Autowired
 	ServletContext context;
+
+	@InitBinder
+	public final void initBinderUsuariosFormValidator(final WebDataBinder binder, final Locale locale) {
+		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+	}
 
 	@ExceptionHandler({ MemberNotFoundException.class })
 	public ModelAndView handleError(HttpServletRequest request, MemberNotFoundException exception) {
@@ -126,33 +141,28 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member/change", method = RequestMethod.POST)
-	public String processChangeMemberForm(@RequestParam("oldPW") String oldPW,@RequestParam("newPW") String newPW,@RequestParam("renewPW") String renewPW, HttpServletRequest request) {
+	public String processChangeMemberForm(@RequestParam("oldPW") String oldPW, @RequestParam("newPW") String newPW,
+			@RequestParam("renewPW") String renewPW, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
 		service.changePassword(service.checkIdPassword(mb.getAccount(), oldPW), newPW);
 		return "redirect:/members";
 	}
-	
-	
-	//變更密碼控制器測試
-		@RequestMapping(value = "/member/changetest", method = RequestMethod.GET)
-		public String getChangeMemberFormTest(Model model) {
-			MemberBean mb = new MemberBean();
-			model.addAttribute("MemberBean", mb);
-			return "account/changeMemberPasswordTest";
-		}
 
-		@RequestMapping(value = "/member/changetest", method = RequestMethod.POST)
-		public String processChangeMemberFormTest(@ModelAttribute("MemberBean") MemberBean mb,
-				@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
-			service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
-			return "redirect:/members";
-		}
-	
-	
-	
-	
-	
+	// 變更密碼控制器測試
+	@RequestMapping(value = "/member/changetest", method = RequestMethod.GET)
+	public String getChangeMemberFormTest(Model model) {
+		MemberBean mb = new MemberBean();
+		model.addAttribute("MemberBean", mb);
+		return "account/changeMemberPasswordTest";
+	}
+
+	@RequestMapping(value = "/member/changetest", method = RequestMethod.POST)
+	public String processChangeMemberFormTest(@ModelAttribute("MemberBean") MemberBean mb,
+			@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
+		service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
+		return "redirect:/members";
+	}
 
 	// 刪除會員控制器
 	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
@@ -174,6 +184,45 @@ public class MemberController {
 	public String manageLogout(Model model) {
 		System.out.println("Mout");
 		return "login/memberLogout";
+	}
+
+	@RequestMapping(value = "addCreditCard", method = RequestMethod.GET)
+	public String addCreditCard(Model model) {
+		CreditCardBean cb = new CreditCardBean();
+		model.addAttribute("CreditCardBean", cb);
+		return "addCreditCard";
+	}
+
+	@RequestMapping(value = "addCreditCard", method = RequestMethod.POST)
+	public String addCreditCard(@ModelAttribute("CreditCardBean") CreditCardBean cb, BindingResult result,
+			HttpServletRequest request, @RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date) {
+
+		System.out.println("DATE:" + date);
+		cb.setVdate(new java.sql.Timestamp(date.getTime()));
+		System.out.println("cb:" + cb.toString());
+		HttpSession session = request.getSession();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		cb.setmId(mb.getmId());
+		service.addCreditCard(cb);
+		return "redirect:/home";
+	}
+
+	@RequestMapping("/CreditCardList")
+	public String getCreditCardsBymId(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		if (mb != null) {
+			List<CreditCardBean> list = service.getCreditCardsBymId(mb.getmId());
+			model.addAttribute("creditCard", list);
+		}
+
+		return "creditCards";
+	}
+
+	@RequestMapping("/CreditCard")
+	public String getCreditCardBycId(@RequestParam("cId") Integer cId, Model model, HttpServletRequest request) {
+		model.addAttribute("card", service.getCreditCardBycId(cId));
+		return "creditCard";
 	}
 
 }

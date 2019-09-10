@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.web.store.dao.OrderDao;
+import com.web.store.dao.OrderItemDao;
 import com.web.store.exception.OrderModificationException;
 import com.web.store.exception.OrderNotFoundException;
 import com.web.store.model.MemberBean;
@@ -21,14 +22,16 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Autowired
 	SessionFactory factory;
-	
+
+	@Autowired
+	OrderItemDao oItemDao;
 
 	@Override
 	public OrderBean select(Integer oId) {
 		Session session = factory.getCurrentSession();
-		OrderBean order = session.get(OrderBean.class, oId); // TODO--add OrderNotFoundException handler
+		OrderBean order = session.get(OrderBean.class, oId);
 		if (order == null)
-			throw new OrderNotFoundException("查無此訂單編號:" + oId );
+			throw new OrderNotFoundException("查無此訂單編號:" + oId);
 		return order;
 	}
 
@@ -40,22 +43,21 @@ public class OrderDaoImpl implements OrderDao {
 		Session session = factory.getCurrentSession();
 		orders = session.createQuery(hql).getResultList();
 		if (orders.size() == 0)
-			throw new OrderNotFoundException("目前無訂單紀錄");// TODO--add OrderNotFoundException handler
+			throw new OrderNotFoundException("目前無訂單紀錄");
 		return orders;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<OrderBean> selectMemberOrders(Integer mId) {
 		String hql = "FROM OrderBean where mId = :mId";
 		List<OrderBean> orders = new ArrayList<OrderBean>();
 		Session session = factory.getCurrentSession();
-		orders = session.createQuery(hql).setParameter("mId",mId).getResultList();
+		orders = session.createQuery(hql).setParameter("mId", mId).getResultList();
 		if (orders.size() == 0)
-			throw new OrderNotFoundException("目前無訂單紀錄");// TODO--add OrderNotFoundException handler
+			throw new OrderNotFoundException("目前無訂單紀錄");
 		return orders;
 	}
-	
 
 	@Override
 	public OrderBean insertOrder(OrderBean bean) {
@@ -63,21 +65,19 @@ public class OrderDaoImpl implements OrderDao {
 		Session session = factory.getCurrentSession();
 		MemberBean member = session.get(MemberBean.class, bean.getmId());
 		bean.setMemberBean(member);
+		checkStock(bean); // 0905 add for stock verification
 		session.save(bean);
 		return result;
 	}
-	
-//	//TODO--刪除錯誤程式碼
-//	@Override
-//	public OrderBean insertOrder(OrderBean bean,Set<OrderItemBean> items) {
-//		OrderBean result = null;
-//		Session session = factory.getCurrentSession();
-//		MemberBean member = session.get(MemberBean.class, bean.getmId());
-//		System.out.println("items=======" + items);
-//		bean.setMemberBean(member);
-////		session.save(items);
-//		return result;
-//	}
+
+	// 0905 Add for stock verification
+	@Override
+	public void checkStock(OrderBean ob) {
+		Set<OrderItemBean> items = ob.getItems();
+		for (OrderItemBean oib : items) {
+			oItemDao.updateProductStock(oib);
+		}
+	}
 
 	@Override
 	public Integer delete(Integer oId) {
@@ -88,8 +88,8 @@ public class OrderDaoImpl implements OrderDao {
 			ob.setMemberBean(null);
 			session.delete(ob);
 			count++;
-		}else {
-			throw new OrderModificationException("訂單編號: " + oId + " 已出貨，無法修改訂單");// TODO--add cancelOrderException handler
+		} else {
+			throw new OrderModificationException("訂單編號: " + oId + " 已出貨，無法修改訂單");
 		}
 		return count;
 	}
@@ -111,13 +111,10 @@ public class OrderDaoImpl implements OrderDao {
 		MemberBean mb = session.get(MemberBean.class, ob.getmId());// 也要加在add方法
 		ob.setMemberBean(mb);// 也要加在add方法
 		if (ob.getStatus().equals("未出貨")) {
-//			ob.setConsignee(ob.getConsignee());
-//			ob.setTel(ob.getAddr());
-//			ob.setMemberBean(ob.getMemberBean());
 			session.saveOrUpdate(ob);
 			count++;
 		} else {
-			throw new OrderModificationException("訂單編號: " + ob.getoId() + " 已出貨，無法修改訂單");// TODO--add update exception handler
+			throw new OrderModificationException("訂單編號: " + ob.getoId() + " 已出貨，無法修改訂單");
 		}
 		return count;
 	}
@@ -134,6 +131,5 @@ public class OrderDaoImpl implements OrderDao {
 
 		return count;
 	}
-	
 
 }

@@ -49,10 +49,37 @@ input:focus::-webkit-input-placeholder {
 						<div class="form_text_ipt">
 							<input name="renewPW" type="password" placeholder="再次輸入新密碼">
 						</div>
+            -----------------------------------------------------------------
+						
+                       <div>
 
+							<canvas width="240" height="90" id="captcha1"></canvas>
+							<h2>點擊切換下一張圖</h2>
+							<br>
+							<!--                     <h2>傳值</h2> -->
+							<%--                          <canvas width="240" height="90" id="captcha2"></canvas> --%>
+
+
+							<script type="text/javascript"
+								src="${pageContext.request.contextPath }/js/captcha.js"></script>
+
+							<script type="text/javascript"
+								src="${pageContext.request.contextPath }/js/text.js"></script>
+						</div>
 						<div class="form_text_ipt">
 							<input name="code" type="text" placeholder="輸入驗證碼">
 						</div>
+
+
+
+
+
+
+
+
+
+
+		--------------------------------------------------------------------
 						<div class="form_btn">
 							<button>確認更改</button>
 						</div>

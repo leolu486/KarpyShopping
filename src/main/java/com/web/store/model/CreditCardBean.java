@@ -14,19 +14,21 @@ public class CreditCardBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Id; // CreditCard id
+	private Integer cId;
 	private Integer mId;
-	private Integer CNumber; // CreditCard Number
-	private String OName; // CreditCard name
-	private String Pin; // CreditCard pin
-	private java.sql.Timestamp VDate; // CreditCard ValidDate
+	private Integer cnumber; // CreditCard Number
 
-	public Integer getId() {
-		return Id;
+	private String oname; // CreditCard name
+	private String pin; // CreditCard pin
+	private String cname; // CreditName
+	private java.sql.Timestamp vdate; // CreditCard ValidDate
+
+	public Integer getcId() {
+		return cId;
 	}
 
-	public void setId(Integer id) {
-		Id = id;
+	public void setcId(Integer cId) {
+		this.cId = cId;
 	}
 
 	public Integer getmId() {
@@ -37,40 +39,49 @@ public class CreditCardBean implements Serializable {
 		this.mId = mId;
 	}
 
-	public Integer getCNumber() {
-		return CNumber;
+	public Integer getCnumber() {
+		return cnumber;
 	}
 
-	public void setCNumber(Integer cNumber) {
-		CNumber = cNumber;
+	public void setCnumber(Integer cnumber) {
+		this.cnumber = cnumber;
 	}
 
-	public String getOName() {
-		return OName;
+	public String getOname() {
+		return oname;
 	}
 
-	public void setOName(String oName) {
-		OName = oName;
+	public void setOname(String oname) {
+		this.oname = oname;
 	}
 
 	public String getPin() {
-		return Pin;
+		return pin;
 	}
 
 	public void setPin(String pin) {
-		Pin = pin;
+		this.pin = pin;
 	}
 
-	public java.sql.Timestamp getVDate() {
-		return VDate;
+	public String getCname() {
+		return cname;
 	}
 
-	public void setVDate(java.sql.Timestamp vDate) {
-		VDate = vDate;
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 
-	public CreditCardBean() {
+	public java.sql.Timestamp getVdate() {
+		return vdate;
+	}
 
+	public void setVdate(java.sql.Timestamp vdate) {
+		this.vdate = vdate;
+	}
+
+	@Override
+	public String toString() {
+		return "[" + cId + ", " + mId + ", " + cnumber + ", " + oname + ", " + pin + ", " + cname + ", " + vdate + "]";
 	}
 
 }

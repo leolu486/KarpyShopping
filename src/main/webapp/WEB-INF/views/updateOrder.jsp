@@ -41,7 +41,7 @@
 								貨單號碼:${order.shippingNo}
 								<c:if test="${order.shippingNo == null}">尚無單號</c:if>
 							</p>
-							<p>運送狀態:${order.status}</p>
+							
 							<p>連絡電話:<form:input type='text' id="tel" path="tel" /></p>
 							<p>取貨人:<form:input type='text' id="consignee" path="consignee" /></p>
 							<p>地址:<form:input  type='text' id="addr" path="addr" /></p>

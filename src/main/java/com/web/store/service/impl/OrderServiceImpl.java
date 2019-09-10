@@ -40,13 +40,6 @@ public class OrderServiceImpl implements OrderService {
 	public OrderBean insertOrder(OrderBean bean) throws SQLException {
 		return dao.insertOrder(bean);
 	}
-	
-	//TODO--刪除錯誤程式碼
-//	@Override
-//	public OrderBean insertOrder(OrderBean bean, Set<OrderItemBean> items) throws SQLException {
-//		return dao.insertOrder(bean,items);
-//	}
-
 
 
 	@Override
@@ -69,6 +62,11 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Integer VendorUpdateOrder(OrderBean ob) {		
 		return dao.VendorUpdateOrder(ob);
+	}
+
+	@Override
+	public void checkStock(OrderBean ob) {		
+		dao.checkStock(ob);
 	}
 
 

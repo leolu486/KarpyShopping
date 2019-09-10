@@ -10,6 +10,17 @@ public interface OrderItemDao {
 	List<OrderItemBean> getAllOrderItem();
 	
 	public OrderItemBean getOrderItemByproductId(int productId);
+
+	//0905 Add for stock verification 
+	int updateProductStock(OrderItemBean oib);
+
+	
+	
+	
+	
+	
+	
+	
 	
 	//productId
 	
