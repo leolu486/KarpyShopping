@@ -30,6 +30,8 @@ public class ProductBean implements Serializable {
 	private java.sql.Timestamp expdate; // expired date
 	private Double rankSum; //rank point summary
 	private Integer rankCount; //rank user summary
+	private String detail;
+
 
 	private VendorBean vendorBean;
 	
@@ -182,6 +184,7 @@ public class ProductBean implements Serializable {
 	 * @param sdate the sdate to set
 	 */
 	public void setSdate(java.sql.Timestamp sdate) {
+		
 		this.sdate = sdate;
 	}
 
@@ -223,6 +226,14 @@ public class ProductBean implements Serializable {
 
 	public void setRankCount(Integer rankCount) {
 		this.rankCount = rankCount;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 

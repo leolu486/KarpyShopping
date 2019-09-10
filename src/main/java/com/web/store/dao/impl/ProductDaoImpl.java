@@ -111,7 +111,7 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 	@Override
 	public void updateProduct(ProductBean pb) {
 		Session session = factory.getCurrentSession();
-		VendorBean vb = session.get(VendorBean.class, pb.getvId());
+		VendorBean vb = session.get(VendorBean.class, pb.getvId());    //prevent vendorBean disappear, need to reset it before every update
 		pb.setVendorBean(vb);
 		session.update(pb);
 	}
@@ -120,12 +120,13 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 	public void deleteProduct(Integer pId) {
 		Session session = factory.getCurrentSession();
 		ProductBean pb = session.get(ProductBean.class, pId);
-		pb.setVendorBean(null);
+		pb.setVendorBean(null);                //prevent foreign key problem
 		session.delete(pb);
 	}
 	
 
 
+	
 	
 
 }

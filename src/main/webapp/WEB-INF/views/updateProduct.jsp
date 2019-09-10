@@ -61,7 +61,7 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='amount'>
 						數量: </label>
@@ -70,7 +70,7 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='category'>
 						商品種類: </label>
@@ -79,31 +79,43 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='sdate'>
 						進貨日期: </label>
 					<div class="col-lg-10">
-						<form:input id="sdate" path="sdate" type='text'
+						<input id="sdate1" name="sdate1" type='date' value="${sdate1}"
 							class='form:input-large' />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='expdate'>
 						到期日: </label>
 					<div class="col-lg-10">
-						<form:input id="expdate" path="expdate" type='text'
+						<input id="expdate1" name="sdate1" type='date' value="${expdate1}"
 							class='form:input-large' />
 					</div>
 				</div>
-								
+
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						詳細資料: </label>
+					<div class="col-lg-10">
+						<form:input id="detail" path="detail" type="textarea"
+							class='form:input-large' />
+					</div>
+				</div>
+
 				<div class="form-group">
 					<div class='col-lg-offset-2 col-lg-10'>
 						<input id="btnAdd" type='submit' class='btn btn-primary'
-							value="修改"/>
+							value="修改" />
 					</div>
 				</div>
+
+
+
 			</fieldset>
 		</form:form>
 	</section>

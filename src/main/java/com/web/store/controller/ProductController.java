@@ -1,15 +1,20 @@
 package com.web.store.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,7 +66,7 @@ public class ProductController {
 //		}
 //		return mv;
 //	}
-
+	
 	@RequestMapping("/productById")
 	public String getProductById(@RequestParam("pId") Integer pId, Model model) {
 		model.addAttribute("product", service.getProductById(pId));
@@ -155,8 +160,12 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("productBean") ProductBean pb, BindingResult result,
+	public String processAddNewProductForm(@ModelAttribute("productBean") ProductBean pb, 
+			@RequestParam("sdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String sdate,
+			@RequestParam("expdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String expdate, BindingResult result,
 			HttpServletRequest request) {
+		pb.setSdate(new java.sql.Timestamp(java.sql.Date.valueOf(sdate).getTime()));
+		pb.setExpdate(new java.sql.Timestamp(java.sql.Date.valueOf(expdate).getTime()));
 		service.addProduct(pb);
 		return "redirect:/products";
 	}
@@ -164,13 +173,24 @@ public class ProductController {
 	@RequestMapping(value = "/product/update", method = RequestMethod.GET)
 	public String getUpdateProductForm(@RequestParam("pId") Integer pId, Model model) {
 		ProductBean pb = service.getProductById(pId);
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+	    String sdate = DATE_FORMAT.format(pb.getSdate());
+	    String expdate = DATE_FORMAT.format(pb.getExpdate());
+	    model.addAttribute("sdate1", sdate);
+	    model.addAttribute("expdate1", expdate);
+	    System.out.println(sdate + ", " + expdate);
 		model.addAttribute("productBean", pb);
 		return "updateProduct";
 	}
 
 	@RequestMapping(value = "/product/update", method = RequestMethod.POST)
-	public String processUpdateProductForm(@ModelAttribute("productBean") ProductBean pb, BindingResult result,
+	public String processUpdateProductForm(@ModelAttribute("productBean") ProductBean pb,
+			@RequestParam("sdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String sdate,
+			@RequestParam("expdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String expdate,
+			BindingResult result,
 			HttpServletRequest request) {
+		pb.setSdate(new java.sql.Timestamp(java.sql.Date.valueOf(sdate).getTime()));
+		pb.setExpdate(new java.sql.Timestamp(java.sql.Date.valueOf(expdate).getTime()));
 		service.updateProduct(pb);
 		return "redirect:/products";
 	}
