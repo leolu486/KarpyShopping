@@ -65,7 +65,7 @@
 						<div class="my_account_areadiv">
 							<ul>
 								<li><a href="#">商品追蹤清單</a></li>
-								<li><a href="#">會員中心</a></li>
+								<li><a href="membercentreDetail">會員中心</a></li>
 								<li><a href="#">公司統編備忘錄管理</a></li>
 								<li><a href="#">發票載具</a></li>
 							</ul>
