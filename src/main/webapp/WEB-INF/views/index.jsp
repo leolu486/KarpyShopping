@@ -113,16 +113,17 @@
 		<!-- Order Method Test Area -->
 
 
+	
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td colspan="2"><p align="center" />OrderTesting</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='orderPage'>單筆訂單查詢測試</a></td>
-			<td width="350"><p align="center" /> <a href='orders'>多筆訂單查詢測試</a>
+			<td width="350"><p align="center" /> <a href='orderPage'>單筆訂單查詢測試，賣家更新訂單，訂單編號oId=1</a></td>
+			<td width="350"><p align="center" /> <a href='orders'>全部訂單查詢測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='productsAddCart'>新增訂單測試</a></td>
-			<td width="350"><p align="center" /> <a href='ordersBymIdQuery'>會員全部訂單查詢</a>
+			<td width="350"><p align="center" /> <a href='productsAddCart'>新增訂單測試，購物車，結帳頁面</a></td>
+			<td width="350"><p align="center" /> <a href='ordersBymIdQuery'>單一會員全部訂單查詢</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href=''></a></td>

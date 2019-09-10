@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -48,7 +49,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="elavetor">
                                 <img id="zoom" src="img/elavetor/small/45.jpg" data-zoom-image="img/elavetor/large/l-8.jpg" alt="">
-                                <img width='100' height='150' src="<c:url value='/getPicture/${product.bookId}'/>" />
+                                <img width='100' height='150' src="<c:url value='/getPicture/${product.pId}'/>" />
 			                                                     
                                 <div class="al_zoom">
                                 </div>
@@ -57,7 +58,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                             <div class="elav_titel">
                                 <div class="elv_heading">
-                                    <h3>${product.title}</h3>
+                                    <h3>${product.pname}</h3>
 
                                 </div>
                                 <div class="price_rating">
@@ -118,12 +119,20 @@
                                 <!-- <span class="old- price old- price-2">${product.price}打折</span> -->
                                 <span class="spical-price spical-price-2">${product.price}</span  >
                                     <p>商品分類: ${product.category}</p>
-                                    <p>商品編號: ${product.bookId}</p>
+                                    <p>商品編號: ${product.pId}</p>
                             </div>
-                            <form class="cart-btn-area" action="#">
-                                <input type="number" value="1">
+                            
+                             <form:form modelAttribute="product" class="cart-btn-area" method="POST" enctype="multipart/form-data">
+                                <input type="number" name="quantity" id="quantity" value="1" />
+                                <form:input name="pId" path="pId" type="hidden"/>
+                                <form:input name="pname" path="pname" type="hidden"/>
+                                <form:input name="price" path="price" type="hidden"/>
+                                <form:input name="vId" path="vId" type="hidden"/>
+                                <form:input name="category" path="category" type="hidden"/> 
                                 <button class="add-tocart cart_zpf" type="submit">加入購物車</button>
-                            </form>
+                            </form:form>
+                            
+                            
                             <div class="add_defi">
                                 <a href="#" data-original-title="Add to Wishlist" data-toggle="tooltip">
                                 <i class="fa fa-heart another_icon"></i>

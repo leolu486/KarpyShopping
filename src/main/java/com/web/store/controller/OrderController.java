@@ -3,7 +3,6 @@ package com.web.store.controller;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.web.store.exception.OrderModificationException;
 import com.web.store.exception.OrderNotFoundException;
+import com.web.store.exception.ProductStockException;
 import com.web.store.model.MemberBean;
 import com.web.store.model.OrderBean;
 import com.web.store.model.OrderItemBean;
@@ -36,7 +36,7 @@ import com.web.store.service.OrderService;
 import com.web.store.service.ProductService;
 
 @Controller
-@SessionAttributes(value = { "oItem", "oItems", "ShoppingCart" })
+@SessionAttributes(value = { "ShoppingCart" })
 public class OrderController {
 
 	@Autowired
@@ -55,12 +55,22 @@ public class OrderController {
 		mv.setViewName("errorPage/orderNotFoundError");
 		return mv;
 	}
-	
-	
+
 	@ExceptionHandler(OrderModificationException.class)
 	public ModelAndView OrderModificationError(HttpServletRequest request, OrderModificationException exception) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("invalidOid", exception.getoId());
+		mv.addObject("excption", exception);
+		mv.addObject("errorMsg", exception.getMessage());
+		mv.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
+		mv.setViewName("errorPage/orderModificationError");
+		return mv;
+	}
+	
+	@ExceptionHandler(ProductStockException.class)
+	public ModelAndView PrductStockError(HttpServletRequest request, ProductStockException exception) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("invalidOid", exception.getpId());
 		mv.addObject("excption", exception);
 		mv.addObject("errorMsg", exception.getMessage());
 		mv.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
@@ -79,19 +89,19 @@ public class OrderController {
 	@RequestMapping("/order")
 	public String selectByOid(@RequestParam("oId") Integer oId, Model model) {
 		model.addAttribute("order", service.select(oId));
-		return "order";
+		return "order/singleOrder"; //return "order";
 	}
 
 	// 查全部訂單
 	@RequestMapping("/orders")
 	public String select(Model model) {
 		model.addAttribute("orders", service.select());
-		return "orders";
+		return "order/orders"; // return "orders";
 	}
 
 	// 依會員查全部訂單
 	@RequestMapping("/ordersBymIdQuery")
-	public String selectMemberOrders(Model model) {		
+	public String selectMemberOrders(Model model) {
 		return "ordersBymIdQuery";
 	}
 
@@ -99,14 +109,14 @@ public class OrderController {
 	@RequestMapping("/ordersBymId")
 	public String selectMemberOrders(@RequestParam("mId") Integer mId, Model model) {
 		model.addAttribute("orders", service.selectMemberOrders(mId));
-		return "orders";
+		return "order/orders"; //return "orders";
 	}
 
 	// 依訂單編號查細項
 	@RequestMapping("/orderItemByOid")
 	public String displayItems(@RequestParam("oId") Integer oId, Model model) {
 		model.addAttribute("items", service.queryItems(oId));
-		return "displayOrderItem";
+		return "order/orderDetail"; //return "displayOrderItem";
 	}
 
 	// TODO--for新增訂單測試，需刪除
@@ -116,67 +126,36 @@ public class OrderController {
 		model.addAttribute("products", p);
 		return "productsAddCart";
 	}
-
-	// TODO--測試for新增訂單，需刪除
-	@RequestMapping("/cart")
-	public String products(@RequestParam("pId") Integer pId, Model model) {
-		ProductBean pb = pserv.getProductById(pId);
-		model.addAttribute("product", pb);
-		return "cart";
-	}
-
-	// TODO-- 測試for新增訂單，需刪除
-	@RequestMapping(value = "/cart", method = RequestMethod.POST)
-	public String products(@RequestParam("pId") Integer pId, @ModelAttribute("product") ProductBean pb, Model model,
-			ServletRequest request, HttpSession session) {
-		Integer quantity = 0;
-		quantity = Integer.valueOf(request.getParameter("amount"));	
-		OrderItemBean item = new OrderItemBean();
-		item.setProductId(pb.getpId());
-		item.setDescription(pb.getPname());
-		item.setQuantity(quantity);
-		item.setUnitPrice((double) pb.getPrice());
-		item.setDiscount(0.7);// ????
-		Set<OrderItemBean> items = new LinkedHashSet<>();
-		items.add(item);
-
-		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
-		if (cart == null) {
-			cart = new ShoppingCart();
-		}
-		cart.addToCart(pId, item);
-		model.addAttribute("oItem", item);
-		model.addAttribute("oItems", items);
-		model.addAttribute("ShoppingCart", cart);
-
-		return "redirect:/cartConfirm";
-	}
-
-	// 測試用，需刪除
-	@RequestMapping("/cartConfirm")
-	public String redirectCartConfirm(Model model) {
-		return "cartConfirm";
-	}
+//
+//	// TODO--測試for新增訂單，需刪除
+//	@RequestMapping("/cart")
+//	public String products(@RequestParam("pId") Integer pId, Model model) {
+//		ProductBean pb = pserv.getProductById(pId);
+//		model.addAttribute("product", pb);
+//		return "cart";
+//	}
 
 	// 新增訂單表單
 	@RequestMapping("/order/add")
 	public String persistOrder(Model model) {
 		OrderBean order = new OrderBean();
 		model.addAttribute("order", order);
-		return "orderConfirm";
+		return "order/addOrder"; //return "orderConfirm";
 	}
 
 	// 新增訂單寫入資料庫
 	@RequestMapping(value = "/order/add", method = RequestMethod.POST)
 	public String persistOrder(@ModelAttribute("order") OrderBean order, Model model, HttpSession session,
 			SessionStatus status) throws SQLException {
-		MemberBean member = (MemberBean) session.getAttribute("member");
+		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK"); // 會員登入識別字串
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+		System.out.println("ShoppingCart===" + cart);
+		System.out.println("MemberBean===" + member);
 		order.setmId(member.getmId());
 		order.setOdate(new Timestamp(System.currentTimeMillis()));
 		order.setPrice(cart.getSubtotal());
-		order.setShippingNo("尚無單號");
-		order.setStatus("未出貨");
+		order.setShippingNo(order.getShippingNo());
+		order.setStatus(order.getStatus());
 
 		Set<OrderItemBean> items = new HashSet<OrderItemBean>();
 		Map<Integer, OrderItemBean> cartItems = cart.getContent();
@@ -204,7 +183,7 @@ public class OrderController {
 	// 買家更新
 	@RequestMapping(value = "/order/update", method = RequestMethod.POST)
 	public String updateOrder_buyer(@RequestParam("oId") Integer oId, @ModelAttribute("order") OrderBean ob,
-			Model model, BindingResult result) {
+			Model model, BindingResult result) {		
 		service.updateOrder(ob);
 		return "redirect:/";
 	}
