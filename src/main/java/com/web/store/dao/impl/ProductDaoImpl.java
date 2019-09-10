@@ -11,10 +11,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.store.dao.ProductDao;
 import com.web.store.exception.ProductNotFoundException;
 import com.web.store.model.ProductBean;
+import com.web.store.model.ProductImagesBean;
 import com.web.store.model.VendorBean;
 
 @Repository
@@ -123,6 +125,18 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 		pb.setVendorBean(null);                //prevent foreign key problem
 		session.delete(pb);
 	}
+	
+	public void addImage(ProductBean pb) {
+		Session session = factory.getCurrentSession();
+		for(MultipartFile image : pb.getProductImageTemp()) {
+			ProductImagesBean pib = new ProductImagesBean();
+			pib.setpId(pb.getpId());
+			
+		}
+		
+	}
+	
+	
 	
 
 

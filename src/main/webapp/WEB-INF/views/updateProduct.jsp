@@ -93,7 +93,7 @@ fieldset {
 					<label class="control-label col-lg-2 col-lg-2" for='expdate'>
 						到期日: </label>
 					<div class="col-lg-10">
-						<input id="expdate1" name="sdate1" type='date' value="${expdate1}"
+						<input id="expdate1" name="expdate1" type='date' value="${expdate1}"
 							class='form:input-large' />
 					</div>
 				</div>

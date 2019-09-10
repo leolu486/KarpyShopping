@@ -35,6 +35,8 @@ public class ProductBean implements Serializable {
 
 	private VendorBean vendorBean;
 	
+	private MultipartFile[]  productImageTemp;
+
 	
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
 			String sdate, String expdate, Double rankSum, Integer rankCount) {
@@ -234,6 +236,15 @@ public class ProductBean implements Serializable {
 
 	public void setDetail(String detail) {
 		this.detail = detail;
+	}
+	
+	@Transient
+	public MultipartFile[] getProductImageTemp() {
+		return productImageTemp;
+	}
+	
+	public void setProductImageTemp(MultipartFile[] productImageTemp) {
+		this.productImageTemp = productImageTemp;
 	}
 
 
