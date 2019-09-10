@@ -27,6 +27,8 @@ public interface ProductDao {
 
 	List<ProductBean> getProductByVendorName(String vname);
 	
+	ProductBean getProductById02(Integer pId);
+	
 	
 	
 

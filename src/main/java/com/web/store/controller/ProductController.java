@@ -182,5 +182,18 @@ public class ProductController {
 		service.deleteProduct(pId);
 		return "redirect:/products";
 	}
+	
+	@RequestMapping("/productById02")
+	public String getProductById02(@RequestParam("pId") Integer pId, Model model) {
+		ProductBean bb = service.getProductById02(pId);
+		System.out.println(bb);
+		model.addAttribute("product", service.getProductById(pId));
+//		if (service.getProductById(pId).getRankCount() != null) {
+//			model.addAttribute("rankAVG", service.getProductRankAVGById(pId));
+//		}
+		return "productDetail/pd";
+		
+		
+	}
 
 }
