@@ -11,8 +11,6 @@ public interface OrderDao {
 
 	OrderBean insertOrder(OrderBean bean);
 	
-	//TODO--刪除錯誤程式碼
-//	OrderBean insertOrder(OrderBean bean,Set<OrderItemBean> items);
 	
 	Integer delete(Integer oId);
 
@@ -24,6 +22,8 @@ public interface OrderDao {
 
 	Integer updateOrder(OrderBean ob);
 	Integer VendorUpdateOrder(OrderBean ob);
+	
+	public void checkStock(OrderBean ob);
 
 	
 	

@@ -23,8 +23,8 @@
 	</div>
 	<section class="container">
 
-		<a href="<spring:url value='/ordersBymId?mId=2' />" class="btn btn-primary">
-			<span class="glyphicon-info-sigh glyphicon"></span>會員查訂單    mId=2
+		<a href="<spring:url value='/ordersBymId?mId=${memberLoginOK.mId}' />" class="btn btn-primary">
+			<span class="glyphicon-info-sigh glyphicon"></span>會員查訂單    
 		</a>
 		
 
