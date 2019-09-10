@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
 
 import _00_init.util.GlobalService;
@@ -161,5 +162,43 @@ public class MemberDaoImpl implements MemberDao {
 			throw new MemberNotFoundException("此帳號已存在 : ", member.getAccount());
 		}
 	}
+	
+	@Override
+	public int addCreditCard(CreditCardBean card) {
+		Session session = factory.getCurrentSession();
+		int ca = (int) session.save(card);
+		return ca;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CreditCardBean> getCreditCardsBymId(Integer mId) {
+		List<CreditCardBean>list = new ArrayList<CreditCardBean>();
+		Session session = factory.getCurrentSession();
+		String hql = "FROM CreditCardBean WHERE mId =:mId";
+		try {
+			list = (List<CreditCardBean>) session.createQuery(hql).setParameter("mId", mId).getResultList();
+
+		} catch (NoResultException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public CreditCardBean getCreditCardBycId(Integer cId) {
+		CreditCardBean cb = null;
+		Session session = factory.getCurrentSession();
+		String hql = "FROM CreditCardBean WHERE cId =:cId";
+		try {
+			cb = (CreditCardBean) session.createQuery(hql).setParameter("cId", cId).getSingleResult();
+
+		} catch (NoResultException e) {
+			e.printStackTrace();
+		}
+		return cb;
+	}
+
+	
 
 }

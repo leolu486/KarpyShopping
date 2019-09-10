@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.model.CreditCardBean;
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
@@ -126,33 +127,28 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member/change", method = RequestMethod.POST)
-	public String processChangeMemberForm(@RequestParam("oldPW") String oldPW,@RequestParam("newPW") String newPW,@RequestParam("renewPW") String renewPW, HttpServletRequest request) {
+	public String processChangeMemberForm(@RequestParam("oldPW") String oldPW, @RequestParam("newPW") String newPW,
+			@RequestParam("renewPW") String renewPW, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
 		service.changePassword(service.checkIdPassword(mb.getAccount(), oldPW), newPW);
 		return "redirect:/members";
 	}
-	
-	
-	//變更密碼控制器測試
-		@RequestMapping(value = "/member/changetest", method = RequestMethod.GET)
-		public String getChangeMemberFormTest(Model model) {
-			MemberBean mb = new MemberBean();
-			model.addAttribute("MemberBean", mb);
-			return "account/changeMemberPasswordTest";
-		}
 
-		@RequestMapping(value = "/member/changetest", method = RequestMethod.POST)
-		public String processChangeMemberFormTest(@ModelAttribute("MemberBean") MemberBean mb,
-				@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
-			service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
-			return "redirect:/members";
-		}
-	
-	
-	
-	
-	
+	// 變更密碼控制器測試
+	@RequestMapping(value = "/member/changetest", method = RequestMethod.GET)
+	public String getChangeMemberFormTest(Model model) {
+		MemberBean mb = new MemberBean();
+		model.addAttribute("MemberBean", mb);
+		return "account/changeMemberPasswordTest";
+	}
+
+	@RequestMapping(value = "/member/changetest", method = RequestMethod.POST)
+	public String processChangeMemberFormTest(@ModelAttribute("MemberBean") MemberBean mb,
+			@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
+		service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
+		return "redirect:/members";
+	}
 
 	// 刪除會員控制器
 	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
@@ -175,5 +171,38 @@ public class MemberController {
 		System.out.println("Mout");
 		return "login/memberLogout";
 	}
+	
+	@RequestMapping(value = "addCreditCard", method = RequestMethod.GET)
+	public String addCreditCard(Model model) {
+		CreditCardBean cb = new CreditCardBean();
+		model.addAttribute("CreditCardBean", cb);
+		return "addCreditCard";
+	}
+
+	@RequestMapping(value = "addCreditCard", method = RequestMethod.POST)
+	public String addCreditCard(@ModelAttribute("CreditCardBean") CreditCardBean cb, BindingResult result,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		cb.setmId(mb.getmId());
+		service.addCreditCard(cb);
+		return "redirect:/home";
+	}
+	
+	@RequestMapping("/CreditCardList")
+	public String getCreditCardsBymId(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		List<CreditCardBean>list = service.getCreditCardsBymId(mb.getmId()) ;
+		model.addAttribute("creditCard", list);
+		return "creditCards";
+	}
+	
+	@RequestMapping("/CreditCard")
+	public String getCreditCardBycId(@RequestParam("cId") Integer cId , Model model) {
+		model.addAttribute("card", service.getCreditCardBycId(cId));
+		return "creditCard";
+	}
+	
 
 }
