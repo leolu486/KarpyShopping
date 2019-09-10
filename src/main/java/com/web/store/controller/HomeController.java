@@ -45,4 +45,10 @@ public class HomeController {
 		return "membercentre";
 	}
 
+	@RequestMapping("/membercentreDetail")
+	public String membercentre1() {
+
+		return "membertest";
+	}
+
 }
