@@ -13,12 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.web.store.model.MemberBean;
 
-
 public class MemberLoginCheckingInterceptor implements HandlerInterceptor {
 	List<String> url = new ArrayList<String>();
 	String servletPath;
 	String contextPath;
 	String requestURI;
+	String QueryString;
 
 	// This method is called before the controller
 	@Override
@@ -31,6 +31,7 @@ public class MemberLoginCheckingInterceptor implements HandlerInterceptor {
 			servletPath = req.getServletPath();
 			contextPath = req.getContextPath();
 			requestURI = req.getRequestURI();
+			QueryString = req.getQueryString();
 			isRequestedSessionIdValid = req.isRequestedSessionIdValid();
 			System.out.println("member filter prehandle");
 
@@ -48,8 +49,13 @@ public class MemberLoginCheckingInterceptor implements HandlerInterceptor {
 				} else {
 					// 記住原本的"requestURI"，稍後如果登入成功，系統可以自動轉入
 					// 原本要執行的程式。
-					System.out.println("handle uri:"+requestURI);
-					session.setAttribute("requestURI", requestURI);
+					if (QueryString == null) {
+						System.out.println("handle uri:" + requestURI);
+						session.setAttribute("requestURI", requestURI);
+					} else {
+						System.out.println("handle uri:" + requestURI + "?" + QueryString);
+						session.setAttribute("requestURI", requestURI + "?" + QueryString);
+					}
 				}
 				resp.sendRedirect(contextPath + "/memberLogin");
 				return true;

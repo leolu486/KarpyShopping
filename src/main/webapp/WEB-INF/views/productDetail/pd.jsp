@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="subTitle" value="查詢會員資料(Lab05_09)" />
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
@@ -124,11 +125,11 @@
 <%--                                     <p>商品分類: ${product.category}</p> --%>
 <%--                                     <p>商品編號: ${product.bookId}</p> --%>
                             </div>
-                            <form class="cart-btn-area" action="#">
+ 
                                 <input type="number" value="1">
-                                <button class="add-tocart cart_zpf" type="submit">加入購物車</button>
-                            </form>
-                            <div ><a href="aaa" > 前往購物車 </a></div>
+                                <a href="cart?pId=${product.pId}"><input type="button" class="add-tocart cart_zpf" value="加入購物車"></a>
+
+                            <div ><a href="cartConfirm" > 前往購物車 </a></div>
                             <div class="add_defi">
                                 <a href="#" data-original-title="Add to Wishlist" data-toggle="tooltip">
                                 <i class="fa fa-heart another_icon"></i>

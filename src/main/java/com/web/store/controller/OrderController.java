@@ -232,10 +232,5 @@ public class OrderController {
 		service.delete(oId);
 		return "redirect:/";
 	}
-	//轉購物車
-	@RequestMapping("/aaa")
-	public String aaa(Model model) {
-		return "cartConfirm";
-		
-	}	
+
 }

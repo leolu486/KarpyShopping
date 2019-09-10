@@ -77,11 +77,7 @@ public class ProductServiceImpl implements ProductService {
 		dao.deleteProduct(pId);
 	}
 	
-	@Transactional
-	@Override
-	public ProductBean getProductById02(Integer pId) {
-		return dao.getProductById02(pId);
-	}
+
 	
 
 }

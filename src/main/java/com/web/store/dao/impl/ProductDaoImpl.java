@@ -124,13 +124,7 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 		session.delete(pb);
 	}
 	
-	@Override
-	public ProductBean getProductById02(Integer pId) {
-		Session session = factory.getCurrentSession();
-		ProductBean pB = session.get(ProductBean.class, pId);
-		
-		return pB;
-	}
+
 
 	
 
