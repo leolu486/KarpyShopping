@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.store.dao.MemberDao;
+import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
 
@@ -63,6 +64,27 @@ public class MemberServiceImpl implements MemberService {
 	public int addMember(MemberBean member) {
 		// TODO Auto-generated method stub
 		return dao.addMember(member);
+	}
+	
+	@Transactional
+	@Override
+	public int addCreditCard(CreditCardBean card) {
+		// TODO Auto-generated method stub
+		return dao.addCreditCard(card);
+	}
+
+	@Transactional
+	@Override
+	public List<CreditCardBean> getCreditCardsBymId(Integer mId) {
+		// TODO Auto-generated method stub
+		return dao.getCreditCardsBymId(mId);
+	}
+
+	@Transactional
+	@Override
+	public CreditCardBean getCreditCardBycId(Integer cId) {
+		// TODO Auto-generated method stub
+		return dao.getCreditCardBycId(cId);
 	}
 
 }

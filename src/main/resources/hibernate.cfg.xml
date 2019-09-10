@@ -32,6 +32,7 @@
 		<mapping class="com.web.store.model.ManagerBean"></mapping>
 		<mapping class="com.web.store.model.VendorBean"></mapping>
 		<mapping class="com.web.store.model.OrderItemBean"></mapping>
+		<mapping class="com.web.store.model.CreditCardBean"></mapping>
 
 
 	</session-factory>

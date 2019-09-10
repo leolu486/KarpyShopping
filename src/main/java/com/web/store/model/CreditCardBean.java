@@ -14,19 +14,20 @@ public class CreditCardBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Id; // CreditCard id
+	private Integer cId;
 	private Integer mId;
 	private Integer CNumber; // CreditCard Number
 	private String OName; // CreditCard name
-	private String Pin; // CreditCard pin
+	private String pin; // CreditCard pin
+	private String CName; // CreditName
 	private java.sql.Timestamp VDate; // CreditCard ValidDate
 
-	public Integer getId() {
-		return Id;
+	public Integer getcId() {
+		return cId;
 	}
 
-	public void setId(Integer id) {
-		Id = id;
+	public void setcId(Integer cId) {
+		this.cId = cId;
 	}
 
 	public Integer getmId() {
@@ -53,13 +54,7 @@ public class CreditCardBean implements Serializable {
 		OName = oName;
 	}
 
-	public String getPin() {
-		return Pin;
-	}
 
-	public void setPin(String pin) {
-		Pin = pin;
-	}
 
 	public java.sql.Timestamp getVDate() {
 		return VDate;
@@ -71,6 +66,22 @@ public class CreditCardBean implements Serializable {
 
 	public CreditCardBean() {
 
+	}
+
+	public String getCName() {
+		return CName;
+	}
+
+	public void setCName(String cName) {
+		CName = cName;
+	}
+
+	public String getPin() {
+		return pin;
+	}
+
+	public void setPin(String pin) {
+		this.pin = pin;
 	}
 
 }
