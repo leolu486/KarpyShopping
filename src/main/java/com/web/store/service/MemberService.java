@@ -15,7 +15,7 @@ public interface MemberService {
 
 	void changePassword(MemberBean mb, String newPw);
 	
-	void addMember(MemberBean member);
+	int addMember(MemberBean member);
 
 	MemberBean checkIdPassword(String account, String password);
 

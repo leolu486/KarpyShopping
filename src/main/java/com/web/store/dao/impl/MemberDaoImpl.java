@@ -1,5 +1,6 @@
 ﻿package com.web.store.dao.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,21 +18,22 @@ import com.web.store.model.MemberBean;
 import _00_init.util.GlobalService;
 
 @Repository("")
-public class MemberDaoImpl implements MemberDao{
-	
+public class MemberDaoImpl implements MemberDao {
+
 	SessionFactory factory;
-	
+
 	public MemberDaoImpl() {
 	}
-	
+
 	public SessionFactory getSessionFactory() {
 		return factory;
 	}
+
 	@Autowired
 	public void setSessionFactory(SessionFactory factory) {
 		this.factory = factory;
 	}
-	
+
 	public boolean idExists(Integer mId) {
 		boolean exist = false;
 		MemberBean mb = null;
@@ -44,23 +46,23 @@ public class MemberDaoImpl implements MemberDao{
 		} catch (NoResultException e) {
 			throw new MemberNotFoundException();
 		}
-		if(!list.isEmpty()) {
+		if (!list.isEmpty()) {
 			exist = true;
 		}
 		return exist;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<MemberBean> getAllMember(){
+	public List<MemberBean> getAllMember() {
 		List<MemberBean> allMember = new ArrayList<MemberBean>();
 		Session session = factory.getCurrentSession();
 		allMember = session.createQuery("FROM MemberBean").list();
 		return allMember;
 	}
-	
-	public int updateMember(MemberBean mb) {	
+
+	public int updateMember(MemberBean mb) {
 		int count = 0;
-		if(idExists(mb.getmId())) {
+		if (idExists(mb.getmId())) {
 			MemberBean member = null;
 			Session session = factory.getCurrentSession();
 			member = getMemberByAccount(mb.getAccount());
@@ -74,8 +76,8 @@ public class MemberDaoImpl implements MemberDao{
 			member.setSaddr(mb.getSaddr());
 			member.setPassword(mb.getPassword());
 			session.update(member);
-		}else {
-			
+		} else {
+
 		}
 		count++;
 		return count;
@@ -98,7 +100,7 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public int deleteMember(MemberBean mb) {
 		int count = 0;
-		if(idExists(mb.getmId())) {
+		if (idExists(mb.getmId())) {
 			Session session = factory.getCurrentSession();
 			MemberBean member = session.get(MemberBean.class, mb.getmId());
 			session.delete(member);
@@ -109,7 +111,7 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public void changePassword(MemberBean mb, String newPw) {
-		if(newPw.equalsIgnoreCase("")) {
+		if (newPw.equalsIgnoreCase("")) {
 			throw new MemberNotFoundException("新密碼不可為空白");
 		}
 		Session session = factory.getCurrentSession();
@@ -128,7 +130,8 @@ public class MemberDaoImpl implements MemberDao{
 		String hql = "FROM MemberBean WHERE account =:account and password =:password";
 		try {
 			mb = (MemberBean) session.createQuery(hql).setParameter("account", account)
-					.setParameter("password", GlobalService.getMD5Endocing(GlobalService.encryptString(password))).getSingleResult();
+					.setParameter("password", GlobalService.getMD5Endocing(GlobalService.encryptString(password)))
+					.getSingleResult();
 		} catch (NoResultException e) {
 			throw new MemberNotFoundException("帳號或是密碼錯誤 : ", account);
 		}
@@ -136,9 +139,9 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public void addMember(MemberBean member) {
-		if(member.getAccount().equals("") || member.getPassword().equals("") || member.getName().equals("")) {
-			throw new MemberNotFoundException("欄位不可為空",member.getAccount());
+	public int addMember(MemberBean member) {
+		if (member.getAccount().equals("") || member.getPassword().equals("") || member.getName().equals("")) {
+			throw new MemberNotFoundException("欄位不可為空", member.getAccount());
 		}
 		MemberBean mb = null;
 		Session session = factory.getCurrentSession();
@@ -149,14 +152,14 @@ public class MemberDaoImpl implements MemberDao{
 			mb = null;
 		}
 		if (mb == null) {
-			//將密碼加密後
+			// 將密碼加密後
 			member.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(member.getPassword())));
-			session.save(member);
-		}else {
-			throw new MemberNotFoundException("此帳號已存在 : ",member.getAccount());
+			int pk = (int) session.save(member);
+			System.out.println("pk:" + pk);
+			return pk;
+		} else {
+			throw new MemberNotFoundException("此帳號已存在 : ", member.getAccount());
 		}
 	}
 
-	
- }
-
+}

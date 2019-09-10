@@ -24,7 +24,7 @@
 							<div class="header_left_all">
 								<div class="mean_al_dv">
 									<div class="littele_menu">
-										<a href="#">回首頁<i class="fa fa-caret-down"></i></a>
+										<a href="home">回首頁<i class="fa fa-caret-down"></i></a>
 									</div>
 									<ul class="option">
 
@@ -59,13 +59,14 @@
 						<div class="header_right_area">
 							<ul>
 
-								<!-- 								 login -->
+								<!-- login -->
 								<c:if test="${! empty memberLoginOK }">
-									<li>你好，${memberLoginOK.name} <a href="memberLogout">登出</a> </li>
+									<li>你好，${memberLoginOK.name} <a href="memberLogout">登出</a>
+									</li>
 								</c:if>
-								<!-- 								no login -->
+								<!-- no login -->
 								<c:if test="${ empty memberLoginOK }">
-								<li><a class="account" href="memberLogin">登入/註冊</a></li>
+									<li><a class="account" href="memberLogin">登入/註冊</a></li>
 								</c:if>
 								<!-- 								<li><a class="wishlist" href="#">訂單查詢</a></li> -->
 								<!-- 								<li><a class="Shopping cart" href="#">購物車</a></li> -->
@@ -76,5 +77,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

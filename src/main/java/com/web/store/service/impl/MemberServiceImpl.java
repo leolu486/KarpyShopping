@@ -60,9 +60,9 @@ public class MemberServiceImpl implements MemberService {
 
 	@Transactional
 	@Override
-	public void addMember(MemberBean member) {
+	public int addMember(MemberBean member) {
 		// TODO Auto-generated method stub
-		dao.addMember(member);
+		return dao.addMember(member);
 	}
 
 }

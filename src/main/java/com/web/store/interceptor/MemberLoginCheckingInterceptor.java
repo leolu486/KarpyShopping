@@ -11,9 +11,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 
-public class LoginCheckingInterceptor implements HandlerInterceptor {
+public class MemberLoginCheckingInterceptor implements HandlerInterceptor {
 	List<String> url = new ArrayList<String>();
 	String servletPath;
 	String contextPath;
@@ -33,15 +33,15 @@ public class LoginCheckingInterceptor implements HandlerInterceptor {
 			requestURI = req.getRequestURI();
 			QueryString = req.getQueryString();
 			isRequestedSessionIdValid = req.isRequestedSessionIdValid();
-			System.out.println("filter prehandle");
+			System.out.println("member filter prehandle");
 
 			if (checkLogin(req)) {
 				// 需要登入，但已經登入
-				System.out.println("b");
+				System.out.println("already login");
 				return true;
 			} else {
 				// 需要登入，尚未登入，所以送回登入畫面
-				System.out.println("c");
+				System.out.println("login not yet");
 				HttpSession session = req.getSession();
 
 				if (!isRequestedSessionIdValid) {
@@ -57,7 +57,7 @@ public class LoginCheckingInterceptor implements HandlerInterceptor {
 						session.setAttribute("requestURI", requestURI + "?" + QueryString);
 					}
 				}
-				resp.sendRedirect(contextPath + "/AddorLogin");
+				resp.sendRedirect(contextPath + "/memberLogin");
 				return true;
 			}
 
@@ -70,20 +70,20 @@ public class LoginCheckingInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("filter posthandle");
+		System.out.println("member filter posthandle");
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		System.out.println("filter after");
+		System.out.println("member filter after");
 	}
 
 	// 判斷Session物件內是否含有識別字串為LoginOK的屬性物件，如果有，表示已經登入，否則尚未登入
 	private boolean checkLogin(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 
-		ManagerBean loginToken = (ManagerBean) session.getAttribute("LoginOK");
+		MemberBean loginToken = (MemberBean) session.getAttribute("memberLoginOK");
 		if (loginToken == null) {
 			return false;
 		} else {

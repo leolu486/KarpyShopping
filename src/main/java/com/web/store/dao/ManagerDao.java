@@ -11,7 +11,7 @@ public interface ManagerDao {
 	
 	ManagerBean getManagerByAccount(String account);
 	
-	void addManager(ManagerBean manager);
+	int addManager(ManagerBean manager);
 	
 	ManagerBean checkIdPassword(String account, String password);
 

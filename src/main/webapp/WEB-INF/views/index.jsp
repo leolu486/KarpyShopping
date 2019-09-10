@@ -51,7 +51,7 @@
 	</div>
 
 	<p align="center" />
-	<a href='chat'>WebSocket Test</a>
+	<a href='home'>hello卡痞購物網</a>
 
 	<hr>
 
@@ -137,7 +137,7 @@
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='OrderItem'>訂單項目</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='products'>商品轉頁面.購物車轉會員登錄</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
@@ -176,19 +176,22 @@
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='member/add'>新增會員測試</a></td>
-			<td width="350"><p align="center" /> <a href='member/change'>會員變更密碼測試</a>
+			<td width="350"><p align="center" /> <a href='member/changetest'>會員變更密碼測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='idExists'>會員資料檢查</a></td>
 			<td width="350"><p align="center" /> <a href='member/delete'>會員刪除</a>
 		</tr>
+				<tr height="52" bgcolor="lightblue" align="center">
+			<td width="350"><p align="center" /> <a href='member/change'>會員更改密碼測試★</a></td>
+			<td width="350"><p align="center" /> <a href='member/delete'>&nbsp;</a>
+		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td colspan="2"><p align="center" />MainPage</td>
+			<td colspan="2"><p align="center" />聊天室測試</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='index1'>hello
-					卡痞購物網</a></td>
+			<td width="350"><p align="center" /> <a href='chat'>WebSocket Test</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
 		</tr>
 

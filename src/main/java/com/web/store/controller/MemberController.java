@@ -77,32 +77,32 @@ public class MemberController {
 		model1.addAttribute("memberBean", mb);
 		return "login/memberLogin";
 	}
-	
+
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.POST)
 	public String processManagerForm(@ModelAttribute("memberBean") MemberBean mb, @RequestParam("form") boolean form,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		MemberBean Member = new MemberBean();
 		System.out.println("form :" + form);
 		if (!form) {
-			service.addMember(mb);
+			int mId = service.addMember(mb);
+			mb.setmId(mId);
+			System.out.println(mb.toString());
 			session.setAttribute("memberLoginOK", mb);
-			System.out.println("Member Name : " + mb.getName());
 		} else {
+			MemberBean Member = new MemberBean();
 			Member = service.checkIdPassword(mb.getAccount(), mb.getPassword());
+			System.out.println(Member.toString());
 			session.setAttribute("memberLoginOK", Member);
-			System.out.println("Member Name : " + Member.getName());
 		}
 		String uri = (String) session.getAttribute("requestURI");
 		System.out.println("uri : " + uri);
 		if (uri == null) {
-			return "index1";
+			return "redirect:/home";
 		} else {
 			session.removeAttribute("requestURI");
-			return "redirect:/members" + uri.substring(15);
+			return "redirect:/" + uri.substring(15);
 		}
 	}
-	
 
 //註冊會員控制器
 	@RequestMapping(value = "/member/add", method = RequestMethod.GET)
@@ -119,28 +119,40 @@ public class MemberController {
 		return "redirect:/members";
 	}
 
-	
-	
-	
-	
-	
-	
-
-	
 //變更密碼控制器
 	@RequestMapping(value = "/member/change", method = RequestMethod.GET)
 	public String getChangeMemberForm(Model model) {
-		MemberBean mb = new MemberBean();
-		model.addAttribute("MemberBean", mb);
 		return "account/changeMemberPassword";
 	}
 
 	@RequestMapping(value = "/member/change", method = RequestMethod.POST)
-	public String processChangeMemberForm(@ModelAttribute("MemberBean") MemberBean mb,
-			@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
-		service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
+	public String processChangeMemberForm(@RequestParam("oldPW") String oldPW,@RequestParam("newPW") String newPW,@RequestParam("renewPW") String renewPW, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		service.changePassword(service.checkIdPassword(mb.getAccount(), oldPW), newPW);
 		return "redirect:/members";
 	}
+	
+	
+	//變更密碼控制器測試
+		@RequestMapping(value = "/member/changetest", method = RequestMethod.GET)
+		public String getChangeMemberFormTest(Model model) {
+			MemberBean mb = new MemberBean();
+			model.addAttribute("MemberBean", mb);
+			return "account/changeMemberPasswordTest";
+		}
+
+		@RequestMapping(value = "/member/changetest", method = RequestMethod.POST)
+		public String processChangeMemberFormTest(@ModelAttribute("MemberBean") MemberBean mb,
+				@RequestParam("newPW") String newPW, BindingResult result, HttpServletRequest request) {
+			service.changePassword(service.checkIdPassword(mb.getAccount(), mb.getPassword()), newPW);
+			return "redirect:/members";
+		}
+	
+	
+	
+	
+	
 
 	// 刪除會員控制器
 	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
@@ -156,13 +168,12 @@ public class MemberController {
 		service.deleteMember(mb);
 		return "redirect:/members";
 	}
-	
-	
-	//登出控制器
-		@RequestMapping("/memberLogout")
-		public String manageLogout(Model model) {
-			System.out.println("Mout");
-			return "login/memberLogout";
-		}
+
+	// 登出控制器
+	@RequestMapping("/memberLogout")
+	public String manageLogout(Model model) {
+		System.out.println("Mout");
+		return "login/memberLogout";
+	}
 
 }

@@ -1,6 +1,5 @@
 ﻿package com.web.store.dao.impl;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.NoResultException;
@@ -46,10 +45,10 @@ public class ManagerDaoImpl implements ManagerDao {
 	}
 
 	@Override
-	public void addManager(ManagerBean manager) {
+	public int addManager(ManagerBean manager) {
 
-		if(manager.getAccount().equals("") || manager.getPassword().equals("") || manager.getName().equals("")) {
-			throw new ManagerNotFoundException("欄位不可為空",manager.getAccount());
+		if (manager.getAccount().equals("") || manager.getPassword().equals("") || manager.getName().equals("")) {
+			throw new ManagerNotFoundException("欄位不可為空", manager.getAccount());
 		}
 		ManagerBean bb = null;
 		Session session = factory.getCurrentSession();
@@ -60,11 +59,13 @@ public class ManagerDaoImpl implements ManagerDao {
 			bb = null;
 		}
 		if (bb == null) {
-			//將密碼加密後
+			// 將密碼加密後
 			manager.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(manager.getPassword())));
-			session.save(manager);
-		}else {
-			throw new ManagerNotFoundException("此帳號已存在 : ",manager.getAccount());
+			int pk = (int) session.save(manager);
+			System.out.println("pk : " + pk);
+			return pk;
+		} else {
+			throw new ManagerNotFoundException("此帳號已存在 : ", manager.getAccount());
 		}
 	}
 
@@ -75,7 +76,8 @@ public class ManagerDaoImpl implements ManagerDao {
 		String hql = "FROM ManagerBean WHERE account =:account and password =:password";
 		try {
 			mb = (ManagerBean) session.createQuery(hql).setParameter("account", account)
-					.setParameter("password", GlobalService.getMD5Endocing(GlobalService.encryptString(password))).getSingleResult();
+					.setParameter("password", GlobalService.getMD5Endocing(GlobalService.encryptString(password)))
+					.getSingleResult();
 		} catch (NoResultException e) {
 			throw new ManagerNotFoundException("帳號或是密碼錯誤 : ", account);
 		}
@@ -84,9 +86,9 @@ public class ManagerDaoImpl implements ManagerDao {
 	}
 
 	@Override
-	public void changePassWord(ManagerBean mb,String newPW) {
+	public void changePassWord(ManagerBean mb, String newPW) {
 		// TODO Auto-generated method stub
-		if(newPW.equalsIgnoreCase("")) {
+		if (newPW.equalsIgnoreCase("")) {
 			throw new ManagerNotFoundException("新密碼不可為空白");
 		}
 		Session session = factory.getCurrentSession();

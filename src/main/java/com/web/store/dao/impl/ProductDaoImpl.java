@@ -124,7 +124,8 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 		session.delete(pb);
 	}
 	
-	
+
+
 	
 
 }

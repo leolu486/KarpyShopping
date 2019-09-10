@@ -117,6 +117,9 @@ input::placeholder {
 	text-align: center;
 }
 
+input:focus::-webkit-input-placeholder {
+	opacity: 0;
+}
 /* footer { */
 /* 	height: 40px; */
 /* 	box-aizing: border-box; */
@@ -142,82 +145,13 @@ input::placeholder {
 </script>
 </head>
 <body>
-
-
-	<!-- 	<div style="display: inline;"> -->
-	<!-- 		<button id="blogin">登入</button> -->
-	<!-- 		<button id="rlogin">註冊</button> -->
-	<!-- 	</div> -->
-
-	<!-- 	<div id="login"> -->
-	<%-- 		<form:form method='POST' modelAttribute="managerBean" --%>
-	<%-- 			enctype="multipart/form-data"> --%>
-	<!-- 			<h1 align="center">管理員登入</h1> -->
-	<!-- 			<dl> -->
-	<!-- 				<dd> -->
-	<%-- 					<form:input id="account" path="account" class="text" type="text" --%>
-	<%-- 						placeholder="請輸入管理員帳號" tabindex="1" autocomplete="off" --%>
-	<%-- 						maxlength="50" autofocus="autofocus" /> --%>
-	<!-- 			</dl> -->
-	<!-- 			<dl> -->
-	<!-- 				<dd> -->
-	<%-- 					<form:input id="password" path="password" class="text" --%>
-	<%-- 						type="password" placeholder="請輸入密碼 ( 英文大小寫有差別 )" tabindex="2" --%>
-	<%-- 						autocomplete="off" maxlength="50" /> --%>
-	<!-- 			</dl> -->
-	<!-- 			<dl> -->
-	<!-- 				<dd> -->
-	<!-- 					<a><input id="submit" type="submit" value="Login" -->
-	<!-- 						style="font-size: 25px; width: 450px; height: 60px;"></a> -->
-	<!-- 				</dd> -->
-	<!-- 			</dl> -->
-	<!-- 			<input id="type" name="form" type='hidden' value='true' /> -->
-	<%-- 		</form:form> --%>
-	<!-- 	</div> -->
-
-	<!-- 	<div id="register" style="display: none"> -->
-	<%-- 		<form:form method='POST' modelAttribute="managerBean" --%>
-	<%-- 			enctype="multipart/form-data"> --%>
-	<!-- 			<h1 align="center">管理員註冊</h1> -->
-	<!-- 			<dl> -->
-	<!-- 				<dd> -->
-	<%-- 					<form:input id="account" path="account" class="text" type="text" --%>
-	<%-- 						placeholder="請輸入管理員帳號" tabindex="1" autocomplete="off" --%>
-	<%-- 						maxlength="50" autofocus="autofocus" /> --%>
-	<!-- 			</dl> -->
-	<!-- 			<dl> -->
-	<!-- 				<dd> -->
-	<%-- 					<form:input id="password" path="password" class="text" --%>
-	<%-- 						type="password" placeholder="請輸入密碼 ( 英文大小寫有差別 )" tabindex="2" --%>
-	<%-- 						autocomplete="off" maxlength="50" /> --%>
-	<!-- 			</dl> -->
-	<!-- 			<dl> -->
-	<!-- 				<dl> -->
-	<!-- 					<dd> -->
-	<%-- 						<form:input id="name" path="name" class="text" type="text" --%>
-	<%-- 							placeholder="請輸入名字" tabindex="2" autocomplete="off" --%>
-	<%-- 							maxlength="50" /> --%>
-	<!-- 				</dl> -->
-	<!-- 				<dl> -->
-	<!-- 					<dd> -->
-	<!-- 						<a><input id="submit" type="submit" value="Login" -->
-	<!-- 							style="font-size: 25px; width: 450px; height: 60px;"></a> -->
-	<!-- 					</dd> -->
-	<!-- 				</dl> -->
-	<!-- 				<input id="type" name="form" type='hidden' value='false' /> -->
-	<%-- 		</form:form> --%>
-	<!-- 	</div> -->
-
-
-
-
 	<div>
-
 		<div class="button1">
-			<a href="#"><img src="<c:url value="/images/logo-pic/logo.png" />" alt="" class="img" /></a>
+			<a href="home"><img
+				src="<c:url value="/images/logo-pic/logo.png" />" alt="" class="img" /></a>
 			<div class="center">
-				<button class="button" id="blogin" >登入</button>
-				<button class="button2" id="rlogin" >註冊</button>
+				<button class="button" id="blogin">登入</button>
+				<button class="button2" id="rlogin">註冊</button>
 			</div>
 			<div class="rigth1">
 				<div id="login">
@@ -259,7 +193,7 @@ input::placeholder {
 						<dl>
 							<dd>
 								<form:input id="password" path="password" class="text"
-									type="password" placeholder="請輸入密碼 ( 英文大小寫有差別 )" tabindex="2"
+									type="password" placeholder="請輸入密碼 ( 英文大小寫有區別 )" tabindex="2"
 									autocomplete="off" maxlength="50" />
 						</dl>
 						<dl>
@@ -280,8 +214,6 @@ input::placeholder {
 			</div>
 		</div>
 	</div>
-
-
 </body>
 
 </html>

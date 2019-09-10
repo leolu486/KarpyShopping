@@ -96,7 +96,7 @@ public class ProductController {
 		return "getProductsBy";
 	}
 
-	//the way to use different submit btn in same form
+	// the way to use different submit btn in same form
 //	@RequestMapping(value = "/productsByCategory", method = RequestMethod.POST)
 //	public String getProductsByCategory(
 //			@RequestParam("searchBy") String searchBy,
@@ -120,26 +120,24 @@ public class ProductController {
 //		return null;
 //		}
 //	}
-	
+
 	@RequestMapping(value = "/getProductsBy", method = RequestMethod.POST)
-	public String getProductsByCategory(
-			@RequestParam("searchBy") String searchBy,
-			Model model) {
+	public String getProductsByCategory(@RequestParam("searchBy") String searchBy, Model model) {
 		if (service.getProductByCategory(searchBy).isEmpty() == false) {
 			List<ProductBean> list = service.getProductByCategory(searchBy);
 			model.addAttribute("products", list);
 			return "products";
-		}else if (service.getProductByVendorName(searchBy).isEmpty() == false) {
+		} else if (service.getProductByVendorName(searchBy).isEmpty() == false) {
 			System.out.println("vendorproduct");
 			List<ProductBean> list = service.getProductByVendorName(searchBy);
 			model.addAttribute("products", list);
 			return "products";
-		}else if (service.getProductByName(searchBy) != null) {
+		} else if (service.getProductByName(searchBy) != null) {
 			ProductBean resultpb = service.getProductByName(searchBy);
 			model.addAttribute("product", resultpb);
 			return "product";
-		}  else {
-		return null;
+		} else {
+			return null;
 		}
 	}
 
@@ -181,6 +179,16 @@ public class ProductController {
 	public String deleteProduct(@RequestParam("pId") Integer pId) {
 		service.deleteProduct(pId);
 		return "redirect:/products";
+	}
+
+	@RequestMapping("/productById02")
+	public String getProductById02(@RequestParam("pId") Integer pId, Model model) {
+		model.addAttribute("product", service.getProductById(pId));
+//		if (service.getProductById(pId).getRankCount() != null) {
+//			model.addAttribute("rankAVG", service.getProductRankAVGById(pId));
+//		}
+		return "productDetail/pd";
+
 	}
 
 }
