@@ -57,6 +57,7 @@ public class MemberLoginCheckingInterceptor implements HandlerInterceptor {
 						session.setAttribute("requestURI", requestURI + "?" + QueryString);
 					}
 				}
+				System.out.println(contextPath + "/memberLogin");
 				resp.sendRedirect(contextPath + "/memberLogin");
 				return true;
 			}

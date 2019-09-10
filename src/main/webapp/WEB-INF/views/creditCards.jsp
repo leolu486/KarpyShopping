@@ -30,7 +30,7 @@
 					<div class="thumbnail" style="width: 320px; height: 340px">
 						<div class="caption">
 							<p>
-								<b style='font-size: 16px;'>信用卡名稱 : ${card.CName}</b>
+								<b style='font-size: 16px;'>信用卡名稱 : ${card.cname}</b>
 							</p>
 							<a href="<spring:url value='CreditCard?cId=${card.cId}'/>"
 								class="btn btn-primary"> <span

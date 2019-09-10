@@ -1,15 +1,23 @@
 package com.web.store.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +40,12 @@ public class MemberController {
 
 	@Autowired
 	ServletContext context;
+
+	@InitBinder
+	public final void initBinderUsuariosFormValidator(final WebDataBinder binder, final Locale locale) {
+		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+	}
 
 	@ExceptionHandler({ MemberNotFoundException.class })
 	public ModelAndView handleError(HttpServletRequest request, MemberNotFoundException exception) {
@@ -171,7 +185,7 @@ public class MemberController {
 		System.out.println("Mout");
 		return "login/memberLogout";
 	}
-	
+
 	@RequestMapping(value = "addCreditCard", method = RequestMethod.GET)
 	public String addCreditCard(Model model) {
 		CreditCardBean cb = new CreditCardBean();
@@ -181,28 +195,34 @@ public class MemberController {
 
 	@RequestMapping(value = "addCreditCard", method = RequestMethod.POST)
 	public String addCreditCard(@ModelAttribute("CreditCardBean") CreditCardBean cb, BindingResult result,
-			HttpServletRequest request) {
+			HttpServletRequest request, @RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date) {
+
+		System.out.println("DATE:" + date);
+		cb.setVdate(new java.sql.Timestamp(date.getTime()));
+		System.out.println("cb:" + cb.toString());
 		HttpSession session = request.getSession();
 		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
 		cb.setmId(mb.getmId());
 		service.addCreditCard(cb);
 		return "redirect:/home";
 	}
-	
+
 	@RequestMapping("/CreditCardList")
 	public String getCreditCardsBymId(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
-		List<CreditCardBean>list = service.getCreditCardsBymId(mb.getmId()) ;
-		model.addAttribute("creditCard", list);
+		if (mb != null) {
+			List<CreditCardBean> list = service.getCreditCardsBymId(mb.getmId());
+			model.addAttribute("creditCard", list);
+		}
+
 		return "creditCards";
 	}
-	
+
 	@RequestMapping("/CreditCard")
-	public String getCreditCardBycId(@RequestParam("cId") Integer cId , Model model) {
+	public String getCreditCardBycId(@RequestParam("cId") Integer cId, Model model, HttpServletRequest request) {
 		model.addAttribute("card", service.getCreditCardBycId(cId));
 		return "creditCard";
 	}
-	
 
 }

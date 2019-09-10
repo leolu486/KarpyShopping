@@ -25,16 +25,17 @@
 
 			<div class="col-md-5">
 				<p>
-					<b style='font-size: 16px;'>信用卡名稱:${card.CName}</b>
+					<b style='font-size: 16px;'>信用卡名稱:${card.cname}</b>
 				</p>
-				<p>卡號:${card.CNumber}</p>
-				<p>持有人:${card.OName}</p>
+				<p>卡號:${card.cnumber}</p>
+				<p>持有人:${card.oname}</p>
 				<p>Pin:${card.pin}</p>
-				<p>有效日:${card.VDate}</p>
+				<p>有效日:${card.vdate}</p>
 
 				<p>
-					<a href="<spring:url value='CreditCardList' />" class="btn btn-default">
-						<span class="glyphicon-hand-left glyphicon"></span>返回
+					<a href="<spring:url value='CreditCardList' />"
+						class="btn btn-default"> <span
+						class="glyphicon-hand-left glyphicon"></span>返回
 					</a>
 				</p>
 			</div>
