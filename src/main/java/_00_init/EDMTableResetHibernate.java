@@ -42,86 +42,86 @@ public class EDMTableResetHibernate {
 
 			// 1. 由"data/manager.txt"逐筆讀入Manager表格內的初始資料，
 			// 然後依序新增到Manager表格中
-			try (FileReader fr = new FileReader("data/manager.txt"); BufferedReader br = new BufferedReader(fr);) {
-				while ((line = br.readLine()) != null) {
-					if (line.startsWith(UTF8_BOM)) {
-						line = line.substring(1);
-					}
-					String[] token = line.split("\\|");
-					String account = token[0];
-					String password = GlobalService.getMD5Endocing(GlobalService.encryptString(token[1]));
-					String name = token[2];
-
-					ManagerBean mb = new ManagerBean(null, account, password, name);
-					session.save(mb);
-				}
-			} catch (IOException e) {
-				System.err.println("新建Manager表格時發生IO例外: " + e.getMessage());
-			}
-			session.flush();
-			System.out.println("Manager 資料新增成功");
-
-			// ------------
-			// 1. 由"data/vendor.txt"逐筆讀入Vendor表格內的初始資料，
-			// 然後依序新增到Vendor表格中
-			try (FileReader fr = new FileReader("data/vendor.txt"); BufferedReader br = new BufferedReader(fr);) {
-				while ((line = br.readLine()) != null) {
-					if (line.startsWith(UTF8_BOM)) {
-						line = line.substring(1);
-					}
-					System.out.println(line);
-					String[] token = line.split("\\|");
-					String vname = token[0];
-					String addr = token[1];
-					String tel = token[2];
-					String email = token[3];
-
-					VendorBean vb = new VendorBean(null, vname, addr, tel, email);
-					session.save(vb);
-				}
-			} catch (IOException e) {
-				System.err.println("新建Vendor表格時發生IO例外: " + e.getMessage());
-			}
-			session.flush();
-			System.out.println("Vendor 資料新增成功");
-
-//				----------------------products data insert
-			try (FileReader fr = new FileReader("data/products.txt"); BufferedReader br = new BufferedReader(fr);) {
-				while ((line = br.readLine()) != null) {
-					if (line.startsWith(UTF8_BOM)) {
-						line = line.substring(1);
-					}
-
-					System.out.println(line.replace("'", ""));
-					String[] token = line.replace("'", "").split(",");
-					String pname = token[0].trim();
-					Integer price = Integer.parseInt(token[1].trim());
-					Integer vId = Integer.parseInt(token[2].trim());
-					Integer amount = Integer.parseInt(token[3].trim());
-					String category = token[4].trim();
-					String sdate = token[5].trim();
-					String expdate = token[6].trim();
-					Double rankSum = null;
-					Integer rankCount = null;
-					System.out.println(expdate);
-					ProductBean mb;
-
-					if (!expdate.equals("null")) {
-						System.out.println("not null");
-						mb = new ProductBean(null, pname, price, vId, amount, category, sdate, expdate, rankSum,
-								rankCount);
-					} else {
-						System.out.println("is null");
-						mb = new ProductBean(null, pname, price, vId, amount, category, sdate, rankSum, rankCount);
-					}
-
-					session.save(mb);
-				}
-			} catch (IOException e) {
-				System.err.println("新建Product表格時發生IO例外: " + e.getMessage());
-			}
-			session.flush();
-			System.out.println("Product 資料新增成功");
+//			try (FileReader fr = new FileReader("data/manager.txt"); BufferedReader br = new BufferedReader(fr);) {
+//				while ((line = br.readLine()) != null) {
+//					if (line.startsWith(UTF8_BOM)) {
+//						line = line.substring(1);
+//					}
+//					String[] token = line.split("\\|");
+//					String account = token[0];
+//					String password = GlobalService.getMD5Endocing(GlobalService.encryptString(token[1]));
+//					String name = token[2];
+//
+//					ManagerBean mb = new ManagerBean(null, account, password, name);
+//					session.save(mb);
+//				}
+//			} catch (IOException e) {
+//				System.err.println("新建Manager表格時發生IO例外: " + e.getMessage());
+//			}
+//			session.flush();
+//			System.out.println("Manager 資料新增成功");
+//
+//			// ------------
+//			// 1. 由"data/vendor.txt"逐筆讀入Vendor表格內的初始資料，
+//			// 然後依序新增到Vendor表格中
+//			try (FileReader fr = new FileReader("data/vendor.txt"); BufferedReader br = new BufferedReader(fr);) {
+//				while ((line = br.readLine()) != null) {
+//					if (line.startsWith(UTF8_BOM)) {
+//						line = line.substring(1);
+//					}
+//					System.out.println(line);
+//					String[] token = line.split("\\|");
+//					String vname = token[0];
+//					String addr = token[1];
+//					String tel = token[2];
+//					String email = token[3];
+//
+//					VendorBean vb = new VendorBean(null, vname, addr, tel, email);
+//					session.save(vb);
+//				}
+//			} catch (IOException e) {
+//				System.err.println("新建Vendor表格時發生IO例外: " + e.getMessage());
+//			}
+//			session.flush();
+//			System.out.println("Vendor 資料新增成功");
+//
+////				----------------------products data insert
+//			try (FileReader fr = new FileReader("data/products.txt"); BufferedReader br = new BufferedReader(fr);) {
+//				while ((line = br.readLine()) != null) {
+//					if (line.startsWith(UTF8_BOM)) {
+//						line = line.substring(1);
+//					}
+//
+//					System.out.println(line.replace("'", ""));
+//					String[] token = line.replace("'", "").split(",");
+//					String pname = token[0].trim();
+//					Integer price = Integer.parseInt(token[1].trim());
+//					Integer vId = Integer.parseInt(token[2].trim());
+//					Integer amount = Integer.parseInt(token[3].trim());
+//					String category = token[4].trim();
+//					String sdate = token[5].trim();
+//					String expdate = token[6].trim();
+//					Double rankSum = null;
+//					Integer rankCount = null;
+//					System.out.println(expdate);
+//					ProductBean mb;
+//
+//					if (!expdate.equals("null")) {
+//						System.out.println("not null");
+//						mb = new ProductBean(null, pname, price, vId, amount, category, sdate, expdate, rankSum,
+//								rankCount);
+//					} else {
+//						System.out.println("is null");
+//						mb = new ProductBean(null, pname, price, vId, amount, category, sdate, rankSum, rankCount);
+//					}
+//
+//					session.save(mb);
+//				}
+//			} catch (IOException e) {
+//				System.err.println("新建Product表格時發生IO例外: " + e.getMessage());
+//			}
+//			session.flush();
+//			System.out.println("Product 資料新增成功");
 
 			// ------------
 

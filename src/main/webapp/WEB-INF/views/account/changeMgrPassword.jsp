@@ -40,7 +40,7 @@ fieldset {
 						帳號: </label>
 					<div class="col-lg-10">
 						<form:input id="account" path="account" type='text'
-							class='form:input-large' />
+							class='form:input-large' value="${LoginOK.account}" readonly="true"/>
 					</div>
 				</div>
 
@@ -49,7 +49,7 @@ fieldset {
 						密碼: </label>
 					<div class="col-lg-10">
 						<form:input id="password" path="password" type='password'
-							class='form:input-large' />
+							class='form:input-large' value="${LoginOK.password}" readonly="true"/>
 					</div>
 				</div>
 
@@ -61,6 +61,8 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
+				<input id="type" name="type" type='hidden' value='1'
+							 />
 				<div class="form-group">
 					<div class='col-lg-offset-2 col-lg-10'>
 						<input id="btnAdd" type='submit' class='btn btn-primary'

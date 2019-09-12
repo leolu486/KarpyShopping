@@ -28,5 +28,7 @@ public interface MemberDao {
 	List<CreditCardBean> getCreditCardsBymId(Integer mId);
 	
 	CreditCardBean getCreditCardBycId(Integer cId);
+	
+	MemberBean getMemberBymId(Integer mId);
 
 }

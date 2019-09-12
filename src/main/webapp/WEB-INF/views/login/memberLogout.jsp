@@ -16,8 +16,9 @@
 <body>
 	<!-- 先將使用者名稱取出 -->
 	<c:set var="memberName" value="${memberLoginOK.name}" />
-	<!-- 移除放在session物件內的屬性物件 -->
+	<!-- 移除放在session物件內的屬性物件以及圖片-->
 	<c:remove var="memberLoginOK" scope="session" />
+	<c:remove var="memberImage" scope="session"/>
 	<!-- 下列敘述設定變數funcName的值為OUT，top.jsp 會用到此變數 -->
 	<c:set var="funcName" value="OUT" scope="session" />
 	<!-- 引入共同的頁首 -->

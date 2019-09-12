@@ -1,13 +1,25 @@
 package com.web.store.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -22,12 +34,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.CreditCardBean;
-import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
+import _00_init.util.SystemUtils2019;
 
 @Controller
 public class MemberController {
@@ -186,22 +199,24 @@ public class MemberController {
 		return "login/memberLogout";
 	}
 
-	@RequestMapping(value = "addCreditCard", method = RequestMethod.GET)
+	@RequestMapping(value = "/addCreditCard", method = RequestMethod.GET)
 	public String addCreditCard(Model model) {
 		CreditCardBean cb = new CreditCardBean();
 		model.addAttribute("CreditCardBean", cb);
 		return "addCreditCard";
 	}
 
-	@RequestMapping(value = "addCreditCard", method = RequestMethod.POST)
+	@RequestMapping(value = "/addCreditCard", method = RequestMethod.POST)
 	public String addCreditCard(@ModelAttribute("CreditCardBean") CreditCardBean cb, BindingResult result,
 			HttpServletRequest request, @RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date) {
 
 		System.out.println("DATE:" + date);
 		cb.setVdate(new java.sql.Timestamp(date.getTime()));
 		System.out.println("cb:" + cb.toString());
+
 		HttpSession session = request.getSession();
-		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		MemberBean mb = (MemberBean) session.getAttribute("memberLog inOK");
+
 		cb.setmId(mb.getmId());
 		service.addCreditCard(cb);
 		return "redirect:/home";
@@ -223,6 +238,62 @@ public class MemberController {
 	public String getCreditCardBycId(@RequestParam("cId") Integer cId, Model model, HttpServletRequest request) {
 		model.addAttribute("card", service.getCreditCardBycId(cId));
 		return "creditCard";
+	}
+
+	// 上傳會員圖片測試
+	@RequestMapping(value = "/uploadImage", method = RequestMethod.GET)
+	public String addImage(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
+		Blob blob = null;
+		byte[] imageData = null;
+		if (member != null && member.getMemberImage() != null) {
+			System.out.println("both true");
+			MemberBean mb = service.getMemberBymId(member.getmId());
+			if (mb.getMemberImage() != null) {
+				blob = mb.getMemberImage();
+				try {
+					imageData = blob.getBytes(1, (int) blob.length());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				session.setAttribute("memberImage", Base64.getEncoder().encodeToString(imageData));
+			}
+
+		}
+		MemberBean mb = new MemberBean();
+		model.addAttribute("memberBean", mb);
+		return "account/uploadImage";
+	}
+
+	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
+	public String addImage(@ModelAttribute("memberBean") MemberBean mb, BindingResult result,
+			HttpServletRequest request) {
+		MultipartFile file = mb.getFile();
+		long sizeInBytes = 0;
+		InputStream is = null;
+		Blob blob;
+		HttpSession session = request.getSession();
+		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
+		if (!file.isEmpty()) {
+			sizeInBytes = file.getSize();
+			try {
+				is = file.getInputStream();
+				blob = SystemUtils2019.fileToBlob(is, sizeInBytes);
+				member.setMemberImage(blob);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		session.setAttribute("memberLoginOK", member);
+		service.updateMember(member);
+		return "redirect:/uploadImage";
 	}
 
 }

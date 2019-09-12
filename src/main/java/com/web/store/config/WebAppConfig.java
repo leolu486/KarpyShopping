@@ -72,8 +72,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(getLoginCheckingFilter()).addPathPatterns("/managers", "/manager/change");
-		registry.addInterceptor(getMemberLoginCheckingFilter()).addPathPatterns("/CreditCardList","/membercentre", "/member/change",
-				"/cartConfirm", "/cart");
+		registry.addInterceptor(getMemberLoginCheckingFilter()).addPathPatterns("/CreditCardList", "/membercentre",
+				"/member/change", "/cartConfirm", "/cart", "/uploadImage");
 
 	}
 
