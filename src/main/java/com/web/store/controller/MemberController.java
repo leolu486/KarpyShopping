@@ -1,25 +1,19 @@
 package com.web.store.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -38,8 +32,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.CreditCardBean;
+import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
+
 import _00_init.util.SystemUtils2019;
 
 @Controller
@@ -111,6 +107,8 @@ public class MemberController {
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		System.out.println("form :" + form);
+		
+		
 		if (!form) {
 			int mId = service.addMember(mb);
 			mb.setmId(mId);
@@ -146,7 +144,40 @@ public class MemberController {
 		service.addMember(mb);
 		return "redirect:/members";
 	}
+	
+//修改會員控制器
+	
+	@RequestMapping(value = "/updatemember", method = RequestMethod.GET)
+	public String Changemamber(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		model.addAttribute("MemberBean", mb);
+		return "account/updatemember";
+	}
 
+	@RequestMapping(value = "/updatemember", method = RequestMethod.POST)
+	public String Changemember(@ModelAttribute("MemberBean") MemberBean mb,
+			@RequestParam("county")String county,@RequestParam("city")String city,@RequestParam("addr")String addr	
+			,@RequestParam("gender") String gender, @RequestParam("date")@DateTimeFormat(pattern = "yyyy/MM/dd") Date date
+	,BindingResult result, HttpServletRequest request) {
+		System.out.println("=====date = "+ date);
+		HttpSession session =request.getSession();
+		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
+//		memberBean.setName(mb.getName());
+//		memberBean.setMemberImage(mb.getMemberImage());
+//		memberBean.setEmail(mb.getEmail());
+//		memberBean.setTel(mb.getTel());
+//		memberBean.setBirthday(mb.getBirthday());
+		memberBean.setBirthday(new java.sql.Timestamp(date.getTime()));
+		memberBean.setGender(gender);
+		memberBean.setAddr(county + city + addr);
+		service.updateMember(memberBean);
+		return "redirect:/home";
+	}
+	
+	
+	
+	
 //變更密碼控制器
 	@RequestMapping(value = "/member/change", method = RequestMethod.GET)
 	public String getChangeMemberForm(Model model) {
@@ -199,24 +230,22 @@ public class MemberController {
 		return "login/memberLogout";
 	}
 
-	@RequestMapping(value = "/addCreditCard", method = RequestMethod.GET)
+	@RequestMapping(value = "addCreditCard", method = RequestMethod.GET)
 	public String addCreditCard(Model model) {
 		CreditCardBean cb = new CreditCardBean();
 		model.addAttribute("CreditCardBean", cb);
 		return "addCreditCard";
 	}
 
-	@RequestMapping(value = "/addCreditCard", method = RequestMethod.POST)
+	@RequestMapping(value = "addCreditCard", method = RequestMethod.POST)
 	public String addCreditCard(@ModelAttribute("CreditCardBean") CreditCardBean cb, BindingResult result,
 			HttpServletRequest request, @RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date) {
 
 		System.out.println("DATE:" + date);
 		cb.setVdate(new java.sql.Timestamp(date.getTime()));
 		System.out.println("cb:" + cb.toString());
-
 		HttpSession session = request.getSession();
-		MemberBean mb = (MemberBean) session.getAttribute("memberLog inOK");
-
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
 		cb.setmId(mb.getmId());
 		service.addCreditCard(cb);
 		return "redirect:/home";
@@ -238,6 +267,101 @@ public class MemberController {
 	public String getCreditCardBycId(@RequestParam("cId") Integer cId, Model model, HttpServletRequest request) {
 		model.addAttribute("card", service.getCreditCardBycId(cId));
 		return "creditCard";
+	}
+
+//	@RequestMapping(value = "/membertest", method = RequestMethod.GET)
+//	public String addCreditCard1(Model model) {
+//		CreditCardBean cb = new CreditCardBean();
+//		model.addAttribute("CreditCardBean", cb);
+//		return "membertest";
+//	}
+
+
+	
+	@RequestMapping(value = "/membertest", method = RequestMethod.GET)
+	public String Changemamber1(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		CreditCardBean cb = new CreditCardBean();
+		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
+		System.out.println("mid:"+member.getmId());
+		Blob blob = null;
+		byte[] imageData = null;
+		if (member != null && member.getMemberImage() != null) {
+			System.out.println("both true");
+			if (member.getMemberImage() != null) {
+				blob = member.getMemberImage();
+				try {
+					imageData = blob.getBytes(1, (int) blob.length());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				session.setAttribute("memberImage", Base64.getEncoder().encodeToString(imageData));
+			}
+
+		}
+		
+		model.addAttribute("memberBean", member);
+		System.out.println("member Id" + member.getmId());
+		model.addAttribute("CreditCardBean", cb);
+		return "membertest";
+	}
+	
+	@RequestMapping(value = "/membertest", method = RequestMethod.POST)
+	public String Changemamber1(@ModelAttribute("CreditCardBean") CreditCardBean cb,@ModelAttribute("memberBean")MemberBean mb,
+			BindingResult result,
+			HttpServletRequest request, @RequestParam("form") String form,@RequestParam("oldPW") String oldPW, @RequestParam("newPW") String newPW,
+			@RequestParam("renewPW") String renewPW,@RequestParam("county")String county,@RequestParam("city")String city,@RequestParam("addr")String addr	
+			,@RequestParam("gender") String gender, @RequestParam("date")@DateTimeFormat(pattern = "yyyy/MM/dd") Date date) {
+			
+		if(form.equals("1") ) {
+			MultipartFile file = mb.getFile();
+			long sizeInBytes = 0;
+			InputStream is = null;
+			Blob blob;
+			HttpSession session =request.getSession();
+			MemberBean mBean = (MemberBean)session.getAttribute("memberLoginOK");
+			System.out.println("mBean:"+mBean.toString());
+			mb.setmId(mBean.getmId());
+			mb.setBirthday(new java.sql.Timestamp(date.getTime()));
+			mb.setGender(gender);
+			mb.setAddr(county + city + addr);
+			if (!file.isEmpty()) {
+				sizeInBytes = file.getSize();
+				try {
+					is = file.getInputStream();
+					blob = SystemUtils2019.fileToBlob(is, sizeInBytes);
+					mb.setMemberImage(blob);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			System.out.println(mb.toString());
+			System.out.println("a");
+			service.updateMember(mb);
+			System.out.println("b");
+			session.setAttribute("memberLoginOK", mb);
+		}else if(form.equals("2")){
+			System.out.println("form" + 2);
+			HttpSession session = request.getSession();
+			MemberBean mb1 = (MemberBean) session.getAttribute("memberLoginOK");
+			service.changePassword(service.checkIdPassword(mb1.getAccount(), oldPW), newPW);
+					
+		}else if(form.equals("3")) {
+			System.out.println("DATE:" + date);
+			cb.setVdate(new java.sql.Timestamp(date.getTime()));
+			System.out.println("cb:" + cb.toString());
+			HttpSession session = request.getSession();
+			System.out.println("form :" + form);
+			MemberBean db = (MemberBean) session.getAttribute("memberLoginOK");
+			cb.setmId(db.getmId());
+			service.addCreditCard(cb);
+		}
+		return "redirect:/home";
 	}
 
 	// 上傳會員圖片測試
@@ -295,5 +419,4 @@ public class MemberController {
 		service.updateMember(member);
 		return "redirect:/uploadImage";
 	}
-
 }
