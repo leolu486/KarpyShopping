@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.web.store.dao.ProductDao;
 import com.web.store.dao.impl.ProductDaoImpl;
 import com.web.store.model.ProductBean;
+import com.web.store.model.ProductImagesBean;
 import com.web.store.service.ProductService;
 
 @Service
@@ -21,6 +22,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductBean getProductById(Integer pId) {	
 		return dao.getProductById(pId);
+	}
+	
+	@Transactional
+	@Override
+	public ProductImagesBean getProductImagesById(Integer pId) {	
+		return dao.getProductImagesById(pId);
 	}
 
 	@Transactional
@@ -63,6 +70,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void addProduct(ProductBean bean) {
 		dao.addProduct(bean);
+	}
+	
+	@Transactional
+	@Override
+	public void addProductImage(ProductImagesBean bean) {
+		dao.addProductImage(bean);
 	}
 
 	@Transactional

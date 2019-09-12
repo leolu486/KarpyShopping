@@ -27,5 +27,7 @@ public interface MemberService {
 	List<CreditCardBean> getCreditCardsBymId(Integer mId);
 	
 	CreditCardBean getCreditCardBycId(Integer cId);
+	
+	MemberBean getMemberBymId(Integer mId);
 
 }

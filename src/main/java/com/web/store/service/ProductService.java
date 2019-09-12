@@ -3,6 +3,7 @@ package com.web.store.service;
 import java.util.List;
 
 import com.web.store.model.ProductBean;
+import com.web.store.model.ProductImagesBean;
 
 public interface ProductService {
 
@@ -25,5 +26,9 @@ public interface ProductService {
 	void deleteProduct(Integer pId);
 
 	List<ProductBean> getProductByVendorName(String vname);
+
+	void addProductImage(ProductImagesBean bean);
+
+	ProductImagesBean getProductImagesById(Integer pId);
 
 }

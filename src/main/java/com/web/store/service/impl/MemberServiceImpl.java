@@ -86,5 +86,11 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.getCreditCardBycId(cId);
 	}
+	@Transactional
+	@Override
+	public MemberBean getMemberBymId(Integer mId) {
+		// TODO Auto-generated method stub
+		return dao.getMemberBymId(mId);
+	}
 
 }

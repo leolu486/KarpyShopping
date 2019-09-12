@@ -35,8 +35,15 @@ public class ProductBean implements Serializable {
 
 	private VendorBean vendorBean;
 	
-	private MultipartFile[]  productImageTemp;
-
+	private MultipartFile  productImageTemp;
+	private MultipartFile  productImageTemp1;
+	private MultipartFile  productImageTemp2;
+	private MultipartFile  productImageTemp3;
+	
+	private Blob productImage;
+	private Blob productImage1;
+	private Blob productImage2;
+	private Blob productImage3;
 	
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
 			String sdate, String expdate, Double rankSum, Integer rankCount) {
@@ -239,12 +246,71 @@ public class ProductBean implements Serializable {
 	}
 	
 	@Transient
-	public MultipartFile[] getProductImageTemp() {
+	public MultipartFile getProductImageTemp() {
 		return productImageTemp;
 	}
 	
-	public void setProductImageTemp(MultipartFile[] productImageTemp) {
+	public void setProductImageTemp(MultipartFile productImageTemp) {
 		this.productImageTemp = productImageTemp;
+	}
+
+	public Blob getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(Blob productImage) {
+		this.productImage = productImage;
+	}
+
+	public Blob getProductImage1() {
+		return productImage1;
+	}
+
+	public void setProductImage1(Blob productImage1) {
+		this.productImage1 = productImage1;
+	}
+
+	public Blob getProductImage2() {
+		return productImage2;
+	}
+
+	public void setProductImage2(Blob productImage2) {
+		this.productImage2 = productImage2;
+	}
+
+	public Blob getProductImage3() {
+		return productImage3;
+	}
+
+	public void setProductImage3(Blob productImage3) {
+		this.productImage3 = productImage3;
+	}
+
+	@Transient
+	public MultipartFile getProductImageTemp1() {
+		return productImageTemp1;
+	}
+
+	public void setProductImageTemp1(MultipartFile productImageTemp1) {
+		this.productImageTemp1 = productImageTemp1;
+	}
+
+	@Transient
+	public MultipartFile getProductImageTemp2() {
+		return productImageTemp2;
+	}
+
+	public void setProductImageTemp2(MultipartFile productImageTemp2) {
+		this.productImageTemp2 = productImageTemp2;
+	}
+
+	@Transient
+	public MultipartFile getProductImageTemp3() {
+		return productImageTemp3;
+	}
+
+	public void setProductImageTemp3(MultipartFile productImageTemp3) {
+		this.productImageTemp3 = productImageTemp3;
 	}
 
 

@@ -25,7 +25,7 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 	
 	@Autowired
 	SessionFactory factory;
-
+	
 	@Override
 	public ProductBean getProductById(Integer pId) {
 		Session session = factory.getCurrentSession();
@@ -47,6 +47,18 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 //			throw new ProductNotFoundException("查無名稱為 " + pname + " 的商品", pname);
 //		}
 		return pb;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ProductImagesBean getProductImagesById(Integer PID) {
+		String hql = "FROM ProductImagesBean WHERE pId = :PID";
+		ProductImagesBean pib = new ProductImagesBean();
+		Session session = factory.getCurrentSession();
+		
+		pib = (ProductImagesBean) session.createQuery(hql).setParameter("PID", PID).getSingleResult();
+
+		return pib;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -109,6 +121,14 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 		 pb.setVendorBean(vb);
 		 session.save(pb);
 	}
+	
+	@Override
+	public void addProductImage(ProductImagesBean pib) {
+		 Session session = factory.getCurrentSession();
+		 ProductBean pb = session.get(ProductBean.class, pib.getpId());
+		 pib.setProductBean(pb);
+		 session.save(pib);
+	}
 
 	@Override
 	public void updateProduct(ProductBean pb) {
@@ -126,15 +146,6 @@ public class ProductDaoImpl implements ProductDao,Serializable {
 		session.delete(pb);
 	}
 	
-	public void addImage(ProductBean pb) {
-		Session session = factory.getCurrentSession();
-		for(MultipartFile image : pb.getProductImageTemp()) {
-			ProductImagesBean pib = new ProductImagesBean();
-			pib.setpId(pb.getpId());
-			
-		}
-		
-	}
 	
 	
 	

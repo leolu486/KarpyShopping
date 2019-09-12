@@ -3,6 +3,7 @@ package com.web.store.dao;
 import java.util.List;
 
 import com.web.store.model.ProductBean;
+import com.web.store.model.ProductImagesBean;
 import com.web.store.model.VendorBean;
 
 public interface ProductDao {
@@ -26,5 +27,9 @@ public interface ProductDao {
 	void deleteProduct(Integer pId);
 
 	List<ProductBean> getProductByVendorName(String vname);
+
+	void addProductImage(ProductImagesBean pib);
+
+	ProductImagesBean getProductImagesById(Integer PID);
 
 }

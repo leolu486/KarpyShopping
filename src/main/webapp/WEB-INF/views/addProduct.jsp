@@ -106,6 +106,42 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						商品圖片1: </label>
+					<div class="col-lg-10">
+						<form:input id="productImageTemp" path="productImageTemp" type="file"
+							class='form:input-large' />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						商品圖片2: </label>
+					<div class="col-lg-10">
+						<form:input id="productImageTemp1" path="productImageTemp1" type="file"
+							class='form:input-large' />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						商品圖片3: </label>
+					<div class="col-lg-10">
+						<form:input id="productImageTemp2" path="productImageTemp2" type="file"
+							class='form:input-large' />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						商品圖片4: </label>
+					<div class="col-lg-10">
+						<form:input id="productImageTemp3" path="productImageTemp3" type="file"
+							class='form:input-large' />
+					</div>
+				</div>
 
 				<div class="form-group">
 					<div class='col-lg-offset-2 col-lg-10'>

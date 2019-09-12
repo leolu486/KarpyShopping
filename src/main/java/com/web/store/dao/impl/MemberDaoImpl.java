@@ -13,8 +13,10 @@ import org.springframework.stereotype.Repository;
 
 import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.exception.VendorErrorException;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.VendorBean;
 
 import _00_init.util.GlobalService;
 
@@ -162,7 +164,7 @@ public class MemberDaoImpl implements MemberDao {
 			throw new MemberNotFoundException("此帳號已存在 : ", member.getAccount());
 		}
 	}
-	
+
 	@Override
 	public int addCreditCard(CreditCardBean card) {
 		Session session = factory.getCurrentSession();
@@ -173,7 +175,7 @@ public class MemberDaoImpl implements MemberDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CreditCardBean> getCreditCardsBymId(Integer mId) {
-		List<CreditCardBean>list = new ArrayList<CreditCardBean>();
+		List<CreditCardBean> list = new ArrayList<CreditCardBean>();
 		Session session = factory.getCurrentSession();
 		String hql = "FROM CreditCardBean WHERE mId =:mId";
 		try {
@@ -199,6 +201,17 @@ public class MemberDaoImpl implements MemberDao {
 		return cb;
 	}
 
-	
+	@Override
+	public MemberBean getMemberBymId(Integer mId) {
+		// TODO Auto-generated method stub
+
+		Session session = factory.getCurrentSession();
+		MemberBean mb = session.get(MemberBean.class, mId);
+		if (mb == null) {
+			throw new MemberNotFoundException("查無此廠商", mId.toString());
+
+		}
+		return mb;
+	}
 
 }

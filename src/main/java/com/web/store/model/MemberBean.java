@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "Member")
@@ -31,6 +34,9 @@ public class MemberBean implements Serializable {
 	private String gender; // gender
 	private Blob memberImage; // member photo
 
+	@Transient
+	private MultipartFile file;
+	
 	public Integer getmId() {
 		return mId;
 	}
@@ -165,5 +171,13 @@ public class MemberBean implements Serializable {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 }
