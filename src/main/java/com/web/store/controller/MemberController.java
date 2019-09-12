@@ -246,43 +246,34 @@ public class MemberController {
 
 		HttpSession session = request.getSession();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
-		Blob blob = null;
-		byte[] imageData = null;
+		MemberBean mb = null;
 		if (member != null && member.getMemberImage() != null) {
 			System.out.println("both true");
-			MemberBean mb = service.getMemberBymId(member.getmId());
-			if (mb.getMemberImage() != null) {
-				blob = mb.getMemberImage();
-				try {
-					imageData = blob.getBytes(1, (int) blob.length());
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				session.setAttribute("memberImage", Base64.getEncoder().encodeToString(imageData));
+			mb = service.getMemberBymId(member.getmId());
+			try {
+				session.setAttribute("memberImage", SystemUtils2019.Blob2Base64String(mb.getMemberImage()));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
 		}
-		MemberBean mb = new MemberBean();
+
 		model.addAttribute("memberBean", mb);
 		return "account/uploadImage";
+
 	}
 
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	public String addImage(@ModelAttribute("memberBean") MemberBean mb, BindingResult result,
 			HttpServletRequest request) {
+
 		MultipartFile file = mb.getFile();
-		long sizeInBytes = 0;
-		InputStream is = null;
-		Blob blob;
 		HttpSession session = request.getSession();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
+
 		if (!file.isEmpty()) {
-			sizeInBytes = file.getSize();
 			try {
-				is = file.getInputStream();
-				blob = SystemUtils2019.fileToBlob(is, sizeInBytes);
-				member.setMemberImage(blob);
+				member.setMemberImage(SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize()));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
