@@ -542,7 +542,7 @@
 								</div>
 								<div class="about_content">
 									<div class="about_text">免運活動中</div>
-									<div class="about_prgph">全館不管消費金額多少，皆由卡痞購物買單！</div>
+									<div class="about_prgph">全館不管消費金額多少，運費皆由卡痞購物買單！</div>
 								</div>
 							</div>
 						</div>
