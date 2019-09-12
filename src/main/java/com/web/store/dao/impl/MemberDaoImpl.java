@@ -2,6 +2,7 @@
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -38,19 +39,17 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	public boolean idExists(Integer mId) {
+		System.out.println("idExists()mId:" + mId);
 		boolean exist = false;
-		MemberBean mb = null;
+
 		Session session = factory.getCurrentSession();
 		String hql = "from MemberBean where mId = :mId";
-		List<?> list = session.createQuery(hql).setParameter("mId", mId).getResultList();
-		try {
-			mb = (MemberBean) session.createQuery(hql).setParameter("mId", mId).getSingleResult();
 
+		try {
+			session.createQuery(hql).setParameter("mId", mId).getSingleResult();
+			exist = true;
 		} catch (NoResultException e) {
 			throw new MemberNotFoundException();
-		}
-		if (!list.isEmpty()) {
-			exist = true;
 		}
 		return exist;
 	}
@@ -65,23 +64,31 @@ public class MemberDaoImpl implements MemberDao {
 
 	public int updateMember(MemberBean mb) {
 		int count = 0;
-		if (idExists(mb.getmId())) {
-			MemberBean member = null;
-			Session session = factory.getCurrentSession();
-			member = getMemberByAccount(mb.getAccount());
+		System.out.println("abcde");
+		MemberBean member = null;
+		Session session = factory.getCurrentSession();
+		member = getMemberBymId(mb.getmId());
+		if (mb.getAddr() != null)
 			member.setAddr(mb.getAddr());
+		if (mb.getBirthday() != null)
 			member.setBirthday(mb.getBirthday());
+		if (mb.getEmail() != null)
 			member.setEmail(mb.getEmail());
+		if (mb.getGender() != null)
 			member.setGender(mb.getGender());
+		if (mb.getMemberImage() != null)
 			member.setMemberImage(mb.getMemberImage());
+		if (mb.getTel() != null)
 			member.setTel(mb.getTel());
+		if (mb.getName() != null)
 			member.setName(mb.getName());
+		if (mb.getSaddr() != null)
 			member.setSaddr(mb.getSaddr());
+		if (mb.getPassword() != null)
 			member.setPassword(mb.getPassword());
-			session.update(member);
-		} else {
+		System.out.println("abcde");
+		session.update(member);
 
-		}
 		count++;
 		return count;
 	}
@@ -157,6 +164,7 @@ public class MemberDaoImpl implements MemberDao {
 		if (mb == null) {
 			// 將密碼加密後
 			member.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(member.getPassword())));
+			member.setRdate(new java.sql.Timestamp(new Date().getTime()));
 			int pk = (int) session.save(member);
 			System.out.println("pk:" + pk);
 			return pk;
@@ -211,6 +219,7 @@ public class MemberDaoImpl implements MemberDao {
 			throw new MemberNotFoundException("查無此廠商", mId.toString());
 
 		}
+		System.out.println(mb.toString());
 		return mb;
 	}
 
