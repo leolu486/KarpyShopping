@@ -13,9 +13,12 @@ import java.io.Reader;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.SQLException;
+import java.util.Base64;
 
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialClob;
+
+import com.web.store.model.MemberBean;
 
 public class SystemUtils2019 {
 
@@ -65,6 +68,14 @@ public class SystemUtils2019 {
 		is.read(b);
 		sb = new SerialBlob(b);
 		return sb;
+	}
+
+	public static String Blob2Base64String(Blob blob) throws SQLException {
+
+		if (blob != null) {
+			return Base64.getEncoder().encodeToString(blob.getBytes(1, (int) blob.length()));
+		}
+		return null;
 	}
 
 	public static String extractFileName(String pathName) throws IOException, SQLException {
