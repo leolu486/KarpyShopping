@@ -7,13 +7,38 @@
 <head>
 <link rel="stylesheet" href="<c:url value="/css/style.css" />"
 	type="text/css" />
-	<script type="text/javascript"
+<script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/vendor/modernizr-2.8.3.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+.fa fa-FAQ {
+	position: relative;
+}
+
+/*replace the content value with the
+corresponding value from the list below*/
+.fa fa-FAQ:before {
+	content: "\f000";
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	/*--adjust as necessary--*/
+	color: #000;
+	font-size: 18px;
+	padding-right: 0.5em;
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
+</style>
+
+
 </head>
 <body>
-<div class="footer_area">
+	<div class="footer_area">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
@@ -69,11 +94,11 @@
 						<ul>
 							<li><i class="fa fa-home"></i>
 								<p>取消訂單/退貨</p></li>
-							<li><i class="fa fa-phone"></i>
-								<p>FAQ常見問題</p></li>
 							<li><i class="fa fa-envelope"></i>
 								<P>FAQ常見問題</P></li>
-							<li><i class="fa fa-FAQ"></i>
+							<li><i class="fa fa-phone"></i>
+								<p>語音服務</p></li>
+							<li><i class="fa fa-comment-o"></i>
 								<p>聯絡我們</p></li>
 						</ul>
 					</div>

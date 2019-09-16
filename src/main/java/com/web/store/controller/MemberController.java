@@ -302,17 +302,17 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/membertest", method = RequestMethod.POST)
-	public String Changemamber1(@ModelAttribute("CreditCardBean") CreditCardBean cb,
-			@ModelAttribute("memberBean") MemberBean mb, BindingResult result, HttpServletRequest request,
-			@RequestParam("form") String form, @RequestParam("oldPW") String oldPW, @RequestParam("newPW") String newPW,
-			@RequestParam("renewPW") String renewPW, @RequestParam("county") String county,
-			@RequestParam("city") String city, @RequestParam("addr") String addr, @RequestParam("gender") String gender,
-			@RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date) {
 
-		HttpSession session = request.getSession();
-		MemberBean memberbean = (MemberBean) session.getAttribute("memberLoginOK");
-		// 修改會員基本資料
-		if (form.equals("1")) {
+	public String Changemamber1(@ModelAttribute("CreditCardBean") CreditCardBean cb,@ModelAttribute("memberBean")MemberBean mb,
+			BindingResult result,
+			HttpServletRequest request, @RequestParam("form") String form,@RequestParam("oldPW") String oldPW, @RequestParam("newPW") String newPW,
+			@RequestParam("renewPW") String renewPW,@RequestParam("county")String county,@RequestParam("city")String city,@RequestParam("addr")String addr	
+			,@RequestParam("gender") String gender, @RequestParam("date")@DateTimeFormat(pattern = "yyyy/MM/dd") Date date
+			, @RequestParam("cnumber1") String cnumber1, @RequestParam("cnumber2") String cnumber2, @RequestParam("cnumber3") String cnumber3, @RequestParam("cnumber4") String cnumber4
+			) {
+			
+		if(form.equals("1") ) {
+
 			MultipartFile file = mb.getFile();
 			mb.setmId(memberbean.getmId());
 			mb.setBirthday(new java.sql.Timestamp(date.getTime()));
@@ -339,7 +339,14 @@ public class MemberController {
 		// 新增會員信用卡
 		else if (form.equals("3")) {
 			cb.setVdate(new java.sql.Timestamp(date.getTime()));
-			cb.setmId(memberbean.getmId());
+
+			System.out.println("cb:" + cb.toString());
+			HttpSession session = request.getSession();
+			System.out.println("form :" + form);
+			MemberBean db = (MemberBean) session.getAttribute("memberLoginOK");
+			cb.setCnumber(cnumber1 + cnumber2 + cnumber3 + cnumber4);
+			cb.setmId(db.getmId());
+
 			service.addCreditCard(cb);
 		}
 		return "redirect:/home";
