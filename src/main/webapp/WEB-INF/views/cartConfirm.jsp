@@ -5,170 +5,153 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
 <html>
 <head>
-<link rel='stylesheet'
-	href='${pageContext.request.contextPath}/css/styles.css'
-	type="text/css" />
-<meta charset="UTF-8">
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<style type="text/css">
-fieldset {
-	border: 1px solid rgb(255, 232, 57);
-	width: 400px;
-	margin: auto;
-}
-</style>
-<title>購物車</title>
-<link rel='stylesheet' href='css/styles.css' type="text/css" />
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>購物車</title>
 
-<!-- for購物車 -->
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<!-- for購物車 -->
+    <link rel="stylesheet" href="<c:url value='/shoppingCart/style.css' />" media="screen" title="no title" charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <meta name="robots" content="noindex,follow" />
+	<link rel="stylesheet" type="text/css" href="<c:url value='/order/vendor/bootstrap/css/bootstrap.min.css' />">
+<!-- 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<c:url value='/shoppingCart/font-awesome.min.css' />">
 </head>
-
 <body>
-	<section>
-		<div class="container">
-			<h1 style="text-align: center">購物車</h1>
-		</div>
-	</section>
-	<hr style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
-
-					<div class='col-lg-offset-2 col-lg-10'>
-						<a class="btn btn-primary" href='<spring:url value="/productsAddCart"/>'>繼續購物</a>
-						<a class="btn btn-primary" href='<spring:url value="/order/add"/>'>新增訂單</a>
-						<a class="btn btn-primary" href='<spring:url value="/cancel"/>'>取消購買</a>						
-					</div>
-	</section>
-
-	<table border='1' >
-	<TR><td>商品描述</td><td>商品id</td><td>單價</td><td>訂購數量</td><td>小計</td></TR>
-		<c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">
-			<TR height='16'>
-				<TD style="text-align: left; font-size: 11pt;">
-					${anEntry.value.description}
-				</TD>
-				<TD style="text-align: center; font-size: 11pt;">
-					${anEntry.value.productId}
-				</TD>
-				<TD style="text-align: right; font-size: 11pt;">
-					<fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount }" pattern="#,###" />元
-				</TD>
-				<TD style="text-align: right; font-size: 11pt;">
-					${anEntry.value.quantity}</TD>
-				<TD style="text-align: right; font-size: 11pt;">
-					<fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount * anEntry.value.quantity}" pattern="#,###" />元
-				</TD>
-				<TD style="text-align: right; font-size: 11pt;">
-					<a class="btn btn-primary" href='<spring:url value="/cancelProduct?pId=${anEntry.key}"/>'>取消此商品</a>	
-				</TD>
-			</TR>
-		</c:forEach>
-		
-			<tr>
-				<TD style="text-align: right; font-size: 11pt;">
-					總金額:<fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###,###" />元
-				</TD>
-			</tr>
-	</table>
-	
-	
-<!-- 購物車	 -->
-	<form:form>
-	<div class="container">
-	<div class="row">
-		<div class="col-xs-8">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<div class="panel-title">
-						<div class="row">
-							<div class="col-xs-6">
-								<h5><span class="glyphicon glyphicon-shopping-cart"></span> 購物車</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="panel-body">
-				<c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">
-					<div class="row">
-						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
-						</div>
-						<div class="col-xs-4">
-							<h4 class="product-name"><strong>商品名稱</strong></h4><h4><small>${anEntry.value.description}</small></h4>
-						</div>
-						<div class="col-xs-6">
-							<div class="col-xs-6 text-right">
-								<h6><strong><fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount }" pattern="#,###" />元 <span class="text-muted">x</span></strong></h6>
-							</div>
-							<div class="col-xs-4">
-								<input type="number" id="${vs.index}qty" min="1" max="10" class="form-control input-sm" value="${anEntry.value.quantity}" >
-							</div>
-							<div class="col-xs-2">
-								<button type="button" class="btn btn-link btn-xs" onclick="return cancelProduct(${anEntry.key})" >
-									<span class="glyphicon glyphicon-trash"> </span>
-								</button>								
-							</div>
-							<div>
-								<button type="button" class="btn btn-default btn-sm btn-block" onclick="return modifyQty(${anEntry.key}, ${anEntry.value.quantity}, ${vs.index})">
-										更新購買數量
-								</button>
-							</div>
-						</div>
-					</div>
-					<hr>		
-				</c:forEach>
-
-				</div>
-				<div class="panel-footer">
-					<div class="row text-center">
-					<div class="col-xs-3">
-								<button type="button" class="btn btn-primary btn-sm btn-block" onclick="return continueShopping()">
-									<span class="glyphicon glyphicon-share-alt"></span> 繼續購物
-								</button>
-							</div>
-						<div class="col-xs-6">
-							<h4 class="text-right">總金額:<strong><fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###,###" />元</strong></h4>
-						</div>
-						<div class="col-xs-3">
-							<button type="button" class="btn btn-success btn-block" onclick="return checkOut()">
-								去買單
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="wrapper">
+	 <div class="header">
+		<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 	</div>
+<form:form id="cartForm">	
+<div class="shopping-cart content">
+      <!-- Title -->      
+      <div class="title">
+        	購物車
+<!--         	<button type="button" class="btn1 btn-success " onclick="return checkOut()"> -->
+<!-- 				去買單 -->
+<!-- 			</button> -->
+			
+			<button type="button" class="btn2 btn-info " onclick="return continueShopping()">
+				繼續購物
+			</button>
+			
+      </div>
+      
+<c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">  
+      <div class="item">
+        <div class="buttons">
+        		<!-- 刪除購物車商品 --> 
+          <a class="delete-btn" onclick="return cancelProduct(${anEntry.key})"></a>         
+        </div>
 
+        <div class="image">
+          <img src="<c:url value='/shoppingCart/item-1.png' />" />
+        </div>
+
+        <div class="description">
+          <span>${anEntry.value.description}</span>        
+        </div>
+
+        <div class="quantity">
+          <button class="plus-btn" type="button" name="button">
+            <img src="<c:url value='/shoppingCart/plus.svg' />" />
+          </button>
+          <input id="${vs.index}qty" type="text" name="name" value="${anEntry.value.quantity}">
+          <button class="minus-btn" type="button" name="button">
+            <img src="<c:url value='/shoppingCart/minus.svg' />"  />
+          </button>
+        </div>
+
+        <div class="unit-price"><fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount }" pattern="#,###" />元 </div>
+      	
+      	<div class="refresh">
+      	  <button id="refresh" class="cart-btn" type="button" name="button" onclick="return modifyQty(${anEntry.key}, ${anEntry.value.quantity}, ${vs.index})">
+            <img src="<c:url value='/shoppingCart/refresh_cart.png' />" />
+          </button>
+         </div>
+      </div>
+		<c:if test="${vs.last}">      
+         <div class="total-price">總付款金額: <fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###" />元 
+         	<button type="button" class="btn1 btn-success " onclick="return checkOut()">
+				去買單
+			</button>
+         </div>
+      	</c:if>
+      		<input type="text" id="oItem" value="${ShoppingCart.content}" disabled hidden="hidden">
+      		
+      </c:forEach>      
+      </div>     
+  </form:form>
+  	<div class="footer">    
+		<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
+	</div>
 </div>
-</form:form>
 
-	<a class="btn btn-primary" href='<c:url value="/"/>'>回首頁</a>
-	
-<!-- 購物車script -->
+  <script type="text/javascript">
+      $('.minus-btn').on('click', function(e) {
+    		e.preventDefault();
+    		var $this = $(this);
+    		var $input = $this.closest('div').find('input');
+    		var value = parseInt($input.val());
+
+    		if (value > 1) {
+    			value = value - 1;
+    		} else {
+    			value = 1;
+    		}
+
+        $input.val(value);
+
+    	});
+
+    	$('.plus-btn').on('click', function(e) {
+    		e.preventDefault();
+    		var $this = $(this);
+    		var $input = $this.closest('div').find('input');
+    		var value = parseInt($input.val());
+
+    		if (value < 100) {
+      		value = value + 1;
+    		} else {
+    			value =100;
+    		}
+
+    		$input.val(value);
+    	});
+
+      $('.like-btn').on('click', function() {
+        $(this).toggleClass('is-active');
+      });
+    </script>
+    
+    <!-- 購物車script -->
 <script type="text/javascript">
 
 function continueShopping(){
-	if (confirm("離開此頁，繼續購物  ") ) {
+// 	if (confirm("離開此頁，繼續購物  ") ) {
 		window.location.href="<c:url value='/productsAddCart' />";
-	}
+// 	}
 }
 
 function checkOut(){
-	if(confirm("去買單")){
-		window.location.href="<c:url value='/order/add' />";
+	let oItem= document.getElementById("oItem").value;
+// 	window.alert("oItem");
+	if(oItem == '{}' || oItem == ''){
+		window.alert("購物車為空，請選購商品");
+	}else{
+		if(confirm("去買單")){
+			window.location.href="<c:url value='/addOrder' />"; //window.location.href="<c:url value='/order/add' />";
+		}
 	}
 }
 
 function cancelProduct(pId){
 	if(confirm("你確定要移除嗎?")){
-		document.forms[0].action="<c:url value='/cancelProduct?pId=" + pId + "' />";
-		document.forms[0].submit();
+		document.getElementById("cartForm").action="<c:url value='/cancelProduct?pId=" + pId + "' />";
+		document.getElementById("cartForm").submit();
 		
 	}
 }
@@ -177,13 +160,15 @@ function modifyQty(pId, qty,index){
 	let x = index+"qty";
 	let newQty = document.getElementById(x).value;
 	if(confirm("購買數量將變更為" + newQty + "個，請確認是否更新" )){
-		document.forms[0].action="<c:url value='/modifyQty?pId=" + pId + "&newQty=" + newQty + "' />";
-		document.forms[0].submit();
+		document.getElementById("cartForm").action="<c:url value='/modifyQty?pId=" + pId + "&newQty=" + newQty + "' />";
+		document.getElementById("cartForm").submit();
 	}
 }
-<!-- 購物車script -->
+
 
 </script>
+    
+    
 
 </body>
 </html>

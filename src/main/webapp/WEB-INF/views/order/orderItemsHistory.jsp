@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>訂單明細</title>
+<title>買過商品查詢</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 <%-- 	<link rel="icon" type="image/png" href="<c:url value='/order/images/icons/favicon.ico' />"/> --%>
@@ -31,14 +31,16 @@
 <div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
-				<a class="btn btn-secondary" style="margin-bottom:10px" href="<spring:url value='/ordersBymId?mId=${memberLoginOK.mId}' />" >返回訂單查詢</a>
-				<span style="margin-left:20px;font-size:30px;font-weight:bold">訂單明細</span>
+				<a class="btn btn-secondary" style="margin-bottom:10px" href='<c:url value="/membercentre"/>'>返回會員中心</a>
+				<span style="margin-left:20px;font-size:30px;font-weight:bold">買過商品查詢</span>
+				
+				
 				<div class="table100 ver2 m-b-110">
 					<div class="table100-head">
 						<table>
 							<thead>
 								<tr class="row100 head">									
-									<th class="cell100 column1 font-weight-bold" style="border-style:none">訂單編號</th>
+									<th class="cell100 column1 font-weight-bold" style="border-style:none">購買日期</th>
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">商品編號</th>
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">品名</th>
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">單價</th>							
@@ -54,7 +56,7 @@
 							<tbody>	
 								<tr class="row100 body">
 								
-									<td class="cell100 column1" style="border-style:none">${item.orderBean.oId}</td>
+									<td class="cell100 column1" style="border-style:none">${item.orderBean.odate}</td>
 									<td class="cell100 column2" style="border-style:none">${item.productId}</td>
 									<td class="cell100 column2" style="border-style:none">${item.description}</td>
 									<td class="cell100 column2" style="border-style:none">${item.unitPrice}元</td>
@@ -67,7 +69,7 @@
 					</div>
 				</div>
 			</div>
-<%-- 			<a class="btn btn-primary" href='<c:url value="${header.referer }"/>'>返回</a> --%>
+<%-- 			<a class="btn btn-primary" href='<c:url value="/"/>'>回首頁</a> --%>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
