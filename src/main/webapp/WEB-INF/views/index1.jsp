@@ -529,6 +529,9 @@
 		</div>
 	</div>
 	<!--social design arae end-->
+	
+	<!-- 左邊那一條 -->
+	
 	<!--about us area-->
 	<div class="about_us_area">
 		<div class="about_main">
@@ -4717,7 +4720,7 @@
 										</a></li>
 										<li><a class="facebook social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
-											data-original-title="Facebook"> <i class="fa fa-facebook"></i>
+											data-original-title="whatsapp"> <i class="fa fa-whatsapp"></i>
 										</a></li>
 										<li><a class="google-plus social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"

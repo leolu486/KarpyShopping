@@ -38,6 +38,9 @@
 <!-- 	type="text/css" /> -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/AddressSelectList.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/modernizr-2.8.3.min.js"></script>
+<meta charset="UTF-8">
 <title>Document</title>
 </head>
 <!-- <script src="js/AddressSelectList.js"></script> -->
@@ -104,6 +107,7 @@
 	height: 550px;
 	margin-left: 230px;
 	padding-top: 20px;
+	margin-top:15px;
 }
 
 .border1 {
@@ -116,27 +120,69 @@
 }
 
 .catalog {
-	margin: 6px 0;
+	margin: 15px 0;
 	font-size: 15px;
 	list-style-type: none;
+	text-align: center;
 }
 
 .p1 {
 	font-size: 25px;
 	text-align: left;
+	color: #FF7F50;
 }
 
 .div2 {
 	width: 1000px;
 	height: 600px;
+<<<<<<< HEAD
+	margin-top: 30px;
+	padding-top: 10px;
+=======
 	margin-left: 25%;
 	margin-top: 30px;
 	padding-top: 22px;
+>>>>>>> 7a6557c 會員資料,密碼,信用卡更改
 	background-color: #F5F5F5;
 }
 
+<<<<<<< HEAD
+.div3{
+ 	width:1000px;
+ 	haight:1000px;
+	margin:0px auto;
+	padding:0px;
+	padding-bottom:30px;
+}
+.btn1 {
+	margin-left: 20px;
+}
+
+.p1234 {
+	font-size: 25px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.rwdtxt {
+	font-size: 1.2rem;
+}
+
+@media ( min-width : 600px) and (max-width: 1200px) {
+	.rwdtxt {
+		font-size: calc(1.2rem + ( 1.3 -1.2)* ((100vw- 600px)/(1200- 600)));
+	}
+}
+
+@media ( min-width : 1200px) {
+	.rwdtxt {
+		font-size: 1.3rem;
+	}
+}
+=======
 .p1234 {
 	font-size: 20px;
+>>>>>>> 7a6557c 會員資料,密碼,信用卡更改
 }
 
 .rwdtxt {
@@ -161,54 +207,71 @@
 	<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 	<!-- <div class="d-flex justify-content-center align-items-center w-100"> -->
 
-
+<div class="div3">
 	<div class="div2">
 		<div class="border1">
-			<dd>
+			<div>
+
+
+				<div>
+					<img src="data:image/jpg;base64,${memberImage}" width="200px"
+						height="auto" />
+					<p style="text-align: center">${memberLoginOK.name}</p>
+				</div>
 				<ul>
-					<p class="p1234">我的帳戶</p>
+					<li class="p1234">我的帳戶</li>
 					<li class="catalog"><a href="#" id="blogin">個人資料</a></li>
 					<li class="catalog"><a href="#" id="rlogin">修改密碼</a></li>
 					<li class="catalog"><a href="#" id="Clogin">信用卡資料</a></li>
 				</ul>
-			</dd>
+			</div>
 
 		</div>
 		<!-- login block -->
 		<form:form method='POST' modelAttribute="memberBean"
 			enctype="multipart/form-data">
-			<div class="border2" id="login">
+			<div class=" border2" id="login">
+
 				<div class="container">
 					<p class="p1">個人檔案</p>
-					<hr style="width: 60%">
+					<hr style="width:670px">
 					<div style="padding-left: 150px; padding-top: 20px;">
 						<div class="form-group row ">
 							<label for="inputEmail3" class="col-sm-2 col-form-label">姓名：</label>
 							<div class="col-auto ">
 								<form:input type="text" class="form-control" id="inputEmail3"
-									placeholder="姓名" autofocus="autofocus" path="name" value="${memberLoginOK.name}"/>
+
+									placeholder="姓名" autofocus="autofocus" path="name"
+									value="${memberLoginOK.name}" />
+
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="id" class="col-sm-2 col-form-label">照片：</label>
 							<div class="col-auto">
 								<form:input type="file" class="form-control-file"
-									id="exampleFormControlFile1" placeholder="未設定"
-									path="file" name="file" />
+
+									id="exampleFormControlFile1" placeholder="未設定" path="file"
+									name="file" />
+
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="email" class="col-sm-2 col-form-label">Email：</label>
 							<div class="col-auto">
 								<form:input type="email" class="form-control" id="inputEmail3"
-									placeholder="Email" path="email" value="${memberLoginOK.email}"/>
+
+									placeholder="Email" path="email" value="${memberLoginOK.email}" />
+
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="phone" class="col-sm-2 col-form-label">手機：</label>
 							<div class="col-auto">
 								<form:input type="phone" class="form-control" id="phone"
-									placeholder="phone" path="tel" value="${memberLoginOK.tel}"/>
+
+									placeholder="phone" path="tel" value="${memberLoginOK.tel}" />
+
 							</div>
 						</div>
 						<div class="form-group row">
@@ -273,6 +336,17 @@
 						</div>
 
 
+<<<<<<< HEAD
+						<!-- 						<div class="form-group row"> -->
+						<!-- 							<div class="col-sm-5 "> -->
+						<!-- 								<button type="submit" id="sign" class="btn btn-primary" -->
+						<!-- 									style="width: 300px; height: 40px; background-color: #FF7F50;">確認更改</button> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
+
+						<div class="form_btn" style="margin-left: 20px">
+							<button type="submit" id="sign">確認更改</button>
+=======
 						<div class="form-group row" style="margin-left: 12%;">
 							<div class="col-sm-10 ">
 								<button type="submit" id="sign" class="btn btn-primary"
@@ -284,8 +358,14 @@
 									name="renewPW" type="hidden" placeholder="再次輸入新密碼"> <input
 									name="code" type="hidden" placeholder="輸入驗證碼">
 							</div>
+>>>>>>> 7a6557c 會員資料,密碼,信用卡更改
 						</div>
 					</div>
+					<input id="type" name="form" type='hidden' value='1' /> <input
+						name="oldPW" type="hidden" placeholder="舊密碼"> <input
+						name="newPW" type="hidden" placeholder="新密碼"> <input
+						name="renewPW" type="hidden" placeholder="再次輸入新密碼"> <input
+						name="code" type="hidden" placeholder="輸入驗證碼">
 				</div>
 			</div>
 		</form:form>
@@ -316,9 +396,15 @@
 				<div class="form_btn">
 					<button>確認更改</button>
 				</div>
+<<<<<<< HEAD
+<!-- 				<div class="form_reg_btn"> -->
+<%-- 					<a href="<c:url value='/home'/>">回首頁 </a> --%>
+<!-- 				</div> -->
+=======
 				<div class="form_reg_btn">
 					<a href="<c:url value='/home'/>">回首頁 </a>
 				</div>
+>>>>>>> 7a6557c 會員資料,密碼,信用卡更改
 
 				<input id="type" name="form" type='hidden' value='2' />
 				<input name="name" placeholder="姓名" type="hidden">
@@ -357,10 +443,32 @@
 						<div class="form-group row">
 							<label for="CNumber" class="col-sm-2 col-form-label">
 								信用卡卡號：</label>
+<<<<<<< HEAD
+							<div class="col-auto" style="width:80px">
+								<form:input class="form-control" id="cnumber" path="cnumber"
+									type='text' placeholder="1234" pattern="[0-9]{4}"
+									maxlength="4" />
+							</div>-
+							<div class="col-auto" style="width:80px">
+								<form:input class="form-control" id="cnumber" path="cnumber"
+									type='text' placeholder="5678" pattern="[0-9]{4}"
+									maxlength="4" />
+							</div>-
+							<div class="col-auto" style="width:80px">
+								<form:input class="form-control" id="cnumber" path="cnumber"
+									type='text' placeholder="5678" pattern="[0-9]{4}"
+									maxlength="4" />
+							</div>-
+							<div class="col-auto" style="width:80px">
+								<form:input class="form-control" id="cnumber" path="cnumber"
+									type='text' placeholder="5678" pattern="[0-9]{4}"
+									maxlength="4" />
+=======
 							<div class="col-auto">
 								<form:input class="form-control" id="cnumber" path="cnumber"
 									type='text' placeholder="信用卡卡號" pattern="[0-9]{16}"
 									maxlength="16" />
+>>>>>>> 7a6557c 會員資料,密碼,信用卡更改
 							</div>
 						</div>
 						<div class="form-group row">
@@ -386,6 +494,18 @@
 									type='date' placeholder="未設定" />
 							</div>
 						</div>
+<<<<<<< HEAD
+						<!-- 						<div class="form-group row" style="margin-left: 12%;"> -->
+						<!-- 							<div class="col-sm-10 "> -->
+						<!-- 								<button type="submit" id="submit" class="btn btn-primary" -->
+						<!-- 									style="width: 100px;">新增</button> -->
+
+						<!-- 							</div> -->
+						<!-- 						</div> -->
+
+						<div class="form_btn" style="margin-left: 20px">
+							<button type="submit" id="submit">確認更改</button>
+=======
 						<div class="form-group row" style="margin-left: 12%;">
 							<div class="col-sm-10 ">
 								<button type="submit" id="submit" class="btn btn-primary"
@@ -406,16 +526,37 @@
 									name="city" placeholder="鄉鎮地區" type="hidden"> <input
 									name="addr" placeholder="請輸入地址" type="hidden">
 							</div>
+>>>>>>> 7a6557c 會員資料,密碼,信用卡更改
 						</div>
+						<input id="type" name="form" type='hidden' value='3' /> <input
+							name="oldPW" type="hidden" placeholder="舊密碼"> <input
+							name="newPW" type="hidden" placeholder="新密碼"> <input
+							name="renewPW" type="hidden" placeholder="再次輸入新密碼"> <input
+							name="code" type="hidden" placeholder="輸入驗證碼"> <input
+							name="name" placeholder="姓名" type="hidden"> <input
+							name="email" placeholder="Email" type="hidden"> <input
+							name="phone" placeholder="phone" type="hidden"> <input
+							name="date" placeholder="姓名" type="hidden"> <input
+							name="gender" placeholder="性別" type="hidden"> <input
+							name="county" placeholder="縣市" type="hidden"> <input
+							name="city" placeholder="鄉鎮地區" type="hidden"> <input
+							name="addr" placeholder="請輸入地址" type="hidden">
 					</div>
 
 				</form:form>
 			</section>
 		</div>
 	</div>
+<<<<<<< HEAD
+</div>
+=======
+>>>>>>> 7a6557c 會員資料,密碼,信用卡更改
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7a6557c 會員資料,密碼,信用卡更改
 	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 </body>
 </html>
