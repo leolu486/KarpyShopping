@@ -107,8 +107,7 @@ public class MemberController {
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		System.out.println("form :" + form);
-		
-		
+
 		if (!form) {
 			int mId = service.addMember(mb);
 			mb.setmId(mId);
@@ -144,9 +143,9 @@ public class MemberController {
 		service.addMember(mb);
 		return "redirect:/members";
 	}
-	
+
 //修改會員控制器
-	
+
 	@RequestMapping(value = "/updatemember", method = RequestMethod.GET)
 	public String Changemamber(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -156,12 +155,12 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/updatemember", method = RequestMethod.POST)
-	public String Changemember(@ModelAttribute("MemberBean") MemberBean mb,
-			@RequestParam("county")String county,@RequestParam("city")String city,@RequestParam("addr")String addr	
-			,@RequestParam("gender") String gender, @RequestParam("date")@DateTimeFormat(pattern = "yyyy/MM/dd") Date date
-	,BindingResult result, HttpServletRequest request) {
-		System.out.println("=====date = "+ date);
-		HttpSession session =request.getSession();
+	public String Changemember(@ModelAttribute("MemberBean") MemberBean mb, @RequestParam("county") String county,
+			@RequestParam("city") String city, @RequestParam("addr") String addr, @RequestParam("gender") String gender,
+			@RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date, BindingResult result,
+			HttpServletRequest request) {
+		System.out.println("=====date = " + date);
+		HttpSession session = request.getSession();
 		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
 //		memberBean.setName(mb.getName());
 //		memberBean.setMemberImage(mb.getMemberImage());
@@ -174,10 +173,7 @@ public class MemberController {
 		service.updateMember(memberBean);
 		return "redirect:/home";
 	}
-	
-	
-	
-	
+
 //變更密碼控制器
 	@RequestMapping(value = "/member/change", method = RequestMethod.GET)
 	public String getChangeMemberForm(Model model) {
@@ -276,14 +272,12 @@ public class MemberController {
 //		return "membertest";
 //	}
 
-
-	
 	@RequestMapping(value = "/membertest", method = RequestMethod.GET)
 	public String Changemamber1(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		CreditCardBean cb = new CreditCardBean();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
-		System.out.println("mid:"+member.getmId());
+		System.out.println("mid:" + member.getmId());
 		Blob blob = null;
 		byte[] imageData = null;
 		if (member != null && member.getMemberImage() != null) {
@@ -300,14 +294,15 @@ public class MemberController {
 			}
 
 		}
-		
+
 		model.addAttribute("memberBean", member);
 		System.out.println("member Id" + member.getmId());
 		model.addAttribute("CreditCardBean", cb);
 		return "membertest";
 	}
-	
+
 	@RequestMapping(value = "/membertest", method = RequestMethod.POST)
+
 	public String Changemamber1(@ModelAttribute("CreditCardBean") CreditCardBean cb,@ModelAttribute("memberBean")MemberBean mb,
 			BindingResult result,
 			HttpServletRequest request, @RequestParam("form") String form,@RequestParam("oldPW") String oldPW, @RequestParam("newPW") String newPW,
@@ -317,23 +312,15 @@ public class MemberController {
 			) {
 			
 		if(form.equals("1") ) {
+
 			MultipartFile file = mb.getFile();
-			long sizeInBytes = 0;
-			InputStream is = null;
-			Blob blob;
-			HttpSession session =request.getSession();
-			MemberBean mBean = (MemberBean)session.getAttribute("memberLoginOK");
-			System.out.println("mBean:"+mBean.toString());
-			mb.setmId(mBean.getmId());
+			mb.setmId(memberbean.getmId());
 			mb.setBirthday(new java.sql.Timestamp(date.getTime()));
 			mb.setGender(gender);
 			mb.setAddr(county + city + addr);
 			if (!file.isEmpty()) {
-				sizeInBytes = file.getSize();
 				try {
-					is = file.getInputStream();
-					blob = SystemUtils2019.fileToBlob(is, sizeInBytes);
-					mb.setMemberImage(blob);
+					mb.setMemberImage(SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize()));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -342,26 +329,24 @@ public class MemberController {
 					e.printStackTrace();
 				}
 			}
-			System.out.println(mb.toString());
-			System.out.println("a");
 			service.updateMember(mb);
-			System.out.println("b");
 			session.setAttribute("memberLoginOK", mb);
-		}else if(form.equals("2")){
-			System.out.println("form" + 2);
-			HttpSession session = request.getSession();
-			MemberBean mb1 = (MemberBean) session.getAttribute("memberLoginOK");
-			service.changePassword(service.checkIdPassword(mb1.getAccount(), oldPW), newPW);
-					
-		}else if(form.equals("3")) {
-			System.out.println("DATE:" + date);
+		}
+		// 修改密碼
+		else if (form.equals("2")) {
+			service.changePassword(service.checkIdPassword(memberbean.getAccount(), oldPW), newPW);
+		}
+		// 新增會員信用卡
+		else if (form.equals("3")) {
 			cb.setVdate(new java.sql.Timestamp(date.getTime()));
+
 			System.out.println("cb:" + cb.toString());
 			HttpSession session = request.getSession();
 			System.out.println("form :" + form);
 			MemberBean db = (MemberBean) session.getAttribute("memberLoginOK");
 			cb.setCnumber(cnumber1 + cnumber2 + cnumber3 + cnumber4);
 			cb.setmId(db.getmId());
+
 			service.addCreditCard(cb);
 		}
 		return "redirect:/home";
