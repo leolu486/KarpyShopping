@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 
 <html class="no-js" lang="en">
@@ -151,48 +152,52 @@
 
 								<a class="cart-toggler" href=""> <img class="icon"
 									src="<c:url value="/images/icon/icon_cart.png"/>"> <span
-									class="my-cart">購物車</span> <span class="qty">2 件</span> <span
+									class="my-cart">購物車</span> <span class="qty">${ShoppingCart.itemNumber}件</span> <span
 									class="fa fa-angle-down"></span>
 								</a>
 								<div class="new_cart_section">
 									<ol class="new-list">
 										<!-- single item -->
-										<li class="wimix_area"><a class="pix_product" href="">
-
-												<img alt=""
-												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
+										<c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}"> 
+										<li class="wimix_area">
+										<a class="pix_product" href="">
+											<img alt="" src="<c:url value="/images/product-pic/7-150x98.jpg" />">
 										</a>
 											<div class="product-details">
-												<a href="#">Adipiscing cursus eu</a> <span class="sig-price">1×$300.00</span>
+												<a href="#">${anEntry.value.description}</a> <span class="sig-price">${anEntry.value.quantity}×$${anEntry.value.unitPrice * anEntry.value.discount }</span>
 											</div>
 											<div class="cart-remove">
 												<a class="action" href="#"> <i class="fa fa-close"></i>
 												</a>
-											</div></li>
-										<!-- single item -->
-										<!-- single item -->
-										<li class="wimix_area"><a class="pix_product" href="#">
-												<img alt=""
-												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
-										</a>
-											<div class="product-details">
-												<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span>
 											</div>
-											<div class="cart-remove">
-												<a class="action" href="#"> <i class="fa fa-close"></i>
-												</a>
-											</div></li>
+										</li>
+											</c:forEach>
+										<!-- single item -->
+										<!-- single item -->
+<!-- 										<li class="wimix_area"><a class="pix_product" href="#"> -->
+<!-- 												<img alt="" -->
+<%-- 												src="<c:url value="/images/product-pic/7-150x98.jpg" />"> --%>
+<!-- 										</a> -->
+<!-- 											<div class="product-details"> -->
+<!-- 												<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span> -->
+<!-- 											</div> -->
+<!-- 											<div class="cart-remove"> -->
+<!-- 												<a class="action" href="#"> <i class="fa fa-close"></i> -->
+<!-- 												</a> -->
+<!-- 											</div></li> -->
 										<!-- single item -->
 									</ol>
 									<div class="top-subtotal">
-										Subtotal: <span class="sig-price">$400.00</span>
+										總金額: <span class="sig-price">$<fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###" /></span>
 									</div>
 									<div class="cart-button">
 										<ul>
-											<li><a href="#">View my cart <i
-													class="fa fa-angle-right"></i></a></li>
-											<li><a href="#">Checkout <i
-													class="fa fa-angle-right"></i></a></li>
+											<li><a href="<spring:url value='/cartConfirm'/>">前往購物車 
+											<i class="fa fa-angle-right"></i></a>
+											</li>
+											<li><a href="<c:url value='/addOrder' />">前往結帳 
+											<i class="fa fa-angle-right"></i></a>
+											</li>
 										</ul>
 									</div>
 								</div>

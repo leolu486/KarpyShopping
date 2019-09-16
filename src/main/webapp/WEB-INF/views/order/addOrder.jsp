@@ -14,33 +14,37 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
-
+	<link rel="stylesheet" type="text/css" href="<c:url value='/shoppingCart/font-awesome.min.css' />">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="<c:url value='/order/form-validation.css' />">
     
     <title>結帳頁面</title>
   </head>
   <body class="bg-light">
-
-    <div class="container">
+  	<div class="wrapper">
+		<div class="header">
+			<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
+		</div>
+	<div class="content" style="margin:30px">
+    <div class="container" style="height:800px;width:1500px">
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h2>結帳</h2>
-<!--         <p class="lead">請填寫以下資訊</p> -->
+        <h1 class="font-weight-bold">結帳</h1>
       </div>
 
 <!-- 購物車檢視 -->
       <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">訂單詳情</span>         
+            <span class="text-muted font-weight-bold">訂單詳情</span>
+            <span><strong class="text-danger">${insertError.emptyCart}</strong></span>  
           </h4>
           
           <ul class="list-group mb-3">
         <c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
-                <h6 class="my-0">${anEntry.value.description}x${anEntry.value.quantity}</h6>
+                <h6 class="my-0">${anEntry.value.description}x ${anEntry.value.quantity}</h6>
                 <small class="text-muted"><fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount }" pattern="#,###" />元</small>             
               </div>             
             </li>
@@ -53,72 +57,71 @@
           </c:forEach> 
             </ul>
 
-          <form class="card p-2">
+          <form class="card p-2" style="height:120px">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code">
+              <input type="text"  class="m-2" placeholder="請輸入代碼">
               <div class="input-group-append">
-                <button type="submit" class="btn btn-secondary">Redeem</button>
+                <button type="submit" class="btn btn-secondary m-3">使用折價券</button>
               </div>
             </div>
           </form>
         </div>
         <div class="col-md-8 order-md-1">
-          <h4 class="mb-3"><strong>請確認以下資訊</strong></h4>
+          <h3 class="mb-3 font-weight-bold h3">請確認以下資訊:</h3>
           
           
 <!--    結帳資訊        -->
-          <form:form modelAttribute='order' method='POST' class='needs-validation' novalidate="novalidate" enctype="multipart/form-data">
+          <form:form id="orderForm" modelAttribute='order' method='POST' class='needs-validation' novalidate="novalidate" enctype="multipart/form-data" >
 			 <div class="mb-3">
-             <p>會員編號: ${memberLoginOK.mId}</p>
-             <p>會員姓名: ${memberLoginOK.name}</p>	
+             <p class="h6"><strong>會員編號: ${memberLoginOK.mId}</strong></p>
+             <p class="h6"><strong>會員姓名: ${memberLoginOK.name}</strong></p>	
               
             </div>
 
             <div class="mb-3">
-              <label for="tel">聯絡電話 <span class="text-muted"></span></label>
-              <form:input type="text" class="form-control" id="tel" path="tel" value='${memberLoginOK.tel}'  required="required"/>
+              <label for="tel" class="h6"><strong>聯絡電話:</strong></label>
+              <form:input type="text" class="form-control" style="background-color:white;" id="tel" path="tel" value='${memberLoginOK.tel}'  required="required"/>
+              <div><strong class="text-danger">${insertError.emptyTel}</strong></div>
               <div class="invalid-feedback">
-               	 此欄位不可為空白
+               	<strong>此欄位不可為空白</strong> 
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="addr">寄送地址</label>
-              <form:input type="text" class="form-control" id="addr" path="addr" value='${memberLoginOK.addr}' required="required" />
+              <label for="addr" class="h6"><strong>寄送地址:</strong></label>
+              <form:input type="text" class="form-control" style="background-color:white;" id="addr" path="addr" value='${memberLoginOK.addr}' required="required" />
+              <div><strong class="text-danger">${insertError.emptyAddr }</strong></div>
               <div class="invalid-feedback">
-               	 此欄位不可為空白
+               	<strong>此欄位不可為空白</strong> 
               </div>
             </div>
               <div class="mb-3">
-              <label for="consignee">收貨人</label>
-              <form:input type="text" class="form-control" id="consignee" path="consignee" value='${memberLoginOK.name}' required="required" />
+              <label for="consignee" class="h6"><strong>收貨人:</strong></label>
+              <form:input type="text" class="form-control" style="background-color:white;" id="consignee" path="consignee" value='${memberLoginOK.name}' required="required" />
+              <div><strong class="text-danger">${insertError.emptyConsignee}</strong></div>
               <div class="invalid-feedback">
-               	 此欄位不可為空白
+               	<strong>此欄位不可為空白</strong> 
               </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-danger btn-lg btn-block" type="submit">下訂單</button>
+            <button id="submit" class="btn btn-danger btn-lg btn-block" type="submit" >下訂單</button>
           </form:form>
         </div>
       </div>
 
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-<!--         <p class="mb-1">&copy; 2019 Karpy Shopping</p> -->
-<!--         <ul class="list-inline"> -->
-<!--           <li class="list-inline-item"><a href="#">Privacy</a></li> -->
-<!--           <li class="list-inline-item"><a href="#">Terms</a></li> -->
-<!--           <li class="list-inline-item"><a href="#">Support</a></li> -->
-<!--         </ul> -->
-      </footer>
     </div>
-
+    </div>
+    <div class="footer">
+		<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
+	</div>
+</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" ></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -140,6 +143,20 @@
           });
         }, false);
       })();
+    </script>
+    
+    <script>
+    	document.getElementById("submit").addEventListener("click",function(event){
+    		if(confirm("你確定要下訂單嗎?")){
+    			document.getElementById("orderForm").action="<c:url value='/addOrder' />";
+    			document.getElementById("orderForm").submit();
+    		}else{
+    			event.preventDefault();
+    			return false;
+    		}
+    	})   	
+    	
+    
     </script>
   </body>
 </html>
