@@ -91,6 +91,30 @@
 			return false;
 		}
 	}
+
+	document.addEventListener("DOMContentLoaded", function() {
+
+		document.getElementById("passwordcheck").addEventListener("click", submitf);
+
+		document.getElementById("opw").addEventListener("focus", function() {
+			this.style.backgroundColor = "lightyellow";
+		});
+		document.getElementById("opw").addEventListener("blur", checkpwd);
+
+		document.getElementById("npw").addEventListener("focus", function() {
+			this.style.backgroundColor = "lightyellow";
+		});
+		document.getElementById("npw").addEventListener("blur", function() {
+			checkpwd();
+		});
+		document.getElementById("rnpw").addEventListener("focus", function() {
+			this.style.backgroundColor = "lightyellow";
+		});
+		document.getElementById("rnpw").addEventListener("blur", function() {
+			checkpwd();
+		});
+
+	});
 </script>
 <style>
 .center {
@@ -375,7 +399,7 @@
 							<input name="code" type="text" placeholder="輸入驗證碼">
 						</div>
 						<div class="form_btn">
-							<button>確認更改</button>
+							<input type=button id="passwordcheck" value="送出">
 						</div>
 
 						<!-- 				<div class="form_reg_btn"> -->
