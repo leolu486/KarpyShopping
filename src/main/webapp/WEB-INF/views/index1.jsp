@@ -4649,25 +4649,25 @@
 							<div class="dxpt_area">
 								<div class="news_right">
 									<div class="news_heading news_heading_3">
-										<h3 class="follow_mix">Follow us:</h3>
+										<h3 class="follow_mix">Contact us:</h3>
 									</div>
 									<ul class="social-icons">
 										<li><a class="facebook social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="Facebook"> <i class="fa fa-facebook"></i>
 										</a></li>
-										<li><a class="facebook social-icon" href="#" title=""
-											target="_blank" data-toggle="tooltip"
-											data-original-title="whatsapp"> <i class="fa fa-whatsapp"></i>
-										</a></li>
+<!-- 										<li><a class="facebook social-icon" href="#" title="" -->
+<!-- 											target="_blank" data-toggle="tooltip" -->
+<!-- 											data-original-title="whatsapp"> <i class="fa fa-whatsapp"></i> -->
+<!-- 										</a></li> -->
 										<li><a class="google-plus social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="Google"> <i class="fa fa-google"></i>
 										</a></li>
-										<li><a class="youtube social-icon" href="#" title=""
-											target="_blank" data-toggle="tooltip"
-											data-original-title="Youtube"> <i class="fa fa-youtube"></i>
-										</a></li>
+<!-- 										<li><a class="youtube social-icon" href="#" title="" -->
+<!-- 											target="_blank" data-toggle="tooltip" -->
+<!-- 											data-original-title="Youtube"> <i class="fa fa-youtube"></i> -->
+<!-- 										</a></li> -->
 										<li><a class="social-icon instagram" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="instagram"> <i
