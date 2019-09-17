@@ -1,27 +1,44 @@
 package com.web.store.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.store.exception.ManagerNotFoundException;
 import com.web.store.exception.ProductNotFoundException;
 import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 import com.web.store.model.ProductBean;
+import com.web.store.model.ProductImagesBean;
 import com.web.store.service.ManagerService;
 import com.web.store.service.ProductService;
+
+import _00_init.util.SystemUtils2019;
 
 @Controller
 public class ProductController {
@@ -125,10 +142,9 @@ public class ProductController {
 	public String getProductsByCategory(@RequestParam("searchBy") String searchBy, Model model) {
 		if (service.getProductByCategory(searchBy).isEmpty() == false) {
 			List<ProductBean> list = service.getProductByCategory(searchBy);
-			model.addAttribute("products", list);
+			model.addAttribute("products", list);	
 			return "products";
 		} else if (service.getProductByVendorName(searchBy).isEmpty() == false) {
-			System.out.println("vendorproduct");
 			List<ProductBean> list = service.getProductByVendorName(searchBy);
 			model.addAttribute("products", list);
 			return "products";
@@ -155,23 +171,361 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("productBean") ProductBean pb, BindingResult result,
+	public String processAddNewProductForm(@ModelAttribute("productBean") ProductBean pb,
+			@RequestParam("sdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String sdate,
+			@RequestParam("expdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String expdate, BindingResult result,
 			HttpServletRequest request) {
-		service.addProduct(pb);
-		return "redirect:/products";
+		pb.setSdate(new java.sql.Timestamp(java.sql.Date.valueOf(sdate).getTime()));
+		pb.setExpdate(new java.sql.Timestamp(java.sql.Date.valueOf(expdate).getTime()));
+
+		//----------------handling image
+		if (pb.getProductImageTemp() != null && !pb.getProductImageTemp().isEmpty()) {
+			MultipartFile file = pb.getProductImageTemp();
+			Blob blob;
+			try {
+				blob = SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize());
+				pb.setProductImage(blob);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pb.getProductImageTemp1() != null && !pb.getProductImageTemp1().isEmpty()) {
+			MultipartFile file = pb.getProductImageTemp1();
+			Blob blob;
+			try {
+				blob = SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize());
+				pb.setProductImage1(blob);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pb.getProductImageTemp2() != null && !pb.getProductImageTemp2().isEmpty()) {
+			MultipartFile file = pb.getProductImageTemp2();
+			Blob blob;
+			try {
+				blob = SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize());
+				pb.setProductImage2(blob);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pb.getProductImageTemp3() != null && !pb.getProductImageTemp3().isEmpty()) {
+			MultipartFile file = pb.getProductImageTemp3();
+			Blob blob;
+			try {
+				blob = SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize());
+				pb.setProductImage3(blob);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+//		long sizeInBytes = 0;
+//		InputStream is = null;
+//		Blob blob;
+//		if (file.length != 0) {
+//			int i = 0;
+//			for (MultipartFile f : file) {
+//				sizeInBytes = f.getSize();
+//				try {
+//					is = f.getInputStream();
+//					blob = SystemUtils2019.fileToBlob(is, sizeInBytes);
+//					System.out.println("------------" + blob);
+//					if (i == 0) {
+//						pb.setProductImage(blob);
+//						i++;
+//					} else if (i == 1) {
+//						pb.setProductImage1(blob);
+//						i++;
+//					} else if (i == 2) {
+//						pb.setProductImage2(blob);
+//						i++;
+//					} else if (i == 3) {
+//						pb.setProductImage3(blob);
+//					}
+//
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (SQLException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+
+	
+	service.addProduct(pb);
+	return"redirect:/products";
+
 	}
 
+	@SuppressWarnings("null")
 	@RequestMapping(value = "/product/update", method = RequestMethod.GET)
-	public String getUpdateProductForm(@RequestParam("pId") Integer pId, Model model) {
+	public String getUpdateProductForm(@RequestParam("pId") Integer pId, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("productImage");
+		session.removeAttribute("productImage1");
+		session.removeAttribute("productImage2");
+		session.removeAttribute("productImage3");
 		ProductBean pb = service.getProductById(pId);
+		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+		if (pb.getSdate() != null) {
+			String sdate = DATE_FORMAT.format(pb.getSdate());
+			model.addAttribute("sdate1", sdate);
+		}
+		if (pb.getExpdate() != null) {
+			String expdate = DATE_FORMAT.format(pb.getExpdate());
+			model.addAttribute("expdate1", expdate);
+		}
+
+		Blob blob = null;
+		byte[] imageData = null;
+
+		if (pb.getProductImage() != null) {
+			System.out.println("1");
+			blob = pb.getProductImage();
+			System.out.println("blob: " + blob);
+			try {
+
+//				if (pib.getProductImage() != null) {  //&& pib.getProductImage().length() > 0				
+				imageData = blob.getBytes(1, (int) blob.length());
+				System.out.println("imgdata:" + imageData);
+				System.out.println("6");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+
+				System.out.println("helloWorld");
+				e.printStackTrace();
+			}
+			session.setAttribute("productImage", Base64.getEncoder().encodeToString(imageData));
+		}
+
+		if (pb.getProductImage1() != null) {
+			System.out.println("2");
+			blob = pb.getProductImage1();
+			System.out.println("blob: " + blob);
+			try {
+
+//				if (pib.getProductImage() != null) {  //&& pib.getProductImage().length() > 0				
+				imageData = blob.getBytes(1, (int) blob.length());
+				System.out.println("imgdata:" + imageData);
+				System.out.println("6");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+
+				System.out.println("helloWorld");
+				e.printStackTrace();
+			}
+			session.setAttribute("productImage1", Base64.getEncoder().encodeToString(imageData));
+		}
+
+		if (pb.getProductImage2() != null) {
+			System.out.println("3");
+			blob = pb.getProductImage2();
+			System.out.println("blob: " + blob);
+			try {
+
+//				if (pib.getProductImage() != null) {  //&& pib.getProductImage().length() > 0				
+				imageData = blob.getBytes(1, (int) blob.length());
+				System.out.println("imgdata:" + imageData);
+				System.out.println("6");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+
+				System.out.println("helloWorld");
+				e.printStackTrace();
+			}
+			session.setAttribute("productImage2", Base64.getEncoder().encodeToString(imageData));
+		}
+
+		if (pb.getProductImage3() != null) {
+			System.out.println("4");
+			blob = pb.getProductImage3();
+			System.out.println("blob: " + blob);
+			try {
+
+//				if (pib.getProductImage() != null) {  //&& pib.getProductImage().length() > 0				
+				imageData = blob.getBytes(1, (int) blob.length());
+				System.out.println("imgdata:" + imageData);
+				System.out.println("6");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+
+				System.out.println("helloWorld");
+				e.printStackTrace();
+			}
+			session.setAttribute("productImage3", Base64.getEncoder().encodeToString(imageData));
+		}
+//--------------------------------------------------------------------------------------------------
+//		Blob[] blob = new Blob[4];
+//		int token = 0;
+//		if (pb.getProductImage() != null) {
+//			blob[0] = pb.getProductImage();
+//			token++;
+//		}
+//		if (pb.getProductImage1() != null) {
+//			blob[1] = pb.getProductImage1();
+//			token++;
+//		}
+//		if (pb.getProductImage2() != null) {
+//			blob[2] = pb.getProductImage2();
+//			token++;
+//		}
+//		if (pb.getProductImage3() != null) {
+//			blob[3] = pb.getProductImage3();
+//			token++;
+//		}
+//
+//		for (int x = 0; x < token; x++) {
+//			Blob b = blob[x];
+//			byte[] imageData = null;
+//			try {
+//
+////				if (pib.getProductImage() != null) {  //&& pib.getProductImage().length() > 0				
+//				imageData = b.getBytes(1, (int) b.length());
+//				System.out.println("imgdata:" + imageData);
+//				System.out.println("6");
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//
+//				System.out.println("helloWorld");
+//				e.printStackTrace();
+//			}
+//			if (token == 1) {
+//				session.setAttribute("productImage", Base64.getEncoder().encodeToString(imageData));
+//			} else if (token == 2) {
+//				session.setAttribute("productImage1", Base64.getEncoder().encodeToString(imageData));
+//			} else if (token == 3) {
+//				session.setAttribute("productImage2", Base64.getEncoder().encodeToString(imageData));
+//			} else if (token == 4) {
+//				session.setAttribute("productImage3", Base64.getEncoder().encodeToString(imageData));
+//			}
+//
+//		}
+//		token = 0;
 		model.addAttribute("productBean", pb);
+		System.out.println("get pb image: ");
+		System.out.println(pb.getProductImage() == null);
+
 		return "updateProduct";
 	}
 
 	@RequestMapping(value = "/product/update", method = RequestMethod.POST)
-	public String processUpdateProductForm(@ModelAttribute("productBean") ProductBean pb, BindingResult result,
+	public String processUpdateProductForm(@ModelAttribute("productBean") ProductBean pb,
+			@RequestParam("sdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String sdate,
+			@RequestParam("expdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String expdate, BindingResult result,
 			HttpServletRequest request) {
+		ProductBean PB = service.getProductById(pb.getpId());
+		if (!sdate.equals("")) {
+			pb.setSdate(new java.sql.Timestamp(java.sql.Date.valueOf(sdate).getTime()));
+		}
+		if (!expdate.equals("")) {
+			pb.setExpdate(new java.sql.Timestamp(java.sql.Date.valueOf(expdate).getTime()));
+		}
+		
+		System.out.println("handling images start");
+		System.out.println(service.getProductById(pb.getpId()).getProductImage() == null);
+		System.out.println(pb.getProductImage() == null);
+		if(PB.getProductImage() != null)
+			pb.setProductImage(PB.getProductImage());
+		if(PB.getProductImage1() != null)
+			pb.setProductImage1(PB.getProductImage1());
+		if(PB.getProductImage2() != null)
+			pb.setProductImage2(PB.getProductImage2());
+		if(PB.getProductImage3() != null)
+			pb.setProductImage3(PB.getProductImage3());
+		//----------------handling image
+		if (pb.getProductImageTemp() != null && !pb.getProductImageTemp().isEmpty() && pb.getProductImageTemp().getSize() > 0) {
+			System.out.println(pb.getProductImageTemp().isEmpty());
+			System.out.println(pb.getProductImageTemp().getSize());
+			MultipartFile file = pb.getProductImageTemp();
+			Blob blob;
+			try {
+				blob = SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize());
+				pb.setProductImage(blob);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pb.getProductImageTemp1() != null && !pb.getProductImageTemp1().isEmpty()) {
+			MultipartFile file = pb.getProductImageTemp1();
+			Blob blob;
+			try {
+				blob = SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize());
+				pb.setProductImage1(blob);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pb.getProductImageTemp2() != null && !pb.getProductImageTemp2().isEmpty()) {
+			MultipartFile file = pb.getProductImageTemp2();
+			Blob blob;
+			try {
+				blob = SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize());
+				pb.setProductImage2(blob);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pb.getProductImageTemp3() != null && !pb.getProductImageTemp3().isEmpty()) {
+			MultipartFile file = pb.getProductImageTemp3();
+			Blob blob;
+			try {
+				blob = SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize());
+				pb.setProductImage3(blob);
+			} catch (IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+//		if (pb.getProductImageTemp() != null) {
+//
+//			MultipartFile[] file = pb.getProductImageTemp();
+//			long sizeInBytes = 0;
+//			InputStream is = null;
+//			Blob blob;
+//			if (file.length != 0) {
+//				int i = 0;
+//				for (MultipartFile f : file) {
+//					sizeInBytes = f.getSize();
+//					try {
+//						is = f.getInputStream();
+//						blob = SystemUtils2019.fileToBlob(is, sizeInBytes);
+//						System.out.println("------------" + blob);
+//						if (i == 0) {
+//							pb.setProductImage(blob);
+//							i++;
+//						} else if (i == 1) {
+//							pb.setProductImage1(blob);
+//							i++;
+//						} else if (i == 2) {
+//							pb.setProductImage2(blob);
+//							i++;
+//						} else if (i == 3) {
+//							pb.setProductImage3(blob);
+//						}
+//
+//					} catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					} catch (SQLException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
+//			}
+//		}
+
 		service.updateProduct(pb);
+
 		return "redirect:/products";
 	}
 

@@ -31,6 +31,8 @@ fieldset {
 		style="height: 1px; border: none; color: #333; background-color: #333;">
 	<section class="container">
 		<!--       三個地方要完全一樣 -->
+		
+		
 		<form:form method='POST' modelAttribute="productBean"
 			class='form-horizontal' enctype="multipart/form-data">
 			<!-- <form>加入enctype="multipart/form-data"才有檔案上傳功能 -->
@@ -61,7 +63,7 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='amount'>
 						數量: </label>
@@ -70,7 +72,7 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='category'>
 						商品種類: </label>
@@ -79,31 +81,99 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='sdate'>
 						進貨日期: </label>
 					<div class="col-lg-10">
-						<form:input id="sdate" path="sdate" type='text'
+						<input id="sdate1" name="sdate1" type='date' value="${sdate1}"
+							class='form:input-large' />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='expdate'>
+						到期日: </label>
+					<div class="col-lg-10">
+						<input id="expdate1" name="expdate1" type='date' value="${expdate1}"
+							class='form:input-large' />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						詳細資料: </label>
+					<div class="col-lg-10">
+						<form:input id="detail" path="detail" type="textarea"
+							class='form:input-large' />
+					</div>
+				</div>
+				<div>
+				<label class="control-label col-lg-2 col-lg-2" for='category'>
+						目前商品圖片: </label>
+						</div>
+					<img src="data:image/jpg;base64,${productImage}" width="640px"
+		height="auto" />
+		
+		<img src="data:image/jpg;base64,${productImage1}" width="640px"
+		height="auto" />
+		
+		<img src="data:image/jpg;base64,${productImage2}" width="640px"
+		height="auto" />
+		
+		<img src="data:image/jpg;base64,${productImage3}" width="640px"
+		height="auto" />
+		
+		<div>
+		<label class="control-label col-lg-2 col-lg-2" for='category'>
+						重新上傳商品圖片: </label>
+						</div>
+						<hr>
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						商品圖片1: </label>
+					<div class="col-lg-10">
+						<form:input id="productImageTemp" path="productImageTemp"
+							type="file" class='form:input-large' />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						商品圖片2: </label>
+					<div class="col-lg-10">
+						<form:input id="productImageTemp1" path="productImageTemp1" type="file"
 							class='form:input-large' />
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='expdate'>
-						到期日: </label>
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						商品圖片3: </label>
 					<div class="col-lg-10">
-						<form:input id="expdate" path="expdate" type='text'
+						<form:input id="productImageTemp2" path="productImageTemp2" type="file"
 							class='form:input-large' />
 					</div>
 				</div>
-								
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						商品圖片4: </label>
+					<div class="col-lg-10">
+						<form:input id="productImageTemp3" path="productImageTemp3" type="file"
+							class='form:input-large' />
+					</div>
+				</div>
+
 				<div class="form-group">
 					<div class='col-lg-offset-2 col-lg-10'>
 						<input id="btnAdd" type='submit' class='btn btn-primary'
-							value="修改"/>
+							value="修改" />
 					</div>
 				</div>
+
+
+
 			</fieldset>
 		</form:form>
 	</section>
