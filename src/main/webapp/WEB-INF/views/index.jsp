@@ -62,6 +62,18 @@
 			<td width="350"><p align="center" /> <a href='ch01/serverTime'>系統時間</a></td>
 		</tr>
 
+		<!-- third party Login -->
+		
+		<tr height="52" bgcolor="lightblue" align="center">
+
+			<td colspan="2"><p align="center" /></p>第三方登入測試</td>
+		</tr>
+		<tr height="52" bgcolor="lightblue" align="center">
+			<td width="350"><p align="center" /> <a href='glogin'>Google登入</a>
+			</td>
+			<td width="350"><p align="center" /> <a href=''>-</a>
+		</tr>
+
 		<!-- Manager Method Test Area -->
 
 		<tr height="52" bgcolor="lightblue" align="center">
@@ -126,7 +138,8 @@
 			<td width="350"><p align="center" /> <a href='ordersBymIdQuery'>單一會員全部訂單查詢</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='queryOrderItemsHistory?mId=${memberLoginOK.mId }'>買過商品查詢</a></td>
+			<td width="350"><p align="center" /> <a
+				href='queryOrderItemsHistory?mId=${memberLoginOK.mId }'>買過商品查詢</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 
@@ -189,16 +202,12 @@
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='uploadImage'>會員上傳照片測試</a></td>
-			<td width="350"><p align="center" />
-				<!-- login  -->
-				<c:if test="${! empty memberLoginOK }">
+			<td width="350"><p align="center" /> <!-- login  --> <c:if
+					test="${! empty memberLoginOK }">
 					會員你好，${memberLoginOK.name} <a href="memberLogout">登出</a>
-				</c:if>
-				<!-- no login -->
-				 <c:if test="${ empty memberLoginOK }">
+				</c:if> <!-- no login --> <c:if test="${ empty memberLoginOK }">
 					<a class="account" href="memberLogin">會員登入/註冊</a>
-				</c:if>
-			</td>
+				</c:if></td>
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
@@ -207,7 +216,6 @@
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='CreditCardList'>信用卡查詢測試</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
-		
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
