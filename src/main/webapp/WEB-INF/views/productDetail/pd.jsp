@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -127,10 +128,20 @@
 							<p>商品編號: ${product.pId}</p>
 							<p>庫存: ${product.amount}</P>
 						</div>
-						<form class="cart-btn-area" action="#">
-							<input type="number" value="1">
-							<button class="add-tocart cart_zpf" type="submit">加入購物車</button>
-						</form>
+						
+						
+						<form:form modelAttribute="product" class="cart-btn-area" method="POST" enctype="multipart/form-data">
+                                <input type="number" name="quantity" id="quantity" value="1" />
+                                <form:input name="pId" path="pId" type="hidden"/>
+                                <form:input name="pname" path="pname" type="hidden"/>
+                                <form:input name="price" path="price" type="hidden"/>
+                                <form:input name="vId" path="vId" type="hidden"/>
+                                <form:input name="category" path="category" type="hidden"/> 
+                                <button class="add-tocart cart_zpf" type="submit">加入購物車</button>
+                            </form:form>
+						
+						
+						
 						<div class="add_defi">
 							<a href="#" data-original-title="Add to Wishlist"
 								data-toggle="tooltip"> <i class="fa fa-heart another_icon"></i>
