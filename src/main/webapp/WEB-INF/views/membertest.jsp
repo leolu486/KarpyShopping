@@ -10,20 +10,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-	crossorigin="anonymous"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-	crossorigin="anonymous"></script>
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="<c:url value= "/css/reset.css" />"
 	type=" text/css" />
 <link rel="stylesheet" href="<c:url value="/css/common.css" />"
@@ -80,18 +72,23 @@
 		});
 	});
 
-	$('#Pin CNumber').on("input propertychange", function() {
-		var _this = $(this);
-		inputFun(_this);
-	});
-
-	function inputFun(value) {
-		var reg = new RegExp("^[0-9]*$");
-		var val = value.val();
-		if (!reg.test(val)) {
-			value.val('')
-		} else {
-			value.next().focus();
+	function checkpwd() {
+		var v1 = document.getElementById("opw").value;
+		var v2 = document.getElementById("npw").value;
+		var v3 = document.getElementById("rnpw").value;
+		if (v1 == "") {
+			alert("請輸入密碼");
+			return false;
+		} else if (v2 == "") {
+			alert("請輸入新密碼")
+			return false;
+		}
+		if (v1 == v2) {
+			alert("新舊密碼不可相同")
+			return false;
+		} else if (v2 != v3) {
+			alert("新密碼不相同")
+			return false;
 		}
 	}
 </script>
@@ -140,8 +137,6 @@
 	height: 600px;
 }
 
-<<<<<<<
-HEAD
 .div5 {
 	margin: 0px;
 	padding: 0px;
@@ -361,19 +356,19 @@ HEAD
 					<p class="p1" style="padding-left: 15px;">會員更改密碼</p>
 					<hr style="width: 100%">
 					<form:form method='POST' class='form-horizontal'
-						enctype="multipart/form-data">
+						enctype="multipart/form-data" onsubmit="return checkpwd();">
 
 						<div class="form_text_ipt">
 							<input name="oldPW" type="password" placeholder="舊密碼"
-								autofocus="autofocus">
+								autofocus="autofocus" id="opw">
+						</div>
+						<div class="form_text_ipt">
+							<input name="newPW" type="password" placeholder="新密碼" id="npw">
 						</div>
 
 						<div class="form_text_ipt">
-							<input name="newPW" type="password" placeholder="新密碼">
-						</div>
-
-						<div class="form_text_ipt">
-							<input name="renewPW" type="password" placeholder="再次輸入新密碼">
+							<input name="renewPW" type="password" placeholder="再次輸入新密碼"
+								id="rnpw">
 						</div>
 
 						<div class="form_text_ipt">
