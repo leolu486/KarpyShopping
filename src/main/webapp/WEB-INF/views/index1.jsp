@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 
 <html class="no-js" lang="en">
@@ -152,52 +151,48 @@
 
 								<a class="cart-toggler" href=""> <img class="icon"
 									src="<c:url value="/images/icon/icon_cart.png"/>"> <span
-									class="my-cart">購物車</span> <span class="qty">${ShoppingCart.itemNumber}件</span> <span
+									class="my-cart">購物車</span> <span class="qty">2 件</span> <span
 									class="fa fa-angle-down"></span>
 								</a>
 								<div class="new_cart_section">
 									<ol class="new-list">
 										<!-- single item -->
-										<c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}"> 
-										<li class="wimix_area">
-										<a class="pix_product" href="">
-											<img alt="" src="<c:url value="/images/product-pic/7-150x98.jpg" />">
+										<li class="wimix_area"><a class="pix_product" href="">
+
+												<img alt=""
+												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
 										</a>
 											<div class="product-details">
-												<a href="#">${anEntry.value.description}</a> <span class="sig-price">${anEntry.value.quantity}×$${anEntry.value.unitPrice * anEntry.value.discount }</span>
+												<a href="#">Adipiscing cursus eu</a> <span class="sig-price">1×$300.00</span>
 											</div>
 											<div class="cart-remove">
 												<a class="action" href="#"> <i class="fa fa-close"></i>
 												</a>
+											</div></li>
+										<!-- single item -->
+										<!-- single item -->
+										<li class="wimix_area"><a class="pix_product" href="#">
+												<img alt=""
+												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
+										</a>
+											<div class="product-details">
+												<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span>
 											</div>
-										</li>
-											</c:forEach>
-										<!-- single item -->
-										<!-- single item -->
-<!-- 										<li class="wimix_area"><a class="pix_product" href="#"> -->
-<!-- 												<img alt="" -->
-<%-- 												src="<c:url value="/images/product-pic/7-150x98.jpg" />"> --%>
-<!-- 										</a> -->
-<!-- 											<div class="product-details"> -->
-<!-- 												<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span> -->
-<!-- 											</div> -->
-<!-- 											<div class="cart-remove"> -->
-<!-- 												<a class="action" href="#"> <i class="fa fa-close"></i> -->
-<!-- 												</a> -->
-<!-- 											</div></li> -->
+											<div class="cart-remove">
+												<a class="action" href="#"> <i class="fa fa-close"></i>
+												</a>
+											</div></li>
 										<!-- single item -->
 									</ol>
 									<div class="top-subtotal">
-										總金額: <span class="sig-price">$<fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###" /></span>
+										Subtotal: <span class="sig-price">$400.00</span>
 									</div>
 									<div class="cart-button">
 										<ul>
-											<li><a href="<spring:url value='/cartConfirm'/>">前往購物車 
-											<i class="fa fa-angle-right"></i></a>
-											</li>
-											<li><a href="<c:url value='/addOrder' />">前往結帳 
-											<i class="fa fa-angle-right"></i></a>
-											</li>
+											<li><a href="#">View my cart <i
+													class="fa fa-angle-right"></i></a></li>
+											<li><a href="#">Checkout <i
+													class="fa fa-angle-right"></i></a></li>
 										</ul>
 									</div>
 								</div>
@@ -597,6 +592,7 @@
 								<i class="fa fa-play-circle"></i> <span>新貨商品</span>
 							</div>
 						</div>
+						<c:forEach var="product01" items='${products}'  begin="2"    end="2" >
 						<div class="row">
 							<div class="whole_product indicator-brand">
 								<div class="col-md-12">
@@ -612,17 +608,13 @@
 												alt="">
 											</a>
 										</div>
-										<div class="product-action" data-toggle="modal"
-											data-target="#myModal">
-											<button type="button" class="btn btn-info btn-lg quickview"
-												data-toggle="tooltip" title="Quickview">點我放大</button>
-										</div>
+										
 
 										<div class="product_content">
 											<div class="usal_pro">
 												<div class="product_name_2">
 													<h2>
-														<a href="#">Donec non est at</a>
+														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price">
@@ -637,7 +629,7 @@
 													</div>
 												</div>
 												<div class="price_box">
-													<span class="spical-price">$250.00</span>
+													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
 												<div class="last_button_area">
 													<ul class="add-to-links clearfix">
@@ -652,9 +644,9 @@
 														</li>
 														<li>
 															<div class="new_act">
-																<a class="button_act" data-quick-id="45" href=""
+																<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																	title="" data-toggle="tooltip"
-																	data-original-title="Donec non est at">Go to Buy</a>
+																	data-original-title="Donec non est at">詳細頁面</a>
 															</div>
 														</li>
 														<li class="addcompare">
@@ -671,6 +663,8 @@
 										</div>
 									</div>
 								</div>
+								</c:forEach>
+								<c:forEach var="product01" items='${products}'  begin="1"    end="1" >
 								<div class="col-md-12">
 									<div class="all-pros all-pros-2 animated fadeInUp">
 										<div class="single_product">
@@ -684,16 +678,12 @@
 												alt="">
 											</a>
 										</div>
-										<div class="product-action" data-toggle="modal"
-											data-target="#myModal">
-											<button type="button" class="btn btn-info btn-lg quickview"
-												data-toggle="tooltip" title="Quickview">Quick View</button>
-										</div>
+										
 										<div class="product_content">
 											<div class="usal_pro">
 												<div class="product_name_2">
 													<h2>
-														<a href="#">Duis convallis</a>
+														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price">
@@ -708,7 +698,7 @@
 													</div>
 												</div>
 												<div class="price_box">
-													<span class="spical-price">$100.00</span>
+													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
 												<div class="last_button_area">
 													<ul class="add-to-links clearfix">
@@ -723,9 +713,9 @@
 														</li>
 														<li>
 															<div class="new_act">
-																<a class="button_act" data-quick-id="45" href=""
+																<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																	title="" data-toggle="tooltip"
-																	data-original-title="Donec non est at">Add To Cart</a>
+																	data-original-title="Donec non est at">詳細頁面</a>
 															</div>
 														</li>
 														<li class="addcompare">
@@ -742,6 +732,8 @@
 										</div>
 									</div>
 								</div>
+								</c:forEach>
+								<c:forEach var="product01" items='${products}'  begin="3"    end="3" >
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -755,16 +747,12 @@
 												alt="">
 											</a>
 										</div>
-										<div class="product-action" data-toggle="modal"
-											data-target="#myModal">
-											<button type="button" class="btn btn-info btn-lg quickview"
-												data-toggle="tooltip" title="Quickview">Quick View</button>
-										</div>
+										
 										<div class="product_content">
 											<div class="usal_pro">
 												<div class="product_name_2">
 													<h2>
-														<a href="#">Adipiscing cursus eu</a>
+														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price">
@@ -780,7 +768,7 @@
 													</div>
 												</div>
 												<div class="price_box">
-													<span class="<spical-></spical->price">$300.00</span>
+													<span class="<spical-></spical->price">商品價錢 : ${product01.price}</span>
 												</div>
 												<div class="last_button_area">
 													<ul class="add-to-links clearfix">
@@ -795,9 +783,9 @@
 														</li>
 														<li>
 															<div class="new_act">
-																<a class="button_act" data-quick-id="45" href=""
+																<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																	title="" data-toggle="tooltip"
-																	data-original-title="Donec non est at">Add To Cart</a>
+																	data-original-title="Donec non est at">詳細頁面</a>
 															</div>
 														</li>
 														<li class="addcompare">
@@ -814,7 +802,9 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div>								
+                                </c:forEach>
+                                <c:forEach var="product01" items='${products}'  begin="4"    end="4" >
 								<div class="col-md-12">
 									<div class="all-pros all-pros-4 animated fadeInUp">
 										<div class="single_product single_product_2">
@@ -831,16 +821,12 @@
 												alt="">
 											</a>
 										</div>
-										<div class="product-action" data-toggle="modal"
-											data-target="#myModal">
-											<button type="button" class="btn btn-info btn-lg quickview"
-												data-toggle="tooltip" title="View">點我放大</button>
-										</div>
+										
 										<div class="product_content">
 											<div class="usal_pro">
 												<div class="product_name_2">
 													<h2>
-														<a href="#">Cras nec nisl ut erat</a>
+														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price">
@@ -853,8 +839,7 @@
 													</div>
 												</div>
 												<div class="price_box">
-													<span class="old-price">$250.00</span> <span
-														class="spical-price">$200.00</span>
+													<span class="<spical-></spical->price">商品價錢 : ${product01.price}</span>
 												</div>
 												<div class="last_button_area">
 													<ul class="add-to-links clearfix">
@@ -869,9 +854,10 @@
 														</li>
 														<li>
 															<div class="new_act">
-																<a class="button_act" data-quick-id="45" href=""
+																<a class="button_act" data-quick-id="45" 
+href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																	title="" data-toggle="tooltip"
-																	data-original-title="Donec non est at">Add To Cart</a>
+																	data-original-title="Donec non est at">詳細頁面</a>
 															</div>
 														</li>
 														<li class="addcompare">
@@ -889,6 +875,8 @@
 										</div>
 									</div>
 								</div>
+								</c:forEach>
+								<c:forEach var="product01" items='${products}'  begin="5"  end="5" >
 								<div class="col-md-12  animated fadeInUp">
 									<div class="all-pros all-pros-5">
 										<div class="single_product">
@@ -902,16 +890,12 @@
 												alt="">
 											</a>
 										</div>
-										<div class="product-action" data-toggle="modal"
-											data-target="#myModal">
-											<button type="button" class="btn btn-info btn-lg quickview"
-												data-toggle="tooltip" title="Quickview">Quick View</button>
-										</div>
+										
 										<div class="product_content">
 											<div class="usal_pro">
 												<div class="product_name_2">
 													<h2>
-														<a href="#">Nam fringilla augue</a>
+														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price">
@@ -926,7 +910,8 @@
 													</div>
 												</div>
 												<div class="price_box">
-													<span class="spical-price">$150.00-$300.00</span>
+													<span class="spical-price">
+商品價錢 : ${product01.price}</span>
 												</div>
 												<div class="last_button_area">
 													<ul class="add-to-links clearfix">
@@ -941,9 +926,9 @@
 														</li>
 														<li>
 															<div class="new_act">
-																<a class="button_act" data-quick-id="45" href=""
+																<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																	title="" data-toggle="tooltip"
-																	data-original-title="Donec non est at">Add To Cart</a>
+																	data-original-title="Donec non est at">詳細頁面</a>
 															</div>
 														</li>
 														<li class="addcompare">
@@ -964,6 +949,8 @@
 						</div>
 					</div>
 				</div>
+				</c:forEach>
+				<c:forEach var="product01" items='${products}'  begin="6"    end="6" >
 				<div class="col-md-3 col-sm-12">
 					<div class="cosmetc_area">
 						<div class="cosmatics_heading">
@@ -986,16 +973,12 @@
 												alt="">
 											</a>
 										</div>
-										<div class="product-action" data-toggle="modal"
-											data-target="#myModal">
-											<button type="button" class="btn btn-info btn-lg quickview"
-												data-toggle="tooltip" title="Quickview">Quick View</button>
-										</div>
+									
 										<div class="product_content">
 											<div class="usal_pro usal_pro_eb">
 												<div class="product_name_2">
 													<h2>
-														<a href="#">Etiam gravida</a>
+														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price">
@@ -1010,8 +993,8 @@
 													</div>
 												</div>
 												<div class="price_box price_box_dgr">
-													<span class="old- price">$250.00</span> <span
-														class="spical-price">$200.00</span>
+													<span class="old- price">商品價錢 : ${product01.price}</span> 
+														
 												</div>
 												<div class="count-down-area">
 													<div data-countdown="2017/11/01"></div>
@@ -1020,6 +1003,8 @@
 										</div>
 									</div>
 								</div>
+								</c:forEach>
+								<c:forEach var="product01" items='${products}'  begin="7"    end="7" >
 								<div class="col-md-12">
 									<div class="all-pros all-pros-8 animated fadeInUp">
 										<div class="single_product_3 ">
@@ -1033,16 +1018,12 @@
 												alt="">
 											</a>
 										</div>
-										<div class="product-action" data-toggle="modal"
-											data-target="#myModal">
-											<button type="button" class="btn btn-info btn-lg quickview"
-												data-toggle="tooltip" title="Quickview">View</button>
-										</div>
+										
 										<div class="product_content">
 											<div class="usal_pro usal_pro_eb">
 												<div class="product_name_2">
 													<h2>
-														<a href="#">Nam fringilla</a>
+														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price">
@@ -1055,8 +1036,7 @@
 													</div>
 												</div>
 												<div class="price_box price_box_dgr">
-													<span class="old- price">$200.00</span> <span
-														class="spical-price">$150.00</span>
+													<span class="old- price">商品價錢 : ${product01.price}</span> 
 												</div>
 												<div class="count-down-area">
 													<div data-countdown="2017/11/01"></div>
@@ -1065,6 +1045,8 @@
 										</div>
 									</div>
 								</div>
+								</c:forEach>
+								<c:forEach var="product01" items='${products}'  begin="8"    end="8" >
 								<div class="col-md-12">
 									<div class="all-pros all-pros-8 animated fadeInUp">
 										<div class="single_product_3 ">
@@ -1078,16 +1060,12 @@
 												alt="">
 											</a>
 										</div>
-										<div class="product-action" data-toggle="modal"
-											data-target="#myModal">
-											<button type="button" class="btn btn-info btn-lg quickview"
-												data-toggle="tooltip" title="Quickview">Quick View</button>
-										</div>
+										
 										<div class="product_content">
 											<div class="usal_pro usal_pro_eb">
 												<div class="product_name_2">
 													<h2>
-														<a href="#">Etiam gravida</a>
+														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price">
@@ -1102,8 +1080,7 @@
 													</div>
 												</div>
 												<div class="price_box price_box_dgr">
-													<span class="old- price">$250.00</span> <span
-														class="spical-price">$200.00</span>
+													<span class="old- price">商品價錢 : ${product01.price}</span> 
 												</div>
 												<div class="count-down-area">
 													<div data-countdown="2017/11/01"></div>
@@ -1112,12 +1089,13 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		</c:forEach>
 	</section>
 	<!--product area end-->
 	<!--plus area start-->
@@ -1161,6 +1139,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12 text-right">
 					<div class="my-tabs">
@@ -1178,6 +1157,8 @@
 							<div role="tabpanel" class="tab-pane active" id="home">
 								<div class="row">
 									<div class="feature-carousel indicator-brand-3">
+									
+									<c:forEach var="product01" items='${products}'  begin="9"    end="9" >
 										<div class="col-md-12">
 											<div class="all-pros animated fadeInUp">
 												<div class="single_product">
@@ -1191,17 +1172,12 @@
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Donec non estat</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -1217,7 +1193,8 @@
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$250.00</span>
+															<span class="spical-price">
+商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -1232,10 +1209,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -1253,175 +1229,28 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										
+										<c:forEach var="product01" items='${products}'  begin="10"    end="10" >
 										<div class="col-md-12">
-											<div class="all-pros  all-pros-2 animated fadeInUp">
+											<div class="all-pros animated fadeInUp">
 												<div class="single_product">
 													<span>New</span>
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_3.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_4.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Duis convallis</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="spical-price">$100.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="all-pros all-pros-5 animated fadeInUp">
-												<div class="single_product">
-													<span>New</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_8.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_9.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Nam fringilla augue</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="spical-price">$150.00-$170.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="all-pros all-pros-6 animated fadeInUp">
-												<div class="single_product_3 ">
-													<span>sale</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_10.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"
 														alt=""> <img class="secondary-img"
 														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Metus nisi posuere nisl</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -1429,14 +1258,16 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$150.00-$200.00</span>
+															<span class="spical-price">
+商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -1451,14 +1282,14 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
+																	<div
+																		class="woocommerce product                                               compare-button">
 																		<a class="compare button" href="" data-product_id="45"
 																			rel="nofollow" data-toggle="tooltip" title=""
 																			data-original-title="Compare"><i
@@ -1471,31 +1302,27 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="11"    end="11" >
 										<div class="col-md-12">
-											<div class="all-pros all-pros-6 animated fadeInUp">
-												<div class="single_product single_product_2">
-													<span>hot</span>
+											<div class="all-pros animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_11.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"
 														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
 														alt="">
-
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Ligula euismod eget</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -1503,14 +1330,16 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$200.00</span>
+															<span class="spical-price">
+商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -1525,14 +1354,14 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
+																	<div
+																		class="woocommerce product                                               compare-button">
 																		<a class="compare button" href="" data-product_id="45"
 																			rel="nofollow" data-toggle="tooltip" title=""
 																			data-original-title="Compare"><i
@@ -1545,30 +1374,27 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="12"    end="12" >
 										<div class="col-md-12">
-											<div class="all-pros all-pros-7 animated fadeInUp">
-												<div class="single_product_3 ">
-													<span>sale</span>
+											<div class="all-pros animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"
 														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Etiam gravida</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -1576,15 +1402,16 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="old- price">$250.00</span> <span
-																class="spical-price">$150.00</span>
+															<span class="spical-price">
+商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -1599,14 +1426,14 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
+																	<div
+																		class="woocommerce product                                               compare-button">
 																		<a class="compare button" href="" data-product_id="45"
 																			rel="nofollow" data-toggle="tooltip" title=""
 																			data-original-title="Compare"><i
@@ -1619,9 +1446,156 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="13"    end="13" >
+										<div class="col-md-12">
+											<div class="all-pros animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">
+商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div
+																		class="woocommerce product                                               compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="14"    end="14" >
+										<div class="col-md-12">
+											<div class="all-pros animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/product-pic/product_pic_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">
+商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div
+																		class="woocommerce product                                               compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
+							
+							<c:forEach var="product01" items='${products}'  begin="15"    end="15" >
 							<div role="tabpanel" class="tab-pane" id="profile">
 								<div class="row">
 									<div class="feature-carousel indicator-brand-3">
@@ -1638,17 +1612,12 @@
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Duis convallis</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -1663,7 +1632,7 @@
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$100.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -1678,10 +1647,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -1698,6 +1666,8 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="16"    end="16" >
 										<div class="col-md-12">
 											<div class="all-pros all-pros-3 animated fadeInUp">
 												<div class="single_product">
@@ -1711,17 +1681,12 @@
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Adipiscing cursus eu</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -1737,7 +1702,7 @@
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$300.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -1752,10 +1717,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -1772,382 +1736,8 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-md-12">
-											<div class="all-pros  all-pros-4 animated fadeInUp">
-												<div class="single_product single_product_2">
-													<span>hot</span>
-												</div>
-												<div class="single_product_3 ">
-													<span>sale</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Cras nec nisl ut era</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="old- price">$250.00</span> <span
-																class="spical-price">$200.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="all-pros all-pros-6 animated fadeInUp">
-												<div class="single_product_3 ">
-													<span>sale</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_10.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Metus nisi posuere nisl</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="spical-price">$150.00-$200.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="all-pros all-pros-9 animated fadeInUp">
-												<div class="single_product_3 ">
-													<span>sale</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Nam fringilla</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="old- price">$200.00</span> <span
-																class="spical-price">$150.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="all-pros all-pros-10 animated fadeInUp">
-												<div class="single_product single_product_2">
-													<span>hot</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_12.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_13.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Duis convallis</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="spical-price">$200.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div role="tabpanel" class="tab-pane" id="messages">
-								<div class="row">
-									<div class="feature-carousel indicator-brand-3">
-										<div class="col-md-12">
-											<div class="all-pros all-pros-2 animated fadeInU">
-												<div class="single_product">
-													<span>New</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_4.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Duis convallis</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="spical-price">$100.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+										</c:forEach>
+											<c:forEach var="product01" items='${products}'  begin="17"    end="17" >
 										<div class="col-md-12">
 											<div class="all-pros all-pros-3 animated fadeInUp">
 												<div class="single_product">
@@ -2161,17 +1751,12 @@
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Adipiscing cursus eu</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -2187,7 +1772,7 @@
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$300.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -2202,10 +1787,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -2222,85 +1806,10 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+											<c:forEach var="product01" items='${products}'  begin="18"    end="18" >
 										<div class="col-md-12">
-											<div class="all-pros all-pros-4 animated fadeInUp">
-												<div class="single_product single_product_2">
-													<span>hot</span>
-												</div>
-												<div class="single_product_3 ">
-													<span>sale</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_7.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_6.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Cras nec nisl ut era</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="old- price">$250.00</span> <span
-																class="spical-price">$200.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="all-pros all-pros-5 animated fadeInUp">
+											<div class="all-pros all-pros-3 animated fadeInUp">
 												<div class="single_product">
 													<span>New</span>
 												</div>
@@ -2312,17 +1821,12 @@
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Nam fringilla augue</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -2330,14 +1834,15 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$150.00-$300.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -2352,10 +1857,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -2372,81 +1876,10 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="19"    end="19" >
 										<div class="col-md-12">
-											<div class="all-pros all-pros-6 animated fadeInUp">
-												<div class="single_product_3 ">
-													<span>sale</span>
-												</div>
-												<div class="sinle_pic">
-													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
-														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
-														alt="">
-													</a>
-												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
-												<div class="product_content">
-													<div class="usal_pro">
-														<div class="product_name_2">
-															<h2>
-																<a href="#">Metus nisi posuere nisl</a>
-															</h2>
-														</div>
-														<div class="product_price">
-															<div class="price_rating">
-																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																	class="fa fa-star"></i></a> <a href="#"> <i
-																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-																</a>
-															</div>
-														</div>
-														<div class="price_box">
-															<span class="spical-price">$150.00-$200.00</span>
-														</div>
-														<div class="last_button_area">
-															<ul class="add-to-links clearfix">
-																<li class="addwishlist">
-																	<div class="yith-wcwl-add-button show">
-																		<a class="add_to_wishlist" href="" rel="nofollow"
-																			data-product-id="45" data-product-type="external"
-																			data-toggle="tooltip" title=""
-																			data-original-title="Add to Wishlist"><i
-																			class="fa fa-heart"></i></a>
-																	</div>
-																</li>
-																<li>
-																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
-																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
-																	</div>
-																</li>
-																<li class="addcompare">
-																	<div class="woocommerce product compare-button">
-																		<a class="compare button" href="" data-product_id="45"
-																			rel="nofollow" data-toggle="tooltip" title=""
-																			data-original-title="Compare"><i
-																			class="fa fa-refresh"></i></a>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="all-pros all-pros-2 animated fadeInUp">
+											<div class="all-pros all-pros-3 animated fadeInUp">
 												<div class="single_product">
 													<span>New</span>
 												</div>
@@ -2458,17 +1891,12 @@
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Duis convallis</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -2476,14 +1904,15 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$100.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -2498,10 +1927,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -2518,6 +1946,497 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="20"    end="20" >
+										<div class="col-md-12">
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div class="woocommerce product compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
+							<c:forEach var="product01" items='${products}'  begin="21"    end="21" >
+										<div class="col-md-12">
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div class="woocommerce product compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="22"    end="22" >
+										<div class="col-md-12">
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div class="woocommerce product compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="23"    end="23" >
+										<div class="col-md-12">
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div class="woocommerce product compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="24"    end="24" >
+										<div class="col-md-12">
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div class="woocommerce product compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="25"    end="25" >
+										<div class="col-md-12">
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div class="woocommerce product compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="26"    end="26" >
+										<div class="col-md-12">
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
+												</div>
+												<div class="sinle_pic">
+													<a href="#"> <img class="primary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt=""> <img class="secondary-img"
+														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_2.jpg" />"
+														alt="">
+													</a>
+												</div>
+												
+												<div class="product_content">
+													<div class="usal_pro">
+														<div class="product_name_2">
+															<h2>
+																<a href="#">${product01.pname}</a>
+															</h2>
+														</div>
+														<div class="product_price">
+															<div class="price_rating">
+																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+																	class="fa fa-star"></i></a> <a href="#"> <i
+																	class="fa fa-star"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a>
+															</div>
+														</div>
+														<div class="price_box">
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
+														</div>
+														<div class="last_button_area">
+															<ul class="add-to-links clearfix">
+																<li class="addwishlist">
+																	<div class="yith-wcwl-add-button show">
+																		<a class="add_to_wishlist" href="" rel="nofollow"
+																			data-product-id="45" data-product-type="external"
+																			data-toggle="tooltip" title=""
+																			data-original-title="Add to Wishlist"><i
+																			class="fa fa-heart"></i></a>
+																	</div>
+																</li>
+																<li>
+																	<div class="new_act">
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
+																			title="" data-toggle="tooltip"
+																			data-original-title="Donec non est at">詳細頁面</a>
+																	</div>
+																</li>
+																<li class="addcompare">
+																	<div class="woocommerce product compare-button">
+																		<a class="compare button" href="" data-product_id="45"
+																			rel="nofollow" data-toggle="tooltip" title=""
+																			data-original-title="Compare"><i
+																			class="fa fa-refresh"></i></a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
@@ -2582,18 +2501,12 @@
 					</div>
 				</div>
 			</div>
+			<c:forEach var="product01" items='${products}'  begin="27"    end="27" >
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12 text-right">
 					<div class="my-tabs">
 						<!-- Nav tabs -->
-						<ul class="favtabs" role="tablist">
-							<li role="presentation" class="active"><a href="#elec"
-								aria-controls="elec" role="tab" data-toggle="tab">Accessories</a></li>
-							<li role="presentation"><a href="#acc" aria-controls="acc"
-								role="tab" data-toggle="tab">Headlight</a></li>
-							<li role="presentation"><a href="#head" aria-controls="head"
-								role="tab" data-toggle="tab">Electronics</a></li>
-						</ul>
+						
 						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="elec">
@@ -2612,17 +2525,12 @@
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Duis convallis</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -2637,7 +2545,7 @@
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$00.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -2652,10 +2560,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -2672,6 +2579,9 @@
 												</div>
 											</div>
 										</div>
+										
+</c:forEach>
+<c:forEach var="product01" items='${products}'  begin="28"    end="28" >
 										<div class="col-md-12">
 											<div class="all-pros all-pros-3 animated fadeInUp">
 												<div class="single_product">
@@ -2685,17 +2595,12 @@
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Adipiscing cursus eu</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -2711,7 +2616,7 @@
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$300.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -2726,10 +2631,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -2746,33 +2650,27 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="29"    end="29" >
 										<div class="col-md-12">
-											<div class="all-pros all-pros-4 animated fadeInUp">
-												<div class="single_product single_product_2">
-													<span>hot</span>
-												</div>
-												<div class="single_product_3 ">
-													<span>sale</span>
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_7.jpg" />"
-														alt=""><img class="secondary-img"
+														src="<c:url value="/images/product-pic/product_pic_5.jpg" />"
+														alt=""> <img class="secondary-img"
 														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Cras nec nisl ut era</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -2780,15 +2678,15 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="old- price">$250.00</span> <span
-																class="spical-price">$200.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -2803,10 +2701,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -2823,30 +2720,27 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="30"    end="30" >
 										<div class="col-md-12">
-											<div class="all-pros all-pros-6 animated fadeInUp">
-												<div class="single_product_3 ">
-													<span>sale</span>
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_10.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_5.jpg" />"
 														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Metus nisi posuere nisl</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -2854,14 +2748,15 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$150.00-$200.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -2876,10 +2771,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -2896,30 +2790,27 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="0"    end="0" >
 										<div class="col-md-12">
-											<div class="all-pros all-pros-9 animated fadeInUp">
-												<div class="single_product_3 ">
-													<span>sale</span>
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_5.jpg" />"
 														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/cosmatics-pic/cosmatic_pix_3.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Nam fringilla</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -2927,15 +2818,15 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="old- price">$200.00</span> <span
-																class="spical-price">$150.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -2950,10 +2841,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -2970,30 +2860,27 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="1"    end="1" >
 										<div class="col-md-12">
-											<div class="all-pros all-pros-10 animated fadeInUp">
-												<div class="single_product single_product_2">
-													<span>hot</span>
+											<div class="all-pros all-pros-3 animated fadeInUp">
+												<div class="single_product">
+													<span>New</span>
 												</div>
 												<div class="sinle_pic">
 													<a href="#"> <img class="primary-img"
-														src="<c:url value="/images/product-pic/product_pic_12.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_5.jpg" />"
 														alt=""> <img class="secondary-img"
-														src="<c:url value="/images/product-pic/product_pic_13.jpg" />"
+														src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
 														alt="">
 													</a>
 												</div>
-												<div class="product-action" data-toggle="modal"
-													data-target="#myModal">
-													<button type="button" class="btn btn-info btn-lg quickview"
-														data-toggle="tooltip" title="Quickview">Quick
-														View</button>
-												</div>
+												
 												<div class="product_content">
 													<div class="usal_pro">
 														<div class="product_name_2">
 															<h2>
-																<a href="#">Duis convallis</a>
+																<a href="#">${product01.pname}</a>
 															</h2>
 														</div>
 														<div class="product_price">
@@ -3001,14 +2888,15 @@
 																<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
 																	class="fa fa-star"></i></a> <a href="#"> <i
 																	class="fa fa-star"></i>
-																</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																	class="not-rated" href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
+																</a> <a class="not-rated" href="#"> <i
+																	class="fa fa-star-o" aria-hidden="true"></i>
 																</a>
 															</div>
 														</div>
 														<div class="price_box">
-															<span class="spical-price">$200.00</span>
+															<span class="spical-price">商品價錢 : ${product01.price}</span>
 														</div>
 														<div class="last_button_area">
 															<ul class="add-to-links clearfix">
@@ -3023,10 +2911,9 @@
 																</li>
 																<li>
 																	<div class="new_act">
-																		<a class="button_act" data-quick-id="45" href=""
+																		<a class="button_act" data-quick-id="45" href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																			title="" data-toggle="tooltip"
-																			data-original-title="Donec non est at">Add To
-																			Cart</a>
+																			data-original-title="Donec non est at">詳細頁面</a>
 																	</div>
 																</li>
 																<li class="addcompare">
@@ -3043,6 +2930,7 @@
 												</div>
 											</div>
 										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
@@ -3978,6 +3866,7 @@
 							</div>
 						</div>
 					</div>
+					<c:forEach var="product01" items='${products}'  begin="0"    end="0" >
 					<div class="row">
 						<div class="all_ayntex indicator-brand-4">
 							<div class="nyx_top_rte">
@@ -3993,11 +3882,13 @@
 												</a>
 											</div>
 										</div>
+										
+										
 										<div class="product_content_2">
 											<div class="usal_pro">
 												<div class=" product_name_new">
 													<h2>
-														<a href="#">Nam fringilla</a>
+														<a href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 													</h2>
 												</div>
 												<div
@@ -4011,7 +3902,7 @@
 													</div>
 												</div>
 												<div class="price_box price_box_new price_box_new_3">
-													<span class="spical-price">$150.00</span>
+													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
 											</div>
 										</div>
@@ -4021,7 +3912,7 @@
 									<div class="all-pros-ex animated fadeInUp">
 										<div class="llc_pro">
 											<div class=" sinle_pic sinle_pic_2">
-												<a href="#"> <img class="primary-img"
+												<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
 													src="<c:url value="/images/top-pic/top_pic_2.jpg" />"
 													alt=""> <img class="secondary-img"
 													src="<c:url value="/images/top-pic/top_pic_3.jpg" />"
@@ -4029,11 +3920,14 @@
 												</a>
 											</div>
 										</div>
+										</c:forEach>
+										
+										<c:forEach var="product01" items='${products}'  begin="1"    end="1" >
 										<div class="product_content_2">
 											<div class="usal_pro">
 												<div class=" product_name_new">
 													<h2>
-														<a href="#">Duis convallis</a>
+														<a href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price product_price_new">
@@ -4046,7 +3940,8 @@
 													</div>
 												</div>
 												<div class="price_box price_box_new">
-													<span class="spical-price">$200.00</span>
+													<span class="spical-price">
+商品價錢 : ${product01.price}</span>
 												</div>
 											</div>
 										</div>
@@ -4064,11 +3959,13 @@
 												</a>
 											</div>
 										</div>
+										</c:forEach>
+										<c:forEach var="product01" items='${products}'  begin="2"    end="2" >
 										<div class="product_content_2">
 											<div class="usal_pro">
 												<div class=" product_name_new">
 													<h2>
-														<a href="#">Nam fringilla</a>
+														<a href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price product_price_new">
@@ -4081,12 +3978,14 @@
 													</div>
 												</div>
 												<div class="price_box price_box_new">
-													<span class="spical-price">$100.00</span>
+													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+								</div>							
+</c:forEach>
+<c:forEach var="product01" items='${products}'  begin="3"    end="3" >
 								<div class="col-md-12">
 									<div class="all-pros-ex animated fadeInUp">
 										<div class="llc_pro">
@@ -4103,7 +4002,7 @@
 											<div class="usal_pro">
 												<div class=" product_name_new">
 													<h2>
-														<a href="#">Purus felis</a>
+														<a href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price product_price_new">
@@ -4116,13 +4015,15 @@
 													</div>
 												</div>
 												<div class="price_box price_box_new">
-													<span class="spical-price">$200.00</span>
+													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							</c:forEach>
+							<c:forEach var="product01" items='${products}'  begin="4"    end="4" >
 							<div class="nyx_top_rte">
 								<div class="col-md-12">
 									<div class="all-pros-ex animated fadeInUp">
@@ -4140,7 +4041,7 @@
 											<div class="usal_pro">
 												<div class=" product_name_new">
 													<h2>
-														<a href="#">Donec a neque</a>
+														<a href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price product_price_new">
@@ -4153,12 +4054,16 @@
 													</div>
 												</div>
 												<div class="price_box price_box_new">
-													<span class="spical-price">$250.00</span>
+													<span class="spical-price">
+商品價錢 : ${product01.price}</span>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+								
+</c:forEach>
+<c:forEach var="product01" items='${products}'  begin="5"    end="5" >
 								<div class="col-md-12">
 									<div class="all-pros-ex animated fadeInUp">
 										<div class="llc_pro">
@@ -4175,7 +4080,7 @@
 											<div class="usal_pro">
 												<div class=" product_name_new">
 													<h2>
-														<a href="#">Cras neque</a>
+														<a href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price product_price_new">
@@ -4188,12 +4093,14 @@
 													</div>
 												</div>
 												<div class="price_box price_box_new">
-													<span class="spical-price">$200.00</span>
+													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+								</c:forEach>
+								<c:forEach var="product01" items='${products}'  begin="6"    end="6" >
 								<div class="col-md-12">
 									<div class="all-pros-ex animated fadeInUp">
 										<div class="llc_pro">
@@ -4210,7 +4117,7 @@
 											<div class="usal_pro">
 												<div class=" product_name_new">
 													<h2>
-														<a href="#">Lorem nec augue</a>
+														<a href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price product_price_new">
@@ -4229,6 +4136,8 @@
 										</div>
 									</div>
 								</div>
+								</c:forEach>
+								<c:forEach var="product01" items='${products}'  begin="7"    end="7" >
 								<div class="col-md-12">
 									<div class="all-pros-ex animated fadeInUp">
 										<div class="llc_pro">
@@ -4245,7 +4154,7 @@
 											<div class="usal_pro">
 												<div class=" product_name_new">
 													<h2>
-														<a href="#">Morbi ornare</a>
+														<a href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 													</h2>
 												</div>
 												<div class="product_price product_price_new">
@@ -4258,13 +4167,14 @@
 													</div>
 												</div>
 												<div class="price_box price_box_new">
-													<span class="spical-price">$9.00</span>
+													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							</c:forEach>
 							<div class="nyx_top_rte">
 								<div class="col-md-12  ">
 									<div class="all-pros-ex animated fadeInUp">

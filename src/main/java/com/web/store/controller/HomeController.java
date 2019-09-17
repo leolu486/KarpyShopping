@@ -1,14 +1,20 @@
 package com.web.store.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.web.store.model.ProductBean;
+import com.web.store.service.ProductService;
 
 @Controller
 public class HomeController {
+	@Autowired
+	ProductService service;
 	@RequestMapping("/welcome")
 	public String welcome(Model model) {
 		model.addAttribute("title", "Welcome to KarpyShopping!");
@@ -35,7 +41,9 @@ public class HomeController {
 	}
 
 	@RequestMapping("home")
-	public String home() {
+	public String home(Model model) {
+		List<ProductBean> list = service.getAllProducts();
+		model.addAttribute("products", list);
 		return "index1";
 	}
 	
