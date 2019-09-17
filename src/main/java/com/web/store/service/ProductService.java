@@ -27,8 +27,5 @@ public interface ProductService {
 
 	List<ProductBean> getProductByVendorName(String vname);
 
-	void addProductImage(ProductImagesBean bean);
-
-	ProductImagesBean getProductImagesById(Integer pId);
 
 }

@@ -28,8 +28,5 @@ public interface ProductDao {
 
 	List<ProductBean> getProductByVendorName(String vname);
 
-	void addProductImage(ProductImagesBean pib);
-
-	ProductImagesBean getProductImagesById(Integer PID);
 
 }

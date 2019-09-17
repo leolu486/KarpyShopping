@@ -34,12 +34,12 @@
 						<h3>訂單問題</h3>
 						<hr>
 
-						<div class="my_account_areadiv">
+						<div class="my_account_areadiv" style="margin-top:40px;">
 							<ul>
-								<li><a href="#">訂單查詢</a></li>
+								<li><a href="<spring:url value='/ordersBymId?mId=${memberLoginOK.mId}' />" >訂單查詢</a></li>
 								<li><a href="#">退訂/退款查詢</a></li>
 								<!-- <li><a href="#">換貨/查詢</a></li> -->
-								<li><a href="#">買過商品查詢</a></li>
+								<li><a href="<spring:url value='/queryOrderItemsHistory?mId=${memberLoginOK.mId }' />" >買過商品查詢</a></li>
 							</ul>
 						</div>
 
@@ -48,7 +48,7 @@
 						<h3>其他查詢</h3>
 						<hr>
 
-						<div class="my_account_areadiv">
+						<div class="my_account_areadiv" style="margin-top:40px;">
 							<ul>
 								<li><a href="#">折價卷查詢</a></li>
 								<li><a href="#">信用卡分期付款查詢</a></li>
@@ -62,10 +62,10 @@
 						<h3>個人資料管理</h3>
 						<hr>
 
-						<div class="my_account_areadiv">
+						<div class="my_account_areadiv" style="margin-top:40px;">
 							<ul>
 								<li><a href="#">商品追蹤清單</a></li>
-								<li><a href="membercentreDetail">會員中心</a></li>
+								<li><a href="membertest">會員中心</a></li>
 								<li><a href="#">公司統編備忘錄管理</a></li>
 								<li><a href="#">發票載具</a></li>
 								<li><a href="addCreditCard">信用卡</a></li>
@@ -79,7 +79,7 @@
 						<h3>常見問題</h3>
 						<hr>
 
-						<div class="my_account_areadiv">
+						<div class="my_account_areadiv" style="margin-top:40px;">
 							<ul>
 								<li><a href="#">新手上路</a></li>
 								<li><a href="#">購物流程/付款說明</a></li>
@@ -93,7 +93,7 @@
 						<h3>電子禮卷</h3>
 						<hr>
 
-						<div class="my_account_areadiv">
+						<div class="my_account_areadiv" style="margin-top:40px;">
 							<ul>
 								<li><a href="#">禮卷歸戶作業</a></li>
 								<li><a href="#">禮卷查詢</a></li>
@@ -107,7 +107,7 @@
 						<h3>我要儲值</h3>
 						<hr>
 
-						<div class="my_account_areadiv">
+						<div class="my_account_areadiv" style="margin-top:40px;">
 							<ul>
 								<li><a href="#">如何儲值</a></li>
 								<li><a href="#">儲值優惠查詢</a></li>

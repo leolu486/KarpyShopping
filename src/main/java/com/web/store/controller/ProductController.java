@@ -142,7 +142,7 @@ public class ProductController {
 	public String getProductsByCategory(@RequestParam("searchBy") String searchBy, Model model) {
 		if (service.getProductByCategory(searchBy).isEmpty() == false) {
 			List<ProductBean> list = service.getProductByCategory(searchBy);
-			model.addAttribute("products", list);
+			model.addAttribute("products", list);	
 			return "products";
 		} else if (service.getProductByVendorName(searchBy).isEmpty() == false) {
 			List<ProductBean> list = service.getProductByVendorName(searchBy);
@@ -257,6 +257,7 @@ public class ProductController {
 //			}
 //		}
 
+	
 	service.addProduct(pb);
 	return"redirect:/products";
 
@@ -407,6 +408,8 @@ public class ProductController {
 //		}
 //		token = 0;
 		model.addAttribute("productBean", pb);
+		System.out.println("get pb image: ");
+		System.out.println(pb.getProductImage() == null);
 
 		return "updateProduct";
 	}
@@ -416,14 +419,29 @@ public class ProductController {
 			@RequestParam("sdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String sdate,
 			@RequestParam("expdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String expdate, BindingResult result,
 			HttpServletRequest request) {
+		ProductBean PB = service.getProductById(pb.getpId());
 		if (!sdate.equals("")) {
 			pb.setSdate(new java.sql.Timestamp(java.sql.Date.valueOf(sdate).getTime()));
 		}
 		if (!expdate.equals("")) {
 			pb.setExpdate(new java.sql.Timestamp(java.sql.Date.valueOf(expdate).getTime()));
 		}
+		
+		System.out.println("handling images start");
+		System.out.println(service.getProductById(pb.getpId()).getProductImage() == null);
+		System.out.println(pb.getProductImage() == null);
+		if(PB.getProductImage() != null)
+			pb.setProductImage(PB.getProductImage());
+		if(PB.getProductImage1() != null)
+			pb.setProductImage1(PB.getProductImage1());
+		if(PB.getProductImage2() != null)
+			pb.setProductImage2(PB.getProductImage2());
+		if(PB.getProductImage3() != null)
+			pb.setProductImage3(PB.getProductImage3());
 		//----------------handling image
-		if (pb.getProductImageTemp() != null && !pb.getProductImageTemp().isEmpty()) {
+		if (pb.getProductImageTemp() != null && !pb.getProductImageTemp().isEmpty() && pb.getProductImageTemp().getSize() > 0) {
+			System.out.println(pb.getProductImageTemp().isEmpty());
+			System.out.println(pb.getProductImageTemp().getSize());
 			MultipartFile file = pb.getProductImageTemp();
 			Blob blob;
 			try {

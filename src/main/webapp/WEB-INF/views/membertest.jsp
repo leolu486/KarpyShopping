@@ -34,9 +34,13 @@
 	type="text/css" />
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css" />"
 	type="text/css" />
-
+<%-- 	<link rel="stylesheet" href="<c:url value="/css/test.css" />" --%>
+<!-- 	type="text/css" /> -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/AddressSelectList.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/modernizr-2.8.3.min.js"></script>
+<meta charset="UTF-8">
 <title>Document</title>
 </head>
 <!-- <script src="js/AddressSelectList.js"></script> -->
@@ -75,23 +79,21 @@
 			$("#addCreditCard").show();
 		});
 	});
-	
-	$('#Pin CNumber').on("input propertychange",function(){
+
+	$('#Pin CNumber').on("input propertychange", function() {
 		var _this = $(this);
 		inputFun(_this);
 	});
-	
-	function inputFun(value){
+
+	function inputFun(value) {
 		var reg = new RegExp("^[0-9]*$");
 		var val = value.val();
-		if(!reg.test(val)){
+		if (!reg.test(val)) {
 			value.val('')
-		}else{
+		} else {
 			value.next().focus();
 		}
 	}
-
-	
 </script>
 <style>
 .center {
@@ -105,6 +107,7 @@
 	height: 550px;
 	margin-left: 230px;
 	padding-top: 20px;
+	margin-top: 15px;
 }
 
 .border1 {
@@ -117,294 +120,396 @@
 }
 
 .catalog {
-	margin: 6px 0;
+	margin: 15px 0;
 	font-size: 15px;
 	list-style-type: none;
+	text-align: center;
 }
 
 .p1 {
 	font-size: 25px;
 	text-align: left;
+	color: #FF7F50;
 }
 
 .div2 {
-	width: 50%;
-	height: 600px;
-	margin-left: 25%;
-	margin-top: 200px;
-	padding-top: 22px;
 	background-color: #F5F5F5;
+	width: 1000px;
+	height: 600px;
+	margin-left: 430px;
+	height: 600px;
 }
 
-.p12 {
+<<<<<<<
+HEAD
+.div5 {
+	margin: 0px;
+	padding: 0px;
+	padding-bottom: 30px;
+}
+
+.btn1 {
+	margin-left: 20px;
+}
+
+.p1234 {
+	font-size: 25px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.rwdtxt {
+	font-size: 1.2rem;
+}
+
+@media ( min-width : 600px) and (max-width: 1200px) {
+	.rwdtxt {
+		font-size: calc(1.2rem + ( 1.3 -1.2)* ((100vw- 600px)/(1200- 600)));
+	}
+}
+
+@media ( min-width : 1200px) {
+	.rwdtxt {
+		font-size: 1.3rem;
+	}
+}
+
+=======
+.p1234 {
 	font-size: 20px;
+	>>>>>>>
+	7
+	a6557c
+	會員資料,密碼,信用卡更改
+}
+
+.rwdtxt {
+	font-size: 1.2rem;
+}
+
+@media ( min-width : 600px) and (max-width: 1200px) {
+	.rwdtxt {
+		font-size: calc(1.2rem + ( 1.3 -1.2)* ((100vw- 600px)/(1200- 600)));
+	}
+}
+
+@media ( min-width : 1200px) {
+	.rwdtxt {
+		font-size: 1.3rem;
+	}
+}
 }
 </style>
 <body>
+
+	<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 	<!-- <div class="d-flex justify-content-center align-items-center w-100"> -->
-	<form>
-
-
+	<br>
+	<div>
 		<div class="div2">
-			<div class="border1">
-				<dd>
-					<ul>
-						<p class="p12">我的帳戶</p>
-						<li class="catalog"><a href="#" id="blogin">個人資料</a></li>
-						<li class="catalog"><a href="#" id="rlogin">修改密碼</a></li>
-						<li class="catalog"><a href="#" id="Clogin">信用卡資料</a></li>
-					</ul>
-				</dd>
+			<div style="margin-right: 200px; padding-top: 10px">
+				<div class="border1">
+					<div>
+						<div>
+							<img src="data:image/jpg;base64,${memberImage}" width="200px"
+								height="auto" />
+							<p style="text-align: center">${memberLoginOK.name}</p>
+						</div>
+						<ul>
+							<li class="p1234">我的帳戶</li>
+							<li class="catalog"><a href="#" id="blogin">個人資料</a></li>
+							<li class="catalog"><a href="#" id="rlogin">修改密碼</a></li>
+							<li class="catalog"><a href="#" id="Clogin">信用卡資料</a></li>
+						</ul>
+					</div>
 
-			</div>
-			<!-- login block -->
-			<div class="border2" id="login">
-				<div class="container">
-					<p class="p1">個人檔案</p>
-					<hr style="width: 60%">
-					<div style="padding-left: 150px; padding-top: 20px;">
-						<div class="form-group row ">
-							<label for="inputEmail3" class="col-sm-2 col-form-label">姓名：</label>
-							<div class="col-auto ">
-								<input type="email" class="form-control" id="inputEmail3"
-									placeholder="姓名" autofocus="autofocus">
-							</div>
-						</div>
+				</div>
+				<!-- login block -->
+				<form:form method='POST' modelAttribute="memberBean"
+					enctype="multipart/form-data">
+					<div class="border2" id="login">
 
-						<div class="form-group row">
-							<label for="email" class="col-sm-2 col-form-label">Email：</label>
-							<div class="col-auto">
-								<input type="email" class="form-control-plaintext"
-									id="inputEmail3" placeholder="Email">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="phone" class="col-sm-2 col-form-label">手機：</label>
-							<div class="col-auto">
-								<input type="phone" class="form-control-plaintext" id="phone"
-									placeholder="phone">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="id" class="col-sm-2 col-form-label">身分證字號：</label>
-							<div class="col-auto">
-								<input type="id" class="form-control-plaintext" id="id"
-									placeholder="未設定">
-							</div>
-						</div>
-						<fieldset class="form-group">
-							<div class="row">
-								<label class="col-form-label col-sm-2 pt-0">性別：</label>
-								<div class="col-auto">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="gridRadios"
-											id="gridRadios1" value="option1" checked> <label
-											class="form-check-label" for="男性"> 男性 </label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="gridRadios"
-											id="gridRadios2" value="option2"> <label
-											class="form-check-label" for="女性"> 女性 </label>
-									</div>
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="gridRadios"
-											id="gridRadios2" value="option2" /> <label
-											class="form-check-label" for="其他/保密"> 其他/保密 </label>
+						<div class="container">
+							<p class="p1">個人檔案</p>
+							<hr style="width: 670px">
+							<div style="padding-left: 150px; padding-top: 20px;">
+								<div class="form-group row ">
+									<label for="inputEmail3" class="col-sm-2 col-form-label">姓名：</label>
+									<div class="col-auto ">
+										<form:input type="text" class="form-control" id="inputEmail3"
+											placeholder="姓名" autofocus="autofocus" path="name"
+											value="${memberLoginOK.name}" />
+
 									</div>
 								</div>
-							</div>
-						</fieldset>
-						<div class="form-group row form-check-inline">
-							<label for="inputEmail3" class="col-sm col-form-label">地址：</label>
-						</div>
-						<!-- <select id="縣市">
+								<div class="form-group row">
+									<label for="id" class="col-sm-2 col-form-label">照片：</label>
+									<div class="col-auto">
+										<form:input type="file" class="form-control-file"
+											id="exampleFormControlFile1" placeholder="未設定" path="file"
+											name="file" />
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="email" class="col-sm-2 col-form-label">Email：</label>
+									<div class="col-auto">
+										<form:input type="email" class="form-control" id="inputEmail3"
+											placeholder="Email" path="email"
+											value="${memberLoginOK.email}" />
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="phone" class="col-sm-2 col-form-label">手機：</label>
+									<div class="col-auto">
+										<form:input type="phone" class="form-control" id="phone"
+											placeholder="phone" path="tel" value="${memberLoginOK.tel}" />
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="date" class="col-sm-2 col-form-label">生日：</label>
+									<div class="col-auto">
+										<input class="form-control-plaintext" id="date" name="date"
+											type='date' placeholder="未設定" />
+									</div>
+								</div>
+								<fieldset class="form-group">
+									<div class="row">
+										<label class="col-form-label col-sm-2 pt-0">性別：</label>
+										<div class="col-auto">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="gender"
+													id="gridRadios1" value="male" /> <label
+													class="form-check-label" for="男性"> 男性 </label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="gender"
+													id="gridRadios2" value="fmale" /> <label
+													class="form-check-label" for="女性"> 女性 </label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="gender"
+													id="gridRadios2" value="others" /> <label
+													class="form-check-label" for="其他/保密"> 其他/保密 </label>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<div class="form-group row form-check-inline">
+									<label for="inputEmail3" class="col-sm col-form-label">地址：</label>
+								</div>
+								<!-- <select id="縣市">
                 </select>
                 <select id="鄉鎮市區">
                 </select><br> -->
 
-						<div class="form-row align-items-center form-check-inline">
-							<div class="col-auto my-1 ">
-								<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">縣市</label>
-								<select class="custom-select mr-sm-5" id="city">
-								</select>
+								<div class="form-row align-items-center form-check-inline">
+									<div class="col-auto my-1 ">
+										<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">縣市</label>
+										<select class="custom-select mr-sm-5" id="city" name="county"
+											placeholder="縣市">
+										</select>
+									</div>
+								</div>
+
+								<div class="form-row align-items-center form-check-inline">
+									<div class="col-auto my-1">
+										<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">鄉鎮地區</label>
+										<select class="custom-select mr-sm-5" id="city2" name="city"
+											placeholder="鄉鎮地區">
+										</select>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-5">
+										<input class="form-control" id="" placeholder="請輸入地址"
+											name="addr" />
+									</div>
+								</div>
+
+
+
+								<!-- 						<div class="form-group row"> -->
+								<!-- 							<div class="col-sm-5 "> -->
+								<!-- 								<button type="submit" id="sign" class="btn btn-primary" -->
+								<!-- 									style="width: 300px; height: 40px; background-color: #FF7F50;">確認更改</button> -->
+								<!-- 							</div> -->
+								<!-- 						</div> -->
+
+								<div class="form_btn" style="margin-left: 20px">
+									<button type="submit" id="sign">確認更改</button>
+
+								</div>
 							</div>
+							<input id="type" name="form" type='hidden' value='1' /> <input
+								name="oldPW" type="hidden" placeholder="舊密碼"> <input
+								name="newPW" type="hidden" placeholder="新密碼"> <input
+								name="renewPW" type="hidden" placeholder="再次輸入新密碼"> <input
+								name="code" type="hidden" placeholder="輸入驗證碼"> <input
+								id="cnumber1" type="hidden" name="cnumber1"> <input
+								id="cnumber2" type="hidden" name="cnumber2"> <input
+								id="cnumber3" type="hidden" name="cnumber3"> <input
+								id="cnumber4" type="hidden" name="cnumber4">
 						</div>
-
-						<div class="form-row align-items-center form-check-inline">
-							<div class="col-auto my-1">
-								<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">鄉鎮地區</label>
-								<select class="custom-select mr-sm-5" id="city2">
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-5">
-								<input class="form-control" id="" placeholder="請輸入地址" />
-							</div>
-						</div>
-
-
-						<div class="form-group row" style="margin-left: 12%;">
-							<div class="col-sm-10 ">
-								<button type="submit" id="sign" class="btn btn-primary"
-									style="width: 100px;">Sign in</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- login end -->
-			<!-- change password -->
-			<div class="login_title border2" id="register" style="display: none">
-				<p class="p1" style="padding-left: 15px;">會員更改密碼</p>
-				<hr style="width: 100%">
-				<form:form method='POST' class='form-horizontal'
-					enctype="multipart/form-data">
-
-					<div class="form_text_ipt">
-						<input name="oldPW" type="password" placeholder="舊密碼" autofocus="autofocus">
-					</div>
-
-					<div class="form_text_ipt">
-						<input name="newPW" type="password" placeholder="新密碼">
-					</div>
-
-					<div class="form_text_ipt">
-						<input name="renewPW" type="password" placeholder="再次輸入新密碼">
-					</div>
-
-					<div class="form_text_ipt">
-						<input name="code" type="text" placeholder="輸入驗證碼">
-					</div>
-					<div class="form_btn">
-						<button>確認更改</button>
-					</div>
-					<div class="form_reg_btn">
-						<a href="<c:url value='/home'/>">回首頁 </a>
 					</div>
 				</form:form>
-			</div>
-			<!-- password end -->
-			<!-- <div id="addCreditCard" style="display: none"> -->
-			<!-- <div> -->
-			<!-- 		<div class="container"> -->
-			<!-- 			<h1 style="text-align: left">新增信用卡</h1> -->
-			<!-- 		</div> -->
-			<!-- 	</div> -->
-			<!-- 	<hr style="height: 1px;"> -->
-			<!-- 	<div style="margin:auto"> -->
-			<!-- 	<div class="container"> -->
-			<%-- 		<form:form method='POST' modelAttribute="CreditCardBean" --%>
-			<%-- 			class='form-horizontal' enctype="multipart/form-data"> --%>
-			<!-- 			<div class="form-group"> -->
-			<!-- 				<label class="control-label col-lg-2 col-lg-2" for='Cname' > -->
-			<!-- 					信用卡名稱: </label> -->
-			<!-- 				<div class="col-lg-10"> -->
-			<%-- 					<form:input id="CName" path="CName" type='text' --%>
-			<%-- 						class='form:input-large' /> --%>
-			<!-- 				</div> -->
-			<!-- 			</div> -->
+				<!-- login end -->
+				<!-- change password -->
+				<div class="login_title border2" id="register" style="display: none">
+					<p class="p1" style="padding-left: 15px;">會員更改密碼</p>
+					<hr style="width: 100%">
+					<form:form method='POST' class='form-horizontal'
+						enctype="multipart/form-data">
 
-			<!-- 			<div class="form-group"> -->
-			<!-- 				<label class="control-label col-lg-2 col-lg-2" for='CNumber'> -->
-			<!-- 					信用卡卡號: </label> -->
-			<!-- 				<div class="col-lg-10"> -->
-			<%-- 					<form:input id="CNumber" path="CNumber" type='text' --%>
-			<%-- 						class='form:input-large' /> --%>
-			<!-- 				</div> -->
-			<!-- 			</div> -->
-
-			<!-- 			<div class="form-group"> -->
-			<!-- 				<label class="control-label col-lg-2 col-lg-2" for='OName'> -->
-			<!-- 					持有者姓名: </label> -->
-			<!-- 				<div class="col-lg-10"> -->
-			<%-- 					<form:input id="OName" path="OName" type='text' --%>
-			<%-- 						class='form:input-large' /> --%>
-			<!-- 				</div> -->
-			<!-- 			</div> -->
-
-			<!-- 			<div class="form-group"> -->
-			<!-- 				<label class="control-label col-lg-2 col-lg-2" for='Pin'> -->
-			<!-- 					Pin: </label> -->
-			<!-- 				<div class="col-lg-10"> -->
-			<%-- 					<form:input id="Pin" path="Pin" type='password' --%>
-			<%-- 						class='form:input-large' /> --%>
-			<!-- 				</div> -->
-			<!-- 			</div> -->
-
-			<!-- 			<div class="form-group"> -->
-			<!-- 				<label class="control-label col-lg-2 col-lg-2" for='VDate'> -->
-			<!-- 					到期日: </label> -->
-			<!-- 				<div class="col-lg-10"> -->
-			<%-- 					<form:input id="VDate" path="VDate" type='text' --%>
-			<%-- 						class='form:input-large' /> --%>
-			<!-- 				</div> -->
-			<!-- 			</div> -->
-			<!-- 			<div> -->
-			<!-- 				<a><input id="submit" type="submit" value="新增" -->
-			<!-- 					style="font-size: 10px; width: 200px; height: 20px; "></a> -->
-			<!-- 			</div> -->
-			<%-- 		</form:form> --%>
-			<!-- 	</div> -->
-			<!-- 	</div> -->
-			<!-- 	</div> -->
-
-			<div class="border2" id="addCreditCard" style="display: none">
-				<div class="container">
-					<p class="p1">新增信用卡</p>
-					<hr style="width: 60%">
-					<div style="padding-left: 150px; padding-top: 20px;">
-						<div class="form-group row ">
-							<label for="CName" class="col-sm-2 col-form-label">信用卡名稱：</label>
-							<div class="col-auto ">
-								<input  class="form-control" id="CName" path="CName"
-									placeholder="信用卡名稱" autofocus="autofocus">
-							</div>
+						<div class="form_text_ipt">
+							<input name="oldPW" type="password" placeholder="舊密碼"
+								autofocus="autofocus">
 						</div>
 
-						<div class="form-group row">
-							<label for="CNumber" class="col-sm-2 col-form-label">
-								信用卡卡號：</label>
-							<div class="col-auto">
-								<input  class="form-control" id="CNumber" path="CNumber" type='text' placeholder="信用卡卡號" type="number" 
-								pattern="[0-9]{16}">
-							</div>
+						<div class="form_text_ipt">
+							<input name="newPW" type="password" placeholder="新密碼">
 						</div>
-						<div class="form-group row">
-							<label for="OName" class="col-sm-2 col-form-label">持有者姓名:</label>
-							<div class="col-auto">
-								<input  class="form-control" id="OName"  path="OName" type='text'
-									placeholder="姓名">
-							</div>
+
+						<div class="form_text_ipt">
+							<input name="renewPW" type="password" placeholder="再次輸入新密碼">
 						</div>
-						<div class="form-group row">
-							<label for="Pin" class="col-sm-2 col-form-label">pin：</label>
-							<div class="col-auto">
-								<input  class="form-control" id="Pin" path="Pin" type='password'
-									placeholder="未設定" maxlength="3" >
-							</div>
+
+						<div class="form_text_ipt">
+							<input name="code" type="text" placeholder="輸入驗證碼">
 						</div>
-						<div class="form-group row">
-							<label for="VDate" class="col-sm-2 col-form-label">到期日：</label>
-							<div class="col-auto">
-								<input class="form-control" id="VDate" path="VDate" type='text'
-									placeholder="未設定">
-							</div>
+						<div class="form_btn">
+							<button>確認更改</button>
 						</div>
-						<div class="form-group row" style="margin-left: 12%;">
-							<div class="col-sm-10 ">
-								<button type="submit" id="sign" class="btn btn-primary"
-									style="width: 100px;">新增</button>
+
+						<!-- 				<div class="form_reg_btn"> -->
+						<%-- 					<a href="<c:url value='/home'/>">回首頁 </a> --%>
+						<!-- 				</div> -->
+
+						<input id="type" name="form" type='hidden' value='2' />
+						<input name="name" placeholder="姓名" type="hidden">
+						<input name="email" placeholder="Email" type="hidden">
+						<input name="phone" placeholder="phone" type="hidden">
+						<input name="date" placeholder="姓名" type="hidden">
+						<input name="gender" placeholder="性別" type="hidden">
+						<input name="county" placeholder="縣市" type="hidden">
+						<input name="city" placeholder="鄉鎮地區" type="hidden">
+						<input name="addr" placeholder="請輸入地址" type="hidden">
+						<input id="cnumber1" type="hidden" name="cnumber1">
+						<input id="cnumber2" type="hidden" name="cnumber2">
+						<input id="cnumber3" type="hidden" name="cnumber3">
+						<input id="cnumber4" type="hidden" name="cnumber4">
+					</form:form>
+
+
+
+
+				</div>
+				<!-- password end -->
+
+
+				<div class="border2" id="addCreditCard" style="display: none">
+					<section class="container">
+						<p class="p1">新增信用卡</p>
+						<hr style="width: 60%">
+						<form:form method='POST' modelAttribute="CreditCardBean"
+							class='form-horizontal' enctype="multipart/form-data">
+							<div style="padding-left: 150px; padding-top: 20px;">
+								<div class="form-group row ">
+									<label for="cname" class="col-sm-2 col-form-label">信用卡名稱：</label>
+									<div class="col-auto ">
+										<form:input class="form-control" id="cname" path="cname"
+											placeholder="信用卡名稱" autofocus="autofocus" />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="CNumber" class="col-sm-2 col-form-label">
+										信用卡卡號：</label>
+									<div class="col-auto" style="width: 80px">
+										<input class="form-control" id="cnumber1" type='text'
+											placeholder="1234" pattern="[0-9]{4}" maxlength="4"
+											name="cnumber1">
+									</div>
+									-
+									<div class="col-auto" style="width: 80px">
+										<input class="form-control" id="cnumber2" type='text'
+											placeholder="2234" pattern="[0-9]{4}" maxlength="4"
+											name="cnumber2">
+									</div>
+									-
+									<div class="col-auto" style="width: 80px">
+										<input class="form-control" id="cnumber3" type='text'
+											placeholder="3234" pattern="[0-9]{4}" maxlength="4"
+											name="cnumber3">
+									</div>
+									-
+									<div class="col-auto" style="width: 80px">
+										<input class="form-control" id="cnumber4" type='text'
+											placeholder="4234" pattern="[0-9]{4}" maxlength="4"
+											name="cnumber4">
+
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="oname" class="col-sm-2 col-form-label">持有者姓名:</label>
+									<div class="col-auto">
+										<form:input class="form-control" id="oname" path="oname"
+											type='text' placeholder="姓名" />
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="pin" class="col-sm-2 col-form-label">pin：</label>
+									<div class="col-auto">
+										<form:input class="form-control" id="pin" path="pin"
+											type='password' placeholder="未設定" maxlength="3" />
+										<%-- 										<form:input id="pin" path="pin" type='password' --%>
+										<%-- 						class='form:input-large' /> --%>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="date" class="col-sm-2 col-form-label">到期日：</label>
+									<div class="col-auto">
+										<input class="form-control-plaintext" id="date" name="date"
+											type='date' placeholder="未設定" />
+									</div>
+								</div>
+
+								<!-- 						<div class="form-group row" style="margin-left: 12%;"> -->
+								<!-- 							<div class="col-sm-10 "> -->
+								<!-- 								<button type="submit" id="submit" class="btn btn-primary" -->
+								<!-- 									style="width: 100px;">新增</button> -->
+
+								<!-- 							</div> -->
+								<!-- 						</div> -->
+
+								<div class="form_btn" style="margin-left: 20px">
+									<button type="submit" id="submit">確認更改</button>
+
+								</div>
+								<input id="type" name="form" type='hidden' value='3' /> <input
+									name="oldPW" type="hidden" placeholder="舊密碼"> <input
+									name="newPW" type="hidden" placeholder="新密碼"> <input
+									name="renewPW" type="hidden" placeholder="再次輸入新密碼"> <input
+									name="code" type="hidden" placeholder="輸入驗證碼"> <input
+									name="name" placeholder="姓名" type="hidden"> <input
+									name="email" placeholder="Email" type="hidden"> <input
+									name="phone" placeholder="phone" type="hidden"> <input
+									name="date" placeholder="姓名" type="hidden"> <input
+									name="gender" placeholder="性別" type="hidden"> <input
+									name="county" placeholder="縣市" type="hidden"> <input
+									name="city" placeholder="鄉鎮地區" type="hidden"> <input
+									name="addr" placeholder="請輸入地址" type="hidden">
 							</div>
-						</div>
-					</div>
+						</form:form>
+					</section>
 				</div>
 			</div>
-
 		</div>
-	</form>
+	</div>
+	<br>
 
-
-
+	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 </body>
 </html>

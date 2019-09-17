@@ -2,12 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 
 <html class="no-js" lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- <meta charset="utf-8"> -->
+<!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Home</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,6 +50,22 @@
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+<script>
+// 	function searchByF(){
+// 	$.ajax({
+// 		type: 'POST',
+// 		url: "getProductsBy",
+// 		data: "searchBy="+$("#searchBy").val(),
+// 		dataType: "text",
+// 		success: function(response) {
+			
+// 		},
+// 		error: function(jqXHR, textStatus, errorThrown) {},
+// 	});
+// 	}
+	</script>
 </head>
 <body>
 
@@ -121,11 +140,12 @@
 				<div class="col-md-9">
 					<div class="header_all search_box_area">
 
-						<form class="new_search" role="search" method="get" action="#">
-							<input id="mix_search" class="search-field"
-								placeholder="請輸入搜尋資料..." value="" name="s" title="Search for:"
-								type="search"> <input value="Search" type="submit">
-							<input name="post_type" value="product" type="hidden">
+						<form class="new_search" role="search" action="getProductsBy" method="POST">
+							<input id="searchBy" class="search-field"
+								placeholder="請輸入搜尋資料..." name="searchBy" title="Search for:"
+								type="text"> 
+								<input id="searchBtn" value="Search"
+								type="submit"> 
 						</form>
 						<div class="Test2">
 
@@ -151,47 +171,53 @@
 
 								<a class="cart-toggler" href=""> <img class="icon"
 									src="<c:url value="/images/icon/icon_cart.png"/>"> <span
-									class="my-cart">購物車</span> <span class="qty">2 件</span> <span
-									class="fa fa-angle-down"></span>
+									class="my-cart">購物車</span> <span class="qty">${ShoppingCart.itemNumber}件</span>
+									<span class="fa fa-angle-down"></span>
 								</a>
 								<div class="new_cart_section">
 									<ol class="new-list">
 										<!-- single item -->
-										<li class="wimix_area"><a class="pix_product" href="">
-
-												<img alt=""
-												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
-										</a>
-											<div class="product-details">
-												<a href="#">Adipiscing cursus eu</a> <span class="sig-price">1×$300.00</span>
-											</div>
-											<div class="cart-remove">
-												<a class="action" href="#"> <i class="fa fa-close"></i>
-												</a>
-											</div></li>
+										<c:forEach varStatus="vs" var="anEntry"
+											items="${ShoppingCart.content}">
+											<li class="wimix_area"><a class="pix_product" href="">
+													<img alt=""
+													src="<c:url value="/images/product-pic/7-150x98.jpg" />">
+											</a>
+												<div class="product-details">
+													<a href="#">${anEntry.value.description}</a> <span
+														class="sig-price">${anEntry.value.quantity}×$${anEntry.value.unitPrice
+														* anEntry.value.discount }</span>
+												</div>
+												<div class="cart-remove">
+													<a class="action" href="#"> <i class="fa fa-close"></i>
+													</a>
+												</div></li>
+										</c:forEach>
 										<!-- single item -->
 										<!-- single item -->
-										<li class="wimix_area"><a class="pix_product" href="#">
-												<img alt=""
-												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
-										</a>
-											<div class="product-details">
-												<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span>
-											</div>
-											<div class="cart-remove">
-												<a class="action" href="#"> <i class="fa fa-close"></i>
-												</a>
-											</div></li>
+										<!-- 										<li class="wimix_area"><a class="pix_product" href="#"> -->
+										<!-- 												<img alt="" -->
+										<%-- 												src="<c:url value="/images/product-pic/7-150x98.jpg" />"> --%>
+										<!-- 										</a> -->
+										<!-- 											<div class="product-details"> -->
+										<!-- 												<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span> -->
+										<!-- 											</div> -->
+										<!-- 											<div class="cart-remove"> -->
+										<!-- 												<a class="action" href="#"> <i class="fa fa-close"></i> -->
+										<!-- 												</a> -->
+										<!-- 											</div></li> -->
 										<!-- single item -->
 									</ol>
 									<div class="top-subtotal">
-										Subtotal: <span class="sig-price">$400.00</span>
+										總金額: <span class="sig-price">$<fmt:formatNumber
+												value="${ShoppingCart.subtotal}" pattern="#,###" /></span>
 									</div>
 									<div class="cart-button">
 										<ul>
-											<li><a href="#">View my cart <i
-													class="fa fa-angle-right"></i></a></li>
-											<li><a href="#">Checkout <i
+											<li><a href="<spring:url value='/cartConfirm'/>">前往購物車
+													<i class="fa fa-angle-right"></i>
+											</a></li>
+											<li><a href="<c:url value='/addOrder' />">前往結帳 <i
 													class="fa fa-angle-right"></i></a></li>
 										</ul>
 									</div>
@@ -529,6 +555,9 @@
 		</div>
 	</div>
 	<!--social design arae end-->
+
+	<!-- 左邊那一條 -->
+
 	<!--about us area-->
 	<div class="about_us_area">
 		<div class="about_main">
@@ -542,7 +571,7 @@
 								</div>
 								<div class="about_content">
 									<div class="about_text">免運活動中</div>
-									<div class="about_prgph">全館不管消費金額多少，皆由卡痞購物買單！</div>
+									<div class="about_prgph">全館不管消費金額多少，運費皆由卡痞購物買單！</div>
 								</div>
 							</div>
 						</div>
@@ -3949,7 +3978,7 @@
 
 							<a href="#"> <img
 								src="<c:url value="/images/differ-pic/differ_pic_6.jpg" />"
-								alt=""> 
+								alt="">
 							</a>
 						</div>
 					</div>
@@ -4717,7 +4746,7 @@
 										</a></li>
 										<li><a class="facebook social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
-											data-original-title="Facebook"> <i class="fa fa-facebook"></i>
+											data-original-title="whatsapp"> <i class="fa fa-whatsapp"></i>
 										</a></li>
 										<li><a class="google-plus social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"

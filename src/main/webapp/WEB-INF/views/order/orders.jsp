@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Order</title>
+<title>訂單查詢</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<c:url value='/order/images/icons/favicon.ico' />"/>
+<%-- 	<link rel="icon" type="image/png" href="<c:url value='/order/images/icons/favicon.ico' />"/> --%>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/order/vendor/bootstrap/css/bootstrap.min.css' />">
 <!--===============================================================================================-->
@@ -27,10 +27,13 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
+<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
+<form:form id="orderTable">
 <div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
+				<a class="btn btn-secondary" style="margin-bottom:10px" href='<c:url value="/membercentre"/>'>返回會員中心</a>
+				<span style="margin-left:20px;font-size:30px;font-weight:bold">訂單查詢</span>
 				
 				
 				<div class="table100 ver2 m-b-110">
@@ -38,16 +41,16 @@
 						<table>
 							<thead>
 								<tr class="row100 head">
-									<th class="cell100 column1">訂單編號</th>
-									<th class="cell100 column2">訂單日期</th>
-									<th class="cell100 column2">訂單細項</th>							
-									<th class="cell100 column2">訂單金額</th>
-									<th class="cell100 column2">訂單狀態</th>							
-									<th class="cell100 column2">寄件號碼</th>							
-									<th class="cell100 column2">寄送地址</th>
-									<th class="cell100 column2">收貨人</th>							
-									<th class="cell100 column2">連絡電話</th>							
-									<th class="cell100 column2"></th>							
+									<th class="cell100 column1 font-weight-bold" style="border-style:none">訂單編號</th>
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">訂單日期</th>
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">訂單細項</th>							
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">訂單金額</th>
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">訂單狀態</th>							
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">寄件號碼</th>							
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">寄送地址</th>
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">收貨人</th>							
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">連絡電話</th>							
+									<th class="cell100 column2 font-weight-bold" style="border-style:none"></th>							
 <!-- 									<th class="cell100 column2"></th>							 -->
 								</tr>
 							</thead>
@@ -59,21 +62,22 @@
 						<c:forEach var="order" items="${orders}">
 							<tbody>	
 								<tr class="row100 body">
-									<td class="cell100 column1">${order.oId}</td>
-									<td class="cell100 column2">${order.odate}</td>
-									<td class="cell100 column2">
+									<td class="cell100 column1" style="border-style:none">${order.oId}</td>
+									<td class="cell100 column2" style="border-style:none">${order.odate}</td>
+									<td class="cell100 column2" style="border-style:none">
 										<a href="<spring:url value='/orderItemByOid?oId=${order.oId}' />" class="btn btn-info"> <span class="glyphicon-info-sigh glyphicon"></span>詳細資料 </a>
 									</td>									
-									<td class="cell100 column2">${order.price} 元</td>
-									<td class="cell100 column2">${order.status}</td>
-									<td class="cell100 column2">${order.shippingNo}</td>
-									<td class="cell100 column2">${order.addr}</td>
-									<td class="cell100 column2">${order.consignee}</td>
-									<td class="cell100 column2">${order.tel}</td>
-									<td class="cell100 column2">
+									<td class="cell100 column2" style="border-style:none">${order.price} 元</td>
+									<td class="cell100 column2" style="border-style:none">${order.status}</td>
+									<td class="cell100 column2" style="border-style:none">${order.shippingNo}</td>
+									<td class="cell100 column2" style="border-style:none">${order.addr}</td>
+									<td class="cell100 column2" style="border-style:none">${order.consignee}</td>
+									<td class="cell100 column2" style="border-style:none">${order.tel}</td>
+									<td class="cell100 column2" style="border-style:none">
 										<a href="<spring:url value='/order/update?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>買家更新訂單 </a>
 											<hr style="opacity:0">
-										<a href="<spring:url value='/order/cancel?oId=${order.oId}' />" class="btn btn-danger"> <span class="glyphicon-info-sigh glyphicon"></span>取消訂單 </a>
+<%-- 										<a href="<spring:url value='/order/cancel?oId=${order.oId}' />" class="btn btn-danger"> <span class="glyphicon-info-sigh glyphicon"></span>取消訂單 </a> --%>
+										<button id="cancelBtn" type="button" class="btn btn-danger" onclick="return cancel(${order.oId})">取消訂單</button>
 									</td> 									
 								</tr>
 							</tbody>
@@ -82,10 +86,12 @@
 					</div>
 				</div>
 			</div>
-			<a class="btn btn-primary" href='<c:url value="/"/>'>回首頁</a>
+<%-- 			<a class="btn btn-primary" href='<c:url value="/membercentre"/>'>返回會員中心</a> --%>
 		</div>
 	</div>
+	</form:form>
 	
+	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 	<!--===============================================================================================-->	
 	<script src="<c:url value='/order/vendor/jquery/jquery-3.2.1.min.js' />"></script>
 <!--===============================================================================================-->
@@ -108,6 +114,17 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="<c:url value='/order/js/main.js' />"></script>
+	
+<!-- 	0914新增 -->
+	<script type="text/javascript">
+		function cancel(oId){		
+			if(confirm("你確定取消訂單嗎?")){
+				document.getElementById("orderTable").action="<c:url value='/order/cancel?oId=" + oId + "'/>";
+				document.getElementById("orderTable").submit();
+			}
+		}
+	
+	</script>
 
 </body>
 </html>

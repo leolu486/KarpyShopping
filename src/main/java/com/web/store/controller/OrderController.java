@@ -2,7 +2,10 @@ package com.web.store.controller;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -85,9 +88,12 @@ public class OrderController {
 		return "order";
 	}
 
-	// 查單筆訂單
-	@RequestMapping("/order")
+	// 查單筆訂單 ，0912 modification，賣家修改訂單 
+	@RequestMapping(value="/orderPage", method=RequestMethod.POST)
 	public String selectByOid(@RequestParam("oId") Integer oId, Model model) {
+		if(oId == null) {
+			return "order";
+		}
 		model.addAttribute("order", service.select(oId));
 		return "order/singleOrder"; //return "order";
 	}
@@ -136,7 +142,7 @@ public class OrderController {
 //	}
 
 	// 新增訂單表單
-	@RequestMapping("/order/add")
+	@RequestMapping("/addOrder") // @RequestMapping("/order/add")
 	public String persistOrder(Model model) {
 		OrderBean order = new OrderBean();
 		model.addAttribute("order", order);
@@ -144,13 +150,19 @@ public class OrderController {
 	}
 
 	// 新增訂單寫入資料庫
-	@RequestMapping(value = "/order/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/addOrder", method = RequestMethod.POST)
 	public String persistOrder(@ModelAttribute("order") OrderBean order, Model model, HttpSession session,
 			SessionStatus status) throws SQLException {
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK"); // 會員登入識別字串
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
 		System.out.println("ShoppingCart===" + cart);
 		System.out.println("MemberBean===" + member);
+		//0912 新增
+		Map<String,String> insertError = errMsg(order,cart);
+		if(insertError.get("emptyCart") != null ) {
+			model.addAttribute("insertError", insertError);
+			return "order/addOrder";
+		}
 		order.setmId(member.getmId());
 		order.setOdate(new Timestamp(System.currentTimeMillis()));
 		order.setPrice(cart.getSubtotal());
@@ -166,10 +178,16 @@ public class OrderController {
 			items.add(oib);
 			order.setItems(items);
 		}
-		service.insertOrder(order);
-		status.setComplete();
+		//0912 新增
+		if(insertError.size()>0) {
+			model.addAttribute("insertError", insertError);
+			return "order/addOrder";
+		}else {
+			service.insertOrder(order);
+			status.setComplete();
+		}	
 
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 	// 買家更新頁面
@@ -210,6 +228,42 @@ public class OrderController {
 	public String cancel(@RequestParam("oId") Integer oId, Model model) {
 		service.delete(oId);
 		return "redirect:/";
+	}
+	
+	//0912 買過商品查詢
+	@RequestMapping("/queryOrderItemsHistory")
+	public String purchaseItemsHistory(@RequestParam("mId") Integer mId,Model model) {
+		List<OrderBean> orders = service.selectMemberOrders(mId);
+		List<OrderItemBean> orderItems = null;		
+		System.out.println("oId=====" +orders.size());
+		List<OrderItemBean> copy = new ArrayList<OrderItemBean>();
+		for(OrderBean ob : orders) {
+			orderItems = service.queryItems(ob.getoId());
+			copy.addAll(orderItems);			
+		}
+//		System.out.println("copy.size() ====" + copy.size());
+		model.addAttribute("items", copy);
+		return "/order/orderItemsHistory";
+	}	
+	
+	
+	//0912 error message for order persistence
+	public Map<String,String> errMsg(OrderBean order,ShoppingCart cart){
+		Map<String,String> errorMessage = new HashMap<String,String>();
+		if(order.getTel()==null || order.getTel().equals("")) {
+			errorMessage.put("emptyTel", "此欄位不可為空白");
+		}
+		if(order.getAddr()==null || order.getAddr().equals("")) {
+			errorMessage.put("emptyAddr", "此欄位不可為空白");
+		}
+		if(order.getConsignee()==null || order.getConsignee().equals("")) {
+			errorMessage.put("emptyConsignee", "此欄位不可為空白");
+		}
+		if(cart== null || cart.getContent().size()==0 ) {
+			errorMessage.put("emptyCart", "請挑選商品");			
+		}
+		
+		return errorMessage;
 	}
 
 }

@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>管理員登錄</title>
+
+<title>會員登錄</title>
 <style>
 form {
 	margin: 0 auto;
@@ -128,6 +129,7 @@ input:focus::-webkit-input-placeholder {
 /* 	width: 100%; */
 /* } */
 </style>
+
 
 <script src="<c:url value='/js/jquery_3_4_1.js'/>"></script>
 

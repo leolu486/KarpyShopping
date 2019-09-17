@@ -23,12 +23,6 @@ public class ProductServiceImpl implements ProductService {
 	public ProductBean getProductById(Integer pId) {	
 		return dao.getProductById(pId);
 	}
-	
-	@Transactional
-	@Override
-	public ProductImagesBean getProductImagesById(Integer pId) {	
-		return dao.getProductImagesById(pId);
-	}
 
 	@Transactional
 	@Override
@@ -70,12 +64,6 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void addProduct(ProductBean bean) {
 		dao.addProduct(bean);
-	}
-	
-	@Transactional
-	@Override
-	public void addProductImage(ProductImagesBean bean) {
-		dao.addProductImage(bean);
 	}
 
 	@Transactional
