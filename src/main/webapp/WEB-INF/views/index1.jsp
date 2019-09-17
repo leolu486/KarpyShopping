@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<<<<<<< HEAD
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-======= >>>>>>> refs/remotes/Upstream/master
+
 <!doctype html>
 
 <html class="no-js" lang="en">
@@ -173,8 +173,7 @@
 
 								<a class="cart-toggler" href=""> <img class="icon"
 									src="<c:url value="/images/icon/icon_cart.png"/>"> <span
-									class="my-cart">購物車</span> <span class="qty">${ShoppingCart.itemNumber}件</span>
-									<span class="fa fa-angle-down"></span> class="my-cart">購物車</span> <span
+									class="my-cart">購物車</span> <span
 									class="qty">2 件</span> <span class="fa fa-angle-down"></span>
 
 								</a>

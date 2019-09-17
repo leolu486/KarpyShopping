@@ -25,28 +25,74 @@
 <script src="<c:url value='/js/jquery_3_4_1.js'/>"></script>
 
 
+<style>
+#customBtn {
+	display: block;
+	background: white;
+	color: #444;
+	box-shadow: 1px 1px 1px grey;
+	white-space: nowrap;
+	vertical-align: middle;
+	padding-left: 42px;
+	padding-right: 42px;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: thin solid #888;
+}
 
+#customBtn:hover {
+	cursor: pointer;
+}
+</style>
 
 
 <script>
 	function onSuccess(googleUser) {
 		var profile = googleUser.getBasicProfile();
 		var id_token = googleUser.getAuthResponse().id_token;
-		var xhr = new XMLHttpRequest();
-		xhr.open('POST', 'http://localhost:8080/KarpyShopping/googleVerify');
-		xhr.setRequestHeader('Content-Type',
-				'application/x-www-form-urlencoded');
-		xhr.onload = function() {
-			console.log("Logging as: " + profile.getName());
-			$("#my-signin2").css("display", "none");
-			$(".data").css("display", "block");
-			$("#name").text(profile.getName());
-			$("#pic").attr('src', profile.getImageUrl());
-			$("#email").text(profile.getEmail());
-		};
-		xhr.send('idtokenstr=' + id_token);
 
+		$.ajax({
+			type : 'POST',
+			url : "http://localhost:8080/KarpyShopping/googleVerify",
+			data : "idtokenstr=" + id_token,
+			dataType : "text",
+			success : function(response) {
+				console.log("Logging as: " + profile.getName());
+				$("#my-signin2").css("display", "none");
+				$("#customBtn").css("display", "inline-block");
+				$(".data").css("display", "block");
+				$("#name").text(profile.getName());
+				$("#pic").attr('src', profile.getImageUrl());
+				$("#email").text(profile.getEmail());
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				console.log("jqXHR: " + jqXHR);
+				console.log("textStatus: " + textStatus);
+				console.log("errorThrown: " + errorThrown);
+
+			},
+		});
 	}
+
+	// 		var xhr = new XMLHttpRequest();
+	// 		xhr.open('POST', 'googleVerify');
+	// 		xhr.setRequestHeader('Content-Type',
+	// 				'application/x-www-form-urlencoded');
+	// 		xhr.send('idtokenstr=' + id_token);
+	// 		xhr.onload = function() {
+	// 			console.log("Logging as: " + profile.getName());
+	// 			$("#my-signin2").css("display", "none");
+	// 			$("#customBtn").css("display", "inline-block");
+	// 			$(".data").css("display", "block");
+	// 			$("#name").text(profile.getName());
+	// 			$("#pic").attr('src', profile.getImageUrl());
+	// 			$("#email").text(profile.getEmail());
+	// 		};
+
+	// 		location.href = "http://localhost:8080/KarpyShopping/home";
+	// 	}
+
 	function onFailure(error) {
 		console.log(error);
 	}
@@ -69,6 +115,7 @@
 			console.log('User signed out.');
 			alert("You have been successfully signed out");
 			$("#my-signin2").css("display", "block");
+			$("#customBtn").css("display", "none");
 			$(".data").css("display", "none");
 		});
 	}
@@ -87,9 +134,10 @@
 </script>
 
 <style>
-#my-signin2{
+#my-signin2 {
 	display: block;
 }
+
 .data {
 	display: none;
 }
@@ -112,7 +160,7 @@
 		Email Address: <span id="email"></span>
 	</div>
 	<br>
-	<button onclick="signOut();">Sign out</button>
+	<button id="customBtn" onclick="signOut();">Sign out</button>
 
 </body>
 </html>

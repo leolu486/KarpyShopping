@@ -365,9 +365,11 @@ public class MemberController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else {
+			mb = new MemberBean();
 		}
-
 		model.addAttribute("memberBean", mb);
+		System.out.println("HelloWorld");
 		return "account/uploadImage";
 
 	}

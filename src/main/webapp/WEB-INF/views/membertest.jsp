@@ -94,7 +94,8 @@
 
 	document.addEventListener("DOMContentLoaded", function() {
 
-		document.getElementById("passwordcheck").addEventListener("click", submitf);
+		document.getElementById("passwordcheck").addEventListener("click",
+				submit);
 
 		document.getElementById("opw").addEventListener("focus", function() {
 			this.style.backgroundColor = "lightyellow";
@@ -193,13 +194,8 @@
 	}
 }
 
-=======
 .p1234 {
 	font-size: 20px;
-	>>>>>>>
-	7
-	a6557c
-	會員資料,密碼,信用卡更改
 }
 
 .rwdtxt {
@@ -399,7 +395,7 @@
 							<input name="code" type="text" placeholder="輸入驗證碼">
 						</div>
 						<div class="form_btn">
-							<input type=button id="passwordcheck" value="送出">
+							<button type=submit id="passwordcheck" >送出</button>
 						</div>
 
 						<!-- 				<div class="form_reg_btn"> -->
