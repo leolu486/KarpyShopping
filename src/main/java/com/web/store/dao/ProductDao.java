@@ -3,7 +3,6 @@ package com.web.store.dao;
 import java.util.List;
 
 import com.web.store.model.ProductBean;
-import com.web.store.model.ProductImagesBean;
 import com.web.store.model.VendorBean;
 
 public interface ProductDao {

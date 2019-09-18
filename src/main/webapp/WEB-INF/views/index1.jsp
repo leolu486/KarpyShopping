@@ -586,7 +586,7 @@
 								</div>
 								<div class="about_content">
 									<div class="about_text">全台24小時到貨</div>
-									<div class="about_prgph">限定商品，全台24小時內到貨<br>(偏遠地區除外)</div>
+									<div class="about_prgph">限定商品，全台24小時內到貨(偏遠地區除外)</div>
 								</div>
 							</div>
 						</div>
@@ -599,7 +599,7 @@
 								</div>
 								<div class="about_content">
 									<div class="about_text">限量商品熱賣中</div>
-									<div class="about_prgph">限量新品到貨<br>倒數搶購中。</div>
+									<div class="about_prgph">限量商品到貨，熱賣搶購中。</div>
 								</div>
 							</div>
 						</div>
@@ -4241,6 +4241,43 @@
 								</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
 									class="fa fa-star"></i> </a>
 							</div>
+							<div class="price_box price_box_new">
+								<span class="spical-price">商品價錢 : ${product01.price}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div class="nyx_top_rte">
+		<div class="col-md-12  ">
+			<div class="all-pros-ex animated fadeInUp">
+				<div class="llc_pro">
+					<div class="sinle_pic sinle_pic_2">
+						<a href="#"> <img class="primary-img"
+							src="<c:url value="/images/top-pic/top_pic_1.jpg" />" alt="">
+							<img class="secondary-img"
+							src="<c:url value="/images/top-pic/top_pic_5.jpg" />" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="product_content_2">
+					<div class="usal_pro">
+						<div class=" product_name_new">
+							<h2>
+								<a href="#">Nam fringilla</a>
+							</h2>
+						</div>
+						<div class="product_price product_price_new product_price_new_3">
+							<div class="price_rating">
+								<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+									class="fa fa-star"></i></a> <a href="#"> <i class="fa fa-star"></i>
+								</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
+									class="fa fa-star"></i> </a>
+							</div>
+						</div>
+						<div class="price_box price_box_new price_box_new_3">
+							<span class="spical-price">$150.00</span>
 						</div>
 						<div class="price_box price_box_new price_box_new_3">
 							<span class="spical-price">$150.00</span>
@@ -4350,7 +4387,15 @@
 		</div>
 	</div>
 	</div>
-	
+	<aside class="single-sidebar">
+		<h3>Tags</h3>
+		<div class="compare_content">
+			<div class="new_tag">
+				<a href="#">Clothing</a> <a href="#">Enim</a> <a href="#">Fashion</a>
+				<a href="#">Glasses</a> <a href="#">Hats</a> <a href="#">Hoodies</a>
+			</div>
+		</div>
+	</aside>
 	</div>
 	</div>
 	<div class="col-md-9 col-sm-12">
@@ -4640,26 +4685,26 @@
 							<div class="dxpt_area">
 								<div class="news_right">
 									<div class="news_heading news_heading_3">
-										<h3 class="follow_mix">Contact us:</h3>
+										<h3 class="follow_mix">Follow us:</h3>
 									</div>
-									<ul class="social-icons"  style="margin-right:70px">
-										<li style="padding:3px;"><a class="facebook social-icon" href="#" title=""
+									<ul class="social-icons">
+										<li><a class="facebook social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="Facebook"> <i class="fa fa-facebook"></i>
 										</a></li>
-<!-- 										<li><a class="facebook social-icon" href="#" title="" -->
-<!-- 											target="_blank" data-toggle="tooltip" -->
-<!-- 											data-original-title="whatsapp"> <i class="fa fa-whatsapp"></i> -->
-<!-- 										</a></li> -->
-										<li style="padding:3px;"><a class="google-plus social-icon" href="#" title=""
+										<li><a class="facebook social-icon" href="#" title=""
+											target="_blank" data-toggle="tooltip"
+											data-original-title="whatsapp"> <i class="fa fa-whatsapp"></i>
+										</a></li>
+										<li><a class="google-plus social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="Google"> <i class="fa fa-google"></i>
 										</a></li>
-<!-- 										<li><a class="youtube social-icon" href="#" title="" -->
-<!-- 											target="_blank" data-toggle="tooltip" -->
-<!-- 											data-original-title="Youtube"> <i class="fa fa-youtube"></i> -->
-<!-- 										</a></li> -->
-										<li style="padding:3px;"><a class="social-icon instagram" href="#" title=""
+										<li><a class="youtube social-icon" href="#" title=""
+											target="_blank" data-toggle="tooltip"
+											data-original-title="Youtube"> <i class="fa fa-youtube"></i>
+										</a></li>
+										<li><a class="social-icon instagram" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="instagram"> <i
 												class="fa fa-instagram"></i>
