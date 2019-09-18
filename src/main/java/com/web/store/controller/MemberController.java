@@ -140,7 +140,7 @@ public class MemberController {
 	@RequestMapping(value = "/member/add", method = RequestMethod.POST)
 	public String processAddNewMemberForm(@ModelAttribute("MemberBean") MemberBean mb, BindingResult result,
 			HttpServletRequest request) {
-		service.addMember(mb);
+		service.addGmailMember(mb);
 		return "redirect:/members";
 	}
 
