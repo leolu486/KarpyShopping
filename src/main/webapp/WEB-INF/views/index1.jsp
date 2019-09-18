@@ -4249,7 +4249,6 @@
 				</div>
 			</div>
 	</div>
-	</c:forEach>
 	<div class="nyx_top_rte">
 		<div class="col-md-12  ">
 			<div class="all-pros-ex animated fadeInUp">

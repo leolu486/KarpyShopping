@@ -85,32 +85,32 @@ public class ProductController {
 		if (service.getProductById(pId).getRankCount() != null) {
 			model.addAttribute("rankAVG", service.getProductRankAVGById(pId));
 		}
-		return "product";
+		return "/product/product";
 	}
 
 	@RequestMapping("/productByName")
 	public String getProductByName(@RequestParam("pname") String pname, Model model) {
 		model.addAttribute("product", service.getProductByName(pname));
-		return "product";
+		return "/product/product";
 	}
 
 	@RequestMapping("/products")
 	public String getAllProducts(Model model) {
 		List<ProductBean> list = service.getAllProducts();
 		model.addAttribute("products", list);
-		return "products";
+		return "/product/products";
 	}
 
 	@RequestMapping("/productsByVendor")
 	public String getProductsByVendor(@RequestParam("vId") Integer vId, Model model) {
 		List<ProductBean> list = service.getProductByVendor(vId);
 		model.addAttribute("products", list);
-		return "products";
+		return "/product/products";
 	}
 
 	@RequestMapping(value = "/getProductsBy", method = RequestMethod.GET)
 	public String getProductsByCategory(Model model) {
-		return "getProductsBy";
+		return "/product/getProductsBy";
 	}
 
 	// the way to use different submit btn in same form
@@ -143,31 +143,25 @@ public class ProductController {
 		if (service.getProductByCategory(searchBy).isEmpty() == false) {
 			List<ProductBean> list = service.getProductByCategory(searchBy);
 			model.addAttribute("products", list);	
-			return "products";
+			return "/product/products";
 		} else if (service.getProductByVendorName(searchBy).isEmpty() == false) {
 			List<ProductBean> list = service.getProductByVendorName(searchBy);
 			model.addAttribute("products", list);
-			return "products";
+			return "/product/products";
 		} else if (service.getProductByName(searchBy) != null) {
 			ProductBean resultpb = service.getProductByName(searchBy);
 			model.addAttribute("product", resultpb);
-			return "product";
+			return "/product/product";
 		} else {
 			return null;
 		}
-	}
-
-	@RequestMapping("/productRankAVG")
-	public String getProductRankAVGById(@RequestParam("pId") Integer pId, Model model) {
-		model.addAttribute("AVG", service.getProductRankAVGById(pId));
-		return "productRankAVG";
 	}
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
 	public String getAddNewProductForm(Model model) {
 		ProductBean pb = new ProductBean();
 		model.addAttribute("productBean", pb);
-		return "addProduct";
+		return "/product/addProduct";
 	}
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
@@ -411,7 +405,7 @@ public class ProductController {
 		System.out.println("get pb image: ");
 		System.out.println(pb.getProductImage() == null);
 
-		return "updateProduct";
+		return "/product/updateProduct";
 	}
 
 	@RequestMapping(value = "/product/update", method = RequestMethod.POST)
