@@ -1,16 +1,26 @@
 ﻿package com.web.store.dao.impl;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.persistence.NoResultException;
 
+import org.apache.commons.io.IOUtils;
+import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
@@ -20,6 +30,7 @@ import com.web.store.model.MemberBean;
 import com.web.store.model.VendorBean;
 
 import _00_init.util.GlobalService;
+import _00_init.util.SystemUtils2019;
 
 @Repository("")
 public class MemberDaoImpl implements MemberDao {
@@ -64,10 +75,11 @@ public class MemberDaoImpl implements MemberDao {
 
 	public int updateMember(MemberBean mb) {
 		int count = 0;
-		System.out.println("abcde");
 		MemberBean member = null;
 		Session session = factory.getCurrentSession();
+		// find member object
 		member = getMemberBymId(mb.getmId());
+		// update member object
 		if (mb.getAddr() != null)
 			member.setAddr(mb.getAddr());
 		if (mb.getBirthday() != null)
@@ -86,7 +98,7 @@ public class MemberDaoImpl implements MemberDao {
 			member.setSaddr(mb.getSaddr());
 		if (mb.getPassword() != null)
 			member.setPassword(mb.getPassword());
-		System.out.println("abcde");
+
 		session.update(member);
 
 		count++;
@@ -221,6 +233,35 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		System.out.println(mb.toString());
 		return mb;
+	}
+
+	@Override
+	public MemberBean getMemberByGmail(String gmail) throws NoResultException, NonUniqueResultException {
+		MemberBean mb = null;
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MemberBean WHERE gmail =:gmail";
+		mb = (MemberBean) session.createQuery(hql).setParameter("gmail", gmail).getSingleResult();
+		return mb;
+	}
+
+	/**
+	 * this method will be used when client want to login with gmail account while
+	 * there's no match in database. parameter's properties of gmail, pictureURL,
+	 * name must not be null
+	 * 
+	 * @return:Primary Key
+	 */
+
+	@Override
+	public int addGmailMember(MemberBean member) {
+
+		Session session = factory.getCurrentSession();
+		member.setMemberImage(SystemUtils2019.pictureURLToBlob(member.getName(), member.getPictureURL()));
+		member.setRdate(new java.sql.Timestamp(new Date().getTime()));
+		int pk = (int) session.save(member);
+		System.out.println("pk:" + pk);
+		return pk;
+
 	}
 
 }

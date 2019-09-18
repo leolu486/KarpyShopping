@@ -49,13 +49,13 @@ public class VendorController {
 	public String list(Model model) {
 		List<VendorBean> list = service.getAllVendor();
 		model.addAttribute("vendors", list);
-		return "vendors";
+		return "vendor/vendors";
 	}
 
 	@RequestMapping("/vendor")
 	public String getVendorById(@RequestParam("vname") String vname, Model model) {
 		model.addAttribute("vendor", service.getVendorByvname(vname));
-		return "vendor";
+		return "vendor/vendor";
 	}
 
 //新增廠商控制器
@@ -63,7 +63,7 @@ public class VendorController {
 	public String getAddNewVendorForm(Model model) {
 		VendorBean mb = new VendorBean();
 		model.addAttribute("vendorBean", mb);
-		return "insert/addVendor";
+		return "vendor/addVendor";
 	}
 
 	@RequestMapping(value = "/vendor/add", method = RequestMethod.POST)
@@ -77,7 +77,7 @@ public class VendorController {
 	public String getUpdateVendorForm(Model model) {
 		VendorBean vb = new VendorBean();
 		model.addAttribute("vendorBean", vb);
-		return "update/updateVendor";
+		return "vendor/updateVendor";
 	}
 
 	@RequestMapping(value = "/vendor/update", method = RequestMethod.POST)

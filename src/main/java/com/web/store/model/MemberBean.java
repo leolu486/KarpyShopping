@@ -33,6 +33,18 @@ public class MemberBean implements Serializable {
 	private java.sql.Timestamp birthday;// birthday
 	private String gender; // gender
 	private Blob memberImage; // member photo
+	private String gmail;	//third party login with gmail
+
+	@Transient
+	private String pictureURL;
+	
+	public String getPictureURL() {
+		return pictureURL;
+	}
+
+	public void setPictureURL(String pictureURL) {
+		this.pictureURL = pictureURL;
+	}
 
 	@Transient
 	private MultipartFile file;
@@ -179,5 +191,13 @@ public class MemberBean implements Serializable {
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
+	}
+
+	public String getGmail() {
+		return gmail;
+	}
+
+	public void setGmail(String gmail) {
+		this.gmail = gmail;
 	}
 }

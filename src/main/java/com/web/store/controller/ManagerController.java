@@ -65,7 +65,7 @@ public class ManagerController {
 	public String list(Model model) {
 		List<ManagerBean> list = service.getAllManager();
 		model.addAttribute("managers", list);
-		return "managers";
+		return "manager/managers";
 
 	}
 
@@ -73,7 +73,7 @@ public class ManagerController {
 	@RequestMapping("/manager")
 	public String getProductsById(@RequestParam("account") String account, Model model) {
 		model.addAttribute("manager", service.getManagerByAccount(account));
-		return "manager";
+		return "manager/manager";
 	}
 
 // 新增登入管理員控制器
@@ -81,7 +81,7 @@ public class ManagerController {
 	public String getManagerForm(Model model) {
 		ManagerBean mb = new ManagerBean();
 		model.addAttribute("managerBean", mb);
-		return "login/managerLogin";
+		return "manager/managerLogin";
 	}
 
 	@RequestMapping(value = "/AddorLogin", method = RequestMethod.POST)
@@ -115,7 +115,7 @@ public class ManagerController {
 	@RequestMapping("/managerLogout")
 	public String manageLogout(Model model) {
 		System.out.println("Mout");
-		return "login/managerLogout";
+		return "manager/managerLogout";
 	}
 
 //變更密碼控制器

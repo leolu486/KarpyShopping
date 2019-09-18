@@ -47,10 +47,10 @@ public class HomeController {
 		return "index1";
 	}
 	
-	@RequestMapping("/membercentre")
+	@RequestMapping("membercentre")
 	public String membercentre() {
 
-		return "membercentre";
+		return "member/membercentre";
 	}
 
 	@RequestMapping("/membercentreDetail")

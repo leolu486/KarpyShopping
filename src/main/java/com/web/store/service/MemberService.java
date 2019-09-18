@@ -2,6 +2,10 @@ package com.web.store.service;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
+import org.hibernate.NonUniqueResultException;
+
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
 
@@ -25,9 +29,13 @@ public interface MemberService {
 	int addCreditCard(CreditCardBean cId);
 
 	List<CreditCardBean> getCreditCardsBymId(Integer mId);
-	
+
 	CreditCardBean getCreditCardBycId(Integer cId);
-	
+
 	MemberBean getMemberBymId(Integer mId);
+
+	MemberBean getMemberByGmail(String gmail)  throws NoResultException, NonUniqueResultException;
+
+	int addGmailMember(MemberBean member);
 
 }

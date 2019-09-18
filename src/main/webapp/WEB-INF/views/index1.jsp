@@ -4241,6 +4241,44 @@
 								</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
 									class="fa fa-star"></i> </a>
 							</div>
+							<div class="price_box price_box_new">
+								<span class="spical-price">商品價錢 : ${product01.price}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	</c:forEach>
+	<div class="nyx_top_rte">
+		<div class="col-md-12  ">
+			<div class="all-pros-ex animated fadeInUp">
+				<div class="llc_pro">
+					<div class="sinle_pic sinle_pic_2">
+						<a href="#"> <img class="primary-img"
+							src="<c:url value="/images/top-pic/top_pic_1.jpg" />" alt="">
+							<img class="secondary-img"
+							src="<c:url value="/images/top-pic/top_pic_5.jpg" />" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="product_content_2">
+					<div class="usal_pro">
+						<div class=" product_name_new">
+							<h2>
+								<a href="#">Nam fringilla</a>
+							</h2>
+						</div>
+						<div class="product_price product_price_new product_price_new_3">
+							<div class="price_rating">
+								<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
+									class="fa fa-star"></i></a> <a href="#"> <i class="fa fa-star"></i>
+								</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
+									class="fa fa-star"></i> </a>
+							</div>
+						</div>
+						<div class="price_box price_box_new price_box_new_3">
+							<span class="spical-price">$150.00</span>
 						</div>
 						<div class="price_box price_box_new price_box_new_3">
 							<span class="spical-price">$150.00</span>

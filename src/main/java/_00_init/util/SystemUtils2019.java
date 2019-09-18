@@ -10,13 +10,19 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.net.URL;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.SQLException;
 import java.util.Base64;
 
+import javax.imageio.ImageIO;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialClob;
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.store.model.MemberBean;
 
@@ -80,5 +86,26 @@ public class SystemUtils2019 {
 
 	public static String extractFileName(String pathName) throws IOException, SQLException {
 		return pathName.substring(pathName.lastIndexOf("/") + 1);
+	}
+
+	public static Blob pictureURLToBlob(String pictureName, String pictureURL) {
+
+		try {
+			File f = new File("karpy.jpg");
+			ImageIO.write(ImageIO.read(new URL(pictureURL)), "jpg", f);
+			MultipartFile file = new MockMultipartFile(pictureName + ".jpg",
+					IOUtils.toByteArray(new FileInputStream(f)));
+			return fileToBlob(file.getInputStream(), file.getSize());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("發生異常在SystemUtils2019#pictureURLToBlob");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("發生異常在SystemUtils2019#pictureURLToBlob");
+			e.printStackTrace();
+		}
+		return null;
+
 	}
 }

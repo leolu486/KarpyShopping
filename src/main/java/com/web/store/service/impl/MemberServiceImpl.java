@@ -2,6 +2,9 @@ package com.web.store.service.impl;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
+import org.hibernate.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,13 +19,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberDao dao;
-	
+
 	@Transactional
 	@Override
 	public List<MemberBean> getAllMember() {
 		return dao.getAllMember();
 	}
-	
+
 	@Transactional
 	@Override
 	public MemberBean getMemberByAccount(String account) {
@@ -65,7 +68,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.addMember(member);
 	}
-	
+
 	@Transactional
 	@Override
 	public int addCreditCard(CreditCardBean card) {
@@ -86,11 +89,26 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.getCreditCardBycId(cId);
 	}
+
 	@Transactional
 	@Override
 	public MemberBean getMemberBymId(Integer mId) {
 		// TODO Auto-generated method stub
 		return dao.getMemberBymId(mId);
+	}
+
+	@Transactional
+	@Override
+	public MemberBean getMemberByGmail(String gmail) throws NoResultException, NonUniqueResultException {
+		// TODO Auto-generated method stub
+		return dao.getMemberByGmail(gmail);
+	}
+
+	@Transactional
+	@Override
+	public int addGmailMember(MemberBean member) {
+		// TODO Auto-generated method stub
+		return dao.addGmailMember(member);
 	}
 
 }
