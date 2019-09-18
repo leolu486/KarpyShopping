@@ -287,7 +287,7 @@
 									<label for="date" class="col-sm-2 col-form-label">生日：</label>
 									<div class="col-auto">
 										<input class="form-control-plaintext" id="date" name="date"
-											type='date' placeholder="未設定" />
+											type='date' placeholder="未設定" value="${Birthday}"/>									
 									</div>
 								</div>
 								<fieldset class="form-group">
@@ -295,18 +295,18 @@
 										<label class="col-form-label col-sm-2 pt-0">性別：</label>
 										<div class="col-auto">
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="gender"
-													id="gridRadios1" value="male" /> <label
+												<form:radiobutton class="form-check-input"  name="gender"
+													id="gridRadios1" value="male" path="gender"/> <label
 													class="form-check-label" for="男性"> 男性 </label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="gender"
-													id="gridRadios2" value="fmale" /> <label
+												<form:radiobutton class="form-check-input"  name="gender"
+													id="gridRadios2" value="fmale" path="gender"/> <label
 													class="form-check-label" for="女性"> 女性 </label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="gender"
-													id="gridRadios2" value="others" /> <label
+												<form:radiobutton class="form-check-input"  name="gender"
+													id="gridRadios3" value="others" path="gender" /> <label
 													class="form-check-label" for="其他/保密"> 其他/保密 </label>
 											</div>
 										</div>
