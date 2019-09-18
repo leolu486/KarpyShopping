@@ -1,7 +1,12 @@
 ﻿package com.web.store.model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
@@ -15,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import _00_init.util.SystemUtils2019;
 @Entity
 @Table(name = "Product")
 public class ProductBean implements Serializable {
@@ -46,7 +53,7 @@ public class ProductBean implements Serializable {
 	private Blob productImage3;
 	
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
-			String sdate, String expdate, Double rankSum, Integer rankCount) {
+			String sdate, String expdate, Double rankSum, Integer rankCount, File file1, File file2) {
 		this.pId = pId;
 		this.pname = pname;
 		this.price = price;
@@ -56,11 +63,25 @@ public class ProductBean implements Serializable {
 		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
 		this.expdate = new Timestamp(java.sql.Date.valueOf(expdate).getTime());
 		this.rankSum = rankSum;
-		this.rankCount = rankCount;	
+		this.rankCount = rankCount;
+		try {
+			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
+			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
-			String sdate, Double rankSum, Integer rankCount) {
+			String sdate, Double rankSum, Integer rankCount, File file1, File file2) {
 		this.pId = pId;
 		this.pname = pname;
 		this.price = price;
@@ -70,6 +91,19 @@ public class ProductBean implements Serializable {
 		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
 		this.rankSum = rankSum;
 		this.rankCount = rankCount;	
+		try {
+			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
+			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public ProductBean(Integer pId, String pname, Integer price, VendorBean vendorBean, Integer amount, String category,

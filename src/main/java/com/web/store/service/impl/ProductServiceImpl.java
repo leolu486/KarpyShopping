@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.web.store.dao.ProductDao;
 import com.web.store.dao.impl.ProductDaoImpl;
 import com.web.store.model.ProductBean;
-import com.web.store.model.ProductImagesBean;
 import com.web.store.service.ProductService;
 
 @Service

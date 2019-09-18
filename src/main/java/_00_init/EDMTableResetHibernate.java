@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 import java.sql.Blob;
 import java.sql.Clob;
 
+import org.apache.commons.io.FileUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -61,7 +62,7 @@ public class EDMTableResetHibernate {
 			session.flush();
 			System.out.println("Manager 資料新增成功");
 
-			// ------------
+//			// ------------
 			// 1. 由"data/vendor.txt"逐筆讀入Vendor表格內的初始資料，
 			// 然後依序新增到Vendor表格中
 			try (FileReader fr = new FileReader("data/vendor.txt"); BufferedReader br = new BufferedReader(fr);) {
@@ -85,7 +86,7 @@ public class EDMTableResetHibernate {
 			session.flush();
 			System.out.println("Vendor 資料新增成功");
 
-//				----------------------products data insert
+//				----------------------products data insert----------------------------
 			try (FileReader fr = new FileReader("data/products.txt"); BufferedReader br = new BufferedReader(fr);) {
 				while ((line = br.readLine()) != null) {
 					if (line.startsWith(UTF8_BOM)) {
@@ -101,21 +102,25 @@ public class EDMTableResetHibernate {
 					String category = token[4].trim();
 					String sdate = token[5].trim();
 					String expdate = token[6].trim();
+					System.out.println("\\"+token[7].trim()+"\\");
+					File file1 = new File(token[7].trim());
+					System.out.println("\\"+token[8].trim()+"\\");
+					File file2 = new File(token[8].trim());
 					Double rankSum = null;
 					Integer rankCount = null;
 					System.out.println(expdate);
-					ProductBean mb;
+					ProductBean pb;
 
 					if (!expdate.equals("null")) {
 						System.out.println("not null");
-						mb = new ProductBean(null, pname, price, vId, amount, category, sdate, expdate, rankSum,
-								rankCount);
+						pb = new ProductBean(null, pname, price, vId, amount, category, sdate, expdate, rankSum,
+								rankCount, file1, file2);
 					} else {
 						System.out.println("is null");
-						mb = new ProductBean(null, pname, price, vId, amount, category, sdate, rankSum, rankCount);
+						pb = new ProductBean(null, pname, price, vId, amount, category, sdate, rankSum, rankCount, file1, file2);
 					}
 
-					session.save(mb);
+					session.save(pb);
 				}
 			} catch (IOException e) {
 				System.err.println("新建Product表格時發生IO例外: " + e.getMessage());
@@ -123,7 +128,7 @@ public class EDMTableResetHibernate {
 			session.flush();
 			System.out.println("Product 資料新增成功");
 
-			// ------------
+		// ------------
 
 			tx.commit();
 		} catch (Exception e) {

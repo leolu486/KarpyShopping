@@ -34,7 +34,6 @@ import com.web.store.exception.ProductNotFoundException;
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.model.ProductBean;
-import com.web.store.model.ProductImagesBean;
 import com.web.store.service.ManagerService;
 import com.web.store.service.ProductService;
 
