@@ -586,7 +586,7 @@
 								</div>
 								<div class="about_content">
 									<div class="about_text">全台24小時到貨</div>
-									<div class="about_prgph">限定商品，全台24小時內到貨(偏遠地區除外)</div>
+									<div class="about_prgph">限定商品，全台24小時內到貨<br>(偏遠地區除外)</div>
 								</div>
 							</div>
 						</div>
@@ -599,7 +599,7 @@
 								</div>
 								<div class="about_content">
 									<div class="about_text">限量商品熱賣中</div>
-									<div class="about_prgph">限量商品到貨，熱賣搶購中。</div>
+									<div class="about_prgph">限量新品到貨<br>倒數搶購中。</div>
 								</div>
 							</div>
 						</div>
@@ -4350,15 +4350,7 @@
 		</div>
 	</div>
 	</div>
-	<aside class="single-sidebar">
-		<h3>Tags</h3>
-		<div class="compare_content">
-			<div class="new_tag">
-				<a href="#">Clothing</a> <a href="#">Enim</a> <a href="#">Fashion</a>
-				<a href="#">Glasses</a> <a href="#">Hats</a> <a href="#">Hoodies</a>
-			</div>
-		</div>
-	</aside>
+	
 	</div>
 	</div>
 	<div class="col-md-9 col-sm-12">
@@ -4650,8 +4642,8 @@
 									<div class="news_heading news_heading_3">
 										<h3 class="follow_mix">Contact us:</h3>
 									</div>
-									<ul class="social-icons">
-										<li><a class="facebook social-icon" href="#" title=""
+									<ul class="social-icons"  style="margin-right:70px">
+										<li style="padding:3px;"><a class="facebook social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="Facebook"> <i class="fa fa-facebook"></i>
 										</a></li>
@@ -4659,7 +4651,7 @@
 <!-- 											target="_blank" data-toggle="tooltip" -->
 <!-- 											data-original-title="whatsapp"> <i class="fa fa-whatsapp"></i> -->
 <!-- 										</a></li> -->
-										<li><a class="google-plus social-icon" href="#" title=""
+										<li style="padding:3px;"><a class="google-plus social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="Google"> <i class="fa fa-google"></i>
 										</a></li>
@@ -4667,7 +4659,7 @@
 <!-- 											target="_blank" data-toggle="tooltip" -->
 <!-- 											data-original-title="Youtube"> <i class="fa fa-youtube"></i> -->
 <!-- 										</a></li> -->
-										<li><a class="social-icon instagram" href="#" title=""
+										<li style="padding:3px;"><a class="social-icon instagram" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="instagram"> <i
 												class="fa fa-instagram"></i>

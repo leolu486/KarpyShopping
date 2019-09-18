@@ -99,7 +99,7 @@ public class MemberController {
 	public String getManagerForm(Model model1) {
 		MemberBean mb = new MemberBean();
 		model1.addAttribute("memberBean", mb);
-		return "login/memberLogin";
+		return "member/memberLogin";
 	}
 
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.POST)
@@ -140,7 +140,7 @@ public class MemberController {
 	@RequestMapping(value = "/member/add", method = RequestMethod.POST)
 	public String processAddNewMemberForm(@ModelAttribute("MemberBean") MemberBean mb, BindingResult result,
 			HttpServletRequest request) {
-		service.addGmailMember(mb);
+		service.addMember(mb);
 		return "redirect:/members";
 	}
 
@@ -223,7 +223,7 @@ public class MemberController {
 	@RequestMapping("/memberLogout")
 	public String manageLogout(Model model) {
 		System.out.println("Mout");
-		return "login/memberLogout";
+		return "member/memberLogout";
 	}
 
 	@RequestMapping(value = "addCreditCard", method = RequestMethod.GET)
@@ -272,16 +272,25 @@ public class MemberController {
 //		return "membertest";
 //	}
 
-	@RequestMapping(value = "/membertest", method = RequestMethod.GET)
+	@RequestMapping(value = "/memberchange", method = RequestMethod.GET)
 	public String Changemamber1(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		CreditCardBean cb = new CreditCardBean();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
+		SimpleDateFormat x = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println("mid:" + member.getmId());
 		Blob blob = null;
 		byte[] imageData = null;
+
+		if(member.getBirthday() != null) {
+			System.out.println(member.getBirthday());
+			String bd = x.format(member.getBirthday());		
+			model.addAttribute("Birthday", bd);
+			System.out.println(bd);
+		}
+		
 		if (member != null && member.getMemberImage() != null) {
-			System.out.println("both true");
+			System.out.println("both true");		
 			if (member.getMemberImage() != null) {
 				blob = member.getMemberImage();
 				try {
@@ -298,10 +307,10 @@ public class MemberController {
 		model.addAttribute("memberBean", member);
 		System.out.println("member Id" + member.getmId());
 		model.addAttribute("CreditCardBean", cb);
-		return "membertest";
+		return "member/memberchange";
 	}
 
-	@RequestMapping(value = "/membertest", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberchange", method = RequestMethod.POST)
 
 	public String Changemamber1(@ModelAttribute("CreditCardBean") CreditCardBean cb,
 			@ModelAttribute("memberBean") MemberBean mb, BindingResult result, HttpServletRequest request,

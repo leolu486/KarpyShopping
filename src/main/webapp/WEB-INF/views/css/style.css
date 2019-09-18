@@ -3682,6 +3682,11 @@ button, input, select, textarea {
 	margin-top: 4px;
 }
 
+.social-icons{
+	
+	margin-left:100px;
+}
+
 .social-icons li a {
 	background: #aaa none repeat scroll 0 0;
 	border-radius: 100%;
