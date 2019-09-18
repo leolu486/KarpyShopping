@@ -47,9 +47,9 @@
 
 
 <script>
-	function onSuccess(googleUser) {
+// 	function onSuccess(googleUser) {
 
-	}
+// 	}
 
 	// 	function onFailure(error) {
 	// 		console.log(error);
@@ -242,6 +242,8 @@ span.buttonText {
 	<script>
 		startApp();
 	</script>
-
+	<script
+		src="https://apis.google.com/js/platform.js?onload=renderButton" async
+		defer></script>
 </body>
 </html>

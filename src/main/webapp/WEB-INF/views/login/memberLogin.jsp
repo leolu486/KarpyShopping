@@ -8,6 +8,18 @@
 <head>
 <meta charset="UTF-8">
 
+<!-- third party login source -->
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="56544827833-d9qmm0ik4ukn3s8g8aplpco391bfjco0.apps.googleusercontent.com">
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
+<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto"	rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/third-party-login/third-party-login.css'/>">
+
+
 <title>會員登錄</title>
 <style>
 form {
@@ -130,6 +142,48 @@ input:focus::-webkit-input-placeholder {
 /* } */
 </style>
 
+<!-- third-party login script -->
+<script>
+	//	third-party login script
+	var googleUser = {};
+	var startApp = function() {
+		gapi.load('auth2',function() {
+				// Retrieve the singleton for the GoogleAuth library and
+				// set up the client.
+				auth2 = gapi.auth2.init({
+					client_id : '56544827833-d9qmm0ik4ukn3s8g8aplpco391bfjco0.apps.googleusercontent.com',
+					cookiepolicy : 'single_host_origin',
+					// Request scopes in addition to 'profile'
+					// and 'email'
+					scope : 'profile email'
+				});
+				attachSignin(document.getElementById('customBtn'));
+		});
+	};
+	function attachSignin(element) {
+		auth2.attachClickHandler(element, {}, function(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			var id_token = googleUser.getAuthResponse().id_token;
+			$.ajax({
+				type : 'POST',
+				url : "http://localhost:8080/KarpyShopping/googleVerify",
+				data : "idtokenstr=" + id_token,
+				dataType : "text",
+				success : function(response) {
+					console.log("Logging as: " + profile.getName());
+					location.href = '${sessionScope.requestURI}';
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log("jqXHR: " + jqXHR);
+					console.log("textStatus: " + textStatus);
+					console.log("errorThrown: " + errorThrown);
+				},
+			});
+		}, function(error) {
+			console.log(JSON.stringify(error, undefined, 2));
+		});
+	}
+</script>
 
 <script src="<c:url value='/js/jquery_3_4_1.js'/>"></script>
 
@@ -147,6 +201,7 @@ input:focus::-webkit-input-placeholder {
 </script>
 </head>
 <body>
+
 	<div>
 		<div class="button1">
 			<a href="home"><img
@@ -165,12 +220,14 @@ input:focus::-webkit-input-placeholder {
 								<form:input id="account" path="account" class="text" type="text"
 									placeholder="請輸入會員帳號" tabindex="1" autocomplete="off"
 									maxlength="50" autofocus="autofocus" />
+							</dd>
 						</dl>
 						<dl>
 							<dd>
 								<form:input id="password" path="password" class="text"
 									type="password" placeholder="請輸入密碼 ( 英文大小寫有差別 )" tabindex="2"
 									autocomplete="off" maxlength="50" />
+							</dd>
 						</dl>
 						<dl>
 							<dd>
@@ -191,18 +248,21 @@ input:focus::-webkit-input-placeholder {
 								<form:input id="account" path="account" class="text" type="text"
 									placeholder="請輸入會員帳號" tabindex="1" autocomplete="off"
 									maxlength="50" autofocus="autofocus" />
+							</dd>
 						</dl>
 						<dl>
 							<dd>
 								<form:input id="password" path="password" class="text"
 									type="password" placeholder="請輸入密碼 ( 英文大小寫有區別 )" tabindex="2"
 									autocomplete="off" maxlength="50" />
+							</dd>
 						</dl>
 						<dl>
 							<dd>
 								<form:input id="name" path="name" class="text" type="text"
 									placeholder="請輸入名字" tabindex="2" autocomplete="off"
 									maxlength="50" />
+							</dd>
 						</dl>
 						<dl>
 							<dd>
@@ -212,10 +272,25 @@ input:focus::-webkit-input-placeholder {
 						</dl>
 						<input id="type" name="form" type='hidden' value='false' />
 					</form:form>
+
+				</div>
+			</div>
+			<!-- third-party login button -->
+			<div id="gSignInWrapper">
+				<span class="label"></span>
+				<div id="customBtn" class="customGPlusSignIn">
+					<span class="icon"><img class="pic"
+						src="<c:url value='/images/google/g-icon.png'/>" /> </span> <span
+						class="buttonText">Sign in with Google</span>
 				</div>
 			</div>
 		</div>
+
 	</div>
+
+	<script>
+		startApp();
+	</script>
 </body>
 
 </html>
