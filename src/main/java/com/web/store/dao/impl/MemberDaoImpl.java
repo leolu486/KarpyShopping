@@ -264,4 +264,24 @@ public class MemberDaoImpl implements MemberDao {
 
 	}
 
+	@Override
+	public MemberBean getMemberByLine(String line) throws NoResultException, NonUniqueResultException {
+		// TODO Auto-generated method stub
+		MemberBean mb = null;
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MemberBean WHERE line =:line";
+		mb = (MemberBean) session.createQuery(hql).setParameter("line", line).getSingleResult();
+		return mb;
+	}
+
+	@Override
+	public int addLineMember(MemberBean member) {
+		Session session = factory.getCurrentSession();
+		member.setMemberImage(SystemUtils2019.pictureURLToBlob(member.getName(), member.getPictureURL()));
+		member.setRdate(new java.sql.Timestamp(new Date().getTime()));
+		int pk = (int) session.save(member);
+		System.out.println("pk:" + pk);
+		return pk;
+	}
+
 }

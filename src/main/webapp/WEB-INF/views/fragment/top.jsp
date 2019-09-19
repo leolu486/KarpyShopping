@@ -19,7 +19,8 @@
 		<div class="header_border">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12" style="padding-top:5px;">
+					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12"
+						style="padding-top: 5px;">
 						<div class="header_heaft_area">
 							<div class="header_left_all">
 								<div class="mean_al_dv">
@@ -55,22 +56,26 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12" style="padding-top:5px;">
+					<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12"
+						style="padding-top: 5px;">
 						<div class="header_right_area">
 							<ul>
 
 								<!-- login -->
 								<c:if test="${! empty memberLoginOK }">
-									<li>你好，${memberLoginOK.name} <a href="memberLogout"  style="font-size: 15px;">登出</a>
+									<li>你好，${memberLoginOK.name} <a href="memberLogout"
+										style="font-size: 15px; display: inline-block; margin-right: 10px;">登出</a>
 									</li>
 								</c:if>
 								<!-- no login -->
 								<c:if test="${ empty memberLoginOK }">
-									<li><a class="account" href="memberLogin"  style="font-size: 15px;">登入/註冊</a></li>
+									<li><a class="account" href="memberLogin"
+										style="font-size: 15px;">登入/註冊</a></li>
 								</c:if>
 								<!-- 								<li><a class="wishlist" href="#">訂單查詢</a></li> -->
 								<!-- 								<li><a class="Shopping cart" href="#">購物車</a></li> -->
-								<li><a class="Checkout" href="membercentre"  style="font-size: 15px;">會員中心</a></li>
+								<li><a class="Checkout" href="membercentre"
+									style="font-size: 15px;">會員中心</a></li>
 							</ul>
 						</div>
 					</div>

@@ -15,6 +15,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.text.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -96,9 +97,16 @@ public class MemberController {
 
 //登入控制器
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.GET)
-	public String getManagerForm(Model model1) {
+	public String getManagerForm(Model model1, HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		MemberBean mb = new MemberBean();
 		model1.addAttribute("memberBean", mb);
+		char[][] pairs = { { 'a', 'z' }, { 'A', 'Z' }, { '0', '9' } };
+		ThirdPartyLoginController.RANDOM_STRING = new RandomStringGenerator.Builder().withinRange(pairs).build()
+				.generate(ThirdPartyLoginController.RANDOM_STRING_LENGTH);
+		System.out.println("Random String:" + ThirdPartyLoginController.RANDOM_STRING);
+		session.setAttribute("state", ThirdPartyLoginController.RANDOM_STRING);
+
 		return "member/memberLogin";
 	}
 
@@ -282,15 +290,15 @@ public class MemberController {
 		Blob blob = null;
 		byte[] imageData = null;
 
-		if(member.getBirthday() != null) {
+		if (member.getBirthday() != null) {
 			System.out.println(member.getBirthday());
-			String bd = x.format(member.getBirthday());		
+			String bd = x.format(member.getBirthday());
 			model.addAttribute("Birthday", bd);
 			System.out.println(bd);
 		}
-		
+
 		if (member != null && member.getMemberImage() != null) {
-			System.out.println("both true");		
+			System.out.println("both true");
 			if (member.getMemberImage() != null) {
 				blob = member.getMemberImage();
 				try {

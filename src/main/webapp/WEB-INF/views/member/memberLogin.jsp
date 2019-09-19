@@ -10,14 +10,18 @@
 
 <!-- third party login source -->
 <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="56544827833-d9qmm0ik4ukn3s8g8aplpco391bfjco0.apps.googleusercontent.com">
+<meta name="google-signin-client_id"
+	content="56544827833-d9qmm0ik4ukn3s8g8aplpco391bfjco0.apps.googleusercontent.com">
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://apis.google.com/js/api:client.js"></script>
-<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
-<link href="https://fonts.googleapis.com/css?family=Roboto"	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="<c:url value='/css/third-party-login/third-party-login.css'/>">
+<link href="https://fonts.googleapis.com/css?family=Roboto"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/css/third-party-login/third-party-login.css'/>">
 
 
 <title>會員登錄</title>
@@ -148,44 +152,55 @@ input:focus::-webkit-input-placeholder {
 	var googleUser = {};
 	var startApp = function() {
 		gapi.load('auth2',function() {
-				// Retrieve the singleton for the GoogleAuth library and
-				// set up the client.
-				auth2 = gapi.auth2.init({
-					client_id : '56544827833-d9qmm0ik4ukn3s8g8aplpco391bfjco0.apps.googleusercontent.com',
-					cookiepolicy : 'single_host_origin',
-					// Request scopes in addition to 'profile'
-					// and 'email'
-					scope : 'profile email'
-				});
-				attachSignin(document.getElementById('customBtn'));
-		});
-	};
-	function attachSignin(element) {
-		auth2.attachClickHandler(element, {}, function(googleUser) {
-			var profile = googleUser.getBasicProfile();
-			var id_token = googleUser.getAuthResponse().id_token;
-			$.ajax({
-				type : 'POST',
-				url : "http://localhost:8080/KarpyShopping/googleVerify",
-				data : "idtokenstr=" + id_token,
-				dataType : "text",
-				success : function(response) {
-					console.log("Logging as: " + profile.getName());
-					location.href = '${sessionScope.requestURI}';
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					console.log("jqXHR: " + jqXHR);
-					console.log("textStatus: " + textStatus);
-					console.log("errorThrown: " + errorThrown);
-				},
+			auth2 = gapi.auth2.init({
+				client_id : '56544827833-d9qmm0ik4ukn3s8g8aplpco391bfjco0.apps.googleusercontent.com',
+				cookiepolicy : 'single_host_origin',
+				scope : 'profile email'
 			});
-		}, function(error) {
-			console.log(JSON.stringify(error, undefined, 2));
+			
+			auth2.attachClickHandler(document.getElementById('google'), {}, function(googleUser) {
+				var profile = googleUser.getBasicProfile();
+				var id_token = googleUser.getAuthResponse().id_token;
+				
+				$.ajax({
+					type : 'POST',
+					url : "http://localhost:8080/KarpyShopping/googleVerify",
+					data : "idtokenstr=" + id_token,
+					dataType : "text",
+					success : function(response) {
+						console.log("Logging as: " + profile.getName());
+						location.href = '${sessionScope.requestURI}';
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						console.log("jqXHR: " + jqXHR);
+						console.log("textStatus: " + textStatus);
+						console.log("errorThrown: " + errorThrown);
+					},
+				});
+				
+			}, function(error) {
+				console.log(JSON.stringify(error, undefined, 2));
+			});
 		});
+	
+	};
+	
+// 	Line login
+	function LineAuth() {
+		console.log("State:${sessionScope.state}");
+		var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
+		URL += 'response_type=code';
+		URL += '&client_id=1623038570';
+		URL += '&redirect_uri=http://localhost:8080/KarpyShopping/lineVerify';
+		URL += '&state=${sessionScope.state}';
+		URL += '&prompt=consent';
+		URL += '&scope=openid%20profile%20email';
+		window.location.href = URL;
 	}
 </script>
 
 <script src="<c:url value='/js/jquery_3_4_1.js'/>"></script>
+
 
 <script>
 	$(document).ready(function() {
@@ -199,6 +214,10 @@ input:focus::-webkit-input-placeholder {
 		});
 	});
 </script>
+
+
+
+
 </head>
 <body>
 
@@ -276,17 +295,17 @@ input:focus::-webkit-input-placeholder {
 				</div>
 			</div>
 			<!-- third-party login button -->
-			<div id="gSignInWrapper">
-				<span class="label"></span>
-				<div id="customBtn" class="customGPlusSignIn">
-					<span class="icon"><img class="pic"
-						src="<c:url value='/images/google/g-icon.png'/>" /> </span> <span
-						class="buttonText">Sign in with Google</span>
-				</div>
+			<div class="third-party-login-button" style="margin-left: 40px;">
+				<img height="64px" id="google" class="third-login-icon"
+					src="<c:url value='/images/google-icon/btn_login_base.png'/>" /> 
+				
+				<img onclick="LineAuth();" id="line" class="third-login-icon"
+					src="<c:url value='/images/line-icon/btn_login_base.png'/>" />
 			</div>
 		</div>
-
 	</div>
+
+
 
 	<script>
 		startApp();

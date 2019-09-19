@@ -38,5 +38,9 @@ public interface MemberDao {
 	MemberBean getMemberByGmail(String gmail) throws NoResultException, NonUniqueResultException;
 
 	int addGmailMember(MemberBean member);
+	
+	MemberBean getMemberByLine(String line) throws NoResultException, NonUniqueResultException;
+	
+	int addLineMember(MemberBean member);
 
 }

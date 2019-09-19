@@ -6,16 +6,28 @@
 	display: inline-block;
 	background: white;
 	color: #444;
-	width: 230px;
-	height: 3em;
-	border-radius: 5px;
+	width: 222px;
+	height: 64px;
+	border-radius: 10px;
 	border: thin solid #888;
 	box-shadow: 1px 1px 1px grey;
 	white-space: nowrap;
 	border-radius: 5px;
 }
 
-#customBtn:hover, button:hover, #submit:hover {
+#customBtn:hover {
+	cursor: pointer;
+	-webkit-filter: brightness(0.8) contrast(2)
+		drop-shadow(1px 1px 1px gray);
+}
+
+#customBtn:active {
+	cursor: pointer;
+	-webkit-filter: brightness(0.8) contrast(2)
+		drop-shadow(1px 1px 1px green);
+}
+
+button:hover, #submit:hover {
 	cursor: pointer;
 }
 
@@ -53,4 +65,18 @@ span.buttonText {
 	font-weight: bold;
 	/* Use the Roboto font that is loaded in the <head> */
 	font-family: 'Roboto', sans-serif;
+}
+
+img.third-login-icon {
+	-webkit-filter: drop-shadow(1px 1px 1px green);
+}
+
+img.third-login-icon:hover {
+	cursor: pointer;
+	-webkit-filter: contrast(1.5) drop-shadow(1px 1px 1px green);
+}
+
+img.third-login-icon:active {
+	cursor: pointer;
+	-webkit-filter: contrast(2) drop-shadow(1px 1px 1px green);
 }

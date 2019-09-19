@@ -73,6 +73,11 @@
 			</td>
 			<td width="350"><p align="center" /> <a href='addGmail'>addGmail</a>
 		</tr>
+		<tr height="52" bgcolor="lightblue" align="center">
+			<td width="350"><p align="center" /> <a href='linelogin'>Line登入</a>
+			</td>
+			<td width="350"><p align="center" /> <a href=''></a>
+		</tr>
 
 		<!-- Manager Method Test Area -->
 

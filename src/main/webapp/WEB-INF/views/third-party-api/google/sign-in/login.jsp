@@ -42,14 +42,22 @@
 
 #customBtn:hover {
 	cursor: pointer;
+	-webkit-filter: brightness(0.8) contrast(2)
+		drop-shadow(1px 1px 1px gray);
+}
+
+#customBtn:active {
+	cursor: pointer;
+	-webkit-filter: brightness(0.8) contrast(2)
+		drop-shadow(1px 1px 1px green);
 }
 </style>
 
 
 <script>
-// 	function onSuccess(googleUser) {
+	// 	function onSuccess(googleUser) {
 
-// 	}
+	// 	}
 
 	// 	function onFailure(error) {
 	// 		console.log(error);

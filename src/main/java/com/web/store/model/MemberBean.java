@@ -34,6 +34,7 @@ public class MemberBean implements Serializable {
 	private String gender; // gender
 	private Blob memberImage; // member photo
 	private String gmail;	//third party login with gmail
+	private String line;	//third party login with line
 
 	@Transient
 	private String pictureURL;
@@ -199,5 +200,13 @@ public class MemberBean implements Serializable {
 
 	public void setGmail(String gmail) {
 		this.gmail = gmail;
+	}
+
+	public String getLine() {
+		return line;
+	}
+
+	public void setLine(String line) {
+		this.line = line;
 	}
 }

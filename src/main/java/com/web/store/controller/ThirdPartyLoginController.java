@@ -1,6 +1,9 @@
 package com.web.store.controller;
 
 import java.io.IOException;
+
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.security.GeneralSecurityException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.text.RandomStringGenerator;
 import org.hibernate.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -31,18 +35,32 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.web.store.exception.MemberNotFoundException;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
 
+import _00_init.util.HttpPostUtils;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 @Controller
-public class GoogleLoginController {
+public class ThirdPartyLoginController {
 
 	@Autowired
 	MemberService service;
 
-	public final String CLIENT_ID = "56544827833-d9qmm0ik4ukn3s8g8aplpco391bfjco0.apps.googleusercontent.com";
-	public final String REDIRECT_URI = "http://localhost:8080/KarpyShopping/home";
+	public static final String CLIENT_ID = "56544827833-d9qmm0ik4ukn3s8g8aplpco391bfjco0.apps.googleusercontent.com";
+	public static final String REDIRECT_URI = "http://localhost:8080/KarpyShopping/home";
+	public static final String LINE_CHANNEL_ID = "1623038570";
+	public static final String LINE_CHANNEL_SECRET = "5208b0d5022fab47d445be7c1240dc86";
+	public static final int RANDOM_STRING_LENGTH = 10;
+	public static String RANDOM_STRING = "";
 
 	@InitBinder
 	public final void initBinderUsuariosFormValidator(final WebDataBinder binder, final Locale locale) {
@@ -50,25 +68,58 @@ public class GoogleLoginController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 
-	@ExceptionHandler({ MemberNotFoundException.class })
-	public ModelAndView handleError(HttpServletRequest request, MemberNotFoundException exception) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("invalidAccount", exception.getAccount());
-		mv.addObject("exception", exception);
-		mv.addObject("errorMessage", exception.getMessage());
-		if (request.getQueryString().isEmpty())
-			mv.addObject("url", request.getRequestURL());
-		else
-			mv.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
-		mv.setViewName("errorPage/memberNotFound");
-		return mv;
+	// line verify
+	@RequestMapping(value = "/lineVerify")
+	public String verifylineTokenPost(@RequestParam("code") String code, @RequestParam("state") String state,
+			HttpServletResponse response, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("state");
+		System.out.println("code:" + code);
+
+		if (state.equals(ThirdPartyLoginController.RANDOM_STRING)) {
+			System.out.println("Line驗證識別碼正確");
+			JsonObject obj = null;
+			try {
+				obj = HttpPostUtils.accessToken(code);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (obj != null) {
+				String name = obj.get("name").getAsString();
+				String email = obj.get("email").getAsString();
+				String pictureURL = obj.get("picture").getAsString();
+
+				MemberBean member = null;
+				try {
+					member = service.getMemberByLine(email);
+					System.out.println("load " + email + " as Line member from database success.");
+				} catch (NoResultException e) {
+					System.err.println("database has no " + email + " account data.");
+					System.err.println("Start with adding new Line member");
+					member = new MemberBean();
+					member.setName(name);
+					member.setPictureURL(pictureURL);
+					member.setLine(email);
+					service.addLineMember(member);
+				}
+				session.setAttribute("memberLoginOK", member);
+			}
+		} else {
+			System.err.println("Line驗證識別碼錯誤");
+		}
+
+		String uri = (String) session.getAttribute("requestURI");
+		System.out.println("uri : " + uri);
+		if (uri == null) {
+			return "redirect:/home";
+		} else {
+			session.removeAttribute("requestURI");
+			return "redirect:/" + uri.substring(15);
+		}
 	}
 
-	@RequestMapping("/glogin")
-	public String login(Model model) {
-		return "google/sign-in/login";
-	}
-
+//	google verify
 	@RequestMapping(value = "/googleVerify")
 	public void verifyTokenPost(@RequestParam("idtokenstr") String idtokenstr, HttpServletResponse response,
 			HttpServletRequest request) {
@@ -79,7 +130,8 @@ public class GoogleLoginController {
 		GoogleIdToken idToken = null;
 		try {
 			idToken = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), JacksonFactory.getDefaultInstance())
-					.setAudience(Collections.singletonList(CLIENT_ID)).build().verify(idtokenstr);
+					.setAudience(Collections.singletonList(ThirdPartyLoginController.CLIENT_ID)).build()
+					.verify(idtokenstr);
 		} catch (GeneralSecurityException e) {
 			System.out.println("驗證時出現GeneralSecurityException異常");
 		} catch (IOException e) {
@@ -105,7 +157,7 @@ public class GoogleLoginController {
 			MemberBean member = null;
 			try {
 				member = service.getMemberByGmail(gmail);
-				System.out.println("load " + gmail + " from database success.");
+				System.out.println("load " + gmail + " as Gmail member from database success.");
 			} catch (NoResultException e) {
 				System.err.println("database has no " + gmail + " account data.");
 				System.err.println("Start with adding new Gmail member");
@@ -134,11 +186,34 @@ public class GoogleLoginController {
 
 	}
 
+//function test code
+
+	// line
+	@RequestMapping("/linelogin")
+	public String lineLogin(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+
+		char[][] pairs = { { 'a', 'z' }, { 'A', 'Z' }, { '0', '9' } };
+		ThirdPartyLoginController.RANDOM_STRING = new RandomStringGenerator.Builder().withinRange(pairs).build()
+				.generate(ThirdPartyLoginController.RANDOM_STRING_LENGTH);
+		System.out.println("Random String:" + ThirdPartyLoginController.RANDOM_STRING);
+		session.setAttribute("state", ThirdPartyLoginController.RANDOM_STRING);
+		return "third-party-api/line/sign-in/login";
+
+	}
+	// gmail
+
+	@RequestMapping("/glogin")
+	public String googleLogin(Model model) {
+		return "third-party-api/google/sign-in/login";
+	}
+
 	@RequestMapping(value = "/addGmail", method = RequestMethod.GET)
 	public String addGmailFORM(Model model) {
 		MemberBean mb = new MemberBean();
 		model.addAttribute("memberBean", mb);
-		return "google/test/addGmail";
+		return "third-party-api/google/test/addGmail";
+
 	}
 
 	@RequestMapping(value = "/addGmail", method = RequestMethod.POST)

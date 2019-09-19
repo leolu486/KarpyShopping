@@ -111,4 +111,17 @@ public class MemberServiceImpl implements MemberService {
 		return dao.addGmailMember(member);
 	}
 
+	@Transactional
+	@Override
+	public MemberBean getMemberByLine(String line) throws NoResultException, NonUniqueResultException {
+		// TODO Auto-generated method stub
+		return dao.getMemberByLine(line);
+	}
+	@Transactional
+	@Override
+	public int addLineMember(MemberBean member) {
+		// TODO Auto-generated method stub
+		return dao.addLineMember(member);
+	}
+
 }

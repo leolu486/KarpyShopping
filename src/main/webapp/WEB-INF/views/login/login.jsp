@@ -59,14 +59,21 @@ input, input::-webkit-input-placeholder {
 /* 	width: 100%; */
 /* } */
 </style>
+
+<script>
+	function test() {
+		console.log('${pageContext.request.requestURL}');
+	}
+</script>
+
 </head>
 <body>
 	<form action="<c:url value='' />" method="POST">
 		<h1 align="center">會員登入</h1>
-		
-		
-		
-		
+
+
+
+
 		<dl>
 			<dd>
 				<input id="loginAcc" class="text" type="text"
@@ -91,10 +98,11 @@ input, input::-webkit-input-placeholder {
 		<dl>
 			<dd>
 				<a><input id="submit" type="submit" value="Login"
-					style="font-size:25px ;width:450px;height:60px;"></a>
+					style="font-size: 25px; width: 450px; height: 60px;"></a>
 			</dd>
 		</dl>
 	</form>
+	<button onclick="test()">abc</button>
 </body>
 
 </html>
