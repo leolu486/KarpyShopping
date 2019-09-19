@@ -64,7 +64,7 @@
 							<img id="zoom" src="img/elavetor/small/45.jpg"
 								data-zoom-image="img/elavetor/large/l-8.jpg" alt=""> <img
 								width='100' height='150'
-								src="<c:url value='/getPicture/${product.pId}'/>" />
+								src="data:image/jpg;base64,${productImage}" />
 
 							<div class="al_zoom"></div>
 						</div>

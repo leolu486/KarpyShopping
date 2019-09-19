@@ -529,7 +529,58 @@ public class ProductController {
 	}
 
 	@RequestMapping("/productById02")
-	public String getProductById02(@RequestParam("pId") Integer pId, Model model) {
+	public String getProductById02(@RequestParam("pId") Integer pId, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("productImage");
+		session.removeAttribute("productImage1");
+		session.removeAttribute("productImage2");
+		session.removeAttribute("productImage3");
+		ProductBean pb = service.getProductById(pId);
+		
+		//handling images
+		Blob blob = null;
+		byte[] imageData = null;
+
+		if (pb.getProductImage() != null) {
+			blob = pb.getProductImage();
+			try {		
+				imageData = blob.getBytes(1, (int) blob.length());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.setAttribute("productImage", Base64.getEncoder().encodeToString(imageData));
+		}
+
+		if (pb.getProductImage1() != null) {
+			blob = pb.getProductImage1();
+			try {			
+				imageData = blob.getBytes(1, (int) blob.length());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.setAttribute("productImage1", Base64.getEncoder().encodeToString(imageData));
+		}
+
+		if (pb.getProductImage2() != null) {
+			blob = pb.getProductImage2();
+			try {			
+				imageData = blob.getBytes(1, (int) blob.length());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.setAttribute("productImage2", Base64.getEncoder().encodeToString(imageData));
+		}
+
+		if (pb.getProductImage3() != null) {
+			blob = pb.getProductImage3();
+			try {	
+				imageData = blob.getBytes(1, (int) blob.length());;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.setAttribute("productImage3", Base64.getEncoder().encodeToString(imageData));
+		}
+		
 		model.addAttribute("product", service.getProductById(pId));
 //		if (service.getProductById(pId).getRankCount() != null) {
 //			model.addAttribute("rankAVG", service.getProductRankAVGById(pId));

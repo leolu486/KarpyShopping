@@ -32,7 +32,7 @@
 							<p>
 								<b style='font-size: 16px;'>商品名稱 : ${product.pname}</b>
 							</p>
-						<a href="<spring:url value='productById?pId=${product.pId}'/>"
+						<a href="<spring:url value='productById02?pId=${product.pId}'/>"
 								class="btn btn-primary"> <span
 								class="glyphicon-info-sigh glyphicon"></span>詳細資料
 
