@@ -9,7 +9,7 @@ public interface ProductService {
 
 	ProductBean getProductById(Integer pId);
 
-	ProductBean getProductByName(String pname);
+	List<ProductBean> getProductByName(String pname);
 
 	List<ProductBean> getProductByVendor(Integer vId);
 

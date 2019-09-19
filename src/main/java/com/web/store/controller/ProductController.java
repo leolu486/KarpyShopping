@@ -5,9 +5,12 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -107,10 +110,10 @@ public class ProductController {
 		return "/product/products";
 	}
 
-	@RequestMapping(value = "/getProductsBy", method = RequestMethod.GET)
-	public String getProductsByCategory(Model model) {
-		return "/product/getProductsBy";
-	}
+//	@RequestMapping(value = "/getProductsBy", method = RequestMethod.GET)
+//	public void getProductsByGET(@RequestParam("searchBy") String searchBy, Model model) {
+//		getProductsByPOST(searchBy, model);
+//	}
 
 	// the way to use different submit btn in same form
 //	@RequestMapping(value = "/productsByCategory", method = RequestMethod.POST)
@@ -136,25 +139,48 @@ public class ProductController {
 //		return null;
 //		}
 //	}
-
-	@RequestMapping(value = "/getProductsBy", method = RequestMethod.POST)
-	public String getProductsByCategory(@RequestParam("searchBy") String searchBy, Model model) {
-		if (service.getProductByCategory(searchBy).isEmpty() == false) {
-			List<ProductBean> list = service.getProductByCategory(searchBy);
-			model.addAttribute("products", list);	
-			return "/product/products";
-		} else if (service.getProductByVendorName(searchBy).isEmpty() == false) {
-			List<ProductBean> list = service.getProductByVendorName(searchBy);
-			model.addAttribute("products", list);
-			return "/product/products";
-		} else if (service.getProductByName(searchBy) != null) {
-			ProductBean resultpb = service.getProductByName(searchBy);
-			model.addAttribute("product", resultpb);
-			return "/product/product";
-		} else {
-			return null;
+//	, method = RequestMethod.POST
+	//backup
+//	@RequestMapping(value = "/getProductsBy")
+//	public String getProductsBy(@RequestParam("searchBy") String searchBy, Model model) {
+//	if (service.getProductByCategory(searchBy).isEmpty() == false) {
+//	List<ProductBean> list = service.getProductByCategory(searchBy);
+//	model.addAttribute("products", list);	
+//	return "/product/products";
+//} else if (service.getProductByVendorName(searchBy).isEmpty() == false) {
+//	List<ProductBean> list = service.getProductByVendorName(searchBy);
+//	model.addAttribute("products", list);
+//	return "/product/products";
+//} else if (service.getProductByName(searchBy) != null) {
+//	List<ProductBean> list = service.getProductByName(searchBy);
+//	model.addAttribute("products", list);
+//	return "/product/products";
+//} else {
+//	return null;
+//}
+//	}
+	
+	@RequestMapping(value = "/getProductsBy")
+	public String getProductsBy(@RequestParam("searchBy") String searchBy, Model model) {
+		List<ProductBean> allList = new ArrayList<ProductBean>();
+		Set<ProductBean> checkSet = new HashSet<ProductBean>();
+		allList = service.getAllProducts();
+		for(String search : searchBy.trim().split(" ")) {
+		for(ProductBean pb : allList) {
+			if(pb.getPname().indexOf(search) != -1) {
+				checkSet.add(pb);
+			}else if(pb.getCategory().indexOf(search) != -1) {
+				checkSet.add(pb);
+			}else if(pb.getVendorBean().getVname().indexOf(search) != -1) {
+				checkSet.add(pb);
+			}
 		}
+		}
+		List<ProductBean> searchResult = new ArrayList<ProductBean>(checkSet);
+		model.addAttribute("products", searchResult);
+		return "/product/products";
 	}
+	
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
 	public String getAddNewProductForm(Model model) {
