@@ -119,6 +119,9 @@ public class EDMTableResetHibernate {
 						System.out.println("is null");
 						pb = new ProductBean(null, pname, price, vId, amount, category, sdate, rankSum, rankCount, file1, file2);
 					}
+					
+					VendorBean vb = session.get(VendorBean.class, pb.getvId());
+					pb.setVendorBean(vb);
 
 					session.save(pb);
 				}

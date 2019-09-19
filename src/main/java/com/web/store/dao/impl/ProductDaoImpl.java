@@ -36,17 +36,18 @@ public class ProductDaoImpl implements ProductDao, Serializable {
 		return pb;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public ProductBean getProductByName(String pname) {
+	public List<ProductBean> getProductByName(String pname) {
 		String hql = "FROM ProductBean WHERE pname = :productName";
-		ProductBean pb = new ProductBean();
+		List<ProductBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 //		try {
-		pb = (ProductBean) session.createQuery(hql).setParameter("productName", pname).getSingleResult();
+		list = session.createQuery(hql).setParameter("productName", pname).getResultList();
 //		} catch (NoResultException e) {
 //			throw new ProductNotFoundException("查無名稱為 " + pname + " 的商品", pname);
 //		}
-		return pb;
+		return list;
 	}
 
 	@SuppressWarnings("unchecked")
