@@ -36,13 +36,13 @@
 <title>Document</title>
 </head>
 <!-- <script src="js/AddressSelectList.js"></script> -->
+
 <script type="text/javascript">
 	window.onload = function() {
 		//當頁面載完之後，用AddressSeleclList.Initialize()，
 		//傳入要綁定的縣市下拉選單ID及鄉鎮市區下拉選單ID
 		AddressSeleclList.Initialize('city', 'city2');
 	}
-
 	function show() {
 		//取出指定縣市及鄉鎮市區的下拉選單的值
 		alert(AddressSeleclList.ReturnSelectAddress('city', 'city2'));
@@ -72,26 +72,6 @@
 		});
 	});
 
-	function checkpwd() {
-		var v1 = document.getElementById("opw").value;
-		var v2 = document.getElementById("npw").value;
-		var v3 = document.getElementById("rnpw").value;
-		if (v1 == "") {
-			alert("請輸入密碼");
-			return false;
-		} else if (v2 == "") {
-			alert("請輸入新密碼")
-			return false;
-		}
-		if (v1 == v2) {
-			alert("新舊密碼不可相同")
-			return false;
-		} else if (v2 != v3) {
-			alert("新密碼不相同")
-			return false;
-		}
-	}
-
 	document.addEventListener("DOMContentLoaded", function() {
 
 		document.getElementById("passwordcheck").addEventListener("click",
@@ -99,23 +79,118 @@
 
 		document.getElementById("opw").addEventListener("focus", function() {
 			this.style.backgroundColor = "lightyellow";
+			document.getElementById("error1").innerHTML = "";
 		});
-		document.getElementById("opw").addEventListener("blur", checkpwd);
+		document.getElementById("opw").addEventListener("blur", CheckOpw);
 
 		document.getElementById("npw").addEventListener("focus", function() {
 			this.style.backgroundColor = "lightyellow";
+			document.getElementById("error2").innerHTML = "";
 		});
 		document.getElementById("npw").addEventListener("blur", function() {
-			checkpwd();
+			CheckNpw();
 		});
 		document.getElementById("rnpw").addEventListener("focus", function() {
 			this.style.backgroundColor = "lightyellow";
+			document.getElementById("error3").innerHTML = "";
 		});
 		document.getElementById("rnpw").addEventListener("blur", function() {
-			checkpwd();
+			CheckRnpw();
 		});
 
 	});
+
+	function CheckStr(str) {
+		var SpecialCharacters = "[`~!@#$^%&;*()=|{}':;',//[//].<>/?~!#￥……&;*()——|{}【】‘;:”“'。,、?]‘'";
+		var i = 0;
+		for (i = 0; i < SpecialCharacters.length - 1; i++) {
+			if (str.indexOf(SpecialCharacters.charAt(i)) != -1) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function CheckOpw() {
+		if (document.getElementById("opw").value == "") {
+			document.getElementById("opw").style.backgroundColor = "pink";
+			document.getElementById("error1").style.color = "red";
+			document.getElementById("error1").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>請輸入原密碼";
+		} else {
+			document.getElementById("opw").style.backgroundColor = "lightgreen";
+			document.getElementById("opw").style.color = "green";
+			document.getElementById("error1").innerHTML = "<img width='15px' src='<c:url value='/images/icon/correct.jpg'/>'/>";
+		}
+	}
+
+	function CheckNpw() {
+		let flag1 = false, flag2 = false, flag3 = true;
+		if (document.getElementById("npw").value == "") {
+			//檢查是否為空
+			document.getElementById("npw").style.backgroundColor = "pink";
+			document.getElementById("error2").style.color = "red";
+			document.getElementById("error2").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>請輸入新密碼";
+		} else if (document.getElementById("npw").value.length < 6) {
+			//檢查長度
+			document.getElementById("npw").style.backgroundColor = "pink";
+			document.getElementById("error2").style.color = "red";
+			document.getElementById("error2").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>密碼長度不可少於6";
+		} else if (document.getElementById("npw").value == document
+				.getElementById("opw").value) {
+			//檢查新舊密碼是否相同
+			document.getElementById("npw").style.backgroundColor = "pink";
+			document.getElementById("error2").style.color = "red";
+			document.getElementById("error2").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>新舊密碼不可相同";
+		} else {
+			for (let i = 0; i < document.getElementById("npw").value.length; i++) {
+				let PwdCh = document.getElementById("npw").value.charAt(i)
+						.toUpperCase();
+				console.log("PwdCh:" + PwdCh);
+				if (PwdCh >= "A" && PwdCh <= "Z") {
+					flag1 = true;
+				} else if (PwdCh >= "0" && PwdCh <= "9") {
+					flag2 = true;
+				} else if (CheckStr(PwdCh)) {
+					flag3 = false;
+				}
+
+			}
+			if (flag1 && flag2 && flag3) {
+				document.getElementById("npw").style.backgroundColor = "lightgreen";
+				document.getElementById("npw").style.color = "green";
+				document.getElementById("error2").innerHTML = "<img width='15px' src='<c:url value='/images/icon/correct.jpg'/>'/>";
+			} else if (!flag3) {
+				document.getElementById("npw").style.backgroundColor = "pink";
+				document.getElementById("npw").style.color = "red";
+				document.getElementById("error2").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>密碼不可包含特殊符號";
+			} else if (!flag2 || !flag1) {
+				document.getElementById("npw").style.backgroundColor = "pink";
+				document.getElementById("npw").style.color = "red";
+				document.getElementById("error2").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>密碼須包含數字及英文字母";
+			}
+		}
+	}
+
+	function CheckRnpw() {
+		if (document.getElementById("npw").value == "") {
+			//npw == "", do nothing
+		} else if (document.getElementById("rnpw").value == "") {
+			//檢查是否為空
+			document.getElementById("rnpw").style.backgroundColor = "pink";
+			document.getElementById("error3").style.color = "red";
+			document.getElementById("error3").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>欄位不可為空";
+		} else if (document.getElementById("rnpw").value == document
+				.getElementById("npw").value) {
+			document.getElementById("rnpw").style.backgroundColor = "lightgreen";
+			document.getElementById("rnpw").style.color = "green";
+			document.getElementById("error3").innerHTML = "<img width='15px' src='<c:url value='/images/icon/correct.jpg'/>'/>";
+		} else if (document.getElementById("rnpw").value != document
+				.getElementById("npw").value) {
+			document.getElementById("rnpw").style.backgroundColor = "pink";
+			document.getElementById("rnpw").style.color = "red";
+			document.getElementById("error3").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>與新密碼不相符";
+		}
+	}
 </script>
 <style>
 .center {
@@ -213,7 +288,40 @@
 		font-size: 1.3rem;
 	}
 }
+</style>
+
+<style>
+.lab1 {
+	text-align: right;
+	width: 55px;
 }
+
+.sub {
+	text-align: center;
+	width: 450px;
+}
+
+.des {
+	width: 55px;
+	text-align: right;
+	color: gray;
+	font-size: 1ch;
+}
+
+.st1 {
+	font-size: 23px;
+	border-bottom: 0px solid gray;
+	width: 550px;
+	margin-left: 190px;
+	padding: 10px;
+	float: left;
+	text-align: left;
+}
+
+#error1, #error2, #error3 {
+	font-size: 15px;
+}
+
 </style>
 <body>
 
@@ -287,7 +395,7 @@
 									<label for="date" class="col-sm-2 col-form-label">生日：</label>
 									<div class="col-auto">
 										<input class="form-control-plaintext" id="date" name="date"
-											type='date' placeholder="未設定" value="${Birthday}"/>									
+											type='date' placeholder="未設定" />
 									</div>
 								</div>
 								<fieldset class="form-group">
@@ -295,18 +403,18 @@
 										<label class="col-form-label col-sm-2 pt-0">性別：</label>
 										<div class="col-auto">
 											<div class="form-check form-check-inline">
-												<form:radiobutton class="form-check-input"  name="gender"
-													id="gridRadios1" value="male" path="gender"/> <label
+												<input class="form-check-input" type="radio" name="gender"
+													id="gridRadios1" value="male" /> <label
 													class="form-check-label" for="男性"> 男性 </label>
 											</div>
 											<div class="form-check form-check-inline">
-												<form:radiobutton class="form-check-input"  name="gender"
-													id="gridRadios2" value="fmale" path="gender"/> <label
+												<input class="form-check-input" type="radio" name="gender"
+													id="gridRadios2" value="fmale" /> <label
 													class="form-check-label" for="女性"> 女性 </label>
 											</div>
 											<div class="form-check form-check-inline">
-												<form:radiobutton class="form-check-input"  name="gender"
-													id="gridRadios3" value="others" path="gender" /> <label
+												<input class="form-check-input" type="radio" name="gender"
+													id="gridRadios2" value="others" /> <label
 													class="form-check-label" for="其他/保密"> 其他/保密 </label>
 											</div>
 										</div>
@@ -375,48 +483,45 @@
 				<div class="login_title border2" id="register" style="display: none">
 					<p class="p1" style="padding-left: 15px;">會員更改密碼</p>
 					<hr style="width: 100%">
-					<form:form method='POST' class='form-horizontal'
-						enctype="multipart/form-data" onsubmit="return checkpwd();">
+					
+						<form:form method='POST' class='form-horizontal'
+							enctype="multipart/form-data" onsubmit="return CheckPwd();" style="margin-top:100px;">
+							<div class="st1">
+								<label><input type="password" name="oldPW" id="opw" placeholder="舊密碼"
+									autocomplete="off" autofocus="autofocus"> <span
+									id="error1"></span> </label>
 
-						<div class="form_text_ipt">
-							<input name="oldPW" type="password" placeholder="舊密碼"
-								autofocus="autofocus" id="opw">
-						</div>
-						<div class="form_text_ipt">
-							<input name="newPW" type="password" placeholder="新密碼" id="npw">
-						</div>
-
-						<div class="form_text_ipt">
-							<input name="renewPW" type="password" placeholder="再次輸入新密碼"
-								id="rnpw">
-						</div>
-
-						<div class="form_text_ipt">
-							<input name="code" type="text" placeholder="輸入驗證碼">
-						</div>
-						<div class="form_btn">
-							<button type=submit id="passwordcheck" >送出</button>
-						</div>
-
-						<!-- 				<div class="form_reg_btn"> -->
-						<%-- 					<a href="<c:url value='/home'/>">回首頁 </a> --%>
-						<!-- 				</div> -->
-
-						<input id="type" name="form" type='hidden' value='2' />
-						<input name="name" placeholder="姓名" type="hidden">
-						<input name="email" placeholder="Email" type="hidden">
-						<input name="phone" placeholder="phone" type="hidden">
-						<input name="date" placeholder="姓名" type="hidden">
-						<input name="gender" placeholder="性別" type="hidden">
-						<input name="county" placeholder="縣市" type="hidden">
-						<input name="city" placeholder="鄉鎮地區" type="hidden">
-						<input name="addr" placeholder="請輸入地址" type="hidden">
-						<input id="cnumber1" type="hidden" name="cnumber1">
-						<input id="cnumber2" type="hidden" name="cnumber2">
-						<input id="cnumber3" type="hidden" name="cnumber3">
-						<input id="cnumber4" type="hidden" name="cnumber4">
-					</form:form>
-
+							</div>
+							<div class="st1">
+								<label> <input type="password" id="npw" name="newPW"
+									placeholder="請輸入新密碼" autocomplete="off"> <span
+									id="error2"></span>
+								</label>
+							</div>
+							<div class="st1">
+								<label> <input type="password" id="rnpw" name="renewPW"
+									placeholder="請再次輸入新密碼" autocomplete="off"> <span
+									id="error3"></span>
+								</label>
+							</div>
+							<div class="form_btn">
+								<button type=submit id="passwordcheck" style="width:296px;">送出</button>
+							</div>
+							<input id="type" name="form" type='hidden' value='2' />
+							<input name="name" placeholder="姓名" type="hidden">
+							<input name="email" placeholder="Email" type="hidden">
+							<input name="phone" placeholder="phone" type="hidden">
+							<input name="date" placeholder="姓名" type="hidden">
+							<input name="gender" placeholder="性別" type="hidden">
+							<input name="county" placeholder="縣市" type="hidden">
+							<input name="city" placeholder="鄉鎮地區" type="hidden">
+							<input name="addr" placeholder="請輸入地址" type="hidden">
+							<input id="cnumber1" type="hidden" name="cnumber1">
+							<input id="cnumber2" type="hidden" name="cnumber2">
+							<input id="cnumber3" type="hidden" name="cnumber3">
+							<input id="cnumber4" type="hidden" name="cnumber4">
+						</form:form>
+					
 
 
 
