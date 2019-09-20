@@ -1,33 +1,21 @@
 ﻿package com.web.store.dao.impl;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.persistence.NoResultException;
 
-import org.apache.commons.io.IOUtils;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
-import com.web.store.exception.VendorErrorException;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
-import com.web.store.model.VendorBean;
 
 import _00_init.util.GlobalService;
 import _00_init.util.SystemUtils2019;
@@ -73,36 +61,35 @@ public class MemberDaoImpl implements MemberDao {
 		return allMember;
 	}
 
-	public int updateMember(MemberBean mb) {
-		int count = 0;
+	public MemberBean updateMember(MemberBean mb) {
 		MemberBean member = null;
 		Session session = factory.getCurrentSession();
 		// find member object
 		member = getMemberBymId(mb.getmId());
 		// update member object
-		if (mb.getAddr() != null)
+		if (mb.getAddr() != null && mb.getAddr().trim().length() > 0)
 			member.setAddr(mb.getAddr());
 		if (mb.getBirthday() != null)
 			member.setBirthday(mb.getBirthday());
-		if (mb.getEmail() != null)
+		if (mb.getEmail() != null && mb.getEmail().trim().length() > 0)
 			member.setEmail(mb.getEmail());
 		if (mb.getGender() != null)
 			member.setGender(mb.getGender());
 		if (mb.getMemberImage() != null)
 			member.setMemberImage(mb.getMemberImage());
-		if (mb.getTel() != null)
+		if (mb.getTel() != null && mb.getTel().trim().length() > 0)
 			member.setTel(mb.getTel());
-		if (mb.getName() != null)
+		if (mb.getName() != null && mb.getName().trim().length() > 0)
 			member.setName(mb.getName());
-		if (mb.getSaddr() != null)
+		if (mb.getSaddr() != null && mb.getSaddr().trim().length() > 0)
 			member.setSaddr(mb.getSaddr());
-		if (mb.getPassword() != null)
+		if (mb.getPassword() != null && mb.getPassword().trim().length() > 0)
 			member.setPassword(mb.getPassword());
 
 		session.update(member);
 
-		count++;
-		return count;
+		return member;
+
 	}
 
 	@Override

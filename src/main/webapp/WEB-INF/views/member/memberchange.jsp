@@ -30,8 +30,8 @@
 <!-- 	type="text/css" /> -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/AddressSelectList.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/js/modernizr-2.8.3.min.js"></script>
+<!-- <script type="text/javascript" -->
+<%-- 	src="${pageContext.request.contextPath }/js/modernizr-2.8.3.min.js"></script> --%>
 <meta charset="UTF-8">
 <title>Document</title>
 </head>
@@ -41,17 +41,21 @@
 	window.onload = function() {
 		//當頁面載完之後，用AddressSeleclList.Initialize()，
 		//傳入要綁定的縣市下拉選單ID及鄉鎮市區下拉選單ID
-		AddressSeleclList.Initialize('city', 'city2');
+		AddressSeleclList.Initialize('city', 'city2','${city}','${city}','${city2}','${city2}');
+
+
 	}
-	function show() {
-		//取出指定縣市及鄉鎮市區的下拉選單的值
-		alert(AddressSeleclList.ReturnSelectAddress('city', 'city2'));
-	}
+		function show() {
+			//取出指定縣市及鄉鎮市區的下拉選單的值
+			alert(AddressSeleclList.ReturnSelectAddress('city', 'city2'));
+		}
 
 	$(document).ready(function() {
+		
 		$("#鄉鎮市區").change(function() {
 			$("#zip").val($(this).val());
 		})
+		
 	});
 
 	$(document).ready(function() {
@@ -191,6 +195,15 @@
 			document.getElementById("error3").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>與新密碼不相符";
 		}
 	}
+
+	// 	individual date check
+// 	function PDchk() {
+// 		if ($('input[name=gender]:checked', '#PD').val() == undefined) {
+// 			alert("未選擇性別");
+// 			return false;
+// 		}
+// 		return true;
+// 	}
 </script>
 <style>
 .center {
@@ -321,7 +334,6 @@
 #error1, #error2, #error3 {
 	font-size: 15px;
 }
-
 </style>
 <body>
 
@@ -341,15 +353,20 @@
 						<ul>
 							<li class="p1234">我的帳戶</li>
 							<li class="catalog"><a href="#" id="blogin">個人資料</a></li>
-							<li class="catalog"><a href="#" id="rlogin">修改密碼</a></li>
+							<!-- cannot change password when login as gmail or line -->
+							<c:if test="${! empty memberLoginOK.account }">
+								<li class="catalog"><a href="#" id="rlogin">修改密碼</a></li>
+							</c:if>
 							<li class="catalog"><a href="#" id="Clogin">信用卡資料</a></li>
+
 						</ul>
 					</div>
 
 				</div>
 				<!-- login block -->
 				<form:form method='POST' modelAttribute="memberBean"
-					enctype="multipart/form-data">
+					enctype="multipart/form-data" onsubmit="return PDchk(this); "
+					id="PD">
 					<div class="border2" id="login">
 
 						<div class="container">
@@ -374,15 +391,17 @@
 
 									</div>
 								</div>
-								<div class="form-group row">
-									<label for="email" class="col-sm-2 col-form-label">Email：</label>
-									<div class="col-auto">
-										<form:input type="email" class="form-control" id="inputEmail3"
-											placeholder="Email" path="email"
-											value="${memberLoginOK.email}" />
+								<c:if test="${! empty memberLoginOK.account }">
+									<div class="form-group row">
+										<label for="email" class="col-sm-2 col-form-label">Email：</label>
+										<div class="col-auto">
+											<form:input type="email" class="form-control"
+												id="inputEmail3" placeholder="Email" path="email"
+												value="${memberLoginOK.email}" />
 
+										</div>
 									</div>
-								</div>
+								</c:if>
 								<div class="form-group row">
 									<label for="phone" class="col-sm-2 col-form-label">手機：</label>
 									<div class="col-auto">
@@ -395,7 +414,7 @@
 									<label for="date" class="col-sm-2 col-form-label">生日：</label>
 									<div class="col-auto">
 										<input class="form-control-plaintext" id="date" name="date"
-											type='date' placeholder="未設定" />
+											type='date' placeholder="未設定" value="${Birthday}" />
 									</div>
 								</div>
 								<fieldset class="form-group">
@@ -403,19 +422,19 @@
 										<label class="col-form-label col-sm-2 pt-0">性別：</label>
 										<div class="col-auto">
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="gender"
-													id="gridRadios1" value="male" /> <label
-													class="form-check-label" for="男性"> 男性 </label>
+												<form:radiobutton class="form-check-input" path="gender"
+													name="gender" id="gridRadios1" value="male" />
+												<label class="form-check-label" for="男性"> 男性 </label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="gender"
-													id="gridRadios2" value="fmale" /> <label
-													class="form-check-label" for="女性"> 女性 </label>
+												<form:radiobutton class="form-check-input" path="gender"
+													name="gender" id="gridRadios2" value="fmale" />
+												<label class="form-check-label" for="女性"> 女性 </label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="gender"
-													id="gridRadios2" value="others" /> <label
-													class="form-check-label" for="其他/保密"> 其他/保密 </label>
+												<form:radiobutton class="form-check-input" path="gender"
+													name="gender" id="gridRadios3" value="others" />
+												<label class="form-check-label" for="其他/保密"> 其他/保密 </label>
 											</div>
 										</div>
 									</div>
@@ -447,7 +466,7 @@
 								</div>
 								<div class="form-group row">
 									<div class="col-5">
-										<input class="form-control" id="" placeholder="請輸入地址"
+										<input class="form-control" id="city3" placeholder="請輸入地址"
 											name="addr" />
 									</div>
 								</div>
@@ -483,45 +502,46 @@
 				<div class="login_title border2" id="register" style="display: none">
 					<p class="p1" style="padding-left: 15px;">會員更改密碼</p>
 					<hr style="width: 100%">
-					
-						<form:form method='POST' class='form-horizontal'
-							enctype="multipart/form-data" onsubmit="return CheckPwd();" style="margin-top:100px;">
-							<div class="st1">
-								<label><input type="password" name="oldPW" id="opw" placeholder="舊密碼"
-									autocomplete="off" autofocus="autofocus"> <span
-									id="error1"></span> </label>
 
-							</div>
-							<div class="st1">
-								<label> <input type="password" id="npw" name="newPW"
-									placeholder="請輸入新密碼" autocomplete="off"> <span
-									id="error2"></span>
-								</label>
-							</div>
-							<div class="st1">
-								<label> <input type="password" id="rnpw" name="renewPW"
-									placeholder="請再次輸入新密碼" autocomplete="off"> <span
-									id="error3"></span>
-								</label>
-							</div>
-							<div class="form_btn">
-								<button type=submit id="passwordcheck" style="width:296px;">送出</button>
-							</div>
-							<input id="type" name="form" type='hidden' value='2' />
-							<input name="name" placeholder="姓名" type="hidden">
-							<input name="email" placeholder="Email" type="hidden">
-							<input name="phone" placeholder="phone" type="hidden">
-							<input name="date" placeholder="姓名" type="hidden">
-							<input name="gender" placeholder="性別" type="hidden">
-							<input name="county" placeholder="縣市" type="hidden">
-							<input name="city" placeholder="鄉鎮地區" type="hidden">
-							<input name="addr" placeholder="請輸入地址" type="hidden">
-							<input id="cnumber1" type="hidden" name="cnumber1">
-							<input id="cnumber2" type="hidden" name="cnumber2">
-							<input id="cnumber3" type="hidden" name="cnumber3">
-							<input id="cnumber4" type="hidden" name="cnumber4">
-						</form:form>
-					
+					<form:form method='POST' class='form-horizontal'
+						enctype="multipart/form-data" onsubmit="return CheckPwd();"
+						style="margin-top:100px;">
+						<div class="st1">
+							<label><input type="password" name="oldPW" id="opw"
+								placeholder="舊密碼" autocomplete="off" autofocus="autofocus">
+								<span id="error1"></span> </label>
+
+						</div>
+						<div class="st1">
+							<label> <input type="password" id="npw" name="newPW"
+								placeholder="請輸入新密碼" autocomplete="off"> <span
+								id="error2"></span>
+							</label>
+						</div>
+						<div class="st1">
+							<label> <input type="password" id="rnpw" name="renewPW"
+								placeholder="請再次輸入新密碼" autocomplete="off"> <span
+								id="error3"></span>
+							</label>
+						</div>
+						<div class="form_btn">
+							<button type=submit id="passwordcheck" style="width: 296px;">送出</button>
+						</div>
+						<input id="type" name="form" type='hidden' value='2' />
+						<input name="name" placeholder="姓名" type="hidden">
+						<input name="email" placeholder="Email" type="hidden">
+						<input name="phone" placeholder="phone" type="hidden">
+						<input name="date" placeholder="姓名" type="hidden">
+						<input name="gender" placeholder="性別" type="hidden">
+						<input name="county" placeholder="縣市" type="hidden">
+						<input name="city" placeholder="鄉鎮地區" type="hidden">
+						<input name="addr" placeholder="請輸入地址" type="hidden">
+						<input id="cnumber1" type="hidden" name="cnumber1">
+						<input id="cnumber2" type="hidden" name="cnumber2">
+						<input id="cnumber3" type="hidden" name="cnumber3">
+						<input id="cnumber4" type="hidden" name="cnumber4">
+					</form:form>
+
 
 
 

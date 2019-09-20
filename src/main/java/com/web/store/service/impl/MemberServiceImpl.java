@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Transactional
 	@Override
-	public int updateMember(MemberBean mb) {
+	public MemberBean updateMember(MemberBean mb) {
 		return dao.updateMember(mb);
 	}
 

@@ -15,7 +15,7 @@ public interface MemberDao {
 
 	MemberBean getMemberByAccount(String account);
 
-	int updateMember(MemberBean mb);
+	MemberBean updateMember(MemberBean mb);
 
 	int deleteMember(MemberBean mb);
 

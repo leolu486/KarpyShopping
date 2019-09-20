@@ -33,12 +33,12 @@ public class MemberBean implements Serializable {
 	private java.sql.Timestamp birthday;// birthday
 	private String gender; // gender
 	private Blob memberImage; // member photo
-	private String gmail;	//third party login with gmail
-	private String line;	//third party login with line
+	private String gmail; // third party login with gmail
+	private String line; // third party login with line
 
 	@Transient
 	private String pictureURL;
-	
+
 	public String getPictureURL() {
 		return pictureURL;
 	}
@@ -49,7 +49,7 @@ public class MemberBean implements Serializable {
 
 	@Transient
 	private MultipartFile file;
-	
+
 	public Integer getmId() {
 		return mId;
 	}
@@ -148,15 +148,15 @@ public class MemberBean implements Serializable {
 
 	public String toString() {
 
-		return "[" + mId + "," + name + "," + tel + "," + addr + "," + saddr + "," + rdate + "," + account + "," + password + ","
-				+ email + "," + birthday + "," + gender + "," + memberImage + "]";
+		return "[" + mId + "," + name + "," + tel + "," + addr + "," + saddr + "," + rdate + "," + account + ","
+				+ password + "," + email + "," + birthday + "," + gender + "," + memberImage + "]";
 	}
 
 	public MemberBean() {
 
 	}
 
-	public MemberBean(Integer mId, String name, String tel, String addr, String saddr ,Timestamp rdate, String account,
+	public MemberBean(Integer mId, String name, String tel, String addr, String saddr, Timestamp rdate, String account,
 			String password, String email, String birthday, String gender, Blob memberImage) {
 
 		this.mId = mId;
@@ -185,7 +185,7 @@ public class MemberBean implements Serializable {
 		}
 		return result;
 	}
-	
+
 	public MultipartFile getFile() {
 		return file;
 	}
@@ -209,4 +209,16 @@ public class MemberBean implements Serializable {
 	public void setLine(String line) {
 		this.line = line;
 	}
+
+	public String searchAccountSource() {
+		if (this.getAccount() != null) {
+			return "origin";
+		} else if (this.getGmail() != null) {
+			return "gmail";
+		} else if (this.getLine() != null) {
+			return "line";
+		}
+		return null;
+	}
+
 }

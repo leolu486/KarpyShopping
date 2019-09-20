@@ -6,6 +6,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -285,22 +286,44 @@ public class MemberController {
 		HttpSession session = request.getSession();
 		CreditCardBean cb = new CreditCardBean();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
-		SimpleDateFormat x = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println("mid:" + member.getmId());
-		Blob blob = null;
-		byte[] imageData = null;
+		MemberBean mb = null;
+		System.out.println("start check which type of account");
+		switch (member.searchAccountSource()) {
 
-		if (member.getBirthday() != null) {
-			System.out.println(member.getBirthday());
-			String bd = x.format(member.getBirthday());
+		case "origin":
+			System.out.println("origin account");
+			mb = service.getMemberByAccount(member.getAccount());
+			session.setAttribute("memberLoginOK", mb);
+			break;
+
+		case "line":
+			System.out.println("line account");
+			mb = service.getMemberByLine(member.getLine());
+			session.setAttribute("memberLoginOK", mb);
+			break;
+
+		case "gmail":
+			System.out.println("google account");
+			mb = service.getMemberByGmail(member.getGmail());
+			session.setAttribute("memberLoginOK", mb);
+			break;
+		default:
+			System.out.println("something went wrong");
+		}
+		System.out.println("Regain MemberBean");
+		SimpleDateFormat x = new SimpleDateFormat("yyyy-MM-dd");
+		if (mb.getBirthday() != null) {
+			System.out.println(mb.getBirthday());
+			String bd = x.format(mb.getBirthday());
 			model.addAttribute("Birthday", bd);
 			System.out.println(bd);
 		}
 
-		if (member != null && member.getMemberImage() != null) {
-			System.out.println("both true");
-			if (member.getMemberImage() != null) {
-				blob = member.getMemberImage();
+		if (mb != null && mb.getMemberImage() != null) {
+			Blob blob = null;
+			byte[] imageData = null;
+			if (mb.getMemberImage() != null) {
+				blob = mb.getMemberImage();
 				try {
 					imageData = blob.getBytes(1, (int) blob.length());
 				} catch (SQLException e) {
@@ -311,10 +334,36 @@ public class MemberController {
 			}
 
 		}
+		// deal with address
+		if (mb.getAddr() != null) {
+			String[] token = mb.getAddr().split(" ");
 
-		model.addAttribute("memberBean", member);
-		System.out.println("member Id" + member.getmId());
+			switch (token.length) {
+			case 0:
+				break;
+			case 1:
+				session.setAttribute("city", token[0]);
+				break;
+			case 2:
+				session.setAttribute("city", token[0]);
+				session.setAttribute("city2", token[1]);
+				break;
+			case 3:
+				session.setAttribute("city", token[0]);
+				session.setAttribute("city2", token[1]);
+				session.setAttribute("city3", token[2]);
+				break;
+			default:
+				System.out.println("Something went wrong with Address");
+			}
+
+		}
+		model.addAttribute("memberBean", mb);
 		model.addAttribute("CreditCardBean", cb);
+		// Garbage Collection
+		cb = null;
+		member = null;
+		System.gc();
 		return "member/memberchange";
 	}
 
@@ -324,7 +373,7 @@ public class MemberController {
 			@ModelAttribute("memberBean") MemberBean mb, BindingResult result, HttpServletRequest request,
 			@RequestParam("form") String form, @RequestParam("oldPW") String oldPW, @RequestParam("newPW") String newPW,
 			@RequestParam("renewPW") String renewPW, @RequestParam("county") String county,
-			@RequestParam("city") String city, @RequestParam("addr") String addr, @RequestParam("gender") String gender,
+			@RequestParam("city") String city, @RequestParam("addr") String addr,
 			@RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date,
 			@RequestParam("cnumber1") String cnumber1, @RequestParam("cnumber2") String cnumber2,
 			@RequestParam("cnumber3") String cnumber3, @RequestParam("cnumber4") String cnumber4) {
@@ -333,9 +382,12 @@ public class MemberController {
 		if (form.equals("1")) {
 			MultipartFile file = mb.getFile();
 			mb.setmId(memberbean.getmId());
-			mb.setBirthday(new java.sql.Timestamp(date.getTime()));
-			mb.setGender(gender);
-			mb.setAddr(county + city + addr);
+			if (date != null)
+				mb.setBirthday(new java.sql.Timestamp(date.getTime()));
+			// remove space from addr detail that input by user -> code:[String.join("", addr.split(" "))]
+			// county and city's values are no problem cause those come from select tag 
+			mb.setAddr(county + " " + city + " " + String.join("", addr.split(" ")));
+
 			if (!file.isEmpty()) {
 				try {
 					mb.setMemberImage(SystemUtils2019.fileToBlob(file.getInputStream(), file.getSize()));
@@ -347,11 +399,11 @@ public class MemberController {
 					e.printStackTrace();
 				}
 			}
-			service.updateMember(mb);
-			session.setAttribute("memberLoginOK", mb);
+			session.setAttribute("memberLoginOK", service.updateMember(mb));
 		}
 		// 修改密碼
 		else if (form.equals("2")) {
+			// TODO: memberLoginOK should be updated as latest password
 			service.changePassword(service.checkIdPassword(memberbean.getAccount(), oldPW), newPW);
 		}
 		// 新增會員信用卡
@@ -363,6 +415,13 @@ public class MemberController {
 			cb.setmId(db.getmId());
 			service.addCreditCard(cb);
 		}
+//		garbage collection
+		session.removeAttribute("city");
+		session.removeAttribute("city2");
+		session.removeAttribute("city2");
+		memberbean = null;
+		System.gc();
+
 		return "redirect:/home";
 	}
 

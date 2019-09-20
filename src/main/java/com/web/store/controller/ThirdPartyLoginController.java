@@ -1,9 +1,6 @@
 package com.web.store.controller;
 
 import java.io.IOException;
-
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.security.GeneralSecurityException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -22,32 +19,22 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
 
 import _00_init.util.HttpPostUtils;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 @Controller
 public class ThirdPartyLoginController {
@@ -165,6 +152,7 @@ public class ThirdPartyLoginController {
 				member.setName(name);
 				member.setPictureURL(pictureURL);
 				member.setGmail(gmail);
+				System.out.println("GMember:"+member.toString());
 				service.addGmailMember(member);
 			} finally {
 				try {
