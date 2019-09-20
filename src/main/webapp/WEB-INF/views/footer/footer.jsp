@@ -117,7 +117,7 @@ corresponding value from the list below*/
 	<!--footer bottom area start-->
 	<div class="footer-bottom">
 		<div class="container">
-			<div class="widget-copyright text-center">
+			<div class="widget-copyright text-center" style="margin-right:20px;">
 				防詐騙提醒，卡痞購物絕不會以電話或簡訊通知訂單/分期出錯、或變更付款方式,更不會
 				要您前往ATM進行操作與轉帳!不應在卡痞以外的地方輸入卡痞的帳號密碼，以免影響您的權益。</div>
 		</div>
