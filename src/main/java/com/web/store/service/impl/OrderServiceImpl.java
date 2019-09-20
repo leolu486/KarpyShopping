@@ -69,6 +69,16 @@ public class OrderServiceImpl implements OrderService {
 		dao.checkStock(ob);
 	}
 
+	@Override
+	public Integer orderCompletion(OrderBean ob) {
+		return dao.orderCompletion(ob);		
+	}
+
+	@Override
+	public List<OrderBean> selectCancelOrders(Integer mId) {
+		return dao.selectCancelOrders(mId);		
+	}
+
 
 
 

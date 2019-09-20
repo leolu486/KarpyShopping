@@ -50,7 +50,7 @@ public class OrderDaoImpl implements OrderDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<OrderBean> selectMemberOrders(Integer mId) {
-		String hql = "FROM OrderBean where mId = :mId";
+		String hql = "FROM OrderBean where mId = :mId AND status != '訂單取消' " ;
 		List<OrderBean> orders = new ArrayList<OrderBean>();
 		Session session = factory.getCurrentSession();
 		orders = session.createQuery(hql).setParameter("mId", mId).getResultList();
@@ -66,7 +66,7 @@ public class OrderDaoImpl implements OrderDao {
 		MemberBean member = session.get(MemberBean.class, bean.getmId());
 		bean.setMemberBean(member);
 		checkStock(bean); // 0905 add for stock verification
-		session.save(bean);
+		session.persist(bean);
 		return result;
 	}
 
@@ -89,7 +89,7 @@ public class OrderDaoImpl implements OrderDao {
 			session.delete(ob);
 			count++;
 		} else {
-			throw new OrderModificationException("訂單編號: " + oId + " 已出貨，無法修改訂單");
+			throw new OrderModificationException("訂單編號: " + oId +  "，" + ob.getStatus() + "，無法修改訂單");
 		}
 		return count;
 	}
@@ -104,17 +104,18 @@ public class OrderDaoImpl implements OrderDao {
 		return oib;
 	}
 
-	@Override
+	//0918 修改訂單狀態判斷bug 
+	@Override 
 	public Integer updateOrder(OrderBean ob) {
 		Session session = factory.getCurrentSession();
 		int count = 0;
 		MemberBean mb = session.get(MemberBean.class, ob.getmId());// 也要加在add方法
 		ob.setMemberBean(mb);// 也要加在add方法
-		if (ob.getStatus().equals("未出貨")) {
+		if (ob.getStatus().equals("未出貨") && !(ob.getStatus().equals("取貨完成"))) {
 			session.saveOrUpdate(ob);
 			count++;
 		} else {
-			throw new OrderModificationException("訂單編號: " + ob.getoId() + " 已出貨，無法修改訂單");
+			throw new OrderModificationException("訂單編號: " + ob.getoId() + ", " + ob.getStatus() + "，無法修改訂單");
 		}
 		return count;
 	}
@@ -130,6 +131,30 @@ public class OrderDaoImpl implements OrderDao {
 		count++;
 
 		return count;
+	}
+
+	//0918 add 取貨確認
+	@Override
+	public Integer orderCompletion(OrderBean ob) {
+		Session session = factory.getCurrentSession();
+		int count = 0;
+		MemberBean mb = session.get(MemberBean.class, ob.getmId());
+		ob.setMemberBean(mb);
+		session.saveOrUpdate(ob);
+		count++;
+		return count;
+	}
+	
+	//0918 Add for cancellation history query
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<OrderBean> selectCancelOrders(Integer mId) {		
+		Session session = factory.getCurrentSession();
+		String hql = "FROM OrderBean where mId = :mId AND status = '訂單取消' ";
+		List<OrderBean> cancelOrders = session.createQuery(hql).setParameter("mId", mId).getResultList();
+		if (cancelOrders.size() == 0)
+			throw new OrderNotFoundException("無退訂紀錄");
+		return cancelOrders;
 	}
 
 }

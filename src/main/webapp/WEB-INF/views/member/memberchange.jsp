@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional"
+	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -41,24 +44,52 @@
 	window.onload = function() {
 		//當頁面載完之後，用AddressSeleclList.Initialize()，
 		//傳入要綁定的縣市下拉選單ID及鄉鎮市區下拉選單ID
-		AddressSeleclList.Initialize('city', 'city2','${city}','${city}','${city2}','${city2}');
+		AddressSeleclList.Initialize('city', 'city2', '${city}', '${city}',
+				'${city2}', '${city2}');
+
+		//detail address
+
 		$("#city3").val("${city3}");
+		// Restricts input for each element in the set of matched elements to the given inputFilter.
 
 	}
-		function show() {
-			//取出指定縣市及鄉鎮市區的下拉選單的值
-			alert(AddressSeleclList.ReturnSelectAddress('city', 'city2'));
-		}
+	function show() {
+		//取出指定縣市及鄉鎮市區的下拉選單的值
+		alert(AddressSeleclList.ReturnSelectAddress('city', 'city2'));
+	}
 
 	$(document).ready(function() {
-		
+
 		$("#鄉鎮市區").change(function() {
 			$("#zip").val($(this).val());
 		})
-		
+
 	});
 
+	//input type limit function
+	(function($) {
+		$.fn.inputFilter = function(inputFilter) {
+			return this
+					.on(
+							"input keydown keyup mousedown mouseup select contextmenu drop",
+							function() {
+								if (inputFilter(this.value)) {
+									this.oldValue = this.value;
+									this.oldSelectionStart = this.selectionStart;
+									this.oldSelectionEnd = this.selectionEnd;
+								} else if (this.hasOwnProperty("oldValue")) {
+									this.value = this.oldValue;
+									this.setSelectionRange(
+											this.oldSelectionStart,
+											this.oldSelectionEnd);
+								}
+							});
+		};
+	}(jQuery));
+
+	//document start
 	$(document).ready(function() {
+		//form change
 		$("#blogin").click(function() {
 			$("#register").hide();
 			$("#addCreditCard").hide();
@@ -74,6 +105,17 @@
 			$("#login").hide();
 			$("#addCreditCard").show();
 		});
+		//credit card rule
+		$("div.inputs input").keyup(function () {
+    		if (this.value.length == this.maxLength) {
+    			$(this).closest('div').next().find('input').focus();
+    		}
+		});	
+		//input limit [0-9]
+		$("#cnumber1, #cnumber2, #cnumber3, #cnumber4").inputFilter(function(value) {
+			return /^\d*$/.test(value);
+		});
+
 	});
 
 	document.addEventListener("DOMContentLoaded", function() {
@@ -197,13 +239,13 @@
 	}
 
 	// 	individual date check
-// 	function PDchk() {
-// 		if ($('input[name=gender]:checked', '#PD').val() == undefined) {
-// 			alert("未選擇性別");
-// 			return false;
-// 		}
-// 		return true;
-// 	}
+	// 	function PDchk() {
+	// 		if ($('input[name=gender]:checked', '#PD').val() == undefined) {
+	// 			alert("未選擇性別");
+	// 			return false;
+	// 		}
+	// 		return true;
+	// 	}
 </script>
 <style>
 .center {
@@ -334,13 +376,19 @@
 #error1, #error2, #error3 {
 	font-size: 15px;
 }
+
+::placeholder {
+	text-align: center;
+	font-size: 16px;
+	color: #AAAAAA;
+}
 </style>
 <body>
 
 	<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 	<!-- <div class="d-flex justify-content-center align-items-center w-100"> -->
 	<br>
-	<div>
+	<div style="font-family: 'Noto Sans TC', sans-serif;">
 		<div class="div2">
 			<div style="margin-right: 200px; padding-top: 10px">
 				<div class="border1">
@@ -450,8 +498,7 @@
 								<div class="form-row align-items-center form-check-inline">
 									<div class="col-auto my-1 ">
 										<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">縣市</label>
-										<select class="custom-select mr-sm-5" id="city" name="county"
-											placeholder="縣市">
+										<select class="custom-select mr-sm-5" id="city" name="county">
 										</select>
 									</div>
 								</div>
@@ -459,8 +506,7 @@
 								<div class="form-row align-items-center form-check-inline">
 									<div class="col-auto my-1">
 										<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">鄉鎮地區</label>
-										<select class="custom-select mr-sm-5" id="city2" name="city"
-											placeholder="鄉鎮地區">
+										<select class="custom-select mr-sm-5" id="city2" name="city">
 										</select>
 									</div>
 								</div>
@@ -485,15 +531,15 @@
 
 								</div>
 							</div>
-							<input id="type" name="form" type='hidden' value='1' /> <input
+							<input 
+							 name="form" type='hidden' value='1' /> <input
 								name="oldPW" type="hidden" placeholder="舊密碼"> <input
 								name="newPW" type="hidden" placeholder="新密碼"> <input
 								name="renewPW" type="hidden" placeholder="再次輸入新密碼"> <input
 								name="code" type="hidden" placeholder="輸入驗證碼"> <input
-								id="cnumber1" type="hidden" name="cnumber1"> <input
-								id="cnumber2" type="hidden" name="cnumber2"> <input
-								id="cnumber3" type="hidden" name="cnumber3"> <input
-								id="cnumber4" type="hidden" name="cnumber4">
+								type="hidden" name="cnumber1"> <input type="hidden"
+								name="cnumber2"> <input type="hidden" name="cnumber3">
+							<input type="hidden" name="cnumber4">
 						</div>
 					</div>
 				</form:form>
@@ -503,7 +549,7 @@
 					<p class="p1" style="padding-left: 15px;">會員更改密碼</p>
 					<hr style="width: 100%">
 
-					<form:form method='POST' class='form-horizontal'
+					<form:form method='POST' id="chgpwd" class='form-horizontal'
 						enctype="multipart/form-data" onsubmit="return CheckPwd();"
 						style="margin-top:100px;">
 						<div class="st1">
@@ -527,7 +573,7 @@
 						<div class="form_btn">
 							<button type=submit id="passwordcheck" style="width: 296px;">送出</button>
 						</div>
-						<input id="type" name="form" type='hidden' value='2' />
+						<input name="form" type='hidden' value='2' />
 						<input name="name" placeholder="姓名" type="hidden">
 						<input name="email" placeholder="Email" type="hidden">
 						<input name="phone" placeholder="phone" type="hidden">
@@ -536,10 +582,10 @@
 						<input name="county" placeholder="縣市" type="hidden">
 						<input name="city" placeholder="鄉鎮地區" type="hidden">
 						<input name="addr" placeholder="請輸入地址" type="hidden">
-						<input id="cnumber1" type="hidden" name="cnumber1">
-						<input id="cnumber2" type="hidden" name="cnumber2">
-						<input id="cnumber3" type="hidden" name="cnumber3">
-						<input id="cnumber4" type="hidden" name="cnumber4">
+						<input type="hidden" name="cnumber1">
+						<input type="hidden" name="cnumber2">
+						<input type="hidden" name="cnumber3">
+						<input type="hidden" name="cnumber4">
 					</form:form>
 
 
@@ -567,25 +613,25 @@
 								<div class="form-group row">
 									<label for="CNumber" class="col-sm-2 col-form-label">
 										信用卡卡號：</label>
-									<div class="col-auto" style="width: 80px">
+									<div class="inputs col-auto" style="width: 80px">
 										<input class="form-control" id="cnumber1" type='text'
 											placeholder="1234" pattern="[0-9]{4}" maxlength="4"
 											name="cnumber1">
 									</div>
 									-
-									<div class="col-auto" style="width: 80px">
+									<div class="inputs col-auto" style="width: 80px">
 										<input class="form-control" id="cnumber2" type='text'
 											placeholder="2234" pattern="[0-9]{4}" maxlength="4"
 											name="cnumber2">
 									</div>
 									-
-									<div class="col-auto" style="width: 80px">
+									<div class="inputs col-auto" style="width: 80px">
 										<input class="form-control" id="cnumber3" type='text'
 											placeholder="3234" pattern="[0-9]{4}" maxlength="4"
 											name="cnumber3">
 									</div>
 									-
-									<div class="col-auto" style="width: 80px">
+									<div class="inputs col-auto" style="width: 80px">
 										<input class="form-control" id="cnumber4" type='text'
 											placeholder="4234" pattern="[0-9]{4}" maxlength="4"
 											name="cnumber4">
@@ -609,9 +655,9 @@
 									</div>
 								</div>
 								<div class="form-group row">
-									<label for="date" class="col-sm-2 col-form-label">到期日：</label>
+									<label for="edate" class="col-sm-2 col-form-label">到期日：</label>
 									<div class="col-auto">
-										<input class="form-control-plaintext" id="date" name="date"
+										<input class="form-control-plaintext" id="edate" name="date"
 											type='date' placeholder="未設定" />
 									</div>
 								</div>
@@ -628,7 +674,7 @@
 									<button type="submit" id="submit">確認更改</button>
 
 								</div>
-								<input id="type" name="form" type='hidden' value='3' /> <input
+								<input  name="form" type='hidden' value='3' /> <input
 									name="oldPW" type="hidden" placeholder="舊密碼"> <input
 									name="newPW" type="hidden" placeholder="新密碼"> <input
 									name="renewPW" type="hidden" placeholder="再次輸入新密碼"> <input

@@ -33,23 +33,11 @@
 								</div>
 								<div class="usd_area">
 									<div class="littele_menu" style="font-size: 15px;">
-										<a href="#"> 我是賣家 <i class="fa fa-caret-down"></i>
-										</a>
-									</div>
-									<ul class="option">
-										<li><a href="#">賣場管理</a></li>
-										<li><a href="#">交易紀錄</a></li>
-										<li><a href="#">我的賣場</a></li>
-									</ul>
-								</div>
-								<div class="usd_area">
-									<div class="littele_menu" style="font-size: 15px;">
-										<a href="#"> 我是買家 <i class="fa fa-caret-down"></i>
+										<a href="#"> 交易查詢 <i class="fa fa-caret-down"></i>
 										</a>
 									</div>
 									<ul class="option">
 										<li><a href="#">訂單查詢</a></li>
-										<li><a href="#">交易紀錄</a></li>
 										<li><a href="#">歷史紀錄</a></li>
 									</ul>
 								</div>

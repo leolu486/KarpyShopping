@@ -37,7 +37,7 @@
 						<div class="my_account_areadiv" style="margin-top:40px;">
 							<ul>
 								<li><a href="<spring:url value='/ordersBymId?mId=${memberLoginOK.mId}' />" >訂單查詢</a></li>
-								<li><a href="#">退訂/退款查詢</a></li>
+								<li><a href="<spring:url value='/cancelHistory?mId=${memberLoginOK.mId}' />">退訂/退款查詢</a></li>
 								<!-- <li><a href="#">換貨/查詢</a></li> -->
 								<li><a href="<spring:url value='/queryOrderItemsHistory?mId=${memberLoginOK.mId }' />" >買過商品查詢</a></li>
 							</ul>

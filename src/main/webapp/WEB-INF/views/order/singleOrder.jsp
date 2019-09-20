@@ -46,8 +46,10 @@
 									<th class="cell100 column2">寄件號碼</th>
 									<th class="cell100 column2">寄送地址</th>							
 									<th class="cell100 column2">收貨人</th>							
-									<th class="cell100 column2">連絡電話</th>							
-									<th class="cell100 column2"></th>							
+									<th class="cell100 column2">連絡電話</th>
+									<c:if test="${order.status != '取貨完成' }">							
+									<th class="cell100 column2"></th>	
+									</c:if>						
 <!-- 									<th class="cell100 column2"></th>							 -->
 								</tr>
 							</thead>
@@ -68,8 +70,10 @@
 									<td class="cell100 column2">${order.addr}</td>
 									<td class="cell100 column2">${order.consignee}</td>
 									<td class="cell100 column2">${order.tel}</td>
+									<c:if test="${order.status != '取貨完成' }">
 									<td class="cell100 column2"><a href="<spring:url value='/order/VendorUpdate?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>賣家更新訂單 </a></td>
 <%-- 									<td class="cell100 column2"><a href="<spring:url value='/order/update?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>賣家更新訂單 </a></td> --%>
+									</c:if>
 								</tr>
 							</tbody>
 <%-- 						</c:forEach> --%>

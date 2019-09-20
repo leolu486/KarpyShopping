@@ -25,7 +25,10 @@ public interface OrderDao {
 	
 	public void checkStock(OrderBean ob);
 
+	//0918 add for取貨確認
+	public Integer orderCompletion(OrderBean ob);
 	
-	
+	//0918 Add for cancellation history query
+	public List<OrderBean> selectCancelOrders(Integer mId);
 
 }
