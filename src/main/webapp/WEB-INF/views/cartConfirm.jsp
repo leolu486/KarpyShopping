@@ -48,7 +48,8 @@
         </div>
 
         <div class="image">
-          <img src="<c:url value='/shoppingCart/item-1.png' />" />
+<%--           <img src="<c:url value='/shoppingCart/item-1.png' />" /> --%>
+			   <img width='90px' height='90px' src="<c:url value='/getPicture/${anEntry.value.productId}'/>" />			   
         </div>
 
         <div class="description">
@@ -132,7 +133,7 @@
 
 function continueShopping(){
 // 	if (confirm("離開此頁，繼續購物  ") ) {
-		window.location.href="<c:url value='/productsAddCart' />";
+		window.location.href="<c:url value='/products' />";
 // 	}
 }
 

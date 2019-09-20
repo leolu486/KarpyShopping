@@ -59,34 +59,50 @@
 
 					<div class="table100-body js-pscroll">
 						<table>
-						<c:forEach var="order" items="${orders}">
-							<tbody>	
-								<tr class="row100 body">
-									<td class="cell100 column1" style="border-style:none">${order.oId}</td>
-									<td class="cell100 column2" style="border-style:none">${order.odate}</td>
-									<td class="cell100 column2" style="border-style:none">
-										<a href="<spring:url value='/orderItemByOid?oId=${order.oId}' />" class="btn btn-info"> <span class="glyphicon-info-sigh glyphicon"></span>詳細資料 </a>
-									</td>									
-									<td class="cell100 column2" style="border-style:none">${order.price} 元</td>
-									<td class="cell100 column2" style="border-style:none">${order.status}</td>
-									<td class="cell100 column2" style="border-style:none">${order.shippingNo}</td>
-									<td class="cell100 column2" style="border-style:none">${order.addr}</td>
-									<td class="cell100 column2" style="border-style:none">${order.consignee}</td>
-									<td class="cell100 column2" style="border-style:none">${order.tel}</td>
-									<td class="cell100 column2" style="border-style:none">
-										<a href="<spring:url value='/order/update?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>買家更新訂單 </a>
-											<hr style="opacity:0">
-<%-- 										<a href="<spring:url value='/order/cancel?oId=${order.oId}' />" class="btn btn-danger"> <span class="glyphicon-info-sigh glyphicon"></span>取消訂單 </a> --%>
-										<button id="cancelBtn" type="button" class="btn btn-danger" onclick="return cancel(${order.oId})">取消訂單</button>
-									</td> 									
-								</tr>
-							</tbody>
-						</c:forEach>
+							<c:forEach var="order" items="${orders}">
+								<tbody>	
+									<tr class="row100 body">
+										<td class="cell100 column1" style="border-style:none">${order.oId}</td>
+										<td class="cell100 column2" style="border-style:none">${order.odate}</td>
+										<td class="cell100 column2" style="border-style:none">
+											<a href="<spring:url value='/orderItemByOid?oId=${order.oId}' />" class="btn btn-info"> <span class="glyphicon-info-sigh glyphicon"></span>詳細資料 </a>
+										</td>									
+										<td class="cell100 column2" style="border-style:none">${order.price} 元</td>
+										<td class="cell100 column2" style="border-style:none">${order.status}</td>
+										<td class="cell100 column2" style="border-style:none">${order.shippingNo}</td>
+										<td class="cell100 column2" style="border-style:none">${order.addr}</td>
+										<td class="cell100 column2" style="border-style:none">${order.consignee}</td>
+										<td class="cell100 column2" style="border-style:none">${order.tel}</td>
+										<td class="cell100 column2" style="border-style:none">
+											<c:choose>
+												<c:when test="${order.status == '已出貨'}">
+													<button id="completeBtn" type="button" class="btn btn-success" onclick="return complete(${order.oId})">取貨確認</button>
+												</c:when>
+										
+												<c:when test="${order.status == '取貨完成'}">
+													<img src="<c:url value='/order/images/check.jpg' />" >
+												</c:when>
+										
+												<c:otherwise>
+												<a href="<spring:url value='/order/update?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>更新訂單 </a>
+													<hr style="opacity:0">
+												<button id="cancelBtn" type="button" class="btn btn-danger" onclick="return cancel(${order.oId})">取消訂單</button>
+												</c:otherwise>
+<%-- 										<a href="<spring:url value='/order/update?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>更新訂單 </a> --%>
+											<%-- <hr style="opacity:0"> --%> 
+<%--  										<a href="<spring:url value='/order/cancel?oId=${order.oId}' />" class="btn btn-danger"> <span class="glyphicon-info-sigh glyphicon"></span>取消訂單 </a> --%> 
+<%-- 										<button id="completeBtn" type="button" class="btn btn-success" onclick="return complete(${order.oId})">取貨確認</button> --%>
+											<%-- <hr style="opacity:0">--%> 
+<%-- 										<button id="cancelBtn" type="button" class="btn btn-danger" onclick="return cancel(${order.oId})">取消訂單</button> --%>
+											</c:choose>
+										</td> 									
+									</tr>
+								</tbody>
+							</c:forEach>
 						</table>
 					</div>
 				</div>
 			</div>
-<%-- 			<a class="btn btn-primary" href='<c:url value="/membercentre"/>'>返回會員中心</a> --%>
 		</div>
 	</div>
 	</form:form>
@@ -120,6 +136,13 @@
 		function cancel(oId){		
 			if(confirm("你確定取消訂單嗎?")){
 				document.getElementById("orderTable").action="<c:url value='/order/cancel?oId=" + oId + "'/>";
+				document.getElementById("orderTable").submit();
+			}
+		}
+		
+		function complete(oId,mId){		
+			if(confirm("你確定完成訂單嗎?")){
+				document.getElementById("orderTable").action="<c:url value='/orderCompletion?oId=" + oId + "'/>";
 				document.getElementById("orderTable").submit();
 			}
 		}

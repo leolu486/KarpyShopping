@@ -15,9 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.SQLDelete;
+
 
 @Entity
 @Table(name = "OrderTable")
+@SQLDelete(sql="Update OrderTable SET isDeleted = '1' , status = '訂單取消' WHERE oId = ? ")
 public class OrderBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -32,12 +35,13 @@ public class OrderBean implements Serializable {
 	private String addr; //新增地址
 	private Integer mId;
 	
+	private boolean isDeleted= false;
 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FK_mId")
 	private MemberBean memberBean;
 	
-	@OneToMany(mappedBy="orderBean", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="orderBean", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Set<OrderItemBean> items = new LinkedHashSet<>();
 	
 	public Integer getmId() {
@@ -154,5 +158,14 @@ public class OrderBean implements Serializable {
 		return "[" + oId + "," + items + ","+ odate + "," + price + "," + status + ","+memberBean+"]";
 	}
 
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	
 
 }

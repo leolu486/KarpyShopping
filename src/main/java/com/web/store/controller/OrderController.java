@@ -190,26 +190,33 @@ public class OrderController {
 		return "redirect:/home";
 	}
 
-	// 買家更新頁面
+	// 買家更新頁面 ， 0918 checked
 	@RequestMapping("/order/update")
 	public String updateOrder_Page(@RequestParam("oId") Integer oId, Model model) {
 		OrderBean ob = service.select(oId);
+		if(ob.getStatus().equals("已出貨")||ob.getStatus().equals("取貨完成")) {
+			return "redirect:/membercentre";
+		}
 		model.addAttribute("order", ob);
-		return "updateOrder";
+		return "/order/updateOrder";
 	}
 
 	// 買家更新
 	@RequestMapping(value = "/order/update", method = RequestMethod.POST)
 	public String updateOrder_buyer(@RequestParam("oId") Integer oId, @ModelAttribute("order") OrderBean ob,
-			Model model, BindingResult result) {		
+			Model model, BindingResult result) {
+		Integer mId =ob.getmId();
 		service.updateOrder(ob);
-		return "redirect:/";
+		return "redirect:/ordersBymId?mId=" + mId;
 	}
 
 	// 賣家更新頁面
 	@RequestMapping("/order/VendorUpdate")
 	public String VendorUpdateOrder_Page(@RequestParam("oId") Integer oId, Model model) {
 		OrderBean ob = service.select(oId);
+		if(ob.getStatus().equals("取貨完成")) {
+			return "redirect:/home";
+		}
 		model.addAttribute("order", ob);
 		return "VendorUpdateOrder";
 	}
@@ -226,8 +233,9 @@ public class OrderController {
 	// 取消訂單
 	@RequestMapping("/order/cancel")
 	public String cancel(@RequestParam("oId") Integer oId, Model model) {
+		Integer mId = service.select(oId).getmId();
 		service.delete(oId);
-		return "redirect:/";
+		return "redirect:/cancelHistory?mId=" + mId;
 	}
 	
 	//0912 買過商品查詢
@@ -245,6 +253,34 @@ public class OrderController {
 		model.addAttribute("items", copy);
 		return "/order/orderItemsHistory";
 	}	
+	
+	
+	
+	//0916取貨確認
+	@RequestMapping("/orderCompletion")
+	public String orderCompletion(@RequestParam("oId") Integer oId, Model model) {
+		OrderBean ob = service.select(oId);
+		Integer mId = ob.getmId();
+		if(ob.getStatus().equals("已出貨")) {
+			ob.setStatus("取貨完成");
+			service.orderCompletion(ob);
+			return "redirect:/ordersBymId?mId=" + mId;
+		}else if(ob.getStatus().equals("取貨完成")) {
+			return "/membercentre";
+		}
+		else {
+			throw new OrderModificationException("訂單編號: " + oId +  "，" + ob.getStatus() + "，無法修改訂單");
+		}
+	}
+	
+	
+	//0918退訂查詢
+	@RequestMapping("/cancelHistory")
+	public String cancelHistory(@RequestParam("mId") Integer mId, Model model) {
+		model.addAttribute("orders", service.selectCancelOrders(mId));
+		return "order/cancelHistory";
+	}
+	
 	
 	
 	//0912 error message for order persistence
