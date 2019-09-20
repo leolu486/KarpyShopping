@@ -27,8 +27,10 @@ public interface OrderService {
 	public void checkStock(OrderBean ob);	
 
 
+	//0918 Add for order completion
+	public Integer orderCompletion(OrderBean ob);
 	
-	
-	
+	//0918 Add for cancellation history query
+	public List<OrderBean> selectCancelOrders(Integer mId);
 
 }
