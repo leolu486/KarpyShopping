@@ -9,6 +9,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional"
+	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -41,21 +44,22 @@
 	window.onload = function() {
 		//當頁面載完之後，用AddressSeleclList.Initialize()，
 		//傳入要綁定的縣市下拉選單ID及鄉鎮市區下拉選單ID
-		AddressSeleclList.Initialize('city', 'city2','${city}','${city}','${city2}','${city2}');
+		AddressSeleclList.Initialize('city', 'city2', '${city}', '${city}',
+				'${city2}', '${city2}');
 		$("#city3").val("${city3}");
 
 	}
-		function show() {
-			//取出指定縣市及鄉鎮市區的下拉選單的值
-			alert(AddressSeleclList.ReturnSelectAddress('city', 'city2'));
-		}
+	function show() {
+		//取出指定縣市及鄉鎮市區的下拉選單的值
+		alert(AddressSeleclList.ReturnSelectAddress('city', 'city2'));
+	}
 
 	$(document).ready(function() {
-		
+
 		$("#鄉鎮市區").change(function() {
 			$("#zip").val($(this).val());
 		})
-		
+
 	});
 
 	$(document).ready(function() {
@@ -197,13 +201,13 @@
 	}
 
 	// 	individual date check
-// 	function PDchk() {
-// 		if ($('input[name=gender]:checked', '#PD').val() == undefined) {
-// 			alert("未選擇性別");
-// 			return false;
-// 		}
-// 		return true;
-// 	}
+	// 	function PDchk() {
+	// 		if ($('input[name=gender]:checked', '#PD').val() == undefined) {
+	// 			alert("未選擇性別");
+	// 			return false;
+	// 		}
+	// 		return true;
+	// 	}
 </script>
 <style>
 .center {
@@ -334,13 +338,19 @@
 #error1, #error2, #error3 {
 	font-size: 15px;
 }
+
+::placeholder {
+	text-align: center;
+	font-size: 16px;
+	color: #AAAAAA;
+}
 </style>
 <body>
 
 	<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 	<!-- <div class="d-flex justify-content-center align-items-center w-100"> -->
 	<br>
-	<div>
+	<div style="font-family: 'Noto Sans TC', sans-serif;">
 		<div class="div2">
 			<div style="margin-right: 200px; padding-top: 10px">
 				<div class="border1">
@@ -503,7 +513,7 @@
 					<p class="p1" style="padding-left: 15px;">會員更改密碼</p>
 					<hr style="width: 100%">
 
-					<form:form method='POST' class='form-horizontal'
+					<form:form method='POST' id="chgpwd" class='form-horizontal'
 						enctype="multipart/form-data" onsubmit="return CheckPwd();"
 						style="margin-top:100px;">
 						<div class="st1">
