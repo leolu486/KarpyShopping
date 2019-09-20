@@ -63,7 +63,7 @@
 
 								<!-- login -->
 								<c:if test="${! empty memberLoginOK }">
-									<li>你好，${memberLoginOK.name} <a href="memberLogout"
+									<li class="account" style="font-size: 15px">你好，${memberLoginOK.name} <a href="memberLogout"
 										style="font-size: 15px; display: inline-block; margin-right: 10px;">登出</a>
 									</li>
 								</c:if>

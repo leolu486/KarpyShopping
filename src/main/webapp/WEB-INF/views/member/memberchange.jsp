@@ -42,7 +42,7 @@
 		//當頁面載完之後，用AddressSeleclList.Initialize()，
 		//傳入要綁定的縣市下拉選單ID及鄉鎮市區下拉選單ID
 		AddressSeleclList.Initialize('city', 'city2','${city}','${city}','${city2}','${city2}');
-
+		$("#city3").val("${city3}");
 
 	}
 		function show() {
