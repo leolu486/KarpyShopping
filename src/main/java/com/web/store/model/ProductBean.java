@@ -22,6 +22,7 @@ import javax.persistence.Transient;
 import org.springframework.web.multipart.MultipartFile;
 
 import _00_init.util.SystemUtils2019;
+
 @Entity
 @Table(name = "Product")
 public class ProductBean implements Serializable {
@@ -35,23 +36,27 @@ public class ProductBean implements Serializable {
 	private String category; // category
 	private java.sql.Timestamp sdate; // storage date
 	private java.sql.Timestamp expdate; // expired date
-	private Double rankSum; //rank point summary
-	private Integer rankCount; //rank user summary
+	private Double rankSum; // rank point summary
+	private Integer rankCount; // rank user summary
 	private String detail;
 
-
 	private VendorBean vendorBean;
-	
-	private MultipartFile  productImageTemp;
-	private MultipartFile  productImageTemp1;
-	private MultipartFile  productImageTemp2;
-	private MultipartFile  productImageTemp3;
-	
+
+	private MultipartFile productImageTemp;
+	private MultipartFile productImageTemp1;
+	private MultipartFile productImageTemp2;
+	private MultipartFile productImageTemp3;
+
 	private Blob productImage;
 	private Blob productImage1;
 	private Blob productImage2;
 	private Blob productImage3;
 	
+	private String base64Image;
+	private String base64Image1;
+	private String base64Image2;
+	private String base64Image3;
+
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
 			String sdate, String expdate, Double rankSum, Integer rankCount, File file1, File file2) {
 		this.pId = pId;
@@ -79,7 +84,7 @@ public class ProductBean implements Serializable {
 		}
 
 	}
-	
+
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
 			String sdate, Double rankSum, Integer rankCount, File file1, File file2) {
 		this.pId = pId;
@@ -90,7 +95,7 @@ public class ProductBean implements Serializable {
 		this.category = category;
 		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
 		this.rankSum = rankSum;
-		this.rankCount = rankCount;	
+		this.rankCount = rankCount;
 		try {
 			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
 			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());
@@ -227,7 +232,7 @@ public class ProductBean implements Serializable {
 	 * @param sdate the sdate to set
 	 */
 	public void setSdate(java.sql.Timestamp sdate) {
-		
+
 		this.sdate = sdate;
 	}
 
@@ -278,12 +283,12 @@ public class ProductBean implements Serializable {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	
+
 	@Transient
 	public MultipartFile getProductImageTemp() {
 		return productImageTemp;
 	}
-	
+
 	public void setProductImageTemp(MultipartFile productImageTemp) {
 		this.productImageTemp = productImageTemp;
 	}
@@ -346,6 +351,39 @@ public class ProductBean implements Serializable {
 	public void setProductImageTemp3(MultipartFile productImageTemp3) {
 		this.productImageTemp3 = productImageTemp3;
 	}
+	@Transient
+	public String getBase64Image() {
+		return base64Image;
+	}
+
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
+	}
+	@Transient
+	public String getBase64Image1() {
+		return base64Image1;
+	}
+
+	public void setBase64Image1(String base64Image1) {
+		this.base64Image1 = base64Image1;
+	}
+	@Transient
+	public String getBase64Image2() {
+		return base64Image2;
+	}
+
+	public void setBase64Image2(String base64Image2) {
+		this.base64Image2 = base64Image2;
+	}
+	@Transient
+	public String getBase64Image3() {
+		return base64Image3;
+	}
+
+	public void setBase64Image3(String base64Image3) {
+		this.base64Image3 = base64Image3;
+	}
+
 
 
 }

@@ -76,7 +76,7 @@
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='linelogin'>Line登入</a>
 			</td>
-			<td width="350"><p align="center" /> <a href=''></a>
+			<td width="350"><p align="center" /> <a href='images'>Show List of Images from database</a>
 		</tr>
 
 		<!-- Manager Method Test Area -->

@@ -4,7 +4,7 @@
 '三花1/2休閒襪', 75, 4, 1, '貼身衣物', '2019-7-29', null, data/productImg/4/1.jpg, data/productImg/4/2.jpg
 '【CASIO】卡西歐 SHEEN 晶鑽時尚錶-玫瑰金', 4700, 5, 1, '精品名錶', '2019-7-29', null, data/productImg/5/1.jpg, data/productImg/5/2.jpg
 '星辰錶 CITIZEN 光電時尚石英錶', 6500, 6, 1, '精品名錶', '2019-7-29', null, data/productImg/6/1.jpg, data/productImg/6/2.jpg
-'日本 AGF Maxim 濃郁即溶咖啡-100g ', 110, 7, 1586, '食品', '2019-7-29', '2020-7-29', data/productImg/7/1.jpeg, data/productImg/7/2.jpg
+'日本 AGF Maxim 濃郁即溶咖啡-100g ', 110, 7, 1586, '食品', '2019-7-29', '2020-7-29', data/productImg/7/1.jpg, data/productImg/7/2.jpg
 '【靴下屋】薄紗透明短襪/日本職人手做', 333, 8, 3, '貼身衣物', '2019-7-29', null, data/productImg/8/1.jpg, data/productImg/8/2.jpg
 '【周大福】LINE FRIENDS系列 熊美18K白金手鍊', 4845, 9, 1, '飾品', '2019-7-29', null, data/productImg/9/1.jpg, data/productImg/9/2.PNG
 '直立手持兩用HEPA吸塵器', 699, 10, 761, '家電', '2019-7-30', null, data/productImg/10/1.jfif, data/productImg/10/2.PNG
