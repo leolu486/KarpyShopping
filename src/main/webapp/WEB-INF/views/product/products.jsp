@@ -5,12 +5,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel='stylesheet'
-	href='${pageContext.request.contextPath}/css/styles.css'
+<link rel='stylesheet' href="<c:url value='/css/style.css'/>"
 	type="text/css" />
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/jquery_3_4_1.js"></script>
 <title>Products</title>
+
+<script>
+	var total = ${totalPages};
+	$(function() {
+		console.log("ready!");
+		//add select page option
+		for (var i = 1; i <= total; i++) {
+			$('#selectPage').append(
+					'<option value="'+i+'">第' + i + '頁</option>');
+		}
+		//selected page
+		$('#selectPage').val('${currentPageNo}');
+		//select change page
+		$('#selectPage').on('change',function() {
+			window.location = "changePage?currentPageNo="+$(this).val();
+		});
+	});
+</script>
+<style>
+select {
+	width: 100px;
+	text-align: center;
+	text-align-last: center;
+	text-align: center;
+	/* webkit*/
+}
+
+option {
+	text-align: center;
+	/* reset to left*/
+}
+</style>
 </head>
 <body>
 	<section>
@@ -32,7 +65,7 @@
 							<p>
 								<b style='font-size: 16px;'>商品名稱 : ${product.pname}</b>
 							</p>
-						<a href="<spring:url value='productById02?pId=${product.pId}'/>"
+							<a href="<spring:url value='productById02?pId=${product.pId}'/>"
 								class="btn btn-primary"> <span
 								class="glyphicon-info-sigh glyphicon"></span>詳細資料
 							</a>
@@ -42,41 +75,67 @@
 			</c:forEach>
 		</div>
 	</section>
-	
-	<table border="1">
-  <tr>
-    <td width='76'>
-        <c:if test="${currentPageNo > 1}">
-           <div id="pfirst">
-              <a href="<spring:url value='changePage?currentPageNo=1' />">第一頁</a>
-           </div>
-        </c:if>
-     </td>
-     <td width='76'>
-        <c:if test="${currentPageNo > 1}">
-           <div id="pprev">
-              <a href="<spring:url value='changePage?currentPageNo=${currentPageNo-1}' />">上一頁</a>
-           </div>
-        </c:if>  
-     </td>
-     <td width='76'>
-            <c:if test="${currentPageNo != totalPages}">
-                <div id="pnext">
-                   <a href="<spring:url value='changePage?currentPageNo=${currentPageNo+1}' />">下一頁</a>
-                </div>
-            </c:if>
-     </td>  
-     <td width='76'>
-            <c:if test="${currentPageNo != totalPages}">
-                <div id="plast">
-                    <a href="<spring:url value='changePage?currentPageNo=${totalPages}' />">最末頁</a>
-                </div>
-            </c:if>
-     </td>
-     <td width='176' align="center">
-                      第${currentPageNo}頁 / 共${totalPages}頁
-     </td>  
-</tr>
-</table>
+
+	<table border="1" style="margin-left: auto; margin-right: auto;">
+		<tr>
+			<!-- first -->
+			<td width='76'>
+				<div id="pfirst">
+					<c:if test="${currentPageNo > 1}">
+						<a href="<spring:url value='changePage?currentPageNo=1' />">第一頁</a>
+					</c:if>
+					<c:if test="${currentPageNo == 1}">
+					第一頁
+					</c:if>
+				</div>
+			</td>
+			<!-- previous -->
+			<td width='76'>
+				<div id="pprev">
+					<c:if test="${currentPageNo > 1}">
+						<a
+							href="<spring:url value='changePage?currentPageNo=${currentPageNo-1}' />">上一頁</a>
+					</c:if>
+					<c:if test="${currentPageNo == 1}">
+					上一頁
+					</c:if>
+				</div>
+			</td>
+			<!-- select -->
+			<td width='76'>
+				<div id="pselect">
+					<select class="selectPage" id="selectPage">
+					</select>
+				</div>
+			</td>
+
+			<!-- next -->
+			<td width='76'>
+				<div id="pnext">
+					<c:if test="${currentPageNo != totalPages}">
+						<a
+							href="<spring:url value='changePage?currentPageNo=${currentPageNo+1}' />">下一頁</a>
+					</c:if>
+					<c:if test="${currentPageNo == totalPages}">
+					下一頁
+					</c:if>
+				</div>
+			</td>
+			<!-- last -->
+			<td width='76'>
+				<div id="plast">
+					<c:if test="${currentPageNo != totalPages}">
+						<a
+							href="<spring:url value='changePage?currentPageNo=${totalPages}' />">最末頁</a>
+					</c:if>
+					<c:if test="${currentPageNo == totalPages}">
+					最末頁
+					</c:if>
+				</div>
+			</td>
+			<td width='176' align="center">第${currentPageNo}頁
+				/共${totalPages}頁</td>
+		</tr>
+	</table>
 </body>
 </html>
