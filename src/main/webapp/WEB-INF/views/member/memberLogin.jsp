@@ -169,7 +169,11 @@ input:focus::-webkit-input-placeholder {
 					dataType : "text",
 					success : function(response) {
 						console.log("Logging as: " + profile.getName());
-						location.href = '${sessionScope.requestURI}';
+						if('${sessionScope.requestURI}'==""){
+							location.href = "home";
+						}else{
+							location.href = '${sessionScope.requestURI}';
+						}
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
 						console.log("jqXHR: " + jqXHR);

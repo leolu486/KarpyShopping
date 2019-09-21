@@ -41,5 +41,7 @@ public interface MemberService {
 	MemberBean getMemberByLine(String line) throws NoResultException, NonUniqueResultException;
 	
 	int addLineMember(MemberBean member);
+	
+	void deleteCreditCard(Integer cId);
 
 }

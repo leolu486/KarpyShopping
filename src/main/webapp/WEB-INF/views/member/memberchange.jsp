@@ -92,19 +92,27 @@
 		//form change
 		$("#blogin").click(function() {
 			$("#register").hide();
-			$("#addCreditCard").hide();
+			$("#showcreditcard").hide();
 			$("#login").show();
+			$("#addCreditCard").hide();
 		});
 		$("#rlogin").click(function() {
 			$("#register").show();
 			$("#login").hide();
+			$("#showcreditcard").hide();
 			$("#addCreditCard").hide();
 		});
 		$("#Clogin").click(function() {
 			$("#register").hide();
 			$("#login").hide();
+			$("#showcreditcard").show();
+			$("#addCreditCard").hide();
+		});
+		$("#showAddCreditCard").click(function() {
+			$("#showcreditcard").hide();
 			$("#addCreditCard").show();
 		});
+		
 		//credit card rule
 		$("div.inputs input").keyup(function () {
     		if (this.value.length == this.maxLength) {
@@ -112,7 +120,7 @@
     		}
 		});	
 		//input limit [0-9]
-		$("#cnumber1, #cnumber2, #cnumber3, #cnumber4").inputFilter(function(value) {
+		$("#cnumber1, #cnumber2, #cnumber3, #cnumber4, #pin").inputFilter(function(value) {
 			return /^\d*$/.test(value);
 		});
 
@@ -382,6 +390,46 @@
 	font-size: 16px;
 	color: #AAAAAA;
 }
+
+/* addCreditCard Css */
+.example_e {
+border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 100;
+padding: 20px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+font-size:16px;
+}
+.example_e:hover {
+color: green !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: #f6b93b;
+border-color: #f6b93b !important;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.4s ease 0s;
+}
+
+/* scrollbar css */
+.row::-webkit-scrollbar {
+width: 8px;
+}
+.row::-webkit-scrollbar-track {
+-webkit-border-radius: 10px;
+border-radius: 10px;
+margin:0px 0 5px 0;
+}
+.row::-webkit-scrollbar-thumb {
+-webkit-border-radius: 4px;
+border-radius: 4px;
+background: rgb(191, 191, 191);
+}
+
 </style>
 <body>
 
@@ -593,6 +641,43 @@
 
 				</div>
 				<!-- password end -->
+				<!-- creditcard -->
+				<div class="border2" id="showcreditcard" style="display: none">
+					<section class="container" >
+						<p class="p1">信用卡清單</p>
+						<hr style="width: 60%">
+						<div class="row" style="width:700px;height:360px; overflow:auto;">
+						<c:if test="${! empty creditcards }">
+							<c:forEach var="card" items='${creditcards}'>
+								
+									<div class="thumbnail" style="width: 260px; height:140px;margin-left:55px;margin-top:16px;border-radius:15px;">
+										<div class="caption" >
+										
+										<p>信用卡名稱 : ${card.cname}</p>
+										<p>卡號 : ${card.cnumber}</p>
+										<p>pin : ***</p>
+										<p>有效日期 : ${card.vdate}</p>
+										<div style="text-align:center;"><a href='delCreditCard?cId=${card.cId}'><button>刪除</button></a></div>
+										
+										</div>
+									</div>
+								
+							</c:forEach>
+							</c:if>
+							<c:if test="${ empty creditcards }">
+								<div style="margin:auto auto;;vertical-align: bottom;text-align:center ">
+									<h2>親愛的會員${memberLoginOK.name}，您目前尚無信用卡記錄</h2>
+								</div>
+							</c:if>
+								
+						</div>
+					</section>
+					<div style="text-align:center;">
+						<hr style="width:95%;margin:2.5%;">
+						<div class="button_cont" align="center"><a id="showAddCreditCard" class="example_e" href="#" >新增信用卡</a></div>
+						
+					</div>
+				</div>
 
 
 				<div class="border2" id="addCreditCard" style="display: none">
@@ -649,7 +734,7 @@
 									<label for="pin" class="col-sm-2 col-form-label">pin：</label>
 									<div class="col-auto">
 										<form:input class="form-control" id="pin" path="pin"
-											type='password' placeholder="未設定" maxlength="3" />
+											type='text' placeholder="未設定" maxlength="3" />
 										<%-- 										<form:input id="pin" path="pin" type='password' --%>
 										<%-- 						class='form:input-large' /> --%>
 									</div>

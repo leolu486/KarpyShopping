@@ -123,5 +123,11 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.addLineMember(member);
 	}
+	@Transactional
+	@Override
+	public void deleteCreditCard(Integer cId) {
+		// TODO Auto-generated method stub
+		dao.deleteCreditCard(cId);
+	}
 
 }

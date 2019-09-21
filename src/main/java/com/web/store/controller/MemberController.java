@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.persistence.NoResultException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -330,6 +331,7 @@ public class MemberController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
 				session.setAttribute("memberImage", Base64.getEncoder().encodeToString(imageData));
 			}
 
@@ -358,6 +360,22 @@ public class MemberController {
 			}
 
 		}
+		// get credit cards
+		List<CreditCardBean> list = null;
+		try {
+			list = service.getCreditCardsBymId(mb.getmId());
+		} catch (NoResultException e) {
+			System.out.println("無信用卡資料");
+			e.printStackTrace();
+		}
+		// process CNumber date
+		for (int i = 0; i < list.size(); i++) {
+			CreditCardBean cbean = list.get(i);
+			cbean.setCnumber(cbean.getCnumber().substring(0, 4) + "-" + cbean.getCnumber().substring(4, 8) + "-"
+					+ cbean.getCnumber().substring(8, 12) + "-" + cbean.getCnumber().substring(12, 16));
+			list.set(i, cbean);
+		}
+		model.addAttribute("creditcards", list);
 		model.addAttribute("memberBean", mb);
 		model.addAttribute("CreditCardBean", cb);
 		// Garbage Collection
@@ -384,8 +402,9 @@ public class MemberController {
 			mb.setmId(memberbean.getmId());
 			if (date != null)
 				mb.setBirthday(new java.sql.Timestamp(date.getTime()));
-			// remove space from addr detail that input by user -> code:[String.join("", addr.split(" "))]
-			// county and city's values are no problem cause those come from select tag 
+			// remove space from addr detail that input by user -> code:[String.join("",
+			// addr.split(" "))]
+			// county and city's values are no problem cause those come from select tag
 			mb.setAddr(county + " " + city + " " + String.join("", addr.split(" ")));
 
 			if (!file.isEmpty()) {
@@ -422,7 +441,7 @@ public class MemberController {
 		memberbean = null;
 		System.gc();
 
-		return "redirect:/home";
+		return "redirect:/membercentre";
 	}
 
 	// 上傳會員圖片測試
@@ -472,5 +491,13 @@ public class MemberController {
 		session.setAttribute("memberLoginOK", member);
 		service.updateMember(member);
 		return "redirect:/uploadImage";
+	}
+
+	@RequestMapping(value = "/delCreditCard")
+	public String deleteCreditCard(@RequestParam("cId") Integer cId, HttpServletRequest request) {
+
+		service.deleteCreditCard(cId);
+
+		return "redirect:/memberchange";
 	}
 }

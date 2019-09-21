@@ -42,5 +42,7 @@ public interface MemberDao {
 	MemberBean getMemberByLine(String line) throws NoResultException, NonUniqueResultException;
 	
 	int addLineMember(MemberBean member);
+	
+	void deleteCreditCard(Integer cId);
 
 }

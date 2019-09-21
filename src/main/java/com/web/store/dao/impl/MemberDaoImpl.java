@@ -16,6 +16,7 @@ import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.ProductBean;
 
 import _00_init.util.GlobalService;
 import _00_init.util.SystemUtils2019;
@@ -269,6 +270,16 @@ public class MemberDaoImpl implements MemberDao {
 		int pk = (int) session.save(member);
 		System.out.println("pk:" + pk);
 		return pk;
+	}
+
+	@Override
+	public void deleteCreditCard(Integer cId) {
+		
+			Session session = factory.getCurrentSession();
+			CreditCardBean cb = session.get(CreditCardBean.class, cId);
+			session.delete(cb);
+		
+		
 	}
 
 }
