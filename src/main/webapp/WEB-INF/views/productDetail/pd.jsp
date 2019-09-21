@@ -9,9 +9,15 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Product</title>
+
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+
+ <link rel="stylesheet" href="<c:url value="/productDetail/css/op04.css" />"
+	type="text/css" />
+ 
 
 <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css" />"
 	type="text/css" />
@@ -43,6 +49,122 @@
 	type="text/css" />
 <!-- modernizr js -->
 
+ <script type="text/javascript">
+
+   let imgofon ,imgsision ,count=0, a, flag=true;
+
+   document.addEventListener("DOMContentLoaded",function(){
+   imgofon = document.querySelectorAll("img.off,img.on");
+   imgsision = document.querySelectorAll("img.no_side,img.side");
+   document.getElementById("idpauseplay").addEventListener("click",idpauseplay);
+   document.getElementById("idback").addEventListener("click",backf);
+   document.getElementById("idnext").addEventListener("click",nextf);
+   });
+
+   function gif(){
+
+       imgofon[count].className="on";
+       imgsision[count].className="no_side";
+       count++;
+       if(count>1)count=0;
+       imgofon[count].className="off";   
+       imgsision[count].className="side";
+   }
+   a=window.setInterval(gif,1500);
+
+   function idpauseplay(){
+       if(flag){  // flag=true
+           flag=false;
+           window.clearInterval(a); //clearInterval 取消  setInterval() 设置的 timeout = 時間。
+           document.getElementById("idpauseplay").src="images/imagesPD/play.png";
+       }else{
+           flag=true;
+           a=window.setInterval(gif,1500);
+           document.getElementById("idpauseplay").src="images/imagesPD/pause.png";
+       }    
+   }
+
+   function backf(){
+       imgofon[count].className="on";
+       imgsision[count].className="no_side";
+       count--;
+       if(count<0)count=1;
+       imgofon[count].className="off";   
+       imgsision[count].className="side";
+       window.clearInterval(a);
+   }
+   function nextf(){
+       imgofon[count].className="on";
+       imgsision[count].className="no_side";
+       count++;
+       if(count>1)count=0;
+       imgofon[count].className="off";   
+       imgsision[count].className="side";
+       window.clearInterval(a);
+   }
+
+   </script>
+    
+    <style type="text/css">
+    
+.WidthStyle01{
+    width: 280PX;
+    
+    text-align: center;
+}
+    
+
+    .off{
+        width: 250PX;
+		height: 250px;
+        display: block; /*區塊方式呈現 inline 相反  */
+        cursor: pointer; /*滑鼠 顯示手的形狀*/
+        display:block; 
+        margin:auto;
+        
+      
+    }
+    .on{
+        display: none; /*隱藏+覆蓋*/
+		
+    }
+    
+
+    .side{
+        margin: 3PX 2PX;
+        width: 60PX;
+        height: 60PX;
+        border: 3px solid #ffc300;
+    }
+    .no_side{
+        margin: 3PX 2PX;
+        width: 60PX;
+        height: 60PX;
+        
+    }
+
+    .legend {   /*設置文字*/
+        text-align: center;
+        font-size: larger
+    }
+
+    .field01 {
+        width: 280PX;
+        height: 350PX;
+        margin: 0 auto;  /*置中*/
+        border-radius: 20PX; /*導角*/
+        background-color: rgb(136, 136, 136);
+		
+    }
+    .control01 {
+        margin-left: 30px;
+        margin-right: 30px;
+        width: 30px;
+        -webkit-filter: grayscale(1); /*濾鏡 色階 彩0~1灰~X*/
+    }
+
+    </style>
+
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 <body>
 
@@ -60,19 +182,51 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-						<div class="elavetor">
-							<img id="zoom" src="img/elavetor/small/45.jpg"
-								data-zoom-image="img/elavetor/large/l-8.jpg" alt=""> <img
-								width='100' height='150'
-								src="data:image/jpg;base64,${productImage}" />
+<!-- 						<div class="elavetor"  style="background-color: aqua" > -->
+							
+<!-- 							  <img	width='100' height='150' -->
+<%-- 								src="data:image/jpg;base64,${productImage}" /> --%>
 
-							<div class="al_zoom"></div>
-						</div>
+<!-- 							<div class="al_zoom"></div> -->
+<div  style="float: left"  >
+
+
+ <fieldset class="field01">
+<!--      class="elavetor"       -->
+            <div class="WidthStyle01"   >
+           
+              <a href=""><img src="data:image/jpg;base64,${productImage}" id="img01" class="off" ></a> 
+                       
+              <a href=""> <img src="data:image/jpg;base64,${productImage1}" id="img02" class="on"></a> 
+                      
+                    
+            </div>
+            <div class="WidthStyle01">
+            
+             <img	class="side" id="img_01"  src="data:image/jpg;base64,${productImage}" />
+			 <img	class="no_side" id="img_02"  src="data:image/jpg;base64,${productImage1}" />					
+               
+               
+              
+            </div> 
+            <div class="WidthStyle01">                
+                    <img id="idback" class="control01" src="images/imagesPD/back.png">
+                    <img id="idpauseplay" class="control01" src="images/imagesPD/pause.png">
+                    <img id="idnext" class="control01" src="images/imagesPD/next.png">
+            </div>       			
+           </fieldset>
+
+
+</div>
+						
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 						<div class="elav_titel">
 							<div class="elv_heading">
 								<h3>${product.pname}</h3>
+
+
+
 
 							</div>
 							<div class="price_rating">
