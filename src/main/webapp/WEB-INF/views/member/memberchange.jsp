@@ -442,8 +442,15 @@ background: rgb(191, 191, 191);
 				<div class="border1">
 					<div>
 						<div>
+							<c:if test="${empty memberImage}">
+							<img src="<c:url value='/images/default-img/default_member_image.jpg'/>" width="200px"
+								height="auto" />	
+							</c:if>
+							<c:if test="${! empty memberImage}">
 							<img src="data:image/jpg;base64,${memberImage}" width="200px"
-								height="auto" />
+								height="auto" />	
+							</c:if>
+							
 							<p style="text-align: center">${memberLoginOK.name}</p>
 						</div>
 						<ul>

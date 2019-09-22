@@ -1,12 +1,9 @@
 package com.web.store.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -33,9 +30,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.CreditCardBean;
-import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
 

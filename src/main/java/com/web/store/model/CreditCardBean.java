@@ -15,8 +15,12 @@ public class CreditCardBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cId;
-	private Integer mId;
-	private String cnumber; // CreditCard Number
+	private Integer mId;	// Member Id
+	private String cnumber; // CreditCard Number (16)
+	private String oname; // Owner Name
+	private String pin; // CreditCard pin
+	private String cname; // CreditCard Name
+	private java.sql.Timestamp vdate; // CreditCard ValidDate
 
 	public String getCnumber() {
 		return cnumber;
@@ -25,11 +29,6 @@ public class CreditCardBean implements Serializable {
 	public void setCnumber(String cnumber) {
 		this.cnumber = cnumber;
 	}
-
-	private String oname; // CreditCard name
-	private String pin; // CreditCard pin
-	private String cname; // CreditName
-	private java.sql.Timestamp vdate; // CreditCard ValidDate
 
 	public Integer getcId() {
 		return cId;

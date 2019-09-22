@@ -90,17 +90,11 @@ public class SystemUtils2019 {
 
 	public static Blob pictureURLToBlob(String pictureName, String pictureURL) {
 
-		try {
-			File f = new File("karpy.jpg");
-			ImageIO.write(ImageIO.read(new URL(pictureURL)), "jpg", f);
-			MultipartFile file = new MockMultipartFile(pictureName + ".jpg",
-					IOUtils.toByteArray(new FileInputStream(f)));
+		try (FileInputStream fis = new FileInputStream(new File("karpy.jpg"))) {
+			ImageIO.write(ImageIO.read(new URL(pictureURL)), "jpg", new File("karpy.jpg"));
+			MultipartFile file = new MockMultipartFile(pictureName + ".jpg", IOUtils.toByteArray(fis));
 			return fileToBlob(file.getInputStream(), file.getSize());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("發生異常在SystemUtils2019#pictureURLToBlob");
-			e.printStackTrace();
-		} catch (SQLException e) {
+		} catch (IOException | SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("發生異常在SystemUtils2019#pictureURLToBlob");
 			e.printStackTrace();
