@@ -71,13 +71,13 @@ public class MemberController {
 	public String list(Model model) {
 		List<MemberBean> list = service.getAllMember();
 		model.addAttribute("members", list);
-		return "members";
+		return "member/members";
 	}
 
 	@RequestMapping("/member")
 	public String getMemberById(@RequestParam("account") String account, Model model) {
 		model.addAttribute("member", service.getMemberByAccount(account));
-		return "member";
+		return "member/member";
 	}
 
 	@RequestMapping(value = "/idExists", method = RequestMethod.GET)
@@ -237,7 +237,7 @@ public class MemberController {
 	public String addCreditCard(Model model) {
 		CreditCardBean cb = new CreditCardBean();
 		model.addAttribute("CreditCardBean", cb);
-		return "addCreditCard";
+		return "creditCard/addCreditCard";
 	}
 
 	@RequestMapping(value = "addCreditCard", method = RequestMethod.POST)
@@ -263,13 +263,13 @@ public class MemberController {
 			model.addAttribute("creditCard", list);
 		}
 
-		return "creditCards";
+		return "creditCard/creditCards";
 	}
 
 	@RequestMapping("/CreditCard")
 	public String getCreditCardBycId(@RequestParam("cId") Integer cId, Model model, HttpServletRequest request) {
 		model.addAttribute("card", service.getCreditCardBycId(cId));
-		return "creditCard";
+		return "creditCard/creditCard";
 	}
 
 //	@RequestMapping(value = "/membertest", method = RequestMethod.GET)
