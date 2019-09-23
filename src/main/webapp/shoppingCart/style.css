@@ -56,6 +56,28 @@ body {
   padding:0;
 }
 
+/* 隱藏input數字default刪減按鈕 */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* custom scrollbar  */
+#items::-webkit-scrollbar{
+	width:0.5em;
+}
+#items::-webkit-scrollbar-track{
+	-webkit-box-shadow:inset 0 0 6px rgb(0,0,0,0,3);
+	border-radius:10px;
+}
+#items::-webkit-scrollbar-thumb{
+	border-radius:10px;
+	background-color:darkgrey;
+	outline:1px solid slategrey;
+}
+
+
+
 
 .title {
   height: 60px;
@@ -131,7 +153,8 @@ body {
 .description {
   padding-top: 10px;
   margin-right: 60px;
-  width: 250px; /* 115px */
+  width: 300px; /* 115px */
+  margin-left:auto;
 }
 
 .description span {
@@ -154,6 +177,7 @@ body {
 .quantity {
   padding-top: 20px;
   margin-right: 60px;
+  margin-left:auto;
 }
 .quantity input {
   -webkit-appearance: none;

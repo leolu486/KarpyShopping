@@ -20,6 +20,20 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/shoppingCart/font-awesome.min.css' />">
 </head>
+
+<script>
+	$(document).ready(function(){
+		var counts = ${ShoppingCart.itemNumber};		
+		if(counts > 4){
+			$("#items").css("overflow-y","auto");			
+			$("#items").css("max-height","600px");
+			$("#items").css("width","auto");
+		}else{
+			$("#items").css("height","auto");
+		}
+		
+	});    
+</script>
 <body>
 <div class="wrapper">
 	 <div class="header">
@@ -29,17 +43,12 @@
 <div class="shopping-cart content">
       <!-- Title -->      
       <div class="title">
-        	購物車
-<!--         	<button type="button" class="btn1 btn-success " onclick="return checkOut()"> -->
-<!-- 				去買單 -->
-<!-- 			</button> -->
-			
+        	購物車		
 			<button type="button" class="btn2 btn-info " onclick="return continueShopping()">
 				繼續購物
-			</button>
-			
+			</button>			
       </div>
-      
+      <div id="items">
 <c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">  
       <div class="item">
         <div class="buttons">
@@ -49,7 +58,7 @@
 
         <div class="image">
 <%--           <img src="<c:url value='/shoppingCart/item-1.png' />" /> --%>
-			   <img width='90px' height='90px' src="<c:url value='/getPicture/${anEntry.value.productId}'/>" />			   
+			   <img width='70px' height='75px' src="<c:url value='/getPicture/${anEntry.value.productId}'/>" />			   
         </div>
 
         <div class="description">
@@ -57,35 +66,53 @@
         </div>
 
         <div class="quantity">
+        	<input type="text" class="productId" value="${anEntry.key}" hidden="hidden">
           <button class="plus-btn" type="button" name="button">
             <img src="<c:url value='/shoppingCart/plus.svg' />" />
           </button>
-          <input id="${vs.index}qty" type="text" name="name" value="${anEntry.value.quantity}">
+          <input id="${vs.index}qty" class="newQty" type="number" name="name" value="${anEntry.value.quantity}">
           <button class="minus-btn" type="button" name="button">
             <img src="<c:url value='/shoppingCart/minus.svg' />"  />
-          </button>
+          </button>          
         </div>
 
         <div class="unit-price"><fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount }" pattern="#,###" />元 </div>
-      	
-      	<div class="refresh">
-      	  <button id="refresh" class="cart-btn" type="button" name="button" onclick="return modifyQty(${anEntry.key}, ${anEntry.value.quantity}, ${vs.index})">
-            <img src="<c:url value='/shoppingCart/refresh_cart.png' />" />
-          </button>
-         </div>
+<!--       	0922刪除更新按鈕 -->
+<!--       	<div class="refresh"> -->
+<%--       	  <button id="refresh" class="cart-btn" type="button" name="button" onclick="return modifyQty(${anEntry.key}, ${anEntry.value.quantity}, ${vs.index})"> --%>
+<%--             <img src="<c:url value='/shoppingCart/refresh_cart.png' />" /> --%>
+<!--           </button> -->
+<!--          </div> -->
       </div>
-		<c:if test="${vs.last}">      
-         <div class="total-price">總付款金額: <fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###" />元 
+<%-- 		<c:if test="${vs.last}">       --%>
+<%--          <div class="total-price"><span class="total_price_span">總付款金額: <fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###" />元 </span> --%>
+<!--          	<button type="button" class="btn1 btn-success " onclick="return checkOut()"> -->
+<!-- 				去買單 -->
+<!-- 			</button> -->
+<!--          </div> -->
+<%--       	</c:if> --%>
+      		<input type="text" id="oItem" value="${ShoppingCart.content}" disabled hidden="hidden">  		
+      		  		
+      </c:forEach>
+      </div>
+        <div class="total-price"><span class="total_price_span">總付款金額: <fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###" />元 </span>
          	<button type="button" class="btn1 btn-success " onclick="return checkOut()">
 				去買單
 			</button>
-         </div>
-      	</c:if>
-      		<input type="text" id="oItem" value="${ShoppingCart.content}" disabled hidden="hidden">
-      		
-      </c:forEach>      
+         </div>    
       </div>     
   </form:form>
+  
+  <c:if test="${errorMsg != null}">
+  	<input id="error" type="text" value="${errorMsg}" hidden="hidden">  	
+	<script>
+	  	var error = $('#error').val();
+	  	alert(error);
+	 </script>	
+  </c:if>
+  
+  
+  
   	<div class="footer">    
 		<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 	</div>
@@ -95,7 +122,7 @@
       $('.minus-btn').on('click', function(e) {
     		e.preventDefault();
     		var $this = $(this);
-    		var $input = $this.closest('div').find('input');
+    		var $input = $this.prev();
     		var value = parseInt($input.val());
 
     		if (value > 1) {
@@ -105,27 +132,105 @@
     		}
 
         $input.val(value);
+        
+        var pId = $(this).closest("div").find(".productId").val();  
+//     	var pId = $(this).prev().prev().prev().val();    		
+		var newQty = value;
+		console.log(pId);
+		
+		$.ajax({
+			type:"GET",
+			url:"modifyQty?pId="+ pId + "&newQty=" + newQty ,    					
+			success:function(data){
+// 				$(".total_price_span").html("總付款金額:" + data + "元");
+				if(data.hasOwnProperty('error')){
+					alert(data["error"]);    				
+					$input.val(data["stock"]);
+					ajax_modifyQty(pId,data["stock"]);
+				}else{
+					$(".total_price_span").html("總付款金額:" + data + "元");     					
+				}
+
+			}			
+		});
 
     	});
+      
 
     	$('.plus-btn').on('click', function(e) {
     		e.preventDefault();
     		var $this = $(this);
-    		var $input = $this.closest('div').find('input');
+    		var $input = $this.next();
     		var value = parseInt($input.val());
 
     		if (value < 100) {
-      		value = value + 1;
+      			value = value + 1;
     		} else {
     			value =100;
     		}
 
     		$input.val(value);
+    		
+//     		var pId = $(this).prev().val();
+    		var pId = $(this).closest("div").find(".productId").val();
+//     		var newQty = $(this).next().val();
+    		var newQty = value;
+    		console.log(pId);
+    		
+    		$.ajax({
+    			type:"GET",
+    			url:"modifyQty?pId="+ pId + "&newQty=" + newQty ,    					
+    			success:function(data){
+//     				var error = JSON.parse(data);
+    				if(data.hasOwnProperty('error')){
+    					alert(data["error"]);    				
+    					$input.val(data["stock"]);
+    					ajax_modifyQty(pId,data["stock"]);
+    				}else{
+						$(".total_price_span").html("總付款金額:" + data + "元");     					
+    				}
+    			}			
+    		}); 		
     	});
-
-      $('.like-btn').on('click', function() {
-        $(this).toggleClass('is-active');
-      });
+    	
+    	
+    	$('.newQty').change(function(e){
+    		var newQty_Input = $(this).closest("div").find(".newQty");
+//     		alert(newQty_Input);
+    		var newQty = $(this).closest("div").find(".newQty").val();
+    		var pId = $(this).closest("div").find(".productId").val();
+    		$.ajax({
+    			type:"GET",
+    			url:"modifyQty?pId="+ pId + "&newQty=" + newQty ,    					
+    			success:function(data){
+    				if(data.hasOwnProperty('error')){
+    					alert(data["error"]);    				
+    					newQty_Input.val(data["stock"]);
+    					ajax_modifyQty(pId,data["stock"]);
+    				}else{
+						$(".total_price_span").html("總付款金額:" + data + "元");     					
+    				}
+    			}			
+    		});
+    	});    	
+    	
+//     	common ajax called within each event funtion
+    	function ajax_modifyQty(pId,newQty){
+//     		alert(newQty);
+    		$.ajax({
+    			type:"GET",
+    			url:"modifyQty?pId="+ pId + "&newQty=" + newQty ,    					
+    			success:function(data){
+    				if(data.hasOwnProperty('error')){
+    					alert(data["error"]);    				
+    					$input.val(data["stock"]);
+    				}else{
+						$(".total_price_span").html("總付款金額:" + data + "元");     					
+    				}
+    			}			
+    		});
+    	}
+    
     </script>
     
     <!-- 購物車script -->
@@ -133,19 +238,20 @@
 
 function continueShopping(){
 // 	if (confirm("離開此頁，繼續購物  ") ) {
-		window.location.href="<c:url value='/products' />";
+// 		window.location.href="<c:url value='/products' />";
+		window.location.href="home";
 // 	}
 }
 
 function checkOut(){
-	let oItem= document.getElementById("oItem").value;
-// 	window.alert("oItem");
+	let oItem= document.getElementById("oItem").value;	
+// 	window.alert(oItem);
 	if(oItem == '{}' || oItem == ''){
 		window.alert("購物車為空，請選購商品");
 	}else{
-		if(confirm("去買單")){
+// 		if(confirm("去買單")){
 			window.location.href="<c:url value='/addOrder' />"; //window.location.href="<c:url value='/order/add' />";
-		}
+// 		}
 	}
 }
 
@@ -168,7 +274,8 @@ function modifyQty(pId, qty,index){
 
 
 </script>
-    
+
+
     
 
 </body>

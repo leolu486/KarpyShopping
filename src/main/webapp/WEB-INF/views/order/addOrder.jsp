@@ -20,6 +20,21 @@
     
     <title>結帳頁面</title>
   </head>
+  <style>
+  	#items_outer_div::-webkit-scrollbar{
+		width:0.5em;
+	}
+	#items_outer_div::-webkit-scrollbar-track{
+		-webkit-box-shadow:inset 0 0 6px rgb(0,0,0,0,3);
+		border-radius:10px;
+	}
+	#items_outer_div::-webkit-scrollbar-thumb{
+		border-radius:10px;
+		background-color:darkgrey;
+		outline:1px solid slategrey;
+	}
+  
+  </style>
   <body class="bg-light">
   	<div class="wrapper">
 		<div class="header">
@@ -40,6 +55,8 @@
             <span><strong class="text-danger">${insertError.emptyCart}</strong></span>  
           </h4>
           
+          <div id="items_outer_div" style="max-height:300px;overflow-y:auto">
+          <div >
           <ul class="list-group mb-3">
         <c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">
             <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -47,16 +64,15 @@
                 <h6 class="my-0">${anEntry.value.description}x ${anEntry.value.quantity}</h6>
                 <small class="text-muted"><fmt:formatNumber value="${anEntry.value.unitPrice * anEntry.value.discount }" pattern="#,###" />元</small>             
               </div>             
-            </li>
-         <c:if test="${vs.last}">
-			<li class="list-group-item d-flex justify-content-between"> 
-              	<span><strong>總付款金額</strong></span> 
-               	<strong><fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###,###" />元</strong> 
-            </li> 
-          </c:if>
-          </c:forEach> 
+            </li>        
+          </c:forEach>  	          
             </ul>
-
+          </div> 
+           </div>
+           <div class="input-group" style="background-color:white;padding:15px;margin-top:5px;border-radius:10px;">
+              	<span class="h5"><strong>總付款金額</strong></span> 
+               	<span class="h5"><strong><fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###,###" />元</strong></span>  
+			</div>
           <form class="card p-2" style="height:120px">
             <div class="input-group">
               <input type="text"  class="m-2" placeholder="請輸入代碼">
