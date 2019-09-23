@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>欸你過來一下</title>
+
 <style>
 .box {
 	float: right;
@@ -25,6 +26,7 @@
 <body>
 
 	<div>
+	 <div id="andy timer" class="andy timer">
 		<!-- login -->
 		<c:if test="${! empty LoginOK }">
 			<div class="box">

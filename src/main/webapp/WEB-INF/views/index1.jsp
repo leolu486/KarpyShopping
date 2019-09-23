@@ -49,12 +49,48 @@
 <link rel="stylesheet" href="<c:url value="/css/responsive.css" />"
 	type="text/css" />
 <!-- modernizr js -->
-
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/vendor/modernizr-2.8.3.min.js"></script>
-
-
 <script>
+// 	// Set the date we're counting down to
+// 	var countDownDate = new Date("Oct 10, 2019 15:37:25").getTime();
+
+// 	// Update the count down every 1 second
+// 	var x = setInterval(function() {
+
+// 		// Get today's date and time
+// 		var now = new Date().getTime();
+
+// 		// Find the distance between now and the count down date
+// 		var distance = countDownDate - now;
+
+// 		// Time calculations for days, hours, minutes and seconds
+// 		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+// 		var hours = Math.floor((distance % (1000 * 60 * 60 * 24))
+// 				/ (1000 * 60 * 60));
+// 		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+// 		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+// 		// Display the result in the element with id="demo"
+// 		$("#demo").html(days);
+// 		$("#demo1").html(hours);
+// 		$("#demo2").html(minutes);
+// 		$("#demo3").html(seconds);
+// 		$("#demo4").html(days);
+// 		$("#demo5").html(hours);
+// 		$("#demo6").html(minutes);
+// 		$("#demo7").html(seconds);
+// 		$("#demo8").html(days);
+// 		$("#demo9").html(hours);
+// 		$("#demo10").html(minutes);
+// 		$("#demo11").html(seconds);
+// 		if (distance < 0) {
+// 			clearInterval(x);
+// 			document.getElementById("demo").innerHTML = "EXPIRED";
+// 		}
+// 	}, 1000);
+</script>
+<script type="text/javascript">
 	// 	function searchByF(){
 	// 	$.ajax({
 	// 		type: 'POST',
@@ -68,6 +104,8 @@
 	// 	});
 	// 	}
 </script>
+
+
 </head>
 <body>
 	<!-- TOP -->
@@ -196,6 +234,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!--social design arae end-->
 
 	<!-- 左邊那一條 -->
@@ -275,7 +314,9 @@
 												<span>New</span>
 											</div>
 											<div class="sinle_pic">
-												<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+												<a
+													href="<spring:url value='productById02?pId=${product01.pId}'/>">
+													<img class="primary-img"
 													src="data:image/jpg;base64,${product01.base64Image}" alt="">
 													<img class="secondary-img"
 													src="data:image/jpg;base64,${product01.base64Image1}"
@@ -346,8 +387,10 @@
 									<div class="single_product">
 										<span>New</span>
 									</div>
-									<div class="sinle_pic">
-										<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+									<div class="sinle_pic" style="width: 300px; height: 300px;">
+										<a
+											href="<spring:url value='productById02?pId=${product01.pId}'/>">
+											<img class="primary-img"
 											src="data:image/jpg;base64,${product01.base64Image}" alt="">
 											<img class="secondary-img"
 											src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -415,8 +458,10 @@
 									<div class="single_product">
 										<span>New</span>
 									</div>
-									<div class="sinle_pic">
-										<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+									<div class="sinle_pic" style="width: 300px; height: 300px;">
+										<a
+											href="<spring:url value='productById02?pId=${product01.pId}'/>">
+											<img class="primary-img"
 											src="data:image/jpg;base64,${product01.base64Image}" alt="">
 											<img class="secondary-img"
 											src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -490,7 +535,9 @@
 										<span>sale</span>
 									</div>
 									<div class="sinle_pic">
-										<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+										<a
+											href="<spring:url value='productById02?pId=${product01.pId}'/>">
+											<img class="primary-img"
 											src="data:image/jpg;base64,${product01.base64Image}" alt="">
 											<img class="secondary-img"
 											src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -559,7 +606,9 @@
 										<span>New</span>
 									</div>
 									<div class="sinle_pic">
-										<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+										<a
+											href="<spring:url value='productById02?pId=${product01.pId}'/>">
+											<img class="primary-img"
 											src="data:image/jpg;base64,${product01.base64Image}" alt="">
 											<img class="secondary-img"
 											src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -620,28 +669,35 @@
 									</div>
 								</div>
 							</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
 		</div>
-		</c:forEach>
+
 		<c:forEach var="product01" items='${products}' begin="6" end="6">
 			<div class="col-md-3 col-sm-12">
+
 				<div class="cosmetc_area">
 					<div class="cosmatics_heading">
 						<h3 class="cosmatics_products">
 							<i class="fa fa-tags"></i> <span>熱銷商品</span>
 						</h3>
 					</div>
+
 					<div class="row">
 						<div class="new_cosmatic indicator-brand indicator-brand-2">
+
 							<div class="col-md-12">
+
 								<div class="all-pros all-pros-8 animated fadeInUp">
 									<div class="single_product_3 ">
 										<span>sale</span>
 									</div>
 									<div class="sinle_pic">
-										<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+										<a
+											href="<spring:url value='productById02?pId=${product01.pId}'/>">
+											<img class="primary-img"
 											src="data:image/jpg;base64,${product01.base64Image}" alt="">
 											<img class="secondary-img"
 											src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -671,7 +727,22 @@
 
 											</div>
 											<div class="count-down-area">
-												<div data-countdown="2017/11/01"></div>
+												<div style="float: left; margin-left: 30px;">
+													<span id=demo></span>
+													<p>Days</p>
+												</div>
+												<div style="float: left; margin-left: 30px;">
+													<span id=demo1></span>
+													<p>Hour</p>
+												</div>
+												<div style="float: left; margin-left: 30px;">
+													<span id=demo2></span>
+													<p>Min</p>
+												</div>
+												<div style="float: left; margin-left: 30px;">
+													<span id=demo3></span>
+													<p>Sec</p>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -685,7 +756,8 @@
 						<span>sale</span>
 					</div>
 					<div class="sinle_pic">
-						<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+						<a href="<spring:url value='productById02?pId=${product01.pId}'/>">
+							<img class="primary-img"
 							src="data:image/jpg;base64,${product01.base64Image}" alt="">
 							<img class="secondary-img"
 							src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -711,7 +783,22 @@
 								<span class="old- price">商品價錢 : ${product01.price}</span>
 							</div>
 							<div class="count-down-area">
-								<div data-countdown="2017/11/01"></div>
+								<div style="float: left; margin-left: 30px;">
+									<span id=demo4></span>
+									<p>Days</p>
+								</div>
+								<div style="float: left; margin-left: 30px;">
+									<span id=demo5></span>
+									<p>Hour</p>
+								</div>
+								<div style="float: left; margin-left: 30px;">
+									<span id=demo6></span>
+									<p>Min</p>
+								</div>
+								<div style="float: left; margin-left: 30px;">
+									<span id=demo7></span>
+									<p>Sec</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -725,7 +812,8 @@
 						<span>sale</span>
 					</div>
 					<div class="sinle_pic">
-						<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+						<a href="<spring:url value='productById02?pId=${product01.pId}'/>">
+							<img class="primary-img"
 							src="data:image/jpg;base64,${product01.base64Image}" alt="">
 							<img class="secondary-img"
 							src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -753,7 +841,22 @@
 								<span class="old- price">商品價錢 : ${product01.price}</span>
 							</div>
 							<div class="count-down-area">
-								<div data-countdown="2017/11/01"></div>
+								<div style="float: left; margin-left: 30px;">
+									<span id=demo8></span>
+									<p>Days</p>
+								</div>
+								<div style="float: left; margin-left: 30px;">
+									<span id=demo9></span>
+									<p>Hour</p>
+								</div>
+								<div style="float: left; margin-left: 30px;">
+									<span id=demo10></span>
+									<p>Min</p>
+								</div>
+								<div style="float: left; margin-left: 30px;">
+									<span id=demo11></span>
+									<p>Sec</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -832,7 +935,9 @@
 														<span>New</span>
 													</div>
 													<div class="sinle_pic">
-														<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+														<a
+															href="<spring:url value='productById02?pId=${product01.pId}'/>">
+															<img class="primary-img"
 															src="data:image/jpg;base64,${product01.base64Image}"
 															alt=""> <img class="secondary-img"
 															src="data:image/jpg;base64,${product01.base64Image1}"
@@ -908,7 +1013,9 @@
 														<span>New</span>
 													</div>
 													<div class="sinle_pic">
-														<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+														<a
+															href="<spring:url value='productById02?pId=${product01.pId}'/>">
+															<img class="primary-img"
 															src="data:image/jpg;base64,${product01.base64Image}"
 															alt=""> <img class="secondary-img"
 															src="data:image/jpg;base64,${product01.base64Image1}"
@@ -983,7 +1090,9 @@
 														<span>New</span>
 													</div>
 													<div class="sinle_pic">
-														<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+														<a
+															href="<spring:url value='productById02?pId=${product01.pId}'/>">
+															<img class="primary-img"
 															src="data:image/jpg;base64,${product01.base64Image}"
 															alt=""> <img class="secondary-img"
 															src="data:image/jpg;base64,${product01.base64Image1}"
@@ -1058,7 +1167,9 @@
 														<span>New</span>
 													</div>
 													<div class="sinle_pic">
-														<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+														<a
+															href="<spring:url value='productById02?pId=${product01.pId}'/>">
+															<img class="primary-img"
 															src="data:image/jpg;base64,${product01.base64Image}"
 															alt=""> <img class="secondary-img"
 															src="data:image/jpg;base64,${product01.base64Image1}"
@@ -1133,7 +1244,9 @@
 														<span>New</span>
 													</div>
 													<div class="sinle_pic">
-														<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+														<a
+															href="<spring:url value='productById02?pId=${product01.pId}'/>">
+															<img class="primary-img"
 															src="data:image/jpg;base64,${product01.base64Image}"
 															alt=""> <img class="secondary-img"
 															src="data:image/jpg;base64,${product01.base64Image1}"
@@ -1208,7 +1321,9 @@
 														<span>New</span>
 													</div>
 													<div class="sinle_pic">
-														<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+														<a
+															href="<spring:url value='productById02?pId=${product01.pId}'/>">
+															<img class="primary-img"
 															src="data:image/jpg;base64,${product01.base64Image}"
 															alt=""> <img class="secondary-img"
 															src="data:image/jpg;base64,${product01.base64Image1}"
@@ -1290,7 +1405,9 @@
 														<span>New</span>
 													</div>
 													<div class="sinle_pic">
-														<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+														<a
+															href="<spring:url value='productById02?pId=${product01.pId}'/>">
+															<img class="primary-img"
 															src="data:image/jpg;base64,${product01.base64Image}"
 															alt=""> <img class="secondary-img"
 															src="data:image/jpg;base64,${product01.base64Image1}"
@@ -1363,7 +1480,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -1434,7 +1553,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -1505,7 +1626,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -1576,7 +1699,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -1647,7 +1772,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -1718,7 +1845,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -1789,7 +1918,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -1860,7 +1991,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -1931,7 +2064,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -2002,7 +2137,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -2073,7 +2210,9 @@
 											<span>New</span>
 										</div>
 										<div class="sinle_pic">
-											<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+											<a
+												href="<spring:url value='productById02?pId=${product01.pId}'/>">
+												<img class="primary-img"
 												src="data:image/jpg;base64,${product01.base64Image}" alt="">
 												<img class="secondary-img"
 												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -2217,7 +2356,9 @@
 														<span>New</span>
 													</div>
 													<div class="sinle_pic">
-														<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+														<a
+															href="<spring:url value='productById02?pId=${product01.pId}'/>">
+															<img class="primary-img"
 															src="data:image/jpg;base64,${product01.base64Image}"
 															alt=""> <img class="secondary-img"
 															src="data:image/jpg;base64,${product01.base64Image1}"
@@ -2289,7 +2430,9 @@
 							<span>New</span>
 						</div>
 						<div class="sinle_pic">
-							<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+							<a
+								href="<spring:url value='productById02?pId=${product01.pId}'/>">
+								<img class="primary-img"
 								src="data:image/jpg;base64,${product01.base64Image}" alt="">
 								<img class="secondary-img"
 								src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -2358,7 +2501,9 @@
 							<span>New</span>
 						</div>
 						<div class="sinle_pic">
-							<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+							<a
+								href="<spring:url value='productById02?pId=${product01.pId}'/>">
+								<img class="primary-img"
 								src="data:image/jpg;base64,${product01.base64Image}" alt="">
 								<img class="secondary-img"
 								src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -2427,7 +2572,9 @@
 							<span>New</span>
 						</div>
 						<div class="sinle_pic">
-							<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+							<a
+								href="<spring:url value='productById02?pId=${product01.pId}'/>">
+								<img class="primary-img"
 								src="data:image/jpg;base64,${product01.base64Image}" alt="">
 								<img class="secondary-img"
 								src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -2496,7 +2643,9 @@
 							<span>New</span>
 						</div>
 						<div class="sinle_pic">
-							<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+							<a
+								href="<spring:url value='productById02?pId=${product01.pId}'/>">
+								<img class="primary-img"
 								src="data:image/jpg;base64,${product01.base64Image}" alt="">
 								<img class="secondary-img"
 								src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -2565,7 +2714,9 @@
 							<span>New</span>
 						</div>
 						<div class="sinle_pic">
-							<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+							<a
+								href="<spring:url value='productById02?pId=${product01.pId}'/>">
+								<img class="primary-img"
 								src="data:image/jpg;base64,${product01.base64Image}" alt="">
 								<img class="secondary-img"
 								src="data:image/jpg;base64,${product01.base64Image1}" alt="">
@@ -3535,7 +3686,9 @@
 										<div class="all-pros-ex animated fadeInUp">
 											<div class="llc_pro">
 												<div class="sinle_pic sinle_pic_2">
-													<a href="<spring:url value='productById02?pId=${product01.pId}'/>"> <img class="primary-img"
+													<a
+														href="<spring:url value='productById02?pId=${product01.pId}'/>">
+														<img class="primary-img"
 														src="data:image/jpg;base64,${product01.base64Image}"
 														alt=""> <img class="secondary-img"
 														src="data:image/jpg;base64,${product01.base64Image1}"
@@ -4599,6 +4752,12 @@
 
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath }/js/main.js"></script>
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery.timers.js"></script>
+		
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/time.js"></script>
 </body>
 </html>
 
