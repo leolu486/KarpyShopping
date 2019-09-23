@@ -16,7 +16,6 @@ import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
-import com.web.store.model.ProductBean;
 
 import _00_init.util.GlobalService;
 import _00_init.util.SystemUtils2019;
@@ -242,7 +241,6 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int addGmailMember(MemberBean member) {
-
 		Session session = factory.getCurrentSession();
 		member.setMemberImage(SystemUtils2019.pictureURLToBlob(member.getName(), member.getPictureURL()));
 		member.setRdate(new java.sql.Timestamp(new Date().getTime()));
@@ -274,11 +272,35 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public void deleteCreditCard(Integer cId) {
-		
 			Session session = factory.getCurrentSession();
 			CreditCardBean cb = session.get(CreditCardBean.class, cId);
 			session.delete(cb);
 		
+		
+	}
+
+	@Override
+	public MemberBean updateTaxId(MemberBean mb) {
+		MemberBean member = null;
+		Session session = factory.getCurrentSession();
+		member = getMemberBymId(mb.getmId());
+		
+		if(mb.getTaxId() != null && mb.getTaxId().trim().length() >0)
+			member.setTaxId(mb.getTaxId());
+		session.update(member);
+		return member;
+	}
+
+	@Override
+	public MemberBean updateVehicle(MemberBean mb) {
+		MemberBean member = null;
+		Session session = factory.getCurrentSession();
+		member = getMemberBymId(mb.getmId());
+		
+		if(mb.getVehicle() != null && mb.getVehicle().trim().length() >0)
+			member.setVehicle(mb.getVehicle());
+		session.update(member);
+		return member;
 		
 	}
 

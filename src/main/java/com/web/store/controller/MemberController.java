@@ -444,7 +444,6 @@ public class MemberController {
 	// 上傳會員圖片測試
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.GET)
 	public String addImage(Model model, HttpServletRequest request) {
-
 		HttpSession session = request.getSession();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
 		MemberBean mb = null;
@@ -469,7 +468,6 @@ public class MemberController {
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	public String addImage(@ModelAttribute("memberBean") MemberBean mb, BindingResult result,
 			HttpServletRequest request) {
-
 		MultipartFile file = mb.getFile();
 		HttpSession session = request.getSession();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
@@ -492,9 +490,42 @@ public class MemberController {
 
 	@RequestMapping(value = "/delCreditCard")
 	public String deleteCreditCard(@RequestParam("cId") Integer cId, HttpServletRequest request) {
-
 		service.deleteCreditCard(cId);
-
 		return "redirect:/memberchange";
+	}
+	
+	@RequestMapping(value = "/updateTaxId", method = RequestMethod.GET)
+	public String updateTaxId(Model model, HttpServletRequest request) {
+
+		MemberBean mb = new MemberBean();
+		model.addAttribute("memberBean", mb);
+		return "account/updateTaxId";
+	}
+
+	@RequestMapping(value = "/updateTaxId", method = RequestMethod.POST)
+	public String updateTaxId(@ModelAttribute("memberBean") MemberBean mb,  BindingResult result,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
+		memberBean.setTaxId(mb.getTaxId());
+		service.updateTaxId(memberBean);
+		return "redirect:/home";
+	}
+	
+	@RequestMapping(value = "/updateVehicle", method = RequestMethod.GET)
+	public String updateVehicle(Model model, HttpServletRequest request) {
+		MemberBean mb = new MemberBean();
+		model.addAttribute("memberBean", mb);
+		return "account/updateVehicle";
+	}
+
+	@RequestMapping(value = "/updateVehicle", method = RequestMethod.POST)
+	public String updateVehicle(@ModelAttribute("memberBean") MemberBean mb,  BindingResult result,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
+		memberBean.setVehicle(mb.getVehicle());
+		service.updateVehicle(memberBean);
+		return "redirect:/home";
 	}
 }
