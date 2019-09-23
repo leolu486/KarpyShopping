@@ -71,13 +71,13 @@ public class MemberController {
 	public String list(Model model) {
 		List<MemberBean> list = service.getAllMember();
 		model.addAttribute("members", list);
-		return "members";
+		return "member/members";
 	}
 
 	@RequestMapping("/member")
 	public String getMemberById(@RequestParam("account") String account, Model model) {
 		model.addAttribute("member", service.getMemberByAccount(account));
-		return "member";
+		return "member/member";
 	}
 
 	@RequestMapping(value = "/idExists", method = RequestMethod.GET)
@@ -237,7 +237,7 @@ public class MemberController {
 	public String addCreditCard(Model model) {
 		CreditCardBean cb = new CreditCardBean();
 		model.addAttribute("CreditCardBean", cb);
-		return "addCreditCard";
+		return "creditCard/addCreditCard";
 	}
 
 	@RequestMapping(value = "addCreditCard", method = RequestMethod.POST)
@@ -263,13 +263,13 @@ public class MemberController {
 			model.addAttribute("creditCard", list);
 		}
 
-		return "creditCards";
+		return "creditCard/creditCards";
 	}
 
 	@RequestMapping("/CreditCard")
 	public String getCreditCardBycId(@RequestParam("cId") Integer cId, Model model, HttpServletRequest request) {
 		model.addAttribute("card", service.getCreditCardBycId(cId));
-		return "creditCard";
+		return "creditCard/creditCard";
 	}
 
 //	@RequestMapping(value = "/membertest", method = RequestMethod.GET)
@@ -444,7 +444,6 @@ public class MemberController {
 	// 上傳會員圖片測試
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.GET)
 	public String addImage(Model model, HttpServletRequest request) {
-
 		HttpSession session = request.getSession();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
 		MemberBean mb = null;
@@ -469,7 +468,6 @@ public class MemberController {
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	public String addImage(@ModelAttribute("memberBean") MemberBean mb, BindingResult result,
 			HttpServletRequest request) {
-
 		MultipartFile file = mb.getFile();
 		HttpSession session = request.getSession();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
@@ -492,9 +490,42 @@ public class MemberController {
 
 	@RequestMapping(value = "/delCreditCard")
 	public String deleteCreditCard(@RequestParam("cId") Integer cId, HttpServletRequest request) {
-
 		service.deleteCreditCard(cId);
-
 		return "redirect:/memberchange";
+	}
+	
+	@RequestMapping(value = "/updateTaxId", method = RequestMethod.GET)
+	public String updateTaxId(Model model, HttpServletRequest request) {
+
+		MemberBean mb = new MemberBean();
+		model.addAttribute("memberBean", mb);
+		return "account/updateTaxId";
+	}
+
+	@RequestMapping(value = "/updateTaxId", method = RequestMethod.POST)
+	public String updateTaxId(@ModelAttribute("memberBean") MemberBean mb,  BindingResult result,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
+		memberBean.setTaxId(mb.getTaxId());
+		service.updateTaxId(memberBean);
+		return "redirect:/home";
+	}
+	
+	@RequestMapping(value = "/updateVehicle", method = RequestMethod.GET)
+	public String updateVehicle(Model model, HttpServletRequest request) {
+		MemberBean mb = new MemberBean();
+		model.addAttribute("memberBean", mb);
+		return "account/updateVehicle";
+	}
+
+	@RequestMapping(value = "/updateVehicle", method = RequestMethod.POST)
+	public String updateVehicle(@ModelAttribute("memberBean") MemberBean mb,  BindingResult result,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
+		memberBean.setVehicle(mb.getVehicle());
+		service.updateVehicle(memberBean);
+		return "redirect:/home";
 	}
 }

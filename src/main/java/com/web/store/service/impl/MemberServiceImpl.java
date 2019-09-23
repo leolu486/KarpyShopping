@@ -129,5 +129,15 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		dao.deleteCreditCard(cId);
 	}
+	@Transactional
+	@Override
+	public MemberBean updateTaxId(MemberBean mb) {
+		return dao.updateTaxId(mb);
+	}
+	@Transactional
+	@Override
+	public MemberBean updateVehicle(MemberBean mb) {
+		return dao.updateVehicle(mb);
+	}
 
 }

@@ -35,6 +35,25 @@ public class MemberBean implements Serializable {
 	private Blob memberImage; // member photo
 	private String gmail; // third party login with gmail
 	private String line; // third party login with line
+	private String vehicle;//發票載具
+	private String taxId;//公司統編
+	
+
+	public String getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(String vehicle) {
+		this.vehicle = vehicle;
+	}
+
+	public String getTaxId() {
+		return taxId;
+	}
+
+	public void setTaxId(String taxId) {
+		this.taxId = taxId;
+	}
 
 	@Transient
 	private String pictureURL;

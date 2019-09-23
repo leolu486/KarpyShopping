@@ -43,5 +43,8 @@ public interface MemberService {
 	int addLineMember(MemberBean member);
 	
 	void deleteCreditCard(Integer cId);
-
+	
+	MemberBean updateTaxId(MemberBean mb);
+	
+	MemberBean updateVehicle(MemberBean mb);
 }

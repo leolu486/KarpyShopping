@@ -181,7 +181,7 @@
 			<td width="350"><p align="center" /> <a href=''></a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href='searchResult'>測試頁面</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 
@@ -222,7 +222,11 @@
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='CreditCardList'>信用卡查詢測試</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='updateTaxId'>新增統編測試</a>
+		</tr>
+		<tr height="52" bgcolor="lightblue" align="center">
+			<td width="350"><p align="center" /> <a href='updateVehicle'>新增載具測試</a></td>
+			<td width="350"><p align="center" /> <a href=''></a>
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
