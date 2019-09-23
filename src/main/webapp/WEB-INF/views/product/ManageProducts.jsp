@@ -49,7 +49,7 @@ option {
 	<section>
 		<div>
 			<div class="container" style="text-align: center">
-				<h1>商品清單</h1>
+				<h1>管理商品</h1>
 
 			</div>
 		</div>
@@ -58,9 +58,9 @@ option {
 		style="height: 1px; border: none; color: #333; background-color: #333;">
 	<section class="container">
 		<div class="row">
-<%-- 		<c:if test="${empty resultPage}"> --%>
-<!-- 		<h1 style="text-align: center;">查無商品資料MDFK</h1> -->
-<%-- 		</c:if> --%>
+		<c:if test="${empty resultPage}">
+		<h1 style="text-align: center;">查無商品資料MDFK</h1>
+		</c:if>
 			<c:forEach var="product" items='${resultPage}'>
 				<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px">
 					<div class="thumbnail" style="width: 320px; height: 340px">
@@ -68,7 +68,7 @@ option {
 							<p>
 								<b style='font-size: 16px;'>商品名稱 : ${product.pname}</b>
 							</p>
-							<a href="<spring:url value='productById02?pId=${product.pId}'/>"
+							<a href="<spring:url value='productById?pId=${product.pId}'/>"
 								class="btn btn-primary"> <span
 								class="glyphicon-info-sigh glyphicon"></span>詳細資料
 							</a>
