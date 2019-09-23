@@ -1,5 +1,7 @@
 package com.web.store.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Base64;
@@ -67,6 +69,7 @@ public class ShoppingCartController {
 		model.addAttribute("ShoppingCart", cart);
 
 		return "redirect:/cartConfirm";
+//		return "redirect:/productById02?pId=" + pId;
 	}
 
 	// TODO--購物車圖片
@@ -82,14 +85,14 @@ public class ShoppingCartController {
 			if (picture != null) {
 				try {
 					body = picture.getBytes(1, (int) picture.length());
-					System.out.println("body=="+body);
+					System.out.println("body==" + body);
 				} catch (SQLException e) {
 					System.out.println("叉燒包");
 					e.printStackTrace();
 				}
 			}
 		}
-		
+
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
 		String mimeType = "image/jpg";
 		MediaType mediaType = MediaType.valueOf(mimeType);
@@ -120,14 +123,64 @@ public class ShoppingCartController {
 	}
 
 	@RequestMapping(value = "/modifyQty")
-	public String modifyQty(@RequestParam("pId") Integer pId, @RequestParam("newQty") Integer newQty, Model model,
-			HttpSession session) {
+	public void modifyQty(@RequestParam("pId") Integer pId, @RequestParam("newQty") Integer newQty, Model model,
+			HttpSession session, HttpServletResponse response) {
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+		System.out.println("pId==" + pId);
+		System.out.println("newQty==" + newQty);
+		ProductBean pb = service.getProductById(pId);
+		Integer stock = pb.getAmount();
+//		if (newQty == null || newQty < 0) {
+//			newQty = 1;
+//		}		
+		PrintWriter out = null;
+		response.setContentType("application/json");
+		
+		/*
+		 * first if block to check if users enter numbers
+		 * second if block to check if out of stock
+		 * else block to update the cart
+		 * TODO--further testing is required  
+		 */
 		if (newQty == null || newQty < 0) {
 			newQty = 1;
+			StringBuilder jsonObject = new StringBuilder();
+			jsonObject.append("{\"error\":\"請輸入數字\" ,"  + "\"stock\":" + newQty + "}");
+			try {
+				out = response.getWriter();
+				out.print(jsonObject);
+				System.out.println(jsonObject.toString());
+				System.out.println("newQty==" + newQty);
+				out.flush();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}	
+		}else if (stock - newQty < 0) {
+			StringBuilder jsonObject = new StringBuilder();
+			jsonObject.append("{\"error\":\"庫存量不足，請重新選擇商品，庫存:" + stock + "\" , \"stock\":" + stock + "}");
+//			String jsonObject = "{\"error\":\"庫存量不足，請重新選擇，在庫量:" + stock + "\" , \"stock\":" + stock + "}";
+			try {
+				out = response.getWriter();
+				out.write(jsonObject.toString());
+				System.out.println(jsonObject.toString());
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			cart.modifyQty(pId, newQty);
+			Double newTotal = cart.getSubtotal();
+			System.out.println("newTotal==" + newTotal);
+			try {
+				out = response.getWriter();
+				out.print(newTotal);
+				out.flush();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
 		}
-		cart.modifyQty(pId, newQty);
-		return "redirect:/cartConfirm";
 	}
 
 }
