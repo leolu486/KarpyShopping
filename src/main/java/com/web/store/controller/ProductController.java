@@ -46,6 +46,8 @@ import _00_init.util.SystemUtils2019;
 public class ProductController {
 	@Autowired
 	ProductService service;
+	
+	Integer countPerPage = 5;
 
 //	@ExceptionHandler({ ProductNotFoundException.class })
 //	public ModelAndView handleError(HttpServletRequest request, ProductNotFoundException exception) {
@@ -180,7 +182,7 @@ public class ProductController {
 		HttpSession session = request.getSession();
 		session.setAttribute("products", searchResult);
 		session.setAttribute("currentPageNo", 1);
-		Integer totalPages = (int) (Math.ceil(searchResult.size() / (double) 5));
+		Integer totalPages = (int) (Math.ceil(searchResult.size() / (double) countPerPage));
 		session.setAttribute("totalPages", totalPages);
 		System.out.println("++++++++++++++++++++++++++++++++++&&&&&&&&&&&&&&&&&&&&&&&&&&-------------------------");
 		return "redirect:/changePage1";
