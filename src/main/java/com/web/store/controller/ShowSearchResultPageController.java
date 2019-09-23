@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 import com.web.store.model.ProductBean;
 import com.web.store.service.ProductService;
 
@@ -36,15 +38,21 @@ public class ShowSearchResultPageController {
 		System.out.println(index);
 		if(listSize == 0) {	
 		}else if(index+countPerPage > listSize) {
-			resultPage = new ArrayList<ProductBean>(products.subList(index, listSize - 1));
+			resultPage = new ArrayList<ProductBean>(products.subList(index, listSize));
 		}else {
 			resultPage = new ArrayList<ProductBean>(products.subList(index, index+countPerPage));
 		}
 		System.out.println("ooooooooooooooooooooooooooo" + products.size());
 		session.setAttribute("resultPage", resultPage);
 		session.setAttribute("currentPageNo", currentPageNo);
+		session.setAttribute("listSize", listSize);
 		System.out.println("+++++++++++++++++++++++++++++++++++++");
-		return "/product/products";
+		ManagerBean LoginOK = (ManagerBean) session.getAttribute("LoginOK");
+		if(LoginOK != null) {
+			return "/product/ManageProducts";
+		}else {
+			return "/product/products";
+		}
 	}
 	
 	@RequestMapping(value = "/changePage1")
@@ -59,15 +67,22 @@ public class ShowSearchResultPageController {
 		System.out.println(index);
 		if(listSize == 0) {	
 		}else if(index+countPerPage > listSize) {
-			resultPage = new ArrayList<ProductBean>(products.subList(index, listSize - 1));
+			resultPage = new ArrayList<ProductBean>(products.subList(index, listSize));
 		}else {
 			resultPage = new ArrayList<ProductBean>(products.subList(index, index+countPerPage));
 		}
 		System.out.println("ooooooooooooooooooooooooooo" + products.size());
 		session.setAttribute("resultPage", resultPage);
 		session.setAttribute("currentPageNo", currentPageNo);
+		session.setAttribute("listSize", listSize);
 		System.out.println("+++++++++++++++++++++++++++++++++++++");
-		return "/product/products";
+		ManagerBean LoginOK = (ManagerBean) session.getAttribute("LoginOK");
+		if(LoginOK != null) {
+			return "/product/ManageProducts";
+		}else {
+			return "/product/products";
+		}
+
 	}
 	
 }
