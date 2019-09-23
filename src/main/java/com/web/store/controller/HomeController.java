@@ -78,6 +78,11 @@ public class HomeController {
 		return "index1";
 
 	}
+	
+	@RequestMapping("searchResult")
+	public String index2() {
+		return "searchResult";
+	}
 
 	@RequestMapping("membercentre")
 	public String membercentre() {
