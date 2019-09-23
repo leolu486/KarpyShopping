@@ -45,4 +45,7 @@ public interface MemberDao {
 	
 	void deleteCreditCard(Integer cId);
 
+	MemberBean updateTaxId(MemberBean mb);
+	
+	MemberBean updateVehicle(MemberBean mb);
 }
