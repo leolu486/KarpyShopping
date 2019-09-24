@@ -349,7 +349,7 @@
 									<div class="single_product">
 										<span>New</span>
 									</div>
-									<div class="sinle_pic" style="width: 300px; height: 300px;">
+									<div class="sinle_pic">
 										<a
 											href="<spring:url value='productById02?pId=${product01.pId}'/>">
 											<img class="primary-img"
@@ -420,7 +420,7 @@
 									<div class="single_product">
 										<span>New</span>
 									</div>
-									<div class="sinle_pic" style="width: 300px; height: 300px;">
+									<div class="sinle_pic">
 										<a
 											href="<spring:url value='productById02?pId=${product01.pId}'/>">
 											<img class="primary-img"
@@ -685,8 +685,7 @@
 												</div>
 											</div>
 											<div class="price_box price_box_dgr">
-												<span class="old- price">商品價錢 : ${product01.price}</span>
-
+												<span class="spical-price">商品價錢 : ${product01.price}</span>
 											</div>
 											<div class="count-down-area">
 												<div style="float: left; margin-left: 30px;">
@@ -742,7 +741,7 @@
 								</div>
 							</div>
 							<div class="price_box price_box_dgr">
-								<span class="old- price">商品價錢 : ${product01.price}</span>
+								<span class="spical-price">商品價錢 : ${product01.price}</span>
 							</div>
 							<div class="count-down-area">
 								<div style="float: left; margin-left: 30px;">
@@ -800,7 +799,7 @@
 								</div>
 							</div>
 							<div class="price_box price_box_dgr">
-								<span class="old- price">商品價錢 : ${product01.price}</span>
+								<span class="spical-price">商品價錢 : ${product01.price}</span>
 							</div>
 							<div class="count-down-area">
 								<div style="float: left; margin-left: 30px;">
@@ -877,11 +876,11 @@
 						<!-- Nav tabs -->
 						<ul class="favtabs" role="tablist">
 							<li role="presentation" class="active"><a href="#home"
-								aria-controls="home" role="tab" data-toggle="tab">Electronics</a></li>
+								aria-controls="home" role="tab" data-toggle="tab">衣物</a></li>
 							<li role="presentation"><a href="#profile"
-								aria-controls="profile" role="tab" data-toggle="tab">Accessories</a></li>
-							<li role="presentation"><a href="#messages"
-								aria-controls="messages" role="tab" data-toggle="tab">Headlight</a></li>
+								aria-controls="profile" role="tab" data-toggle="tab">3C/手錶</a></li>
+							<!-- 							<li role="presentation"><a href="#messages" -->
+							<!-- 								aria-controls="messages" role="tab" data-toggle="tab">Headlight</a></li> -->
 						</ul>
 						<!-- Tab panes -->
 						<div class="tab-content">
@@ -889,8 +888,8 @@
 								<div class="row">
 									<div class="feature-carousel indicator-brand-3">
 
-										<c:forEach var="product01" items='${products}' begin="9"
-											end="9">
+										<c:forEach var="product01" items='${products}' begin="22"
+											end="22">
 											<div class="col-md-12">
 												<div class="all-pros animated fadeInUp">
 													<div class="single_product">
@@ -967,8 +966,8 @@
 											</div>
 										</c:forEach>
 
-										<c:forEach var="product01" items='${products}' begin="10"
-											end="10">
+										<c:forEach var="product01" items='${products}' begin="44"
+											end="44">
 											<div class="col-md-12">
 												<div class="all-pros animated fadeInUp">
 													<div class="single_product">
@@ -1044,8 +1043,8 @@
 												</div>
 											</div>
 										</c:forEach>
-										<c:forEach var="product01" items='${products}' begin="11"
-											end="11">
+										<c:forEach var="product01" items='${products}' begin="61"
+											end="61">
 											<div class="col-md-12">
 												<div class="all-pros animated fadeInUp">
 													<div class="single_product">
@@ -1121,8 +1120,8 @@
 												</div>
 											</div>
 										</c:forEach>
-										<c:forEach var="product01" items='${products}' begin="12"
-											end="12">
+										<c:forEach var="product01" items='${products}' begin="60"
+											end="60">
 											<div class="col-md-12">
 												<div class="all-pros animated fadeInUp">
 													<div class="single_product">
@@ -1198,8 +1197,8 @@
 												</div>
 											</div>
 										</c:forEach>
-										<c:forEach var="product01" items='${products}' begin="13"
-											end="13">
+										<c:forEach var="product01" items='${products}' begin="58"
+											end="58">
 											<div class="col-md-12">
 												<div class="all-pros animated fadeInUp">
 													<div class="single_product">
@@ -1275,8 +1274,8 @@
 												</div>
 											</div>
 										</c:forEach>
-										<c:forEach var="product01" items='${products}' begin="14"
-											end="14">
+										<c:forEach var="product01" items='${products}' begin="59"
+											end="59">
 											<div class="col-md-12">
 												<div class="all-pros animated fadeInUp">
 													<div class="single_product">
@@ -1356,8 +1355,8 @@
 								</div>
 							</div>
 
-							<c:forEach var="product01" items='${products}' begin="15"
-								end="15">
+							<c:forEach var="product01" items='${products}' begin="62"
+								end="62">
 								<div role="tabpanel" class="tab-pane" id="profile">
 									<div class="row">
 										<div class="feature-carousel indicator-brand-3">
@@ -1434,8 +1433,8 @@
 												</div>
 											</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="16"
-								end="16">
+							<c:forEach var="product01" items='${products}' begin="63"
+								end="63">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -1507,8 +1506,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="17"
-								end="17">
+							<c:forEach var="product01" items='${products}' begin="64"
+								end="64">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -1580,8 +1579,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="18"
-								end="18">
+							<c:forEach var="product01" items='${products}' begin="111"
+								end="111">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -1653,8 +1652,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="19"
-								end="19">
+							<c:forEach var="product01" items='${products}' begin="113"
+								end="113">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -1726,8 +1725,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="20"
-								end="20">
+							<c:forEach var="product01" items='${products}' begin="112"
+								end="112">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -1799,8 +1798,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="21"
-								end="21">
+							<c:forEach var="product01" items='${products}' begin="117"
+								end="117">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -1872,8 +1871,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="22"
-								end="22">
+							<c:forEach var="product01" items='${products}' begin="122"
+								end="122">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -1945,8 +1944,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="23"
-								end="23">
+							<c:forEach var="product01" items='${products}' begin="130"
+								end="130">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -2018,8 +2017,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="24"
-								end="24">
+							<c:forEach var="product01" items='${products}' begin="120"
+								end="120">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -2091,8 +2090,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="25"
-								end="25">
+							<c:forEach var="product01" items='${products}' begin="125"
+								end="125">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -2164,8 +2163,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="26"
-								end="26">
+							<c:forEach var="product01" items='${products}' begin="124"
+								end="124">
 								<div class="col-md-12">
 									<div class="all-pros all-pros-3 animated fadeInUp">
 										<div class="single_product">
@@ -2301,7 +2300,7 @@
 					</div>
 				</div>
 			</div>
-			<c:forEach var="product01" items='${products}' begin="27" end="27">
+			<c:forEach var="product01" items='${products}' begin="21" end="21">
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12 text-right">
 						<div class="my-tabs">
@@ -2385,7 +2384,7 @@
 												</div>
 											</div>
 			</c:forEach>
-			<c:forEach var="product01" items='${products}' begin="28" end="28">
+			<c:forEach var="product01" items='${products}' begin="4" end="4">
 				<div class="col-md-12">
 					<div class="all-pros all-pros-3 animated fadeInUp">
 						<div class="single_product">
@@ -2456,7 +2455,7 @@
 					</div>
 				</div>
 			</c:forEach>
-			<c:forEach var="product01" items='${products}' begin="29" end="29">
+			<c:forEach var="product01" items='${products}' begin="39" end="39">
 				<div class="col-md-12">
 					<div class="all-pros all-pros-3 animated fadeInUp">
 						<div class="single_product">
@@ -2527,7 +2526,7 @@
 					</div>
 				</div>
 			</c:forEach>
-			<c:forEach var="product01" items='${products}' begin="30" end="30">
+			<c:forEach var="product01" items='${products}' begin="40" end="40">
 				<div class="col-md-12">
 					<div class="all-pros all-pros-3 animated fadeInUp">
 						<div class="single_product">
@@ -2598,7 +2597,7 @@
 					</div>
 				</div>
 			</c:forEach>
-			<c:forEach var="product01" items='${products}' begin="0" end="0">
+			<c:forEach var="product01" items='${products}' begin="41" end="41">
 				<div class="col-md-12">
 					<div class="all-pros all-pros-3 animated fadeInUp">
 						<div class="single_product">
@@ -2669,7 +2668,7 @@
 					</div>
 				</div>
 			</c:forEach>
-			<c:forEach var="product01" items='${products}' begin="1" end="1">
+			<c:forEach var="product01" items='${products}' begin="42" end="42">
 				<div class="col-md-12">
 					<div class="all-pros all-pros-3 animated fadeInUp">
 						<div class="single_product">
@@ -4709,7 +4708,7 @@
 
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath }/js/jquery.timers.js"></script>
-		
+
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath }/js/time.js"></script>
 </body>

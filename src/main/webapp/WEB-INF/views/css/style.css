@@ -2635,6 +2635,11 @@ span.cdown strong {
 	transform: translate3d(0px, -100%, 0px);
 }
 
+
+
+
+
+
 .product_content_2 {
 	border: 0 none;
 	margin-bottom: 8px;
@@ -5947,7 +5952,7 @@ button.add-tocart-2 {
 }
 
 .secondary-img.secondary-img-2 {
-	width: 60px;
+	width: 600px;
 	border: 1px solid #e1e1e1;
 	margin-left: 17px;
 }
