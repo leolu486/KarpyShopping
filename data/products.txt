@@ -1,16 +1,16 @@
 ﻿'屈臣氏抽取式衛生紙110抽10包入', 109, 1, 29, '日常用品', '2019-7-29', '2021-7-29', data/productImg/1/1.jpg, data/productImg/1/2.jpg
-'LEVIS 素面 小LOGO 短梯 TEE ', 880, 2, 3, '流行服飾', '2019-7-29', null, data/productImg/2/1.jfif, data/productImg/2/2.jfif
+'LEVIS 素面 小LOGO 短梯 TEE ', 880, 2, 3, '流行服飾', '2019-7-29', null, data/productImg/2/1.jpg, data/productImg/2/2.jpg
 '特力屋 淨味防霉全效乳膠漆 玫瑰白 5L', 783, 3, 568, '五金用品', '2019-7-29', '2022-7-29', data/productImg/3/1.jpg, data/productImg/3/2.jpg
 '三花1/2休閒襪', 75, 4, 1, '貼身衣物', '2019-7-29', null, data/productImg/4/1.jpg, data/productImg/4/2.jpg
-'【CASIO】卡西歐 SHEEN 晶鑽時尚錶-玫瑰金', 4700, 5, 1, '精品名錶', '2019-7-29', null, data/productImg/5/1.jpg, data/productImg/5/2.jpg
+'【CASIO】卡西歐 SHEEN 晶鑽時尚錶', 4700, 5, 1, '精品名錶', '2019-7-29', null, data/productImg/5/1.jpg, data/productImg/5/2.jpg
 '星辰錶 CITIZEN 光電時尚石英錶', 6500, 6, 1, '精品名錶', '2019-7-29', null, data/productImg/6/1.jpg, data/productImg/6/2.jpg
 '日本 AGF Maxim 濃郁即溶咖啡-100g ', 110, 7, 1586, '食品', '2019-7-29', '2020-7-29', data/productImg/7/1.jpg, data/productImg/7/2.jpg
 '【靴下屋】薄紗透明短襪/日本職人手做', 333, 8, 3, '貼身衣物', '2019-7-29', null, data/productImg/8/1.jpg, data/productImg/8/2.jpg
-'【周大福】LINE FRIENDS系列 熊美18K白金手鍊', 4845, 9, 1, '飾品', '2019-7-29', null, data/productImg/9/1.jpg, data/productImg/9/2.PNG
-'直立手持兩用HEPA吸塵器', 699, 10, 761, '家電', '2019-7-30', null, data/productImg/10/1.jfif, data/productImg/10/2.PNG
-'【老媽拌麵、藍象系列】老成都擔擔麵/担担麵', 75, 11, 41, '食品', '2019-7-30', '2020-7-30', data/productImg/11/1.jpg, data/productImg/11/2.jpg
+'【周大福】LINE FRIENDS白金手鍊', 4845, 9, 1, '飾品', '2019-7-29', null, data/productImg/9/1.jpg, data/productImg/9/2.PNG
+'直立手持兩用HEPA吸塵器', 699, 10, 761, '家電', '2019-7-30', null, data/productImg/10/1.jpg, data/productImg/10/2.PNG
+'【老媽拌麵、藍象系列】老成都担担麵', 75, 11, 41, '食品', '2019-7-30', '2020-7-30', data/productImg/11/1.jpg, data/productImg/11/2.jpg
 '【三菱】日本零食 咖姆咖姆糖袋裝', 50, 12, 1886, '食品', '2019-7-30', '2019-10-30', data/productImg/12/1.jpg, data/productImg/12/2.jpg
-'哈根達斯 迪士尼熱帶叢林探險迷你杯14入組', 1299, 13, 61, '食品', '2019-7-30', '2019-9-30', data/productImg/13/1.jpg, data/productImg/13/2.jfif
+'哈根達斯 迪士尼熱帶叢林探險迷你杯', 1299, 13, 61, '食品', '2019-7-30', '2019-9-30', data/productImg/13/1.jpg, data/productImg/13/2.jpg
 '【亞尼克】生乳捲雙捲禮盒', 525, 14, 3979, '食品', '2019-7-30', '2019-8-15', data/productImg/14/1.jpg, data/productImg/14/2.jpg
 '【快車肉乾】A1超薄芝麻杏仁香脆肉紙 ', 200, 15, 8788, '食品', '2019-7-30', '2019-9-30', data/productImg/15/1.jpg, data/productImg/15/2.jpg
 '統一科學麵原味節令版40g*12', 120, 16, 750, '食品', '2019-7-30', '2020-3-30', data/productImg/16/1.jpg, data/productImg/16/2.jpg
@@ -19,28 +19,28 @@
 '【買一送一】專科 完美防曬水凝膠80g', 510, 19, 3, '日常用品', '2019-7-30', '2020-6-30', data/productImg/19/1.PNG, data/productImg/19/2.PNG
 '【正心堂】 奇亞籽 1公斤(500克X2包)', 101, 20, 271, '食品', '2019-7-30', '2019-12-30', data/productImg/20/1.PNG, data/productImg/20/2.PNG
 '【鮮果日誌】智利富士蘋果',1350, 21, 100,'食品','2019-7-29','2019-8-15', data/productImg/21/1.jpg, data/productImg/21/2.jpg
-'《預購》糖罐子V領後綁帶刺繡造型格紋上衣', 299, 22, 2696, '流行服飾', '2019-7-29', null, data/productImg/22/1.PNG, data/productImg/22/2.PNG
+'糖罐子V領後綁帶刺繡格紋上衣', 299, 22, 2696, '流行服飾', '2019-7-29', null, data/productImg/22/1.PNG, data/productImg/22/2.PNG
 '【現貨】oversize男生t恤日系韓版短袖', 279, 23, 5039, '流行服飾', '2019-7-30', null, data/productImg/23/1.PNG, data/productImg/23/2.PNG
 'ASUS 華碩 VivoBook L402 L402WA 14吋', 9600, 24, 10, '3C產品', '2019-7-30', null, data/productImg/24/1.png, data/productImg/24/2.png
-'享點子 泰式香辣打拋豬200g/包', 69, 25, 55, '食品', '2019-7-30', '2019-12-30', data/productImg/25/1.jfif, data/productImg/25/2.jpg
+'享點子 泰式香辣打拋豬200g/包', 69, 25, 55, '食品', '2019-7-30', '2019-12-30', data/productImg/25/1.jpg, data/productImg/25/2.jpg
 '【築地一番鮮】優質愛文芒果5斤/10斤裝', 388, 26, 2360, '食品', '2019-7-30', '2019-8-30', data/productImg/26/1.PNG, data/productImg/26/2.PNG
-'【台中鋰電】美國 CREE XM-L2 LED 手電筒', 65, 27, 9976, '居家安全', '2019-7-30', null, data/productImg/27/1.jpg, data/productImg/27/2.PNG
-'【華冠】7吋/10吋/12吋/16吋涼風扇 風量大 ', 299, 28, 618, '家電', '2019-7-30', null, data/productImg/28/1.jpg, data/productImg/28/2.jpg
+'【台中鋰電】美國 CREE LED 手電筒', 65, 27, 9976, '居家安全', '2019-7-30', null, data/productImg/27/1.jpg, data/productImg/27/2.PNG
+'【華冠】7吋/10吋/12吋/16吋涼風扇  ', 299, 28, 618, '家電', '2019-7-30', null, data/productImg/28/1.jpg, data/productImg/28/2.jpg
 '青市集 香辣薯條140g(部分即期) ', 135, 29, 3, '食品', '2019-7-30', '2020-3-30', data/productImg/29/1.PNG, data/productImg/29/2.PNG
 '鮭魚握壽司 冷藏宅配', 699, 30, 10, '食品', '2019-7-30', '2019-8-2', data/productImg/30/1.jpg, data/productImg/30/2.PNG
-'1件套寶塔形螺絲刀套裝組合多功能電腦拆機起子蘋果手機維修工具', 420, 31, 99, '日常用品', '2019-7-30', '2019-11-2', data/productImg/31/1.jpg, data/productImg/31/2.jpg
+'1件套寶塔形螺絲刀套裝手機維修工具', 420, 31, 99, '日常用品', '2019-7-30', '2019-11-2', data/productImg/31/1.jpg, data/productImg/31/2.jpg
 'MOTI 電子菸 菸彈 主機 魔笛', 850, 32, 3, '日常用品', '2019-11-30', '2020-10-2', data/productImg/32/1.jpg, data/productImg/32/2.jpg
-'贈果凍套 保固一年 小米 行動電源2 10000 mAh 2代 雙USB快充 移動電源 2A 最新版 原廠公司貨', 490, 33, 1420, '日常用品', '2016-11-30', '2019-12-22', data/productImg/33/1.jpg, data/productImg/33/2.jpg
+'贈果凍套 保固一年 小米 行動電源2', 490, 33, 1420, '日常用品', '2016-11-30', '2019-12-22', data/productImg/33/1.jpg, data/productImg/33/2.jpg
 '電動清潔刷 機車汽車洗車打蠟機', 149, 34, 100, '日常用品', '2017-1-15', '2019-12-22', data/productImg/34/1.jpg, data/productImg/34/2.jpg
 '防摔運動水壺 進口tritan材質 健身水壺', 299, 35, 99, '日常用品', '2017-10-16', '2019-2-23', data/productImg/35/1.jpg, data/productImg/35/2.jpg
 '316不鏽鋼吸管5件組 ', 316, 36, 99, '日常用品', '2013-11-15', '2019-12-22', data/productImg/36/1.jpg, data/productImg/36/2.jpg
 '手動氣壓式噴霧器農用打藥機噴霧機', 833, 37, 66, '日常用品', '2017-6-11', '2019-7-22', data/productImg/37/1.jpg, data/productImg/37/2.jpg
 '300萬HD攝影機挖耳棒 掏耳器 潔耳器', 690, 38, 99, '日常用品', '2018-12-15', '2020-11-12', data/productImg/38/1.jpg, data/productImg/38/2.jpg
 '韓版扭結舒適莫代爾長T', 149, 39, 2, '流行服飾', '2017-9-25', '2019-1-22', data/productImg/39/1.jpg, data/productImg/39/2.jpg
-'寬鬆圓領印花拼色蝙蝠袖中長款長袖T恤', 580, 40, 15, '流行服飾', '2017-8-15', '2019-2-22', data/productImg/40/1.jpg, data/productImg/40/2.jpg
-'短袖t恤女寬松韓版夏裝新款白色打底衫衣服體恤半袖上衣女潮', 176, 41, 99, '流行服飾', '2017-7-28', '2019-3-29', data/productImg/41/1.jpg, data/productImg/41/2.jpg
+'寬鬆圓領印花拼色蝙蝠袖中長款', 580, 40, 15, '流行服飾', '2017-8-15', '2019-2-22', data/productImg/40/1.jpg, data/productImg/40/2.jpg
+'短袖t恤女寬松韓版夏裝新款', 176, 41, 99, '流行服飾', '2017-7-28', '2019-3-29', data/productImg/41/1.jpg, data/productImg/41/2.jpg
 '超性感透視上衣 寬鬆長版罩衫', 188, 42, 99, '流行服飾', '2017-6-25', '2019-4-22', data/productImg/42/1.jpg, data/productImg/42/2.jpg
-'Hoodies Japanese Sweet Loose Lolita Mori Girl Rabbit ', 1141, 43, 1, '流行服飾', '2017-5-24', '2019-5-26', data/productImg/43/1.jpg, data/productImg/43/2.jpg
+'日本可愛風寬版兔子衣 ', 1141, 43, 1, '流行服飾', '2017-5-24', '2019-5-26', data/productImg/43/1.jpg, data/productImg/43/2.jpg
 'Oversize Women's Girl's Hoody Cute Panda Ears Zipper Hoodies', 596, 44, 1, '流行服飾', '2017-1-25', '2019-6-28', data/productImg/44/1.jpg, data/productImg/44/2.jpg
 '機能長褲輕薄休閒長褲', 390, 45, 99, '流行服飾', '2017-3-25', '2019-7-22', data/productImg/45/1.jpg, data/productImg/45/2.jpg
 '普朗德 12V 20V 軍刀鋸 往復鋸', 3300, 46, 18, '五金用品', '2017-3-25', '2019-11-22', data/productImg/46/1.jpg, data/productImg/46/2.jpg
@@ -56,13 +56,13 @@
 '台灣製造 MIT中筒緹花襪 ', 35, 56, 99, '貼身衣物', '2017-12-25', '2019-8-28', data/productImg/56/1.jpg, data/productImg/56/2.jpg
 '超厚中筒運動襪 ', 69, 57, 99, '貼身衣物', '2017-1-15', '2019-9-28', data/productImg/57/1.jpg, data/productImg/57/2.jpg
 '純棉超厚底毛巾底船型襪', 660, 58, 99, '貼身衣物', '2017-2-21', '2019-10-18', data/productImg/58/1.jpg, data/productImg/58/2.jpg
-'new sport 短襪 炫彩透氣萊卡編織系列 黑底橘線', 200, 59, 99, '貼身衣物', '2017-3-25', '2019-11-14', data/productImg/59/1.jpg, data/productImg/59/2.jpg
-'new sport 短襪 炫彩透氣萊卡編織系列 黑底藍線', 200, 60, 99, '貼身衣物', '2017-4-15', '2019-12-28', data/productImg/60/1.jpg, data/productImg/60/2.jpg
-'new sport 短襪 炫彩透氣萊卡編織系列 淺藍白線', 200, 61, 99, '貼身衣物', '2017-5-21', '2019-1-18', data/productImg/61/1.jpg, data/productImg/61/2.jpg
+'new sport 短襪  黑底橘線', 200, 59, 99, '貼身衣物', '2017-3-25', '2019-11-14', data/productImg/59/1.jpg, data/productImg/59/2.jpg
+'new sport 短襪  黑底藍線', 200, 60, 99, '貼身衣物', '2017-4-15', '2019-12-28', data/productImg/60/1.jpg, data/productImg/60/2.jpg
+'new sport 短襪  淺藍白線', 200, 61, 99, '貼身衣物', '2017-5-21', '2019-1-18', data/productImg/61/1.jpg, data/productImg/61/2.jpg
 '高品質舒適彈力清涼感冰絲四角褲', 69, 62, 99, '貼身衣物', '2017-6-29', '2019-2-28', data/productImg/62/1.jpg, data/productImg/62/2.jpg
-'日空版 Fate FGO SEIKO 聯名手錶 盾兵 Shielder 瑪修', 14800, 63, 6, '精品名錶', '2017-6-29', '2019-2-28', data/productImg/63/1.jpg, data/productImg/63/2.jpg
-' SEIKO FATE FGO 槍兵 斯卡哈 師匠 聯名錶', 16000, 64, 1, '精品名錶', '2017-7-29', '2019-3-28', data/productImg/64/1.jpg, data/productImg/64/2.jpg
-'日空版 Fate FGO SEIKO 聯名手錶 Saber 宮本武藏', 15800, 65, 2, '精品名錶', '2017-8-29', '2019-4-28', data/productImg/65/1.jpg, data/productImg/65/2.jpg
+'日空版 SEIKO 聯名手錶', 14800, 63, 6, '精品名錶', '2017-6-29', '2019-2-28', data/productImg/63/1.jpg, data/productImg/63/2.jpg
+' SEIKO 深海藍水鬼200米潛水聯名錶', 16000, 64, 1, '精品名錶', '2017-7-29', '2019-3-28', data/productImg/64/1.jpg, data/productImg/64/2.jpg
+'SEIKO PRESAGE 基本錶款 ', 18000, 65, 2, '精品名錶', '2017-8-29', '2019-4-28', data/productImg/65/1.png, data/productImg/65/2.jpg
 '子午閣』 免運 卡西歐 G-SHOCK電子 運動手錶日韓風 手錶', 1299, 66, 99, '精品名錶', '2017-9-29', '2019-5-28', data/productImg/66/1.jpg, data/productImg/66/2.jpg
 '『子午閣』 免運G-SHOCK CASIO 卡西歐Baby-G', 1299, 67, 99, '精品名錶', '2017-10-29', '2019-6-28', data/productImg/67/1.jpg, data/productImg/67/2.jpg
 '【城市獵人City Hunter】經典雋永三眼不鏽鋼腕錶', 1677, 68, 3, '精品名錶', '2017-11-29', '2019-7-28', data/productImg/68/1.jpg, data/productImg/68/2.jpg
@@ -75,7 +75,7 @@
 '天然紅宝石18K金戒台T礸~紅寶石女用戒子附証書', 260000, 75, 1, '飾品', '2017-1-21', '2019-5-18', data/productImg/75/1.jpg, data/productImg/75/2.jpg
 '台南 長記銀樓 鑽石女戒，主石12分，8粒小鑽', 19800, 76, 2, '飾品', '2017-12-21', '2019-6-18', data/productImg/76/1.jpg, data/productImg/76/2.jpg
 '1克拉莫桑鑽18k金鉑金色戒檯', 17000, 77, 1, '飾品', '2017-1-21', '2019-7-18', data/productImg/77/1.jpg, data/productImg/77/2.jpg
-'7" 14K Yellow Gold 3ctw Round Diamond Bar Bracelet', 242163, 78, 1, '飾品', '2017-2-21', '2019-8-18', data/productImg/78/1.jpg, data/productImg/78/2.jpg
+'7" 14K Yellow Gold 3ctw Round Diamond Bar Bracelet', 242163, 78, 1, '飾品', '2017-2-21', '2019-8-18', data/productImg/78/1.jpg, data/productImg/78/2.png
 'Unique Sterling Silver Pave Sea Blue Diamonds Gemstone Ring', 2565, 79, 1, '飾品', '2017-3-21', '2019-8-18', data/productImg/79/1.jpg, data/productImg/79/2.jpg
 '科帥液晶觸控氣炸鍋AF606 雙鍋5.5L', 1780, 80, 99, '家電', '2017-3-21', '2019-8-18', data/productImg/80/1.jpg, data/productImg/80/2.jpg
 '【台灣公司貨】EVERPURE H104 H-104 濾心 加強除鉛型 ', 1200, 81, 68, '家電', '2017-4-21', '2019-6-15', data/productImg/81/1.jpg, data/productImg/81/2.jpg
@@ -103,3 +103,31 @@
 '【LED Lifeway】FENIX E20 ( 限量特價 ) 250流明 動作感應調光手電筒', 950, 103, 99, '居家安全', '2017-9-25', '2019-5-14', data/productImg/103/1.jpg, data/productImg/103/2.jpg
 '【原廠正品】SupFire神火雙充槽USB極速快充充電器.充滿自動斷電', 250, 104, 99, '居家安全', '2017-10-25', '2019-11-14', data/productImg/104/1.jpg, data/productImg/104/2.jpg
 '狼牙棒手電筒', 299, 105, 50, '居家安全', '2017-1-25', '2019-11-14', data/productImg/105/1.jpg, data/productImg/105/2.jpg
+'Apple iphone XS (64G) 金色', 32400, 30, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/106/1.jpg, data/productImg/106/2.jpg
+'Apple iphone XR (128G) 白色', 23500, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/107/1.jpg, data/productImg/107/2.jpg
+'Apple iphone XS Max (64G) 金色', 35900, 30, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/108/1.jpg, data/productImg/108/2.jpg
+'Apple Watch S4 GPS 44mm 金色', 12900, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/109/1.jpg, data/productImg/109/2.jpg
+'Dyson SV14 V11 Absolute 手持無線吸塵器', 24900, 30, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/110/1.jpg, data/productImg/110/2.jpg
+'Dyson V7 Mattress HH11 手持除蟎吸塵器', 9999, 30, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/111/1.jpg, data/productImg/111/2.jpg
+'羅技 G304 無線電競滑鼠(含鼠墊)', 1290, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/112/1.jpg, data/productImg/112/2.jpg
+'華碩 ROG Sica 電競滑鼠', 1090, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/113/1.jpg, data/productImg/113/2.jpg
+'HyperX Alloy FPS RGB 機械式電競鍵盤', 4990, 30, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/114/1.jpg, data/productImg/114/2.jpg
+'ZMI紫米 傳輸充電線', 299, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/115/1.jpg, data/productImg/115/2.jpg
+'美國Blue Yeti 雪怪USB 麥克風 (霧黑)', 5600, 30, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/116/1.jpg, data/productImg/116/2.jpg
+'THRUSTMASTER T150 力回饋方向盤', 5600, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/115/1.jpg, data/productImg/115/2.jpg
+'美國Blue Yeti 雪怪USB 麥克風 (霧黑)', 5600, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/116/1.jpg, data/productImg/116/2.jpg
+'羅技 M720 Triathlon 多工無線滑鼠)', 1690, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/117/1.jpg, data/productImg/117/2.jpg
+'羅技 G102 PRODIGY 遊戲滑鼠', 599, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/118/1.jpg, data/productImg/118/2.jpg
+'AirPods 搭配無線充電盒', 5290, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/119/1.png, data/productImg/119/2.jpg
+'AirPods 搭配有線充電盒', 4990, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/120/1.png, data/productImg/120/2.jpg
+'Creative GigaWorks T40II 二件式喇叭', 4990, 30, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/121/1.jpg, data/productImg/121/2.jpg
+'Edifier R1600TIII 二件式喇叭', 3190, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/122/1.jpg, data/productImg/122/2.jpg
+'Wacom Intuos Basic 繪圖板(黑)', 1990, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/123/1.jpg, data/productImg/123/2.jpg
+'Wacom Cintiq 22 繪圖液晶顯示器', 5600, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/124/1.jpg, data/productImg/124/2.jpg
+'SanDisk Ultra USB Type-C 隨身碟 256GB', 1299, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/125/1.jpg, data/productImg/125/2.jpg
+'SanDisk ExtremePRO USB 3.1 高速碟 256GB', 2599, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/126/1.jpg, data/productImg/126/2.jpg
+'TESCOM專業型大風量負離子吹風機', 799, 30, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/127/1.jpg, data/productImg/127/2.jpg
+'國際牌雙負離子三段溫度吹風機EH-NE41', 850, 30, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/128/1.jpg, data/productImg/128/2.jpg
+'SAMSUNG 三星 970 512GB 固態硬碟', 4890, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/129/1.jpg, data/productImg/129/2.jpg
+'SAMSUNG三星Galaxy A8 Star 4G/64G 6.3吋', 7490, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/130/1.jpg, data/productImg/130/2.jpg
+'HDMI 編織影音傳輸線材', 599, 30, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/131/1.jpg, data/productImg/131/2.jpg
