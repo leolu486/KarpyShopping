@@ -22,7 +22,7 @@ public class ChatEndPoint {
 	private Session session;
 	private static Set<ChatEndPoint> chatEndpoints = new CopyOnWriteArraySet<>();
 	private static HashMap<String, String> users = new HashMap<>();
-
+	
 	@OnOpen
 	public void onOpen(Session session, @PathParam("username") String username,@PathParam("userid") Integer userid) throws IOException {
 
@@ -33,7 +33,10 @@ public class ChatEndPoint {
 		Message message = new Message();
 		message.setFrom(username);
 		message.setFrom_id(userid);
-		message.setSystem_msg("9487顆喬丹之石賣給商人");
+		int i = 0;
+
+		i = (int)(Math.random()*10000)+1000;
+		message.setSystem_msg(((int)(Math.random()*9000)+1000)+"顆喬丹之石賣給商人");
 		broadcast(message);
 		message.setSystem_msg(message.getFrom()+" 出現在地表上!!!");
 		broadcast(message);
@@ -52,7 +55,7 @@ public class ChatEndPoint {
 		chatEndpoints.remove(this);
 		Message message = new Message();
 		message.setFrom(users.get(session.getId()));
-		message.setContent("Disconnected!");
+		message.setSystem_msg(message.getFrom()+"離開了這個世界，暗黑破壞神的嘍喽們的力量被削弱了!");
 		broadcast(message);
 	}
 
