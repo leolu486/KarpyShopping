@@ -279,15 +279,15 @@
 									<div class="menu1">
 										<nav>
 											<ul>
-												<li><a href="<spring:url value='getProductsBy?searchBy=流行服飾'/>">流行服飾</a></li>
-												<li><a href="<spring:url value='getProductsBy?searchBy=飾品'/>">飾品</a></li>
-												<li><a href="<spring:url value='getProductsBy?searchBy=食品'/>">食品</a></li>
-												<li><a href="<spring:url value='getProductsBy?searchBy=日常用品'/>">日常用品</a></li>
-												<li><a href="<spring:url value='getProductsBy?searchBy=居家安全'/>">居家安全</a></li>
-												<li><a href="<spring:url value='getProductsBy?searchBy=3C產品'/>">3C</a></li>
-												<li><a href="<spring:url value='getProductsBy?searchBy=精品名錶'/>">精品名錶</a></li>
-												<li><a href="<spring:url value='getProductsBy?searchBy=家電'/>">家電</a></li>
-												<li><a href="<spring:url value='getProductsBy?searchBy=貼身衣物'/>">貼身衣物</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=流行服飾'/>">流行服飾</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=飾品'/>">飾品</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=食品'/>">食品</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=日常用品'/>">日常用品</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=居家安全'/>">居家安全</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=3C產品'/>">3C</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=精品名錶'/>">精品名錶</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=家電'/>">家電</a></li>
+												<li><a href="<spring:url value='getProductsByCategory?searchBy=貼身衣物'/>">貼身衣物</a></li>
 
 											</ul>
 										</nav>
