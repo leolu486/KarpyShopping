@@ -16,7 +16,7 @@ import javax.websocket.server.ServerEndpoint;
 
 import com.websocket.model.Message;
 
-@ServerEndpoint(value = "/chat/{username}", decoders = MessageDecoder.class, encoders = MessageEncoder.class)
+@ServerEndpoint(value = "/chat/{username}/{userid}", decoders = MessageDecoder.class, encoders = MessageEncoder.class)
 public class ChatEndPoint {
 
 	private Session session;
@@ -24,23 +24,25 @@ public class ChatEndPoint {
 	private static HashMap<String, String> users = new HashMap<>();
 
 	@OnOpen
-	public void onOpen(Session session, @PathParam("username") String username) throws IOException {
+	public void onOpen(Session session, @PathParam("username") String username,@PathParam("userid") Integer userid) throws IOException {
 
 		this.session = session;
 		chatEndpoints.add(this);
 		users.put(session.getId(), username);
-
+		users.put(username,userid.toString());
 		Message message = new Message();
 		message.setFrom(username);
-		message.setContent("Connected!");
+		message.setFrom_id(userid);
+		message.setSystem_msg("9487顆喬丹之石賣給商人");
 		broadcast(message);
-
+		message.setSystem_msg(message.getFrom()+" 出現在地表上!!!");
+		broadcast(message);
 	}
 
 	@OnMessage
 	public void onMessage(Session session, Message message) throws IOException {
-
 		message.setFrom(users.get(session.getId()));
+		message.setFrom_id(Integer.parseInt(users.get(users.get(session.getId()))));
 		broadcast(message);
 	}
 

@@ -35,24 +35,18 @@ public class MemberBean implements Serializable {
 	private Blob memberImage; // member photo
 	private String gmail; // third party login with gmail
 	private String line; // third party login with line
-	private String vehicle;//發票載具
-	private String taxId;//公司統編
-	
+	private String vehicle;// 發票載具
+	private String taxId;// 公司統編
 
-	public String getVehicle() {
-		return vehicle;
+	@Transient
+	private String base64Image;
+
+	public String getBase64Image() {
+		return base64Image;
 	}
 
-	public void setVehicle(String vehicle) {
-		this.vehicle = vehicle;
-	}
-
-	public String getTaxId() {
-		return taxId;
-	}
-
-	public void setTaxId(String taxId) {
-		this.taxId = taxId;
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
 	}
 
 	@Transient
@@ -227,6 +221,22 @@ public class MemberBean implements Serializable {
 
 	public void setLine(String line) {
 		this.line = line;
+	}
+
+	public String getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(String vehicle) {
+		this.vehicle = vehicle;
+	}
+
+	public String getTaxId() {
+		return taxId;
+	}
+
+	public void setTaxId(String taxId) {
+		this.taxId = taxId;
 	}
 
 	public String searchAccountSource() {
