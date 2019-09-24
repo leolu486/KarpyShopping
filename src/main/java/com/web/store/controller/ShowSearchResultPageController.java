@@ -1,6 +1,8 @@
 package com.web.store.controller;
 
+import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 
@@ -38,9 +40,47 @@ public class ShowSearchResultPageController {
 		System.out.println(index);
 		if(listSize == 0) {	
 		}else if(index+countPerPage > listSize) {
-			resultPage = new ArrayList<ProductBean>(products.subList(index, listSize));
+			List<ProductBean> subList = new ArrayList<ProductBean>(products.subList(index, listSize));
+			
+			//handling image
+			for(ProductBean pb : subList) {
+			if (pb.getProductImage() != null && pb.getBase64Image() == null) {
+				Blob blob = pb.getProductImage();
+				byte[] imageData = null;
+				try {		
+					imageData = blob.getBytes(1, (int) blob.length());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				pb.setBase64Image(Base64.getEncoder().encodeToString(imageData));
+				
+			}
+			
+			resultPage.add(pb);
+			}
+			
 		}else {
-			resultPage = new ArrayList<ProductBean>(products.subList(index, index+countPerPage));
+			List<ProductBean> subList = new ArrayList<ProductBean>(products.subList(index, index+countPerPage));		
+			
+			//handling image
+			for(ProductBean pb : subList) {
+			if (pb.getProductImage() != null && pb.getBase64Image() == null) {
+				Blob blob = pb.getProductImage();
+				Blob blob1 = pb.getProductImage1();
+				byte[] imageData = null;
+				byte[] imageData1 = null;
+				try {		
+					imageData = blob.getBytes(1, (int) blob.length());
+					imageData1 = blob1.getBytes(1, (int) blob.length());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				pb.setBase64Image(Base64.getEncoder().encodeToString(imageData));
+				pb.setBase64Image1(Base64.getEncoder().encodeToString(imageData1));
+			}
+			
+			resultPage.add(pb);
+			}
 		}
 		System.out.println("ooooooooooooooooooooooooooo" + products.size());
 		session.setAttribute("resultPage", resultPage);
@@ -67,9 +107,47 @@ public class ShowSearchResultPageController {
 		System.out.println(index);
 		if(listSize == 0) {	
 		}else if(index+countPerPage > listSize) {
-			resultPage = new ArrayList<ProductBean>(products.subList(index, listSize));
+			List<ProductBean> subList = new ArrayList<ProductBean>(products.subList(index, listSize));
+			
+			//handling image
+			for(ProductBean pb : subList) {
+			if (pb.getProductImage() != null && pb.getBase64Image() == null) {
+				Blob blob = pb.getProductImage();
+				byte[] imageData = null;
+				try {		
+					imageData = blob.getBytes(1, (int) blob.length());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				pb.setBase64Image(Base64.getEncoder().encodeToString(imageData));
+				
+			}
+			
+			resultPage.add(pb);
+			}
+			
 		}else {
-			resultPage = new ArrayList<ProductBean>(products.subList(index, index+countPerPage));
+			List<ProductBean> subList = new ArrayList<ProductBean>(products.subList(index, index+countPerPage));		
+			
+			//handling image
+			for(ProductBean pb : subList) {
+			if (pb.getProductImage() != null && pb.getBase64Image() == null) {
+				Blob blob = pb.getProductImage();
+				Blob blob1 = pb.getProductImage1();
+				byte[] imageData = null;
+				byte[] imageData1 = null;
+				try {		
+					imageData = blob.getBytes(1, (int) blob.length());
+					imageData1 = blob1.getBytes(1, (int) blob.length());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				pb.setBase64Image(Base64.getEncoder().encodeToString(imageData));
+				pb.setBase64Image1(Base64.getEncoder().encodeToString(imageData1));
+			}
+			
+			resultPage.add(pb);
+			}
 		}
 		System.out.println("ooooooooooooooooooooooooooo" + products.size());
 		session.setAttribute("resultPage", resultPage);

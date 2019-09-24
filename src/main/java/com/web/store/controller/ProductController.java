@@ -111,6 +111,19 @@ public class ProductController {
 		model.addAttribute("products", list);
 		return "/product/products";
 	}
+	
+	@RequestMapping(value = "/getProductsByCategory")
+	public String getProductsByCategory(@RequestParam("searchBy") String searchBy, Model model, HttpServletRequest request) {
+		List<ProductBean> searchResult = new ArrayList<ProductBean>(service.getProductByCategory(searchBy));
+		HttpSession session = request.getSession();
+		session.setAttribute("products", searchResult);
+		session.setAttribute("currentPageNo", 1);
+		Integer totalPages = (int) (Math.ceil(searchResult.size() / (double) countPerPage));
+		session.setAttribute("totalPages", totalPages);
+		System.out.println("++++++++++++++++++++++++++++++++++&&&&&&&&&&&&&&&&&&&&&&&&&&-------------------------");
+
+		return "redirect:/changePage1";
+	}
 
 //	@RequestMapping(value = "/getProductsBy", method = RequestMethod.GET)
 //	public void getProductsByGET(@RequestParam("searchBy") String searchBy, Model model) {
