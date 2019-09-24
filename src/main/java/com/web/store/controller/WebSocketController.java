@@ -1,8 +1,13 @@
 package com.web.store.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,6 +32,8 @@ public class WebSocketController {
 
 	@Autowired
 	MemberService service;
+	@Autowired
+	ServletContext context;
 
 	@RequestMapping("/chat")
 	public String chat(HttpServletRequest request) {
@@ -56,11 +63,10 @@ public class WebSocketController {
 	// TODO--會員圖片
 	@RequestMapping(value = "/getMemberPicture/{mId}", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getPicture(HttpServletResponse resp, @PathVariable Integer mId) {
+		String filePath = "/resources/default-img/default_member_image.jpg";
 		byte[] body = null;
 		HttpHeaders headers = new HttpHeaders();
-
 		MemberBean mb = service.getMemberBymId(mId);
-
 		if (mb != null) {
 			Blob picture = mb.getMemberImage();
 			if (picture != null) {
@@ -71,9 +77,10 @@ public class WebSocketController {
 					System.out.println("叉燒包");
 					e.printStackTrace();
 				}
+			}else {
+				body = toByteArray(filePath);
 			}
 		}
-
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
 		String mimeType = "image/jpg";
 		MediaType mediaType = MediaType.valueOf(mimeType);
@@ -82,4 +89,25 @@ public class WebSocketController {
 		return responseEntity;
 	}
 
+	
+	private byte[] toByteArray(String filepath) {
+		String path = context.getRealPath(filepath);
+		System.out.println("TBA filepath = " + path);
+		byte[] b = null;
+		try {
+			File file = new File(path);
+			System.out.println("TBA exist = " +file.exists());
+			long size = file.length();
+			b = new byte[(int) size];
+			InputStream fis = context.getResourceAsStream(filepath);
+			fis.read(b);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("TBA b length = " + b.length);
+		return b;
+	}
+	
 }
