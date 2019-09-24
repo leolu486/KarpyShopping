@@ -49,6 +49,8 @@
 	type="text/css" />
 <!-- modernizr js -->
 
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
  <script type="text/javascript">
 
    let imgofon ,imgsision ,count=0, a, flag=true;
@@ -284,15 +286,15 @@
 						</div>
 						
 						
-						<form:form modelAttribute="product" class="cart-btn-area" method="POST" enctype="multipart/form-data">
-                                <input type="number" name="quantity" id="quantity" value="1" />
-                                <form:input name="pId" path="pId" type="hidden"/>
-                                <form:input name="pname" path="pname" type="hidden"/>
-                                <form:input name="price" path="price" type="hidden"/>
-                                <form:input name="vId" path="vId" type="hidden"/>
-                                <form:input name="category" path="category" type="hidden"/> 
-                                <button class="add-tocart cart_zpf" type="submit">加入購物車</button>
-                            </form:form>
+						<form id="cartForm" class="cart-btn-area" method="POST" enctype="multipart/form-data">
+                                <input type="number" name="quantity" id="quantity" min="1" max="10" value="1" />
+<%--                                 <input id="productId" name="pId" type="hidden" value="${product.pId }"/> --%>
+<%--                                 <input id="productName" name="pname" type="hidden" value="${product.pname }"/> --%>
+<%--                                 <input id="productPrice" name="price" type="hidden" value="${product.price }"/> --%>
+<%--                                 <input id="productVId" name="vId" type="hidden" value="${product.vId }"/> --%>
+<!--                                 <input id="productCategory" name="category" path="category" type="hidden"/>  -->
+                                <button id="cartBtn" class="add-tocart cart_zpf" type="submit">加入購物車</button>
+                            </form>
 						
 						
 						
@@ -314,4 +316,67 @@
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
+	
+	
+	
+	<script>
+		$(document).ready(function(){
+			var qty = $("#quantity").val();
+			$("#quantity").on("change",function(){
+				qty = $(this).val();
+				console.log("newQty="+qty);
+			});
+			var pId = ${product.pId};
+			var pname = '${product.pname}';
+			var price = ${product.price};
+			var vId = ${product.vId};
+			
+			console.log(pId); console.log(price); console.log(vId); console.log(pname);console.log("qty=" + qty);
+			var product = new Product(pId,pname,price,vId);
+			var productAsJSON = JSON.stringify(product);
+			console.log(productAsJSON);
+			
+			$("#cartBtn").click(function(e){
+				
+				$.ajax({
+					type:"POST",
+					data:productAsJSON,
+					contentType: "application/json",
+					url:"productById02?pId=" + pId + "&qty="+qty,					   
+					success:function(data){
+						
+						if(data.hasOwnProperty("error")){
+							var error = data["error"];
+							alert(error);
+							$("#quantity").val("1");
+							qty = 1;
+						}else if(data.hasOwnProperty("success")){
+							var success = data["success"];							 
+							alert(success);
+							$("#quantity").val(1);
+							qty=1;
+						}else if(data.hasOwnProperty("login")){
+							alert(data["login"]);
+							window.location.href="<spring:url value='/memberLogin' />";						
+						}
+					}
+				});
+				return false;
+			});			
+		
+			
+		});
+		
+		function Product(pId,pname,price,vId){
+			this.pId = pId;
+			this.pname = pname;
+			this.price = price;
+			this.vId = vId;
+			
+		}
+	
+	
+	</script>
+	
+	
 </body>
