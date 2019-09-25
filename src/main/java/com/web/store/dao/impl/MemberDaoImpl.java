@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.model.CouponBean;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
 
@@ -302,6 +303,64 @@ public class MemberDaoImpl implements MemberDao {
 		session.update(member);
 		return member;
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CouponBean> getCouponsBymId(Integer mId) {
+		List<CouponBean> list = new ArrayList<CouponBean>();
+		Session session = factory.getCurrentSession();
+		String hql = "FROM CouponBean WHERE mId =:mId";
+		try {
+			list = (List<CouponBean>) session.createQuery(hql).setParameter("mId", mId).getResultList();
+
+		} catch (NoResultException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int getCoupon(CouponBean cb) {
+		// TODO Auto-generated method stub
+		int pk = 0;
+		Session session = factory.getCurrentSession();
+		if(!couponExist(cb)) {
+			cb.setMemberbean(getMemberBymId(cb.getmId()));
+			pk = (int) session.save(cb);
+			System.out.println("pk:" + pk);	
+		}
+		
+		return pk;
+	}
+
+	@Override
+	public void useCoupon(Integer cId) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		CouponBean cb = session.get(CouponBean.class, cId);
+		cb.setStatus(false);
+		session.saveOrUpdate(cb);
+	}
+
+	@Override
+	public boolean couponExist(CouponBean cb) {
+		// TODO Auto-generated method stub
+		boolean exist = false;
+		int mId = cb.getmId();
+		String token = cb.getToken();
+		
+		Session session = factory.getCurrentSession();
+		String hql = "from CouponBean where mId = :mId and token = :token";
+
+		try {
+			session.createQuery(hql).setParameter("mId", mId).setParameter("token",token).getSingleResult();
+			exist = true;
+		} catch (NoResultException e) {
+			exist = false;
+			System.out.println("折價卷不存在: ["+mId+", " + token+"]");
+		}
+		return exist;
 	}
 
 }

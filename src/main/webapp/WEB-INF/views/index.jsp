@@ -230,12 +230,12 @@
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td colspan="2"><p align="center" />聊天室測試</td>
+			<td colspan="2"><p align="center" />聊天室、折價卷</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='chat'>WebSocket
 					Test</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href='coupontest'>CouponTest</a></td>
 		</tr>
 
 
