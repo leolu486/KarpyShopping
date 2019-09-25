@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -141,10 +142,36 @@ public class OrderController {
 //		return "cart";
 //	}
 
-	// 新增訂單表單
+	// 新增訂單表單，0921商品庫存檢查
 	@RequestMapping("/addOrder") // @RequestMapping("/order/add")
-	public String persistOrder(Model model) {
+	public String persistOrder(Model model,HttpSession session,HttpServletRequest request) {
 		OrderBean order = new OrderBean();
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+		if(cart == null) {
+			return "redirect:/home";
+		}
+		Map<Integer,OrderItemBean> items = cart.getContent();
+		Set<Integer> productIdSet =  items.keySet();
+		Iterator<Integer> it = productIdSet.iterator();
+		ProductBean pb = null;
+		StringBuilder error = new StringBuilder();
+		while(it.hasNext()) {
+			Integer productId = (Integer)it.next();		
+			pb = pserv.getProductById(productId);
+			Integer itemQty = items.get(productId).getQuantity();
+			System.out.println("pb.getAmount()=="+pb.getAmount());
+			System.out.println("itemQty=="+itemQty);
+			if(pb.getAmount()-itemQty < 0 || pb.getAmount() == 0) {
+				error.append(pb.getPname()+"，庫存不足，庫存量:"+ pb.getAmount()+"，請重新選購!").toString();
+
+				request.setAttribute("errorMsg", error);
+				return "/cartConfirm";
+			}else if(itemQty == 0) {
+				error.append("您尚未選擇"+ pb.getPname() + "的購買數量").toString();
+				request.setAttribute("errorMsg", error);
+				return "/cartConfirm";
+			}
+		}
 		model.addAttribute("order", order);
 		return "order/addOrder"; //return "orderConfirm";
 	}

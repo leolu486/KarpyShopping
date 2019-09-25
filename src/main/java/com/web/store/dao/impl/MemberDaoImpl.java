@@ -14,9 +14,9 @@ import org.springframework.stereotype.Repository;
 
 import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.model.CouponBean;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
-import com.web.store.model.ProductBean;
 
 import _00_init.util.GlobalService;
 import _00_init.util.SystemUtils2019;
@@ -242,7 +242,6 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int addGmailMember(MemberBean member) {
-
 		Session session = factory.getCurrentSession();
 		member.setMemberImage(SystemUtils2019.pictureURLToBlob(member.getName(), member.getPictureURL()));
 		member.setRdate(new java.sql.Timestamp(new Date().getTime()));
@@ -274,12 +273,94 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public void deleteCreditCard(Integer cId) {
-		
 			Session session = factory.getCurrentSession();
 			CreditCardBean cb = session.get(CreditCardBean.class, cId);
 			session.delete(cb);
 		
 		
+	}
+
+	@Override
+	public MemberBean updateTaxId(MemberBean mb) {
+		MemberBean member = null;
+		Session session = factory.getCurrentSession();
+		member = getMemberBymId(mb.getmId());
+		
+		if(mb.getTaxId() != null && mb.getTaxId().trim().length() >0)
+			member.setTaxId(mb.getTaxId());
+		session.update(member);
+		return member;
+	}
+
+	@Override
+	public MemberBean updateVehicle(MemberBean mb) {
+		MemberBean member = null;
+		Session session = factory.getCurrentSession();
+		member = getMemberBymId(mb.getmId());
+		
+		if(mb.getVehicle() != null && mb.getVehicle().trim().length() >0)
+			member.setVehicle(mb.getVehicle());
+		session.update(member);
+		return member;
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CouponBean> getCouponsBymId(Integer mId) {
+		List<CouponBean> list = new ArrayList<CouponBean>();
+		Session session = factory.getCurrentSession();
+		String hql = "FROM CouponBean WHERE mId =:mId";
+		try {
+			list = (List<CouponBean>) session.createQuery(hql).setParameter("mId", mId).getResultList();
+
+		} catch (NoResultException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int getCoupon(CouponBean cb) {
+		// TODO Auto-generated method stub
+		int pk = 0;
+		Session session = factory.getCurrentSession();
+		if(!couponExist(cb)) {
+			cb.setMemberbean(getMemberBymId(cb.getmId()));
+			pk = (int) session.save(cb);
+			System.out.println("pk:" + pk);	
+		}
+		
+		return pk;
+	}
+
+	@Override
+	public void useCoupon(Integer cId) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		CouponBean cb = session.get(CouponBean.class, cId);
+		cb.setStatus(false);
+		session.saveOrUpdate(cb);
+	}
+
+	@Override
+	public boolean couponExist(CouponBean cb) {
+		// TODO Auto-generated method stub
+		boolean exist = false;
+		int mId = cb.getmId();
+		String token = cb.getToken();
+		
+		Session session = factory.getCurrentSession();
+		String hql = "from CouponBean where mId = :mId and token = :token";
+
+		try {
+			session.createQuery(hql).setParameter("mId", mId).setParameter("token",token).getSingleResult();
+			exist = true;
+		} catch (NoResultException e) {
+			exist = false;
+			System.out.println("折價卷不存在: ["+mId+", " + token+"]");
+		}
+		return exist;
 	}
 
 }

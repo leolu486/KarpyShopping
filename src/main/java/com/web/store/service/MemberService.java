@@ -6,6 +6,7 @@ import javax.persistence.NoResultException;
 
 import org.hibernate.NonUniqueResultException;
 
+import com.web.store.model.CouponBean;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
 
@@ -43,5 +44,14 @@ public interface MemberService {
 	int addLineMember(MemberBean member);
 	
 	void deleteCreditCard(Integer cId);
-
+	
+	MemberBean updateTaxId(MemberBean mb);
+	
+	MemberBean updateVehicle(MemberBean mb);
+	
+	List<CouponBean> getCouponsBymId(Integer mId);
+	
+	int getCoupon(CouponBean cb);
+	
+	void useCoupon(Integer cId);
 }

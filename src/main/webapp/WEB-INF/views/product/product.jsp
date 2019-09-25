@@ -32,7 +32,7 @@
 				<p>商品庫存:${product.amount}</p>
 				<p>商品評價:${rankAVG}</p>
 				<p>
-					<a href="<spring:url value='products' />" class="btn btn-default">
+					<a href="<spring:url value='backToSearchResult' />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span>返回
 					</a>
 					<a href="<spring:url value='product/update?pId=${product.pId}' />" class="btn btn-default">

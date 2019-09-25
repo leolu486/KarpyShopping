@@ -41,6 +41,16 @@
 										<li><a href="#">歷史紀錄</a></li>
 									</ul>
 								</div>
+								<div class="usd_area">
+									<div class="littele_menu" style="font-size: 15px;">
+										<a href="#">聊天室<i class="fa fa-caret-down"></i>
+										</a>
+									 <ul class="option">
+										<li><a href="chat">多人聊天室</a></li>
+									</ul>
+									</div>
+						
+								</div>
 							</div>
 						</div>
 					</div>

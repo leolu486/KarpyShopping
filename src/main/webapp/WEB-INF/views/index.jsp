@@ -173,11 +173,11 @@
 			<td colspan="2"><p align="center" />ProductTesting</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='products'>商品清單</a></td>
-			<td width="350"><p align="center" /> <a href='getProductsBy'>找商品(依商品名稱、類別、廠商)</a>
+			<td width="350"><p align="center" /> <a href='product/add'>新增商品</a></td>
+			<td width="350"><p align="center" /> <a href='getProductsByManage'>找商品(依商品名稱、類別、廠商)</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href='product/add'>新增商品</a></td>
+			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
 			<td width="350"><p align="center" /> <a href=''></a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
@@ -222,16 +222,20 @@
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='CreditCardList'>信用卡查詢測試</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
+			<td width="350"><p align="center" /> <a href='updateTaxId'>新增統編測試</a>
+		</tr>
+		<tr height="52" bgcolor="lightblue" align="center">
+			<td width="350"><p align="center" /> <a href='updateVehicle'>新增載具測試</a></td>
+			<td width="350"><p align="center" /> <a href=''></a>
 		</tr>
 
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td colspan="2"><p align="center" />聊天室測試</td>
+			<td colspan="2"><p align="center" />聊天室、折價卷</td>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
 			<td width="350"><p align="center" /> <a href='chat'>WebSocket
 					Test</a></td>
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href='coupontest'>CouponTest</a></td>
 		</tr>
 
 

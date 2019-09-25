@@ -18,26 +18,45 @@ fieldset {
 	margin: auto;
 }
 </style>
-<title>search products</title>
+<title>addVehicle</title>
 <link rel='stylesheet' href='css/styles.css' type="text/css" />
 </head>
 <body>
 	<section>
 		<div class="container">
-			<h1 style="text-align: center">請輸入欲修改的商品</h1>
+			<h1 style="text-align: center">新增載具</h1>
 		</div>
 	</section>
 	<hr
 		style="height: 1px; border: none; color: #333; background-color: #333;">
 	<section class="container">
 		<!--       三個地方要完全一樣 -->
-		<form class="new_search" role="search" action="getProductsBy"
-							method="POST">
-							<input id="searchBy" class="search-field"
-								placeholder="請輸入搜尋資料..." name="searchBy" title="Search for:"
-								type="text"> <input id="searchBtn" value="Search"
-								type="submit">
-						</form>
+		
+		
+		<form:form method='POST' modelAttribute="memberBean"
+			class='form-horizontal' enctype="multipart/form-data">
+			<!-- <form>加入enctype="multipart/form-data"才有檔案上傳功能 -->
+			<fieldset>
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='vehicle'>
+						載具編號: </label>
+					<div class="col-lg-10">
+						<form:input id="vehicle" path="vehicle" type='text'
+							class='form:input-large' />
+					</div>
+					<span id="PointMsg"></span>
+				</div>
+				<div class="form-group">
+					<div class='col-lg-offset-2 col-lg-10'>
+						<input id="btnAdd" type='submit' class='btn btn-primary'
+							value="新增" />
+					</div>
+				</div>
+
+
+
+			</fieldset>
+		</form:form>
 	</section>
 </body>
 </html>

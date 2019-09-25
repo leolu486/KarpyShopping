@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.store.dao.MemberDao;
+import com.web.store.model.CouponBean;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
 import com.web.store.service.MemberService;
@@ -128,6 +129,34 @@ public class MemberServiceImpl implements MemberService {
 	public void deleteCreditCard(Integer cId) {
 		// TODO Auto-generated method stub
 		dao.deleteCreditCard(cId);
+	}
+	@Transactional
+	@Override
+	public MemberBean updateTaxId(MemberBean mb) {
+		return dao.updateTaxId(mb);
+	}
+	@Transactional
+	@Override
+	public MemberBean updateVehicle(MemberBean mb) {
+		return dao.updateVehicle(mb);
+	}
+	@Transactional
+	@Override
+	public List<CouponBean> getCouponsBymId(Integer mId) {
+		// TODO Auto-generated method stub
+		return dao.getCouponsBymId(mId);
+	}
+	@Transactional
+	@Override
+	public int getCoupon(CouponBean cb) {
+		// TODO Auto-generated method stub
+		return dao.getCoupon(cb);
+	}
+	@Transactional
+	@Override
+	public void useCoupon(Integer cId) {
+		// TODO Auto-generated method stub
+		dao.useCoupon(cId);
 	}
 
 }

@@ -46,6 +46,8 @@ import _00_init.util.SystemUtils2019;
 public class ProductController {
 	@Autowired
 	ProductService service;
+	
+	Integer countPerPage = 5;
 
 //	@ExceptionHandler({ ProductNotFoundException.class })
 //	public ModelAndView handleError(HttpServletRequest request, ProductNotFoundException exception) {
@@ -109,6 +111,19 @@ public class ProductController {
 		model.addAttribute("products", list);
 		return "/product/products";
 	}
+	
+	@RequestMapping(value = "/getProductsByCategory")
+	public String getProductsByCategory(@RequestParam("searchBy") String searchBy, Model model, HttpServletRequest request) {
+		List<ProductBean> searchResult = new ArrayList<ProductBean>(service.getProductByCategory(searchBy));
+		HttpSession session = request.getSession();
+		session.setAttribute("products", searchResult);
+		session.setAttribute("currentPageNo", 1);
+		Integer totalPages = (int) (Math.ceil(searchResult.size() / (double) countPerPage));
+		session.setAttribute("totalPages", totalPages);
+		System.out.println("++++++++++++++++++++++++++++++++++&&&&&&&&&&&&&&&&&&&&&&&&&&-------------------------");
+
+		return "redirect:/changePage1";
+	}
 
 //	@RequestMapping(value = "/getProductsBy", method = RequestMethod.GET)
 //	public void getProductsByGET(@RequestParam("searchBy") String searchBy, Model model) {
@@ -159,6 +174,15 @@ public class ProductController {
 //	return null;
 //}
 //	}
+	@RequestMapping(value = "/getProductsByManage")
+	public String getProductsByManage() {
+		return "/product/getProductsBy";
+	}
+	
+	@RequestMapping(value = "/backToSearchResult")
+	public String backToSearchResult() {
+		return "/product/ManageProducts";
+	}
 	
 	@RequestMapping(value = "/getProductsBy")
 	public String getProductsBy(@RequestParam("searchBy") String searchBy, Model model, HttpServletRequest request) {
@@ -169,21 +193,42 @@ public class ProductController {
 		for(ProductBean pb : allList) {
 			if(pb.getPname().indexOf(search) != -1) {
 				checkSet.add(pb);
+				System.out.println("----------------"+search+"==="+pb.getPname());
 			}else if(pb.getCategory().indexOf(search) != -1) {
 				checkSet.add(pb);
+				System.out.println("----------------"+search+"==="+pb.getCategory());
 			}else if(pb.getVendorBean().getVname().indexOf(search) != -1) {
 				checkSet.add(pb);
+				System.out.println("----------------"+search+"==="+pb.getVendorBean().getVname());
 			}
 		}
+//			for(ProductBean pb : allList) {
+//			if(pb.getPname().indexOf(search) != -1) {
+//				checkSet.add(pb);
+//			}
+//		}
+//			for(ProductBean pb : allList) {
+//				if(pb.getCategory().indexOf(search) != -1) {
+//					checkSet.add(pb);
+//				}
+//			}
+//			for(ProductBean pb : allList) {
+//				if(pb.getVendorBean().getVname().indexOf(search) != -1) {
+//					checkSet.add(pb);
+//				}
+//			}
 		}
 		List<ProductBean> searchResult = new ArrayList<ProductBean>(checkSet);
 		HttpSession session = request.getSession();
 		session.setAttribute("products", searchResult);
 		session.setAttribute("currentPageNo", 1);
-		Integer totalPages = (int) (Math.ceil(searchResult.size() / (double) 5));
+		Integer totalPages = (int) (Math.ceil(searchResult.size() / (double) countPerPage));
 		session.setAttribute("totalPages", totalPages);
 		System.out.println("++++++++++++++++++++++++++++++++++&&&&&&&&&&&&&&&&&&&&&&&&&&-------------------------");
+
 		return "redirect:/changePage1";
+
+
 	}
 	
 
@@ -283,7 +328,7 @@ public class ProductController {
 
 	
 	service.addProduct(pb);
-	return"redirect:/products";
+	return "redirect:/product/add";
 
 	}
 
@@ -549,14 +594,13 @@ public class ProductController {
 //		}
 
 		service.updateProduct(pb);
-
-		return "redirect:/products";
+		return "redirect:/getProductsByManage";
 	}
 
 	@RequestMapping("/product/delete")
 	public String deleteProduct(@RequestParam("pId") Integer pId) {
 		service.deleteProduct(pId);
-		return "redirect:/products";
+		return "redirect:/getProductsByManage";
 	}
 
 	@RequestMapping("/productById02")
