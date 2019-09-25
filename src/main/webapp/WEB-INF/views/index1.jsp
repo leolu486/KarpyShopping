@@ -1043,8 +1043,8 @@
 												</div>
 											</div>
 										</c:forEach>
-										<c:forEach var="product01" items='${products}' begin="61"
-											end="61">
+										<c:forEach var="product01" items='${products}' begin="1"
+											end="1">
 											<div class="col-md-12">
 												<div class="all-pros animated fadeInUp">
 													<div class="single_product">
@@ -4544,7 +4544,7 @@
 									<div class="news_heading news_heading_3">
 										<h3 class="follow_mix">Contact us:</h3>
 									</div>
-									<ul class="social-icons">
+									<ul class="social-icons" style="margin-right:90px;">
 										<li><a class="facebook social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="Facebook"> <i class="fa fa-facebook"></i>

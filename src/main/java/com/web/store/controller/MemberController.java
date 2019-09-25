@@ -497,4 +497,16 @@ public class MemberController {
 
 		return "redirect:/memberchange";
 	}
+	
+	@RequestMapping("/memberQA")
+	public String memberQA() {
+
+		return "member/memberQA";
+	}
+	
+	@RequestMapping("/memberQandA")
+	public String memberQA1() {
+
+		return "member/memberQandA";
+	}
 }

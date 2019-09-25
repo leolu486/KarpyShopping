@@ -96,7 +96,9 @@ public class EDMTableResetHibernate {
 					System.out.println(line.replace("'", ""));
 					String[] token = line.replace("'", "").split(",");
 					String pname = token[0].trim();
+					System.out.println(token[1]);
 					Integer price = Integer.parseInt(token[1].trim());
+					
 					Integer vId = Integer.parseInt(token[2].trim());
 					Integer amount = Integer.parseInt(token[3].trim());
 					String category = token[4].trim();

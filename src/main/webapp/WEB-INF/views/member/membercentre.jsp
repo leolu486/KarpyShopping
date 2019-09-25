@@ -82,8 +82,8 @@
 						<div class="my_account_areadiv" style="margin-top:40px;">
 							<ul>
 								<li><a href="#">新手上路</a></li>
-								<li><a href="#">購物流程/付款說明</a></li>
-								<li><a href="#">常見問題Q & A</a></li>
+								<li><a href="memberQA">購物流程/付款說明</a></li>
+								<li><a href="memberQandA">常見問題Q & A</a></li>
 								<li><a href="#">行銷規劃規則查詢</a></li>
 							</ul>
 						</div>
