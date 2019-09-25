@@ -493,7 +493,16 @@ public class MemberController {
 		service.deleteCreditCard(cId);
 		return "redirect:/memberchange";
 	}
+  
+	@RequestMapping("/memberQA")
+	public String memberQA() {
+    return "member/memberQA";
+	}
 	
+	@RequestMapping("/memberQandA")
+	public String memberQA1() {
+	  return "member/memberQandA";
+  }
 	@RequestMapping(value = "/updateTaxId", method = RequestMethod.GET)
 	public String updateTaxId(Model model, HttpServletRequest request) {
 
@@ -527,5 +536,6 @@ public class MemberController {
 		memberBean.setVehicle(mb.getVehicle());
 		service.updateVehicle(memberBean);
 		return "redirect:/home";
+
 	}
 }
