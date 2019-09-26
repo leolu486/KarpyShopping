@@ -58,6 +58,62 @@ public class ProductBean implements Serializable {
 	private String base64Image3;
 
 	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
+			String sdate, String expdate, Double rankSum, Integer rankCount, File file1, File file2, String detail) {
+		this.pId = pId;
+		this.pname = pname;
+		this.price = price;
+		this.vId = vId;
+		this.amount = amount;
+		this.category = category;
+		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
+		this.expdate = new Timestamp(java.sql.Date.valueOf(expdate).getTime());
+		this.rankSum = rankSum;
+		this.rankCount = rankCount;
+		this.detail = detail;
+		try {
+			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
+			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
+			String sdate, Double rankSum, Integer rankCount, File file1, File file2, String detail) {
+		this.pId = pId;
+		this.pname = pname;
+		this.price = price;
+		this.vId = vId;
+		this.amount = amount;
+		this.category = category;
+		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
+		this.rankSum = rankSum;
+		this.rankCount = rankCount;
+		this.detail = detail;
+		try {
+			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
+			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public ProductBean(Integer pId, String pname, Integer price, Integer vId, Integer amount, String category,
 			String sdate, String expdate, Double rankSum, Integer rankCount, File file1, File file2) {
 		this.pId = pId;
 		this.pname = pname;
@@ -69,6 +125,7 @@ public class ProductBean implements Serializable {
 		this.expdate = new Timestamp(java.sql.Date.valueOf(expdate).getTime());
 		this.rankSum = rankSum;
 		this.rankCount = rankCount;
+		this.detail = detail;
 		try {
 			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
 			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());
@@ -96,6 +153,7 @@ public class ProductBean implements Serializable {
 		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
 		this.rankSum = rankSum;
 		this.rankCount = rankCount;
+		this.detail = detail;
 		try {
 			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
 			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());

@@ -39,15 +39,18 @@
 
 							<ul>
 								<li style="margin-left:70px">熱門☆</li>
-								<li><a href="#">美妝</a></li>
-								<li><a href="#">保健</a></li>
-								<li><a href="#">食品</a></li>
-								<li><a href="#">旅遊</a></li>
-								<li><a href="#">婦幼</a></li>
-								<li><a href="#">富田</a></li>
-								<li><a href="#">姊妹</a></li>
-								<li><a href="#">NYKD54</a></li>
-								<li><a href="#">3C</a></li>
+								<c:forEach var="hot" items="${hotSearch}">
+									<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=${hot.searchBy}'/>">${hot.searchBy}</a></li>
+								</c:forEach>
+<!-- 								<li><a href="#">美妝</a></li> -->
+<!-- 								<li><a href="#">保健</a></li> -->
+<!-- 								<li><a href="#">食品</a></li> -->
+<!-- 								<li><a href="#">旅遊</a></li> -->
+<!-- 								<li><a href="#">婦幼</a></li> -->
+<!-- 								<li><a href="#">富田</a></li> -->
+<!-- 								<li><a href="#">姊妹</a></li> -->
+<!-- 								<li><a href="#">NYKD54</a></li> -->
+<!-- 								<li><a href="#">3C</a></li> -->
 
 							</ul>
 

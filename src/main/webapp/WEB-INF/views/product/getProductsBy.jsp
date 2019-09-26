@@ -31,7 +31,7 @@ fieldset {
 		style="height: 1px; border: none; color: #333; background-color: #333;">
 	<section class="container">
 		<!--       三個地方要完全一樣 -->
-		<form class="new_search" role="search" action="getProductsBy"
+		<form class="new_search" role="search" action="getProductsByNoSearchCount"
 							method="POST">
 							<input id="searchBy" class="search-field"
 								placeholder="請輸入搜尋資料..." name="searchBy" title="Search for:"

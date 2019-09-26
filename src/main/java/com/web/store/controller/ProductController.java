@@ -37,6 +37,7 @@ import com.web.store.exception.ProductNotFoundException;
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.model.ProductBean;
+import com.web.store.service.HotSearchService;
 import com.web.store.service.ManagerService;
 import com.web.store.service.ProductService;
 
@@ -46,6 +47,8 @@ import _00_init.util.SystemUtils2019;
 public class ProductController {
 	@Autowired
 	ProductService service;
+	@Autowired
+	HotSearchService hService;
 	
 	Integer countPerPage = 5;
 
@@ -191,32 +194,52 @@ public class ProductController {
 		allList = service.getAllProducts();
 		for(String search : searchBy.trim().split(" ")) {
 		for(ProductBean pb : allList) {
-			if(pb.getPname().indexOf(search) != -1) {
+			if(pb.getPname().toLowerCase().indexOf(search.toLowerCase()) != -1) {
 				checkSet.add(pb);
 				System.out.println("----------------"+search+"==="+pb.getPname());
-			}else if(pb.getCategory().indexOf(search) != -1) {
+			}else if(pb.getCategory().toLowerCase().indexOf(search.toLowerCase()) != -1) {
 				checkSet.add(pb);
 				System.out.println("----------------"+search+"==="+pb.getCategory());
-			}else if(pb.getVendorBean().getVname().indexOf(search) != -1) {
+			}else if(pb.getVendorBean().getVname().toLowerCase().indexOf(search.toLowerCase()) != -1) {
 				checkSet.add(pb);
 				System.out.println("----------------"+search+"==="+pb.getVendorBean().getVname());
 			}
 		}
-//			for(ProductBean pb : allList) {
-//			if(pb.getPname().indexOf(search) != -1) {
-//				checkSet.add(pb);
-//			}
-//		}
-//			for(ProductBean pb : allList) {
-//				if(pb.getCategory().indexOf(search) != -1) {
-//					checkSet.add(pb);
-//				}
-//			}
-//			for(ProductBean pb : allList) {
-//				if(pb.getVendorBean().getVname().indexOf(search) != -1) {
-//					checkSet.add(pb);
-//				}
-//			}
+		}
+		List<ProductBean> searchResult = new ArrayList<ProductBean>(checkSet);
+		HttpSession session = request.getSession();
+		session.setAttribute("products", searchResult);
+		session.setAttribute("currentPageNo", 1);
+		Integer totalPages = (int) (Math.ceil(searchResult.size() / (double) countPerPage));
+		session.setAttribute("totalPages", totalPages);
+		System.out.println("++++++++++++++++++++++++++++++++++&&&&&&&&&&&&&&&&&&&&&&&&&&-------------------------");
+		if(searchResult.size() > 0) {
+			if(searchBy.trim().length() > 0) {
+				hService.checkExist(searchBy);
+			}
+		}
+		return "redirect:/changePage1";
+		
+	}
+	
+	@RequestMapping(value = "/getProductsByNoSearchCount")
+	public String getProductsByNoSearchCount(@RequestParam("searchBy") String searchBy, Model model, HttpServletRequest request) {
+		List<ProductBean> allList = new ArrayList<ProductBean>();
+		Set<ProductBean> checkSet = new HashSet<ProductBean>();
+		allList = service.getAllProducts();
+		for(String search : searchBy.trim().split(" ")) {
+			for(ProductBean pb : allList) {
+				if(pb.getPname().toLowerCase().indexOf(search.toLowerCase()) != -1) {
+					checkSet.add(pb);
+					System.out.println("----------------"+search+"==="+pb.getPname());
+				}else if(pb.getCategory().toLowerCase().indexOf(search.toLowerCase()) != -1) {
+					checkSet.add(pb);
+					System.out.println("----------------"+search+"==="+pb.getCategory());
+				}else if(pb.getVendorBean().getVname().toLowerCase().indexOf(search.toLowerCase()) != -1) {
+					checkSet.add(pb);
+					System.out.println("----------------"+search+"==="+pb.getVendorBean().getVname());
+				}
+			}
 		}
 		List<ProductBean> searchResult = new ArrayList<ProductBean>(checkSet);
 		HttpSession session = request.getSession();
@@ -227,8 +250,7 @@ public class ProductController {
 		System.out.println("++++++++++++++++++++++++++++++++++&&&&&&&&&&&&&&&&&&&&&&&&&&-------------------------");
 
 		return "redirect:/changePage1";
-
-
+		
 	}
 	
 
