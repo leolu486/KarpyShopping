@@ -34,6 +34,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.TaxIdBean;
 import com.web.store.service.MemberService;
 
 import _00_init.util.SystemUtils2019;
@@ -152,7 +153,6 @@ public class MemberController {
 	}
 
 //修改會員控制器
-
 	@RequestMapping(value = "/updatemember", method = RequestMethod.GET)
 	public String Changemamber(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -243,7 +243,6 @@ public class MemberController {
 	@RequestMapping(value = "addCreditCard", method = RequestMethod.POST)
 	public String addCreditCard(@ModelAttribute("CreditCardBean") CreditCardBean cb, BindingResult result,
 			HttpServletRequest request, @RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date) {
-
 		System.out.println("DATE:" + date);
 		cb.setVdate(new java.sql.Timestamp(date.getTime()));
 		System.out.println("cb:" + cb.toString());
@@ -280,7 +279,7 @@ public class MemberController {
 //	}
 
 	@RequestMapping(value = "/memberchange", method = RequestMethod.GET)
-	public String Changemamber1(Model model, HttpServletRequest request) {
+	public String Changemember1(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		CreditCardBean cb = new CreditCardBean();
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
@@ -384,7 +383,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/memberchange", method = RequestMethod.POST)
 
-	public String Changemamber1(@ModelAttribute("CreditCardBean") CreditCardBean cb,
+	public String Changemember1(@ModelAttribute("CreditCardBean") CreditCardBean cb,
 			@ModelAttribute("memberBean") MemberBean mb, BindingResult result, HttpServletRequest request,
 			@RequestParam("form") String form, @RequestParam("oldPW") String oldPW, @RequestParam("newPW") String newPW,
 			@RequestParam("renewPW") String renewPW, @RequestParam("county") String county,
@@ -493,34 +492,105 @@ public class MemberController {
 		service.deleteCreditCard(cId);
 		return "redirect:/memberchange";
 	}
-  
+
 	@RequestMapping("/memberQA")
 	public String memberQA() {
-    return "member/memberQA";
+		return "member/memberQA";
 	}
-	
+
 	@RequestMapping("/memberQandA")
 	public String memberQA1() {
-	  return "member/memberQandA";
-  }
-	@RequestMapping(value = "/updateTaxId", method = RequestMethod.GET)
-	public String updateTaxId(Model model, HttpServletRequest request) {
-
-		MemberBean mb = new MemberBean();
-		model.addAttribute("memberBean", mb);
-		return "account/updateTaxId";
+		return "member/memberQandA";
 	}
 
-	@RequestMapping(value = "/updateTaxId", method = RequestMethod.POST)
-	public String updateTaxId(@ModelAttribute("memberBean") MemberBean mb,  BindingResult result,
-			HttpServletRequest request) {
+	@RequestMapping(value = "/receiptDetail", method = RequestMethod.GET)
+	public String receiptDetail(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
-		memberBean.setTaxId(mb.getTaxId());
-		service.updateTaxId(memberBean);
+		TaxIdBean tb = new TaxIdBean();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		List<TaxIdBean> list = service.getTaxIdBymid(mb.getmId());
+		session.setAttribute("list", list);
+		model.addAttribute("memberBean", mb);
+		model.addAttribute("TaxIdBean", tb);
+		return "member/receiptDetail";
+	}
+
+	@RequestMapping(value = "/receiptDetail", method = RequestMethod.POST)
+	public String receiptDetail(@ModelAttribute("memberBean") MemberBean mb, @ModelAttribute("TaxIdBean") TaxIdBean tb,
+			@RequestParam("form") Boolean form, BindingResult result, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK");
+		System.out.println(form);
+		// form {taxid : true vehicle : false}
+		if (form == true) {
+			tb.setmId(member.getmId());
+			service.addTaxId(tb);
+		} else if (form == false) {
+			mb.setmId(member.getmId());
+			service.updateVehicle(mb);
+			member.setVehicle(mb.getVehicle());
+		}
+		session.setAttribute("memberLoginOK",member);
+		return "redirect:/receiptDetail";
+	}
+
+//	@RequestMapping(value = "/updateVehicle", method = RequestMethod.GET)
+//	public String updateVehicle(Model model, HttpServletRequest request) {
+//		MemberBean mb = new MemberBean();
+//		model.addAttribute("memberBean", mb);
+//		return "member/receiptDetail";
+//	}
+//
+//	@RequestMapping(value = "/updateVehicle", method = RequestMethod.POST)
+//	public String updateVehicle(@ModelAttribute("memberBean") MemberBean mb,  BindingResult result,
+//			HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+//		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
+//		memberBean.setVehicle(mb.getVehicle());
+//		service.updateVehicle(memberBean);
+//		return "member/receiptDetail";
+//	}
+//	
+//	@RequestMapping(value = "/addTaxId", method = RequestMethod.GET)
+//	public String addTaxId(Model model) {
+//		TaxIdBean tb = new TaxIdBean();
+//		model.addAttribute("TaxIdBean", tb);
+//		return "redirect:/home";
+//	}
+//
+//	@RequestMapping(value = "/addTaxId", method = RequestMethod.POST)
+//	public String addTaxId(@ModelAttribute("TaxIdBean") TaxIdBean tb, BindingResult result,
+//			HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+//		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+//		tb.setmId(mb.getmId());
+//		service.addTaxId(tb);
+//		return "redirect:/home";
+//	}
+
+	@RequestMapping(value = "/delTaxId")
+	public String deleteTaxId(@RequestParam("tId") Integer tId, HttpServletRequest request) {
+		service.deleteTaxId(tId);
+		return "redirect:/receiptDetail";
+	}
+
+	@RequestMapping("/taxIdList")
+	public String getTaxIdBymId(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		if (mb != null) {
+			List<TaxIdBean> list = service.getTaxIdBymid(mb.getmId());
+			model.addAttribute("TaxId", list);
+		}
 		return "redirect:/home";
 	}
-	
+
+	@RequestMapping("/taxId")
+	public String getTaxIdBytId(@RequestParam("tId") Integer tId, Model model, HttpServletRequest request) {
+		model.addAttribute("taxId", service.getTaxIdBytId(tId));
+		return "redirect:/home";
+	}
+
 	@RequestMapping(value = "/updateVehicle", method = RequestMethod.GET)
 	public String updateVehicle(Model model, HttpServletRequest request) {
 		MemberBean mb = new MemberBean();
@@ -529,13 +599,13 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/updateVehicle", method = RequestMethod.POST)
-	public String updateVehicle(@ModelAttribute("memberBean") MemberBean mb,  BindingResult result,
+	public String updateVehicle(@ModelAttribute("memberBean") MemberBean mb, BindingResult result,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
 		memberBean.setVehicle(mb.getVehicle());
 		service.updateVehicle(memberBean);
 		return "redirect:/home";
-
 	}
+
 }
