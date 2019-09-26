@@ -13,6 +13,7 @@ import com.web.store.dao.MemberDao;
 import com.web.store.model.CouponBean;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.TaxIdBean;
 import com.web.store.service.MemberService;
 
 @Service
@@ -132,12 +133,32 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Transactional
 	@Override
-	public MemberBean updateTaxId(MemberBean mb) {
-		return dao.updateTaxId(mb);
+	public List<TaxIdBean> getTaxIdBymid(Integer mId) {
+		// TODO Auto-generated method stub
+		return dao.getTaxIdBymid(mId);
+	}
+	@Transactional
+	@Override
+	public TaxIdBean getTaxIdBytId(Integer tId) {
+		// TODO Auto-generated method stub
+		return dao.getTaxIdBytId(tId);
+	}
+	@Transactional
+	@Override
+	public int addTaxId(TaxIdBean tId) {
+		// TODO Auto-generated method stub
+		return dao.addTaxId(tId);
+	}
+	@Transactional
+	@Override
+	public void deleteTaxId(Integer tId) {
+		// TODO Auto-generated method stub
+		dao.deleteTaxId(tId);
 	}
 	@Transactional
 	@Override
 	public MemberBean updateVehicle(MemberBean mb) {
+		// TODO Auto-generated method stub
 		return dao.updateVehicle(mb);
 	}
 	@Transactional
@@ -158,5 +179,6 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		dao.useCoupon(cId);
 	}
+
 
 }

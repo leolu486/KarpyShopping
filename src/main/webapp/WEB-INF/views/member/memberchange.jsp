@@ -300,25 +300,12 @@
 	height: 600px;
 }
 
-.div5 {
-	margin: 0px;
-	padding: 0px;
-	padding-bottom: 30px;
-}
-
-.btn1 {
-	margin-left: 20px;
-}
-
 .p1234 {
 	font-size: 25px;
 	text-align: center;
 	font-weight: bold;
 }
 
-.rwdtxt {
-	font-size: 1.2rem;
-}
 
 @media ( min-width : 600px) and (max-width: 1200px) {
 	.rwdtxt {
@@ -336,10 +323,6 @@
 	font-size: 20px;
 }
 
-.rwdtxt {
-	font-size: 1.2rem;
-}
-
 @media ( min-width : 600px) and (max-width: 1200px) {
 	.rwdtxt {
 		font-size: calc(1.2rem + ( 1.3 -1.2)* ((100vw- 600px)/(1200- 600)));
@@ -354,21 +337,9 @@
 </style>
 
 <style>
-.lab1 {
-	text-align: right;
-	width: 55px;
-}
-
 .sub {
 	text-align: center;
 	width: 450px;
-}
-
-.des {
-	width: 55px;
-	text-align: right;
-	color: gray;
-	font-size: 1ch;
 }
 
 .st1 {

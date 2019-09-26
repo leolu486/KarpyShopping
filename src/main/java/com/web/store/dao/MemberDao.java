@@ -9,6 +9,7 @@ import org.hibernate.NonUniqueResultException;
 import com.web.store.model.CouponBean;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.TaxIdBean;
 
 public interface MemberDao {
 
@@ -46,7 +47,13 @@ public interface MemberDao {
 	
 	void deleteCreditCard(Integer cId);
 
-	MemberBean updateTaxId(MemberBean mb);
+	List<TaxIdBean> getTaxIdBymid(Integer mId);
+	
+	TaxIdBean getTaxIdBytId(Integer tId);
+	
+	int addTaxId(TaxIdBean tId);
+	
+	void deleteTaxId(Integer tId);
 	
 	MemberBean updateVehicle(MemberBean mb);
 	

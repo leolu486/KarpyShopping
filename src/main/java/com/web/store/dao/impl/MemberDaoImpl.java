@@ -17,6 +17,7 @@ import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.CouponBean;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.TaxIdBean;
 
 import _00_init.util.GlobalService;
 import _00_init.util.SystemUtils2019;
@@ -275,21 +276,72 @@ public class MemberDaoImpl implements MemberDao {
 	public void deleteCreditCard(Integer cId) {
 			Session session = factory.getCurrentSession();
 			CreditCardBean cb = session.get(CreditCardBean.class, cId);
-			session.delete(cb);
-		
-		
+			session.delete(cb);	
+	}
+//	@Override
+//	public MemberBean updateTaxId(MemberBean mb) {
+//		MemberBean member = null;
+//		Session session = factory.getCurrentSession();
+//		member = getMemberBymId(mb.getmId());
+//		
+//		if(mb.getTaxId() != null && mb.getTaxId().trim().length() >0)
+//			member.setTaxId(mb.getTaxId());
+//		session.update(member);
+//		return member;
+//	}
+//
+//	@Override
+//	public MemberBean updateVehicle(MemberBean mb) {
+//		MemberBean member = null;
+//		Session session = factory.getCurrentSession();
+//		member = getMemberBymId(mb.getmId());
+//		
+//		if(mb.getVehicle() != null && mb.getVehicle().trim().length() >0)
+//			member.setVehicle(mb.getVehicle());
+//		session.update(member);
+//		return member;	
+//	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TaxIdBean> getTaxIdBymid(Integer mId) {
+		List<TaxIdBean> list = new ArrayList<TaxIdBean>();
+		Session session = factory.getCurrentSession();
+		String hql = "FROM TaxIdBean WHERE mId =:mId";
+		try {
+			list = (List<TaxIdBean>) session.createQuery(hql).setParameter("mId", mId).getResultList();
+
+		} catch (NoResultException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
-	public MemberBean updateTaxId(MemberBean mb) {
-		MemberBean member = null;
+	public TaxIdBean getTaxIdBytId(Integer tId) {
+		TaxIdBean tb = null;
 		Session session = factory.getCurrentSession();
-		member = getMemberBymId(mb.getmId());
-		
-		if(mb.getTaxId() != null && mb.getTaxId().trim().length() >0)
-			member.setTaxId(mb.getTaxId());
-		session.update(member);
-		return member;
+		String hql = "FROM TaxIdBean WHERE tId =:tId";
+		try {
+			tb = (TaxIdBean) session.createQuery(hql).setParameter("tId", tId).getSingleResult();
+
+		} catch (NoResultException e) {
+			e.printStackTrace();
+		}
+		return tb;
+	}
+
+	@Override
+	public int addTaxId(TaxIdBean tId) {
+		Session session = factory.getCurrentSession();
+		int ta = (int) session.save(tId);
+		return ta;
+	}
+
+	@Override
+	public void deleteTaxId(Integer tId) {
+		Session session = factory.getCurrentSession();
+		TaxIdBean tb = session.get(TaxIdBean.class, tId);
+		session.delete(tb);
 	}
 
 	@Override
@@ -298,11 +350,12 @@ public class MemberDaoImpl implements MemberDao {
 		Session session = factory.getCurrentSession();
 		member = getMemberBymId(mb.getmId());
 		
-		if(mb.getVehicle() != null && mb.getVehicle().trim().length() >0)
+		if (mb.getVehicle() != null && mb.getVehicle().trim().length() > 0)
 			member.setVehicle(mb.getVehicle());
-		session.update(member);
-		return member;
 		
+		session.update(member);
+		
+		return mb;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -362,5 +415,6 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return exist;
 	}
+
 
 }
