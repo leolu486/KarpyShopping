@@ -109,7 +109,7 @@
 									<h3>SALE UO TO 20%</h3>
 								</div>
 								<div class="layer-1-5 animated rotateInUpLeft">
-									<a href="#">點我下單</a>
+									<a href="<spring:url value='productById02?pId=107'/>">點我下單</a>
 								</div>
 							</div>
 							<div class="tld-f2">
@@ -136,7 +136,7 @@
 									<h3>SALE UO TO 30%</h3>
 								</div>
 								<div class="layer-2-5 animated bounceInUp">
-									<a href="#">點我下單</a>
+									<a href="<spring:url value='productById02?pId=147'/>">點我下單</a>
 								</div>
 							</div>
 							<div class="sld-fr">
@@ -4373,7 +4373,7 @@
 							<div class="blog">
 								<div class="new_product">
 									<div class="product_heading">
-										<i class="fa fa-comments"></i> <span>Blog Post</span>
+										<i class="fa fa-comments"></i> <span>部落客推薦</span>
 									</div>
 								</div>
 							</div>
@@ -4385,24 +4385,19 @@
 								<div class="blog_next">
 									<div class="blog_thumb">
 
-										<a href="#"> <img
-											src="<c:url value="/images/blog-pic/blog_pic_1.jpg" />"
-											alt="">
-										</a>
-										<div class="blogdate">
-											<div>
-												<span class="day">29</span> <span class="month">Jan</span>
-											</div>
-										</div>
+										<iframe width="280px" height="200px"
+											src="https://www.youtube.com/embed/XY8oNoYRoxA"
+											frameborder="0"
+											allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen></iframe>
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">Hello world!</a>
+											<a href="#">Apple Watch Series 4 值不值得買？開箱體驗與比較心得告訴你！</a>
 										</h3>
-										<div class="post-excerpt">Donec vitae hendrerit arcu,
-											sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere
-											libero eu augue condimentum rhoncus. Praesent …</div>
-										<a href="#"> <span class="readmore-text">Read More</span>
+										<div class="post-excerpt">●內建 GPS 與 GLONASS ●雙核心處理器 ●W3
+											無線晶片 ●容量 16GB ●心率感測器 ●Ion-X 強化玻璃 😄</div>
+										<a  href="<spring:url value='productById02?pId=109'/>"> <span class="readmore-text">點此看商品</span>
 										</a>
 									</div>
 								</div>
@@ -4410,23 +4405,23 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										<a href="#"><img
-											src="<c:url value="/images/blog-pic/blog_pic_2.jpg" />"
-											alt=""> </a>
-										<div class="blogdate">
-											<div>
-												<span class="day">19</span> <span class="month">Jan</span>
-											</div>
-										</div>
+										<iframe width="280px" height="200px"
+											src="https://www.youtube.com/embed/qfZz1DC051E"
+											frameborder="0"
+											allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen></iframe>
+
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">Curabitur lobortis</a>
+											<a href="#">終於換新手機了! iPhoneXR上手一個月心得! ♥ 滴妹</a>
 										</h3>
-										<div class="post-excerpt">Donec vitae hendrerit arcu,
-											sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere
-											libero eu augue condimentum rhoncus. Praesent …</div>
-										<a href="#"> <span class="readmore-text">Read More</span>
+										<div class="post-excerpt">• 6.1 吋 Liquid Retina 顯示器
+											(LCD) • IP67 等級防潑抗水與防塵功能 (在最深1公尺水中最長可達30分鐘) • 1200 萬像素相機
+											(具有光學影像穩定功能)，以及700萬像素原深感測前置相機，均具備人像模式、人像光線、景深控制與智慧型HDR功能 •
+											Face ID，用於安全認證與 Apple Pay • A12 仿生，具備新一代神經網路引擎</div>
+										<a href="<spring:url value='productById02?pId=107'/>"> <span
+											class="readmore-text">點此看商品</span>
 										</a>
 									</div>
 								</div>
@@ -4434,24 +4429,21 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										<a href="#"> <img
-											src="<c:url value="/images/blog-pic/blog_pic_3.jpg" />"
-											alt="">
-										</a>
-										<div class="blogdate">
-											<div>
-												<span class="day">19</span> <span class="month">Jan</span>
-											</div>
-										</div>
+										<iframe width="280px" height="200px"
+											src="https://www.youtube.com/embed/rNfCuPMpy20"
+											frameborder="0"
+											allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen></iframe>
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">Vivamus gravida</a>
+											<a  href="#">【3C老實說】Dyson V7 Trigger 手持式吸塵器：繼承 Dyson V8
+												系列靈魂的中階機種</a>
 										</h3>
-										<div class="post-excerpt">Donec vitae hendrerit arcu,
-											sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere
-											libero eu augue condimentum rhoncus. Praesent …</div>
-										<a href="#"> <span class="readmore-text">Read More</span>
+										<div class="post-excerpt">■ 動態負載感應器，根據不同地板改變馬達速度 ■
+											最新V11數位馬達 每秒監測系統效能8000次 ■ LCD螢幕 顯示效能、剩餘時間 ■
+											優化電力及使用強勁電池,吸力提升20%(與v10相比) ■ 可濾除99.97%微塵與過敏源</div>
+										<a href="<spring:url value='productById02?pId=110'/>"> <span class="readmore-text">點此看商品</span>
 										</a>
 									</div>
 								</div>
@@ -4459,23 +4451,21 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										<a href="#"> src="<c:url
-												value="/images/blog-pic/blog_pic_6.jpg" />"alt="">
-										</a>
-										<div class="blogdate">
-											<div>
-												<span class="day">4</span> <span class="month">Jan</span>
-											</div>
-										</div>
+										<iframe width="280px" height="200px"
+											src="https://www.youtube.com/embed/7TgWMEa1gH0"
+											frameborder="0"
+											allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen></iframe>
+
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">Post Format:Image</a>
+											<a href="#">無處不在的耳機 AirPods2代【值不值得買第331期】</a>
 										</h3>
-										<div class="post-excerpt">Donec vitae hendrerit arcu,
-											sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere
-											libero eu augue condimentum rhoncus. Praesent …</div>
-										<a href="#"> <span class="readmore-text">Read More</span>
+										<div class="post-excerpt">無線 AirPods，全新登場。
+											只須將它們拿出，就可以與你所有的 Apple 裝置配合使用。 戴上它們放入耳中，就能立刻連接。
+											對著它們講話，你的聲音聽起來清晰透澈。 簡約與科技，前所未有地完美融合，結果，絕對令人驚歎。</div>
+										<a  href="<spring:url value='productById02?pId=119'/>"> <span class="readmore-text">點此看商品</span>
 										</a>
 									</div>
 								</div>
@@ -4483,23 +4473,24 @@
 							<div class="col-md-12">
 								<div class="blog_next">
 									<div class="blog_thumb">
-										<a href="#"> src="<c:url
-												value="/images/blog-pic/blog_pic_5.jpg" />"alt="">
-										</a>
-										<div class="blogdate">
-											<div>
-												<span class="day">4</span> <span class="month">Jan</span>
-											</div>
-										</div>
+										<iframe width="280px" height="200px"
+											src="https://www.youtube.com/embed/JKFhBU6UxrY"
+											frameborder="0"
+											allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+											allowfullscreen></iframe>
+
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">Post Format:Gallery</a>
+											<a href="#">【阿哲】我買了人生中第三台筆電 [#044]</a>
 										</h3>
-										<div class="post-excerpt">Donec vitae hendrerit arcu,
-											sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere
-											libero eu augue condimentum rhoncus. Praesent …</div>
-										<a href="#"> <span class="readmore-text">Read More</span>
+										<div class="post-excerpt">處理器：Intel® Core™ i7-8565U
+記憶體：16GB LPDDR3 2133MHz dual-channel onboard memory (Fixed)
+硬碟：256GB SSD (PCIe M.2)
+Graphics：NVIDIA® GeForce® MX150 (25W) 4GB GDDR5 VRAM
+螢幕：13.3" FHD Matte (1920 X 1080)
+重量：1.31 公斤</div>
+										<a  href="<spring:url value='productById02?pId=92'/>"> <span class="readmore-text">點此看商品</span>
 										</a>
 									</div>
 								</div>
@@ -4544,7 +4535,7 @@
 									<div class="news_heading news_heading_3">
 										<h3 class="follow_mix">Contact us:</h3>
 									</div>
-									<ul class="social-icons" style="margin-right:90px;">
+									<ul class="social-icons" style="margin-right: 90px;">
 										<li><a class="facebook social-icon" href="#" title=""
 											target="_blank" data-toggle="tooltip"
 											data-original-title="Facebook"> <i class="fa fa-facebook"></i>
