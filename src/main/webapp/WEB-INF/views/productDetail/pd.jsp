@@ -109,60 +109,9 @@
     
     <style type="text/css">
     
-.WidthStyle01{
-    width: 280PX;
-    
-    text-align: center;
-}
-    
-
-    .off{
-        width: 250PX;
-		height: 250px;
-        display: block; /*區塊方式呈現 inline 相反  */
-        cursor: pointer; /*滑鼠 顯示手的形狀*/
-        display:block; 
-        margin:auto;
-        
-      
-    }
-    .on{
-        display: none; /*隱藏+覆蓋*/
-		
-    }
-    
-
-    .side{
-        margin: 3PX 2PX;
-        width: 60PX;
-        height: 60PX;
-        border: 3px solid #ffc300;
-    }
-    .no_side{
-        margin: 3PX 2PX;
-        width: 60PX;
-        height: 60PX;
-        
-    }
-
-    .legend {   /*設置文字*/
-        text-align: center;
-        font-size: larger
-    }
-
-    .field01 {
-        width: 280PX;
-        height: 350PX;
-        margin: 0 auto;  /*置中*/
-        border-radius: 20PX; /*導角*/
-        background-color: rgb(136, 136, 136);
-		
-    }
-    .control01 {
-        margin-left: 30px;
-        margin-right: 30px;
-        width: 30px;
-        -webkit-filter: grayscale(1); /*濾鏡 色階 彩0~1灰~X*/
+    .off {
+    width: 360px;
+    height: 360px;
     }
 
     </style>
@@ -183,53 +132,40 @@
 		<div class="elavator_area">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-<!-- 						<div class="elavetor"  style="background-color: aqua" > -->
-							
-<!-- 							  <img	width='100' height='150' -->
-<%-- 								src="data:image/jpg;base64,${productImage}" /> --%>
-
-<!-- 							<div class="al_zoom"></div> -->
-<div  style="float: left"  >
+				
 
 
- <fieldset class="field01">
-<!--      class="elavetor"       -->
-            <div class="WidthStyle01"   >
-           
-              <a href=""><img src="data:image/jpg;base64,${productImage}" id="img01" class="off" ></a> 
-                       
-              <a href=""> <img src="data:image/jpg;base64,${productImage1}" id="img02" class="on"></a> 
-                      
-                    
-            </div>
-            <div class="WidthStyle01">
-            
-             <img	class="side" id="img_01"  src="data:image/jpg;base64,${productImage}" />
-			 <img	class="no_side" id="img_02"  src="data:image/jpg;base64,${productImage1}" />					
-               
-               
-              
-            </div> 
-            <div class="WidthStyle01">                
-                    <img id="idback" class="control01" src="images/imagesPD/back.png">
-                    <img id="idpauseplay" class="control01" src="images/imagesPD/pause.png">
-                    <img id="idnext" class="control01" src="images/imagesPD/next.png">
-            </div>       			
-           </fieldset>
 
-
-</div>
-						
-					</div>
+		<!-- 輪播牆 -->										
+                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">   
+                 
+					<div class="bend niceties preview-2" style="margin-top: 0 ;"  >
+						<div id="ensign-nivoslider" class="off">
+							<img   src="data:image/jpg;base64,${productImage}" id="img01"   > 						
+							<img  src="data:image/jpg;base64,${productImage1}" id="img01"  />								
+						</div>
+						<!-- direction 1 -->
+						<div id="slider-caption-1"
+							class="t-cn slider-direction slider-one">
+								<div class="layer-1-6 animated zoomIn">
+									<img src="<c:url value=""/>">
+								</div>
+							</div>
+						</div>
+						<!-- direction 2 -->
+						<div id="slider-caption-2" class="slider-direction slider-two">
+							<div class="slider-progress"></div>
+							<div class="sld-fl">												
+							</div>				
+						</div>				
+                     </div>           
+	<!-- 輪播牆 -->	
+         											
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 						<div class="elav_titel">
 							<div class="elv_heading">
-								<h3>${product.pname}</h3>
-
-
-
-
+								<h4>${product.pname}</h4>
+							
 							</div>
 							<div class="price_rating">
 								<a href="#"> <i class="fa fa-star"></i>
@@ -242,9 +178,10 @@
 								</a>
 							</div>
 						</div>
-
+         <div  style="  background-color: #DDDDDD; width: 360px;height: 37px;">                     
+                                                 <h3 style="font-weight: 500; ">售價:  ${product.price}</h3></div>
 						<div class="evavet_description">
-							<%-- 							<p>商品介紹:${product.detail}</p> --%>
+							<p>商品介紹:  ${product.detail}</p>
 						</div>
 
 
@@ -252,11 +189,49 @@
 						<div class="elavetor_social">
 
 							<div class="evavet_description">
-								<p>供應商${product.vendorBean.vname}</P>
+								<p>供應商  ${product.vendorBean.vname}</P>
 
 							</div>
 
+                             	<div class="price_box price_box_acr">
+							<!-- <span class="old- price old- price-2">${product.price}打折</span> -->
+							
+							<p>商品分類:  ${product.category}</p>
+<%-- 							<p>商品編號:  ${product.pId}</p> --%>
+							<p>庫存:  ${product.amount}</P>
+						</div>
+						<form id="cartForm" class="cart-btn-area" method="POST" enctype="multipart/form-data">
+                                <input type="number" name="quantity" id="quantity" min="1" max="10" value="1" />
+<%--                                 <input id="productId" name="pId" type="hidden" value="${product.pId }"/> --%>
+<%--                                 <input id="productName" name="pname" type="hidden" value="${product.pname }"/> --%>
+<%--                                 <input id="productPrice" name="price" type="hidden" value="${product.price }"/> --%>
+<%--                                 <input id="productVId" name="vId" type="hidden" value="${product.vId }"/> --%>
+<!--                                 <input id="productCategory" name="category" path="category" type="hidden"/>  -->
+                                <button id="cartBtn" class="add-tocart cart_zpf" type="submit">加入購物車</button>
+                            </form>
 
+
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="elav_info">
+<!-- 						<div class="price_box price_box_acr"> -->
+<!-- 							<span class="old- price old- price-2">${product.price}打折</span> -->
+<%-- 							<span class="spical-price spical-price-2">售價:${product.price}</span> --%>
+<%-- 							<p>商品分類: ${product.category}</p> --%>
+<%-- 							<p>商品編號: ${product.pId}</p> --%>
+<%-- 							<p>庫存: ${product.amount}</P> --%>
+<!-- 						</div> -->
+						
+						
+						
+						
+						
+						
+						<div class="add_defi">
+						
+						
 							<ul class="social-link">
 								<li><a class="fb" data-original-title="facebook" href="#"
 									title="" data-toggle="tooltip"><i class="fa fa-facebook"></i></a></li>
@@ -272,43 +247,16 @@
 									data-target="#productModal" data-toggle="tooltip"><i
 										class="fa fa-linkedin"></i></a></li>
 							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-					<div class="elav_info">
-						<div class="price_box price_box_acr">
-							<!-- <span class="old- price old- price-2">${product.price}打折</span> -->
-							<span class="spical-price spical-price-2">售價:${product.price}</span>
-							<p>商品分類: ${product.category}</p>
-							<p>商品編號: ${product.pId}</p>
-							<p>庫存: ${product.amount}</P>
-						</div>
-						
-						
-						<form id="cartForm" class="cart-btn-area" method="POST" enctype="multipart/form-data">
-                                <input type="number" name="quantity" id="quantity" min="1" max="10" value="1" />
-<%--                                 <input id="productId" name="pId" type="hidden" value="${product.pId }"/> --%>
-<%--                                 <input id="productName" name="pname" type="hidden" value="${product.pname }"/> --%>
-<%--                                 <input id="productPrice" name="price" type="hidden" value="${product.price }"/> --%>
-<%--                                 <input id="productVId" name="vId" type="hidden" value="${product.vId }"/> --%>
-<!--                                 <input id="productCategory" name="category" path="category" type="hidden"/>  -->
-                                <button id="cartBtn" class="add-tocart cart_zpf" type="submit">加入購物車</button>
-                            </form>
-						
-						
-						
-						<div class="add_defi">
 							<a href="#" data-original-title="Add to Wishlist"
 								data-toggle="tooltip"> <i class="fa fa-heart another_icon"></i>
 								加到最愛
 							</a>
 						</div>
-						<div class="add_defi_2">
-							<a data-original-title="Compare" title="" data-toggle="tooltip"
-								rel="nofollow" data-product_id="45" href=""><i
-								class="fa fa-refresh another_icon"></i> Compare</a>
-						</div>
+<!-- 						<div class="add_defi_2"> -->
+<!-- 							<a data-original-title="Compare" title="" data-toggle="tooltip" -->
+<!-- 								rel="nofollow" data-product_id="45" href=""><i -->
+<!-- 								class="fa fa-refresh another_icon"></i> Compare</a> -->
+<!-- 						</div> -->
 
 					</div>
 				</div>
@@ -318,7 +266,69 @@
 	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 	
 	
-	
+		<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/vendor/jquery-1.12.0.min.js"></script>
+
+
+	<!-- bootstrap js -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+
+	<!-- nivo slider js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery.nivo.slider.js"></script>
+
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/home.js"></script>
+	<!-- owl.carousel js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/owl.carousel.min.js"></script>
+
+	<!-- meanmenu js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery.meanmenu.js"></script>
+	<!-- jquery-ui js -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
+
+	<!-- easing js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery.easing.1.3.js"></script>
+	<!-- mixitup js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery.mixitup.min.js"></script>
+	<!-- jquery.countdown js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery.countdown.min.js"></script>
+	<!-- wow js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/wow.min.js"></script>
+	<!-- popup js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery.magnific-popup.min.js"></script>
+	<!-- plugins js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/plugins.js"></script>
+	<!-- main js -->
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/main.js"></script>
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/jquery.timers.js"></script>
+
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath }/js/time.js"></script>
 	<script>
 		$(document).ready(function(){
 			var qty = $("#quantity").val();
