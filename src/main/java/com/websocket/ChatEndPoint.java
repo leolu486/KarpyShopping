@@ -33,9 +33,6 @@ public class ChatEndPoint {
 		Message message = new Message();
 		message.setFrom(username);
 		message.setFrom_id(userid);
-		int i = 0;
-
-		i = (int)(Math.random()*10000)+1000;
 		message.setSystem_msg(((int)(Math.random()*9000)+1000)+"顆喬丹之石賣給商人");
 		broadcast(message);
 		message.setSystem_msg(message.getFrom()+" 出現在地表上!!!");

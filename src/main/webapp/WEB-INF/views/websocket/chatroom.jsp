@@ -103,13 +103,14 @@
 			} 
 			//user message
 			else {
+
 				//picture + username + message with html css
 				var log_start = "<div class='message' style='width:auto;height:70px;font-size: 16px;border: 1px solid gray;border-left:0px;border-right:0px;margin-top: 10px;'>";
 				var memberImage_start = "<div class='memberimage' style='margin-right:5px;margin-left:5px;margin-top:5px;float:left;display:inline:block'>";
 				var memberImage_content = "<img src='<c:url value='/getMemberPicture/"+message.from_id+"'/>' width='200px' height='auto'/>";
 				var memberImage_end = "</div>";
 				var name ="<div style='display:inline;'>"+ message.from+":</div>";
-				var message = "<div style='margin-left:70px;margin-right:5px;border-top:1px solid silver'>"+message.content+"</div>";
+				var message = "<div style='margin-left:70px;margin-right:5px;border-top:1px solid silver'>"+message.content.replace(/ /g, '\u00a0')+"</div>";
 				var log_end = "</div>";
 				$("#log").append(log_start + memberImage_start + memberImage_content+ memberImage_end + name + message+ log_end);	
 			}
@@ -124,13 +125,15 @@
 	
 	
 	function send() {
-		var json = JSON.stringify({
-			"content" : $("#msg").val()
-		});
-		//reset and refocus on input
-		$("#msg").val("");
-		$("#msg").focus();
-		ws.send(json);
+		if($("#msg").val()!=""){
+			var json = JSON.stringify({
+				"content" : $("#msg").val()
+			});
+			//reset and refocus on input
+			$("#msg").val("");
+			$("#msg").focus();
+			ws.send(json);
+		}
 	}
 </script>
 
