@@ -229,7 +229,7 @@ public class ShoppingCartController {
 		PrintWriter out = null;
 		response.setContentType("application/json");
 		StringBuilder jsonString = new StringBuilder();
-		jsonString.append("{\"total\" : " + formatTotal + ", \"items\" :" + items + "}");
+		jsonString.append("{\"total\" : " + "\""+formatTotal+"\"" + ", \"items\" :" + items + "}");
 		
 		try {
 			out = response.getWriter();
