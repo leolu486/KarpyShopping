@@ -694,9 +694,6 @@ transform
 	content: "\f079"
 }
 
-.fa-shopping-cart:before {
-	content: "\f07a"
-}
 
 .fa-folder:before {
 	content: "\f07b"
@@ -1555,6 +1552,9 @@ transform
 	content: "\f16d"
 }
 
+.fa-fa-shopping-cart:before{
+	content: "\f07a"
+}
 .fa-flickr:before {
 	content: "\f16e"
 }

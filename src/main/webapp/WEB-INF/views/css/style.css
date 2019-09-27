@@ -1694,7 +1694,7 @@ ul.sub_menu_6 li a:hover {
 }
 
 .social_design ul li a.google-plus {
-	background: #db4a39 none repeat scroll 0 0;
+	background: #0080c0 none repeat scroll 0 0;
 }
 
 .social_design ul li a.youtube {
@@ -1703,6 +1703,14 @@ ul.sub_menu_6 li a:hover {
 
 .social_design ul li a.pinterest {
 	background: #db4a39 none repeat scroll 0 0;
+}
+
+
+.social_design ul li a.member {
+	background: #408080 none repeat scroll 0 0;
+}
+.book{
+	backgroung: #408080 none repeat scroll 0 0;
 }
 
 .social_design ul li a.mail-to {
