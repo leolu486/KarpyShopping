@@ -28,8 +28,8 @@
 	<jsp:include page="/WEB-INF/views/fragment/header.jsp" />
 
 
-<div style="text-align:center" style="width:800px;">
-   <img src="<c:url value="/images/memberQA/123.JPG"/>">
+<div style="text-align:center;margin:20px auto;width:1200px;" >
+   <img src="<c:url value="/images/memberQA/123.jpg"/>">
     
 </div>
 

@@ -148,35 +148,35 @@
 																<div class="mega_menu_coloumn">
 																	<ul>
 																		<li><a href="#">電競產品</a></li>
-																		<li><a href="#">電競滑鼠</a></li>
-																		<li><a href="#">電競桌機</a></li>
-																		<li><a href="#">電競周邊</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=電競滑鼠 遊戲滑鼠'/>">電競滑鼠</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=電競桌機 電競筆電 '/>">電競電腦</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=麥克風 喇叭 HDMI 隨身碟 高速碟 '/>">電競周邊</a></li>
 																	</ul>
 																</div>
 																<div class="mega_menu_coloumn">
 																	<ul>
-																		<li><a href="#">筆記型電腦</a></li>
-																		<li><a href="#">滑鼠</a></li>
-																		<li><a href="#">鍵盤</a></li>
-																		<li><a href="#">福利品出清</a></li>
+																		<li><a href="#">電腦/筆電</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=滑鼠 Mouse'/>">滑鼠</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=鍵盤'/>">鍵盤</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=筆電'/>">筆電</a></li>
 																	</ul>
 																</div>
 																<div class="mega_menu_coloumn">
 																	<ul>
 																		<li class="mega_content"><a href="#">3C家電</a></li>
-																		<li><a href="#">家電用品</a></li>
-																		<li><a href="#">Dyson系列</a></li>
-																		<li><a href="#">三星產品</a></li>
-																		<li><a href="#">相關家電</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=吹風機 電烤盤 電鬍刀 洗衣機 氣泡水機 氣炸鍋 章魚燒機 咖啡機 烤箱  '/>">家電用品</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=Dyson'/>">Dyson系列</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=SAMSUNG'/>">三星產品</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=吹風機 電烤盤 電鬍刀 洗衣機 氣泡水機 氣炸鍋 章魚燒機 咖啡機 烤箱'/>">相關家電</a></li>
 																	</ul>
 																</div>
 																<div class="mega_menu_coloumn">
 																	<ul>
-																		<li><a href="#">數位周邊</a></li>
-																		<li><a href="#">喇叭/藍芽喇叭</a></li>
-																		<li><a href="#">繪圖/手寫板</a></li>
-																		<li><a href="#">電腦周邊/線材</a></li>
-																		<li><a href="#">隨身碟/硬碟</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=方向盤 電視 '/>">數位周邊</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=喇叭 藍芽喇叭 '/>">喇叭/藍芽喇叭</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=繪圖 '/>">繪圖/手寫板</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=HDMI 紫米  '/>">電腦周邊/線材</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=隨身碟 高速碟 硬碟  '/>">隨身碟/硬碟</a></li>
 																	</ul>
 																</div>
 															</div></li>
@@ -194,9 +194,8 @@
 															<ul class="new_miup_menu">
 																<li>
 																	<ul class="new_mixup_tm">
-																		<li class="exact"><a class=" with_icon" href="#"
-																			tabindex="1">蘋果手機</a></li>
-																		<li><a href="#">安卓手機</a></li>
+																		<li class="exact"><a class=" with_icon" href="<spring:url value='getProductsByNoSearchCount?searchBy=iphone'/>">蘋果手機</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=Galaxy'/>">安卓手機</a></li>
 																	</ul>
 																</li>
 															</ul></li>
@@ -206,68 +205,50 @@
 															<ul class="new_miup_menu">
 																<li>
 																	<ul class="new_mixup_tm">
-																		<li><a href="#">Apple watchs</a></li>
+																		<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=Watch'/>">Apple Watch</a></li>
 																	</ul>
 																</li>
-																<li><a href="#">Air pods</a></li>
-																<li><a href="#">iPhone Lightning</a></li>
+																<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=Airpods'/>">Air Pods</a></li>
 															</ul></li>
-														<li><a href="#">蘋果3C周邊</a></li>
-														<li><a href="#">安卓3C周邊</a></li>
+														<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=Magic'/>">蘋果3C周邊</a></li>
+														<li><a href="<spring:url value='getProductsByNoSearchCount?searchBy=紫米'/>">安卓3C周邊</a></li>
 													</ul></li>
 												<li class="differ_sec_area"><a class="item_link "
-													href="#"> <i class="fa fa-gift"></i> <span
+													href="#"> <i class="fa fa-heart"></i> <span
 														class="link_content"> <span class="link_text">
-																送禮專區 <span class="link_descr">精緻禮品/小資禮品/最佳禮物</span>
+																精品名錶 <span class="link_descr">精品錶/機械錶</span>
 														</span>
 													</span>
 												</a>
 													<ul class="another_drop_menu">
 														<li class="discrip"><a
-															class="new_link_2 new_link_4 with_icon" href="#"
-															tabindex="1"> 精美卡片區 </a></li>
-														<li class="discrip"><a
-															class="new_link_2 new_link_4 with_icon" href="#"
-															tabindex="1"> 手工皮夾/包/名片夾 </a></li>
-														<li class="discrip"><a
-															class="new_link_2 new_link_4 with_icon" href="#"
-															tabindex="1"> 精緻小禮品</a></li>
-														<li class="discrip"><a
-															class="new_link_2 new_link_4 with_icon" href="#"
-															tabindex="1"> 精緻小點</a></li>
-
+															class="new_link_2 new_link_4 with_icon" href="<spring:url value='getProductsByNoSearchCount?searchBy=SEIKO G-SHOCK 機械錶'/>">精品錶</a></li>
 													</ul></li>
-												<li><a class="item_link item_link_2" href="#"> <i
-														class="fa fa-heart"></i> <span class="link_content">
-															<span class="link_text"> 男士精品區 <span
-																class="link_descr">精品名錶/皮夾/包/皮帶</span>
-														</span>
-													</span>
-												</a></li>
-												<li><a class="item_link item_link_2" href="#"> <i
-														class="fa fa-star"></i> <span class="link_content">
-															<span class="link_text"> 女士精品區 <span
-																class="link_descr">名牌名包/皮夾/手飾/項鍊/福利品</span>
-														</span>
-													</span>
-												</a></li>
-												<li><a class="item_link item_link_2" href="#"> <i
-														class="fa fa-lightbulb-o"></i> <span class="link_content">
-															<span class="link_text"> NYKD54 <span
-																class="link_descr">EEIT10804陳同學推薦專區</span>
-														</span>
-													</span>
-												</a></li>
-												<li class="cost-menu"><a class="item_link item_link_2"
-													href="#"> <i class="fa fa-pie-chart"></i> <span
-														class="link_content"> <span class="link_text">
-																LEO <span class="link_descr">您今天LEO了嗎?</span>
-														</span>
-													</span>
-												</a></li>
-												<li class="showmore-items shwitm"><i
-													class="fa fa-plus-square-o"></i> <span>More
-														Categories</span></li>
+<!-- 												<li><a class="item_link item_link_2" href="#"> <i -->
+<!-- 														class="fa fa-heart"></i> <span class="link_content"> -->
+<!-- 															<span class="link_text"> 女性專區 <span -->
+<!-- 																class="link_descr">精品名錶/皮夾/包/皮帶</span> -->
+<!-- 														</span> -->
+<!-- 													</span> -->
+<!-- 												</a></li> -->
+
+<!-- 												<li><a class="item_link item_link_2" href="#"> <i -->
+<!-- 														class="fa fa-lightbulb-o"></i> <span class="link_content"> -->
+<!-- 															<span class="link_text"> NYKD54 <span -->
+<!-- 																class="link_descr">EEIT10804陳同學推薦專區</span> -->
+<!-- 														</span> -->
+<!-- 													</span> -->
+<!-- 												</a></li> -->
+<!-- 												<li class="cost-menu"><a class="item_link item_link_2" -->
+<!-- 													href="#"> <i class="fa fa-pie-chart"></i> <span -->
+<!-- 														class="link_content"> <span class="link_text"> -->
+<!-- 																LEO <span class="link_descr">您今天LEO了嗎?</span> -->
+<!-- 														</span> -->
+<!-- 													</span> -->
+<!-- 												</a></li> -->
+<!-- 												<li class="showmore-items shwitm"><i -->
+<!-- 													class="fa fa-plus-square-o"></i> <span>More -->
+<!-- 														Categories</span></li> -->
 											</ul>
 										</div>
 									</div>

@@ -61,9 +61,9 @@
 'new sport 短襪  淺藍白線', 200, 8, 99, '貼身衣物', '2017-5-21', '2019-1-18', data/productImg/61/1.jpg, data/productImg/61/2.jpg
 '流行膝上大腿女襪', 432, 8, 99, '貼身衣物', '2017-6-29', '2019-2-28', data/productImg/62/1.jpg, data/productImg/62/2.jpg
 '日空版 SEIKO 聯名手錶', 14800, 5, 6, '精品名錶', '2017-6-29', '2019-2-28', data/productImg/63/1.jpg, data/productImg/63/2.jpg
-' SEIKO 深海藍水鬼200米潛水聯名錶', 16000, 5, 1, '精品名錶', '2017-7-29', '2019-3-28', data/productImg/64/1.jpg, data/productImg/64/2.jpg
+'SEIKO 深海藍水鬼200米潛水聯名錶', 16000, 5, 1, '精品名錶', '2017-7-29', '2019-3-28', data/productImg/64/1.jpg, data/productImg/64/2.jpg
 'SEIKO PRESAGE 基本錶款 ', 18000, 5, 2, '精品名錶', '2017-8-29', '2019-4-28', data/productImg/65/1.png, data/productImg/65/2.jpg
-'子午閣』 免運 卡西歐 G-SHOCK電子 運動手錶日韓風 手錶', 1299, 6, 99, '精品名錶', '2017-9-29', '2019-5-28', data/productImg/66/1.png, data/productImg/66/2.jpg
+'卡西歐 G-SHOCK電子 運動手錶日韓風 手錶', 1299, 6, 99, '精品名錶', '2017-9-29', '2019-5-28', data/productImg/66/1.png, data/productImg/66/2.jpg
 '爵士魅力自動機械錶', 21500, 6, 20, '精品名錶', '2017-10-29', '2019-6-28', data/productImg/67/1.jpg, data/productImg/67/2.jpg
 '卡其野戰迷彩機械錶', 218500, 5, 3, '精品名錶', '2017-11-29', '2019-7-28', data/productImg/68/1.jpg, data/productImg/68/2.jpg
 '美國經典機械錶-煙燻', 27984, 6, 1, '精品名錶', '2017-12-29', '2019-8-28', data/productImg/69/1.jpg, data/productImg/69/2.jpg
@@ -104,17 +104,15 @@
 '密碼保險箱', 2243, 27, 99, '居家安全', '2017-10-25', '2019-11-14', data/productImg/104/1.jpg, data/productImg/104/2.jpg
 '狼牙棒手電筒', 299, 27, 50, '居家安全', '2017-1-25', '2019-11-14', data/productImg/105/1.jpg, data/productImg/105/2.jpg
 'Apple iphone XS (64G) 金色', 32400, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/106/1.jpg, data/productImg/106/2.jpg
-'Apple iphone XR (128G) 白色', 23500, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/107/1.jpg, data/productImg/107/2.jpg
+'Apple iphone XR (128G) 白色', 22400, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/107/1.jpg, data/productImg/107/2.jpg
 'Apple iphone XS Max (64G) 金色', 35900, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/108/1.jpg, data/productImg/108/2.jpg
 'Apple Watch S4 GPS 44mm 金色', 12900, 24, 24, '3C產品', '2017-1-25', '2019-11-14', data/productImg/109/1.jpg, data/productImg/109/2.jpg
 'Dyson SV14 V11 Absolute 手持無線吸塵器', 24900, 28, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/110/1.jpg, data/productImg/110/2.jpg
-'Dyson V7 Mattress HH11 手持除蟎吸塵器', 9999, 28, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/111/1.jpg, data/productImg/111/2.jpg
+'Dyson V7 Mattress HH11 手持吸塵器', 9999, 28, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/111/1.jpg, data/productImg/111/2.jpg
 '羅技 G304 無線電競滑鼠(含鼠墊)', 1290, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/112/1.jpg, data/productImg/112/2.jpg
 '華碩 ROG Sica 電競滑鼠', 1090, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/113/1.jpg, data/productImg/113/2.jpg
 'HyperX Alloy FPS RGB 機械式電競鍵盤', 4990, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/114/1.jpg, data/productImg/114/2.jpg
 'ZMI紫米 傳輸充電線', 299, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/115/1.jpg, data/productImg/115/2.jpg
-'美國Blue Yeti 雪怪USB 麥克風 (霧黑)', 5600, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/116/1.jpg, data/productImg/116/2.jpg
-'THRUSTMASTER T150 力回饋方向盤', 5600, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/115/1.jpg, data/productImg/115/2.jpg
 '美國Blue Yeti 雪怪USB 麥克風 (霧黑)', 5600, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/116/1.jpg, data/productImg/116/2.jpg
 '羅技 M720 Triathlon 多工無線滑鼠', 1690, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/117/1.jpg, data/productImg/117/2.jpg
 '羅技 G102 PRODIGY 遊戲滑鼠', 599, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/118/1.jpg, data/productImg/118/2.jpg
@@ -146,3 +144,4 @@
 '精迷你電子鍋', 1683, 28, 20, '家電', '2017-10-21', '2019-12-18', data/productImg/144/1.jpg, data/productImg/144/2.jpg
 '微電腦全自動料理萬用鍋', 1790, 28, 20, '家電', '2017-10-21', '2019-12-18', data/productImg/145/1.jpg, data/productImg/145/2.jpg
 '節能免插電全自動氣泡水機', 2990, 28, 20, '家電', '2017-10-21', '2019-12-18', data/productImg/146/1.jpg, data/productImg/146/2.jpg
+'Dyson 360 Heuriest 智能吸塵機器人', 16800, 28, 20, '家電', '2017-10-21', '2019-12-18', data/productImg/147/1.jpg, data/productImg/147/2.jpg
