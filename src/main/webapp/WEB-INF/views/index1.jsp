@@ -153,49 +153,7 @@
 	<!--slider area end-->
 	<!--social design arae start-->
 	<!-- 右邊的那一條 -->
-	<div class="link_area">
-		<div class="container">
-			<div class="row">
-				<div class="social_design on_right">
-					<ul>
-						<li><a class="facebook" target="_blank" href="#facebook">
-								<span> <i class="fa fa-facebook"></i> <span
-									class="social-text">追蹤 Facebook</span>
-							</span>
-						</a></li>
-						<!-- <li>
-                                <a class="twitter" target="_blank" href="#twitter.com">
-                                    <span>
-                                        <i class="fa fa-twitter"></i>
-                                        <span class="social-text">Follow via Twitter</span>
-                                    </span>
-                                </a>
-                            </li> -->
-						<li><a class="google-plus" target="_blank"
-							href="#google-plus"> <span> <i class="fa fa-google"></i>
-									<span class="social-text">追蹤 Google</span>
-							</span>
-						</a></li>
-						<li><a class="youtube" target="_blank" href="#youtube"> <span>
-									<i class="fa fa-youtube"></i> <span class="social-text">訂閱
-										Youtube</span>
-							</span>
-						</a></li>
-						<li><a class="pinterest" target="_blank" href="#"> <span>
-									<i class="fa fa-instagram"></i> <span class="social-text">追蹤
-										IG</span>
-							</span>
-						</a></li>
-						<li><a class="mail-to" target="_blank"
-							href="mailto:moghost520@gmail.com"> <span> <i
-									class="fa fa-envelope-o"></i> <span class="social-text">寄信給卡痞</span>
-							</span>
-						</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+	<jsp:include page="/WEB-INF/views/fragment/rightIcon.jsp" />
 
 	<!--social design arae end-->
 
