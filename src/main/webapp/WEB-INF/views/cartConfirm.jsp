@@ -83,7 +83,7 @@
 								</button>
 							</div>
 
-							<jsp:include page="/WEB-INF/views/fragment/rightIcon.jsp" />
+							
 
 							<div class="unit-price">
 								<fmt:formatNumber
@@ -109,6 +109,8 @@
 							disabled hidden="hidden">
 
 					</c:forEach>
+					
+					<jsp:include page="/WEB-INF/views/fragment/rightIcon.jsp" />
 				</div>
 				<div class="total-price">
 					<span class="total_price_span">總付款金額: <fmt:formatNumber
