@@ -32,11 +32,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.web.store.exception.OrderModificationException;
 import com.web.store.exception.OrderNotFoundException;
 import com.web.store.exception.ProductStockException;
+import com.web.store.model.CouponBean;
 import com.web.store.model.MemberBean;
 import com.web.store.model.OrderBean;
 import com.web.store.model.OrderItemBean;
 import com.web.store.model.ProductBean;
 import com.web.store.model.ShoppingCart;
+import com.web.store.service.MemberService;
 import com.web.store.service.OrderService;
 import com.web.store.service.ProductService;
 
@@ -44,6 +46,9 @@ import com.web.store.service.ProductService;
 @SessionAttributes(value = { "ShoppingCart" })
 public class OrderController {
 
+	//this service for coupon
+	@Autowired
+	MemberService mservice;
 	@Autowired
 	OrderService service;
 	// 測試用，需刪除
@@ -174,6 +179,11 @@ public class OrderController {
 			}
 		}
 		model.addAttribute("order", order);
+		
+		//Coupon code
+		//only get coupons which unused
+		List<CouponBean> couponList = mservice.getCouponsBymId(((MemberBean)session.getAttribute("memberLoginOK")).getmId());
+		model.addAttribute("couponList", couponList);
 		
 		return "order/addOrder"; 
 	}

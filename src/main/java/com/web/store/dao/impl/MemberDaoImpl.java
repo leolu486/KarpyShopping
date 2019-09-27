@@ -363,9 +363,9 @@ public class MemberDaoImpl implements MemberDao {
 	public List<CouponBean> getCouponsBymId(Integer mId) {
 		List<CouponBean> list = new ArrayList<CouponBean>();
 		Session session = factory.getCurrentSession();
-		String hql = "FROM CouponBean WHERE mId =:mId";
+		String hql = "FROM CouponBean WHERE mId =:mId and status=:status";
 		try {
-			list = (List<CouponBean>) session.createQuery(hql).setParameter("mId", mId).getResultList();
+			list = (List<CouponBean>) session.createQuery(hql).setParameter("mId", mId).setParameter("status" , true).getResultList();
 
 		} catch (NoResultException e) {
 			e.printStackTrace();

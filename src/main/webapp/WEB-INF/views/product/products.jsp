@@ -53,10 +53,7 @@
 	src="${pageContext.request.contextPath }/js/jquery_3_4_1.js"></script>
 
 <script>
-	var total = $
-	{
-		totalPages
-	};
+	var total = ${totalPages};
 
 	$(function() {
 		console.log("ready!");

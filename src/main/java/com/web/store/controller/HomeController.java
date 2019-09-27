@@ -15,15 +15,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.web.store.model.MemberBean;
 import com.web.store.model.ProductBean;
 import com.web.store.service.HotSearchService;
+import com.web.store.service.MemberService;
 import com.web.store.service.ProductService;
 
 @Controller
 public class HomeController {
 	@Autowired
+	MemberService mservice;
+
+	@Autowired
 	ProductService service;
-	
+
 	@Autowired
 	HotSearchService hService;
 
@@ -81,11 +86,14 @@ public class HomeController {
 		model.addAttribute("products", list);
 		HttpSession session = request.getSession();
 		session.setAttribute("hotSearch", hService.getTop5());
-		
+		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+		if (mb != null) {
+			session.setAttribute("memberLoginOK", mservice.getMemberBymId(mb.getmId()));
+		}
 		return "index1";
 
 	}
-	
+
 	@RequestMapping("searchResult")
 	public String index2() {
 		return "searchResult";
