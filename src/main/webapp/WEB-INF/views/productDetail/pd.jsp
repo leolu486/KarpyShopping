@@ -225,7 +225,7 @@
 <!-- 						</div> -->
 						
 						
-						
+					<jsp:include page="/WEB-INF/views/fragment/rightIcon.jsp" />
 						
 						
 						
