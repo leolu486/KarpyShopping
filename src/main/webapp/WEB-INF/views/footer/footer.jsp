@@ -48,7 +48,7 @@ corresponding value from the list below*/
 						</div>
 						<div class="footer_menu">
 							<ul>
-								<li><a href="#">加入我們</a></li>
+								<li><a href="https://reurl.cc/yye8xa">加入我們</a></li>
 								<li><a href="#">招商專區</a></li>
 								<li><a href="#">隱私權政策</a></li>
 								<li><a href="#">關於卡痞</a></li>
