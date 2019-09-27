@@ -68,7 +68,6 @@
 							<ul>
 								<li><a href="#">商品追蹤清單</a></li>
 								<li><a href="memberchange">會員中心</a></li>
-								<li><a href="addCreditCard">信用卡</a></li>
 							</ul>
 						</div>
 
@@ -81,7 +80,6 @@
 
 						<div class="my_account_areadiv" style="margin-top: 40px;">
 							<ul>
-								<li><a href="#">新手上路</a></li>
 								<li><a href="memberQA">購物流程/付款說明</a></li>
 								<li><a href="memberQandA">常見問題Q & A</a></li>
 								<li><a href="#">行銷規劃規則查詢</a></li>
