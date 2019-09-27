@@ -5,6 +5,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<%
+	long t = System.currentTimeMillis();
+	request.setAttribute("t", t);
+%>
+
 <!doctype html>
 <html lang="zh-tw">
 <head>
@@ -160,62 +165,151 @@
 				</div>
 
 			</div>
-		</div>
-		<div class="footer">
-			<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
-		</div>
-	</div>
+
+          <form class="card p-2" style="height:120px">
+            <div class="input-group">
+              <input type="text"  class="m-2" placeholder="請輸入代碼">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-secondary m-3">使用折價券</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        
+        <div class="col-md-8 order-md-1">
+            <h3 class="mb-3 font-weight-bold h3">請確認以下資訊:</h3>
+            <p class="h6"><strong>會員姓名: ${memberLoginOK.name}</strong></p>          
+        
+            <span id="toggleEz" class="btn btn-secondary" style="display:inline-block; height:40px">超商取貨</span>
+            <span id="home" class="btn btn-secondary" style="display:inline-block;margin-left:5px; height:40px">宅配</span>
+         <div id="ezForm" style="display:none;">
+	        <form method="post" name="simulation_from" action="https://map.ezship.com.tw/ezship_map_web.jsp" style="display:inline">   	    
+	          <input name="Submit2" type="submit" value="選擇門市" class="btn btn-info" style="margin-top:10px;">
+	          <input type="hidden" name="suID"  value="buyer@myweb.com.tw"> 
+	          <input type="hidden" name="processID" value="${t}"> 
+	          <input type="hidden" name="rtURL"  value="http://localhost:8080/KarpyShopping/ezship">
+ 	 		</form> 
+ 	 	</div>
+ 	 	
+ 	 	 
+             	
+<!--    結帳資訊        -->
+		<div >
+          <form:form id="orderForm" modelAttribute='order' method='POST' class='needs-validation' novalidate="novalidate" enctype="multipart/form-data" >
+			 <div class="mb-3">            
+              
+            </div>
+            <div class="mb-3">
+              <label id="addrLabel" for="addr" class="h6"><strong>寄送地址:</strong></label>
+              
+              <form:input type="text" class="form-control" style="background-color:white;" id="addr" path="addr" value='${memberLoginOK.addr}${name}' required="required" />
+              <div><strong class="text-danger">${insertError.emptyAddr }</strong></div>
+              <div class="invalid-feedback">
+               	<strong>此欄位不可為空白</strong> 
+              </div>               
+                        
+            </div>
+
+            <div class="mb-3">
+              <label for="tel" class="h6"><strong>聯絡電話:</strong></label>
+              <form:input type="text" class="form-control" style="background-color:white;" id="tel" path="tel" value='${memberLoginOK.tel}'  required="required"/>
+              <div><strong class="text-danger">${insertError.emptyTel}</strong></div>
+              <div class="invalid-feedback">
+               	<strong>此欄位不可為空白</strong> 
+              </div>
+            </div>
+
+            
+              <div class="mb-3">
+              <label for="consignee" class="h6"><strong>收貨人:</strong></label>
+              <form:input type="text" class="form-control" style="background-color:white;" id="consignee" path="consignee" value='${memberLoginOK.name}' required="required" />
+              <div><strong class="text-danger">${insertError.emptyConsignee}</strong></div>
+              <div class="invalid-feedback">
+               	<strong>此欄位不可為空白</strong> 
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button id="submit" class="btn btn-danger btn-lg btn-block" type="submit" >下訂單</button>
+          </form:form>  
+  			</div>
+     
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="footer">
+		<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
+	  </div>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js"></script>
-	<script>
-		// Example starter JavaScript for disabling form submissions if there are invalid fields
-		(function() {
-			'use strict';
 
-			window.addEventListener('load',
-					function() {
-						// Fetch all the forms we want to apply custom Bootstrap validation styles to
-						var forms = document
-								.getElementsByClassName('needs-validation');
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" ></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
 
-						// Loop over them and prevent submission
-						var validation = Array.prototype.filter.call(forms,
-								function(form) {
-									form.addEventListener('submit', function(
-											event) {
-										if (form.checkValidity() === false) {
-											event.preventDefault();
-											event.stopPropagation();
-										}
-										form.classList.add('was-validated');
-									}, false);
-								});
-					}, false);
-		})();
-	</script>
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
 
-	<script>
-		document
-				.getElementById("submit")
-				.addEventListener(
-						"click",
-						function(event) {
-							if (confirm("你確定要下訂單嗎?")) {
-								document.getElementById("orderForm").action = "<c:url value='/addOrder' />";
-								document.getElementById("orderForm").submit();
-							} else {
-								event.preventDefault();
-								return false;
-							}
-						})
-	</script>
-</body>
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+    
+    <script>
+    	document.getElementById("submit").addEventListener("click",function(event){
+    		if(confirm("你確定要下訂單嗎?")){
+    			document.getElementById("orderForm").action="<c:url value='/addOrder' />";
+    			document.getElementById("orderForm").submit();
+    		}else{
+    			event.preventDefault();
+    			return false;
+    		}
+    	})   	
+    	
+    
+    </script>  
+    
+  <script>
+  
+  	$("#toggleEz").on("click",function(){
+//   		$("#ezForm").css("display","block");
+  		$("#ezForm").toggle(1000);
+//   		$("#addr").val('');
+//   		$("#toggleEz").css("display","none");
+  	})
+  	
+  	
+  	$("#home").on("click",function(){
+  		$("#addr").focus();
+  		$("#ezForm").css("display","none");
+
+  	})
+  
+  </script>
+  
+ <c:if test="${ezShip != null}">
+ 	<script>
+ 		$("#home").css("display", "none");
+ 	</script>
+ </c:if>
+    
+    
+  </body>
+
 </html>

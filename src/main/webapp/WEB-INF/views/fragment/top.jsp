@@ -39,6 +39,7 @@
 									<ul class="option">
 										<li><a href="#">訂單查詢</a></li>
 										<li><a href="#">歷史紀錄</a></li>
+										<li><a href="<spring:url value='/cartConfirm'/>">前往購物車</a></li>
 									</ul>
 								</div>
 								<div class="usd_area">

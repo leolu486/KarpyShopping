@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,13 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+<%
+response.setHeader( "Pragma", "no-cache" );
+response.addHeader( "Cache-Control", "must-revalidate" );
+response.addHeader( "Cache-Control", "no-cache" );
+response.addHeader( "Cache-Control", "no-store" );
+response.setDateHeader("Expires", 0);
+%>
 <body>
 		<!--header middle area start-->
 	<div class="header_middle">
@@ -56,62 +64,77 @@
 
 						</div>
 					</div>
+					
+					
+					
 					<div class="header_all shopping_cart_area">
-						<div class="widget_shopping_cart_content">
-							<div class="topcart">
-
-								<a class="cart-toggler" href=""> <img class="icon"
-									src="<c:url value="/images/icon/icon_cart.png"/>"> <span
-									class="my-cart">購物車</span> <span
-									class="qty">2 件</span> <span class="fa fa-angle-down"></span>
-
-								</a>
-								<div class="new_cart_section">
-									<ol class="new-list">
-										<!-- single item -->
-
-										<li class="wimix_area"><a class="pix_product" href="">
-
-												<img alt=""
-												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
-										</a>
-											<div class="product-details">
-												<a href="#">Adipiscing cursus eu</a> <span class="sig-price">1×$300.00</span>
-											</div>
-											<div class="cart-remove">
-												<a class="action" href="#"> <i class="fa fa-close"></i>
+							<div class="widget_shopping_cart_content">
+								<div class="topcart">
+									<c:choose>
+									   <c:when test="${ShoppingCart.itemNumber == null || ShoppingCart.itemNumber == 0}">
+											<a class="cart-toggler" href="<spring:url value='/cartConfirm'/>"> <img class="icon"
+												src="<c:url value="/images/icon/icon_cart.png"/>"> <span
+												class="my-cart">購物車</span> <span class="qty">尚無商品</span> <span
+												class="fa fa-angle-down"></span>
+											</a>
+										</c:when>
+										<c:otherwise>
+											<a class="cart-toggler" href="<spring:url value='/cartConfirm'/>"> <img class="icon"
+												src="<c:url value="/images/icon/icon_cart.png"/>"> <span
+												class="my-cart">購物車</span> <span class="qty">${ShoppingCart.itemNumber}項商品</span> <span
+												class="fa fa-angle-down"></span>
+											</a>
+										</c:otherwise>
+									</c:choose>
+								
+									<div id="new_cart_section" class="new_cart_section">
+										<ol class="new-list">
+											<!-- single item -->
+											
+											<c:forEach varStatus="vs" var="anEntry" items="${ShoppingCart.content}">
+												
+											<li id="item${anEntry.value.productId}" class="wimix_area">
+												<a class="pix_product" href="">
+													<img alt="" src="<c:url value='/getPicture/${anEntry.value.productId}'/>">
 												</a>
-											</div></li>
-										<!-- single item -->
-										<!-- single item -->
-										<li class="wimix_area"><a class="pix_product" href="#">
-												<img alt=""
-												src="<c:url value="/images/product-pic/7-150x98.jpg" />">
-										</a>
-											<div class="product-details">
-												<a href="#">Duis convallis</a> <span class="sig-price">1×$100.00</span>
+													<div class="product-details">
+														<a href="<spring:url value='/productById02?pId=${anEntry.value.productId}'/>">${anEntry.value.description}</a> <span class="unitPrice sig-price">${anEntry.value.quantity}×$${anEntry.value.unitPrice * anEntry.value.discount }元</span>
+													</div>
+													<div class="cart-remove">
+														<input class="pId" type="text" value="${anEntry.value.productId}" hidden="hidden"> 
+														<a class="action" href="#"> <i class="fa fa-close"></i></a>
+													</div>
+											 </li>
+												
+												</c:forEach>
+											<!-- single item -->
+										</ol>
+										
+									<!-- checkout btn -->
+									<div class="checkOutDiv">	
+									<c:choose>
+										<c:when test="${ShoppingCart.itemNumber == null || ShoppingCart.itemNumber == 0}">
+											<span>尚無商品</span>											
+										</c:when>
+										<c:otherwise>
+											<div class="top-subtotal">
+												總金額: <span class="totalPrice sig-price">$<fmt:formatNumber value="${ShoppingCart.subtotal}" pattern="#,###" /></span>
 											</div>
-											<div class="cart-remove">
-												<a class="action" href="#"> <i class="fa fa-close"></i>
-												</a>
-											</div></li>
-
-										<!-- single item -->
-									</ol>
-									<div class="top-subtotal">
-
-										Subtotal: <span class="sig-price">$400.00</span>
-
+											<div class="cart-button">
+												<ul>
+													<li><a href="<spring:url value='/cartConfirm'/>">前往購物車 
+														<i class="fa fa-angle-right"></i></a>
+													</li>
+													
+														<li><a href="<c:url value='/addOrder' />">前往結帳 
+															<i class="fa fa-angle-right"></i></a>
+														</li>											
+												</ul>
+											</div>
+										  </c:otherwise>									
+									</c:choose>
 									</div>
-									<div class="cart-button">
-										<ul>
-
-											<li><a href="#">View my cart <i
-													class="fa fa-angle-right"></i></a></li>
-											<li><a href="#">Checkout <i
-													class="fa fa-angle-right"></i></a></li>
-										</ul>
-									</div>
+									<!-- checkout btn -->
 								</div>
 							</div>
 						</div>
@@ -120,6 +143,10 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
 	<!--header footer area start 購物車結束-->
 	<div class="all_menu_area">
 		<div class="menu_inner">
@@ -284,6 +311,62 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
+<script>
+	$(document).ready(function(){
+		var counts = ${ShoppingCart.itemNumber};		
+		if(counts > 4){
+			$("#new_cart_section").css("overflow-y","auto");			
+			$("#new_cart_section").css("max-height","400px");
+			$("#new_cart_section").css("width","400px");
+		}else{
+			$("#new_cart_section").css("height","auto");
+			$("#new_cart_section").css("width","400px");
+		}		
+
+		var cartTotal;
+		var cartItems;
+		
+		function set_total(total,items){
+			cartTotal = total;
+			cartItems = items;
+			
+		}
+		
+		$(".action").on("click",function(){			
+			var pId = $(this).closest("div").find(".pId").val();
+			$.ajax({
+				type:"GET",
+				url:"cancelProductAJAJ?pId="+ pId,
+				success:function(data){
+// 					alert("success");
+					$('#item' + pId).remove();
+					console.log("total=" +data['total']);
+					console.log("items=" +data['items']);
+					set_total(data['total'],data['items']);
+// 					alert(total)
+					$('.totalPrice').text('$' + cartTotal);
+					if(cartItems >0){
+						$('.qty').text(cartItems + '項商品');							
+					}else{
+						$('.qty').text('尚無商品');
+// 						$('.checkOutDiv').css("display",'none');
+						$('.checkOutDiv').html('尚無商品');
+					}
+				}
+			
+			});			
+					
+		});
+		
+	
+		
+	});
+	
+</script>
 
 </body>
 </html>

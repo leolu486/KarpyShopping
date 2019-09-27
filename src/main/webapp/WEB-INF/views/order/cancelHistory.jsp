@@ -26,7 +26,15 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/order/css/main.css' />">
 <!--===============================================================================================-->
 </head>
-<body>
+
+<style>
+
+body { 
+	opacity: 0; 
+	transition: opacity 2s; 
+} 
+</style>
+<body onload="document.body.style.opacity='1'">
 <jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 <form:form id="orderTable">
 <div class="limiter">

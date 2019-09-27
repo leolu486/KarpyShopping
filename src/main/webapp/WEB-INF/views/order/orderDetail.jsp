@@ -26,7 +26,23 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value='/order/css/main.css' />">
 <!--===============================================================================================-->
 </head>
-<body>
+
+<style>
+
+.transition {
+    -webkit-transform: scale(1.6); 
+    -moz-transform: scale(1.6);
+    -o-transform: scale(1.6);
+    transform: scale(2.0);
+}
+
+body { 
+	opacity: 0; 
+	transition: opacity 2s; 
+} 
+</style>
+
+<body onload="document.body.style.opacity='1'">
 <jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 <div class="limiter">
 		<div class="container-table100">
@@ -40,8 +56,8 @@
 							<thead>
 								<tr class="row100 head">									
 									<th class="cell100 column1 font-weight-bold" style="border-style:none">訂單編號</th>
-									<th class="cell100 column2 font-weight-bold" style="border-style:none">商品編號</th>
-									<th class="cell100 column2 font-weight-bold" style="border-style:none">品名</th>
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">商品編號</th>									
+									<th class="cell100 column3 font-weight-bold" style="border-style:none">品名</th>
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">單價</th>							
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">數量</th>							
 								</tr>
@@ -51,19 +67,17 @@
 
 					<div class="table100-body js-pscroll">
 						<table>
-						<c:forEach var="item" items="${items}">
 							<tbody>	
-								<tr class="row100 body">
-								
-									<td class="cell100 column1" style="border-style:none">${item.orderBean.oId}</td>
-									<td class="cell100 column2" style="border-style:none">${item.productId}</td>
-									<td class="cell100 column2" style="border-style:none">${item.description}</td>
-									<td class="cell100 column2" style="border-style:none">${item.unitPrice}元</td>
-									<td class="cell100 column2" style="border-style:none">${item.quantity}</td>
-												
-								</tr>
+								<c:forEach var="item" items="${items}">
+										<tr class="row100 body">								
+											<td class="cell100 column1" style="border-style:none">${item.orderBean.oId}</td>
+											<td class="cell100 column2" style="border-style:none;">${item.productId}</td>									
+											<td class="cell100 column3" style="border-style:none;"><img class="pic${item.productId}" width='75px' height='75px' src="<c:url value='/getPicture/${item.productId}'/>" /><span style="margin-left:25px">${item.description}</span></td>
+											<td class="cell100 column2" style="border-style:none">${item.unitPrice}元</td>
+											<td class="cell100 column2" style="border-style:none">${item.quantity}</td>												
+										</tr>
+								</c:forEach>
 							</tbody>
-						</c:forEach>
 						</table>
 					</div>
 				</div>
@@ -94,6 +108,16 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="<c:url value='/order/js/main.js' />"></script>
-
+	<script>
+	
+	$(document).ready(function(){
+    $('.column3 img').hover(function() {
+        $(this).addClass('transition');
+    
+    }, function() {
+        $(this).removeClass('transition');
+    });
+});
+	</script>
 </body>
 </html>
