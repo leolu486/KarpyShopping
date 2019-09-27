@@ -89,9 +89,17 @@ public class SystemUtils2019 {
 	}
 
 	public static Blob pictureURLToBlob(String pictureName, String pictureURL) {
-
-		try (FileInputStream fis = new FileInputStream(new File("karpy.jpg"))) {
-			ImageIO.write(ImageIO.read(new URL(pictureURL)), "jpg", new File("karpy.jpg"));
+		File temp = new File("karpy.jpg");
+		if(!temp.exists()) {
+			try {
+				System.out.println("create file:"+temp.createNewFile());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		try (FileInputStream fis = new FileInputStream(temp)) {
+			ImageIO.write(ImageIO.read(new URL(pictureURL)), "jpg", temp);
 			MultipartFile file = new MockMultipartFile(pictureName + ".jpg", IOUtils.toByteArray(fis));
 			return fileToBlob(file.getInputStream(), file.getSize());
 		} catch (IOException | SQLException e) {

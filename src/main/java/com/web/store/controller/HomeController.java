@@ -88,7 +88,9 @@ public class HomeController {
 		session.setAttribute("hotSearch", hService.getTop5());
 		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
 		if (mb != null) {
-			session.setAttribute("memberLoginOK", mservice.getMemberBymId(mb.getmId()));
+			MemberBean member = mservice.getMemberBymId(mb.getmId());
+			if(member!=null)
+				session.setAttribute("memberLoginOK", member);
 		}
 		return "index1";
 

@@ -216,11 +216,8 @@ public class MemberDaoImpl implements MemberDao {
 
 		Session session = factory.getCurrentSession();
 		MemberBean mb = session.get(MemberBean.class, mId);
-		if (mb == null) {
-			throw new MemberNotFoundException("查無此廠商", mId.toString());
-
-		}
-		System.out.println(mb.toString());
+		if (mb != null)
+			System.out.println(mb.toString());
 		return mb;
 	}
 
@@ -274,10 +271,11 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public void deleteCreditCard(Integer cId) {
-			Session session = factory.getCurrentSession();
-			CreditCardBean cb = session.get(CreditCardBean.class, cId);
-			session.delete(cb);	
+		Session session = factory.getCurrentSession();
+		CreditCardBean cb = session.get(CreditCardBean.class, cId);
+		session.delete(cb);
 	}
+
 //	@Override
 //	public MemberBean updateTaxId(MemberBean mb) {
 //		MemberBean member = null;
@@ -349,12 +347,12 @@ public class MemberDaoImpl implements MemberDao {
 		MemberBean member = null;
 		Session session = factory.getCurrentSession();
 		member = getMemberBymId(mb.getmId());
-		
+
 		if (mb.getVehicle() != null && mb.getVehicle().trim().length() > 0)
 			member.setVehicle(mb.getVehicle());
-		
+
 		session.update(member);
-		
+
 		return mb;
 	}
 
@@ -365,7 +363,8 @@ public class MemberDaoImpl implements MemberDao {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM CouponBean WHERE mId =:mId and status=:status";
 		try {
-			list = (List<CouponBean>) session.createQuery(hql).setParameter("mId", mId).setParameter("status" , true).getResultList();
+			list = (List<CouponBean>) session.createQuery(hql).setParameter("mId", mId).setParameter("status", true)
+					.getResultList();
 
 		} catch (NoResultException e) {
 			e.printStackTrace();
@@ -378,12 +377,12 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		int pk = 0;
 		Session session = factory.getCurrentSession();
-		if(!couponExist(cb)) {
+		if (!couponExist(cb)) {
 			cb.setMemberbean(getMemberBymId(cb.getmId()));
 			pk = (int) session.save(cb);
-			System.out.println("pk:" + pk);	
+			System.out.println("pk:" + pk);
 		}
-		
+
 		return pk;
 	}
 
@@ -402,19 +401,18 @@ public class MemberDaoImpl implements MemberDao {
 		boolean exist = false;
 		int mId = cb.getmId();
 		String token = cb.getToken();
-		
+
 		Session session = factory.getCurrentSession();
 		String hql = "from CouponBean where mId = :mId and token = :token";
 
 		try {
-			session.createQuery(hql).setParameter("mId", mId).setParameter("token",token).getSingleResult();
+			session.createQuery(hql).setParameter("mId", mId).setParameter("token", token).getSingleResult();
 			exist = true;
 		} catch (NoResultException e) {
 			exist = false;
-			System.out.println("折價卷不存在: ["+mId+", " + token+"]");
+			System.out.println("折價卷不存在: [" + mId + ", " + token + "]");
 		}
 		return exist;
 	}
-
 
 }
