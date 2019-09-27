@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.web.store.model.ProductBean;
+import com.web.store.service.HotSearchService;
 import com.web.store.service.ProductService;
 
 @Controller
 public class HomeController {
 	@Autowired
 	ProductService service;
+	
+	@Autowired
+	HotSearchService hService;
 
 	@RequestMapping("/welcome")
 	public String welcome(Model model) {
@@ -75,6 +79,9 @@ public class HomeController {
 //		HttpSession session = request.getSession();
 //		session.setAttribute("proudcts", list);
 		model.addAttribute("products", list);
+		HttpSession session = request.getSession();
+		session.setAttribute("hotSearch", hService.getTop5());
+		
 		return "index1";
 
 	}

@@ -149,11 +149,11 @@
 															<span>hot</span>
 														</div>
 														<div class="sinle_pic sngl-pc sinle_pic_2xd">
-															<a href="#"> 
-															   <img class="primary-img" style="height:200px;width:auto;margin:0 auto;"
+															<a href="<spring:url value='productById02?pId=${product.pId}'/>"> 
+															   <img style="height:200px;width:auto;margin:0 auto;"
 																src="data:image/jpg;base64,${product.base64Image}" alt="" /> 
-																<img class="secondary-img" style="height:200px;width:auto;margin:0 auto;"
-																src="data:image/jpg;base64,${product.base64Image1}" alt="" />
+<!-- 									class="primary-img"							<img class="secondary-img" style="height:200px;width:auto;margin:0 auto;" -->
+<%-- 																src="data:image/jpg;base64,${product.base64Image1}" alt="" /> --%>
 															</a>
 														</div>
 <!-- 														<div class="product-action" data-toggle="modal" -->
@@ -218,9 +218,10 @@
 																				<!-- 																					data-original-title="Donec non est at" type="submit">加入購物車</button> -->
 																				<%-- 																				</form:form> --%>
 																				<a class="button_act button_act_2 button_act_hts"
-																					data-quick-id="45" href="" title=""
+																					data-quick-id="45" href="<spring:url value='productById02?pId=${product.pId}'/>" 
+																					title=""
 																					data-toggle="tooltip"
-																					data-original-title="Donec non est at">加入購物車 </a>
+																					data-original-title="Donec non est at">詳細資料</a>
 																			</div>
 																		</li>
 																		<li class="addwishlist">
