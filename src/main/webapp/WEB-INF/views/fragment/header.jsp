@@ -14,7 +14,26 @@
 	type="text/css" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/vendor/modernizr-2.8.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
+
+<style>
+	/* custom scrollbar  */
+#new_cart_section::-webkit-scrollbar{
+	width:0.5em;
+}
+#new_cart_section::-webkit-scrollbar-track{
+	-webkit-box-shadow:inset 0 0 6px rgb(0,0,0,0,3);
+	border-radius:10px;
+}
+#new_cart_section::-webkit-scrollbar-thumb{
+	border-radius:10px;
+	background-color:darkgrey;
+	outline:1px solid slategrey;
+}
+
+</style>
+
 <%
 response.setHeader( "Pragma", "no-cache" );
 response.addHeader( "Cache-Control", "must-revalidate" );
