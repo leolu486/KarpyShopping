@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.Base64;
+import java.text.DecimalFormat;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +19,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -109,11 +108,7 @@ public class ShoppingCartController {
 		System.out.println("price=" + price);
 		String vId = jsonObject.get("vId").getAsString();
 		System.out.println("vId=" + vId);
-//		String qty = jsonObject.get("qty").getAsString();
-//		System.out.println("qty=" + qty);
-//
-//
-//		Integer quantity = Integer.valueOf(qty);
+
 		Integer stock = service.getProductById(pId).getAmount();
 		PrintWriter out = null;
 		response.setContentType("application/json");
@@ -168,7 +163,7 @@ public class ShoppingCartController {
 		}
 	}
 
-	// TODO--購物車圖片
+	
 	@RequestMapping(value = "/getPicture/{productId}", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getPicture(HttpServletResponse resp, @PathVariable Integer productId) {
 		byte[] body = null;
@@ -217,6 +212,38 @@ public class ShoppingCartController {
 		cart.deleteProduct(pId);
 		return "redirect:/cartConfirm";
 	}
+	
+	
+	@RequestMapping(value = "/cancelProductAJAJ")
+	public void cancelProductAJAJ(@RequestParam("pId") Integer pId, Model model, HttpSession session, HttpServletResponse response) {
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+		cart.deleteProduct(pId);
+		Double total = cart.getSubtotal();
+		DecimalFormat decimalFormat = new DecimalFormat("#,###,###");
+		String formatTotal = decimalFormat.format(total);
+		System.out.println("formatTotal=" + formatTotal);
+		
+		Integer items = cart.getItemNumber();
+		
+		
+		PrintWriter out = null;
+		response.setContentType("application/json");
+		StringBuilder jsonString = new StringBuilder();
+		jsonString.append("{\"total\" : " + formatTotal + ", \"items\" :" + items + "}");
+		
+		try {
+			out = response.getWriter();
+			out.print(jsonString);
+			System.out.println(jsonString.toString());
+			System.out.println("total==" + total + ",items=" + items);
+			out.flush();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		
+		
+		}
 
 	@RequestMapping(value = "/modifyQty")
 	public void modifyQty(@RequestParam("pId") Integer pId, @RequestParam("newQty") Integer newQty, Model model,

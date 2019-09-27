@@ -1,5 +1,6 @@
 package com.web.store.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -96,14 +97,14 @@ public class OrderController {
 			return "order";
 		}
 		model.addAttribute("order", service.select(oId));
-		return "order/singleOrder"; //return "order";
+		return "order/singleOrder"; 
 	}
 
 	// 查全部訂單
 	@RequestMapping("/orders")
 	public String select(Model model) {
 		model.addAttribute("orders", service.select());
-		return "order/orders"; // return "orders";
+		return "order/orders";
 	}
 
 	// 依會員查全部訂單
@@ -116,14 +117,14 @@ public class OrderController {
 	@RequestMapping("/ordersBymId")
 	public String selectMemberOrders(@RequestParam("mId") Integer mId, Model model) {
 		model.addAttribute("orders", service.selectMemberOrders(mId));
-		return "order/orders"; //return "orders";
+		return "order/orders"; 
 	}
 
 	// 依訂單編號查細項
 	@RequestMapping("/orderItemByOid")
 	public String displayItems(@RequestParam("oId") Integer oId, Model model) {
 		model.addAttribute("items", service.queryItems(oId));
-		return "order/orderDetail"; //return "displayOrderItem";
+		return "order/orderDetail"; 
 	}
 
 	// TODO--for新增訂單測試，需刪除
@@ -143,7 +144,7 @@ public class OrderController {
 //	}
 
 	// 新增訂單表單，0921商品庫存檢查
-	@RequestMapping("/addOrder") // @RequestMapping("/order/add")
+	@RequestMapping("/addOrder") 
 	public String persistOrder(Model model,HttpSession session,HttpServletRequest request) {
 		OrderBean order = new OrderBean();
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
@@ -173,7 +174,18 @@ public class OrderController {
 			}
 		}
 		model.addAttribute("order", order);
-		return "order/addOrder"; //return "orderConfirm";
+		
+		return "order/addOrder"; 
+	}
+	@RequestMapping("/ezship")
+	public String ezship(Model model,HttpSession session,HttpServletRequest request) {
+		OrderBean order = new OrderBean();
+		String name = request.getParameter("stName");
+		String ezShip = "exist";		
+		request.setAttribute("name", name);
+		model.addAttribute("order", order);
+		model.addAttribute("ezShip", ezShip);
+		return "order/addOrder";
 	}
 
 	// 新增訂單寫入資料庫
@@ -276,7 +288,6 @@ public class OrderController {
 			orderItems = service.queryItems(ob.getoId());
 			copy.addAll(orderItems);			
 		}
-//		System.out.println("copy.size() ====" + copy.size());
 		model.addAttribute("items", copy);
 		return "/order/orderItemsHistory";
 	}	
