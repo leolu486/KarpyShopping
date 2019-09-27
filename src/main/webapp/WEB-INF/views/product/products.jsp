@@ -53,11 +53,13 @@
 	src="${pageContext.request.contextPath }/js/jquery_3_4_1.js"></script>
 
 <script>
-	var total = ${totalPages};
+	var total = $
+	{
+		totalPages
+	};
 
 	$(function() {
 		console.log("ready!");
-
 
 		//add select page option
 		for (var i = 1; i <= total; i++) {
@@ -149,20 +151,21 @@
 															<span>hot</span>
 														</div>
 														<div class="sinle_pic sngl-pc sinle_pic_2xd">
-															<a href="<spring:url value='productById02?pId=${product.pId}'/>"> 
-															   <img style="height:200px;width:auto;margin:0 auto;"
-																src="data:image/jpg;base64,${product.base64Image}" alt="" /> 
-<!-- 									class="primary-img"							<img class="secondary-img" style="height:200px;width:auto;margin:0 auto;" -->
-<%-- 																src="data:image/jpg;base64,${product.base64Image1}" alt="" /> --%>
+															<a
+																href="<spring:url value='productById02?pId=${product.pId}'/>">
+																<img style="height: 200px; width: auto; margin: 0 auto;"
+																src="data:image/jpg;base64,${product.base64Image}"
+																alt="" /> <!-- 									class="primary-img"							<img class="secondary-img" style="height:200px;width:auto;margin:0 auto;" -->
+																<%-- 																src="data:image/jpg;base64,${product.base64Image1}" alt="" /> --%>
 															</a>
 														</div>
-<!-- 														<div class="product-action" data-toggle="modal" -->
-<!-- 															data-target="#myModal"> -->
-<!-- 															<button type="button" -->
-<!-- 																class="btn btn-info btn-lg quickview quickview_2" -->
-<!-- 																data-toggle="tooltip" title="Quickview">Quick -->
-<!-- 																View</button> -->
-<!-- 														</div> -->
+														<!-- 														<div class="product-action" data-toggle="modal" -->
+														<!-- 															data-target="#myModal"> -->
+														<!-- 															<button type="button" -->
+														<!-- 																class="btn btn-info btn-lg quickview quickview_2" -->
+														<!-- 																data-toggle="tooltip" title="Quickview">Quick -->
+														<!-- 																View</button> -->
+														<!-- 														</div> -->
 													</div>
 												</div>
 												<!-- product name and detail -->
@@ -173,8 +176,8 @@
 																<!-- product name -->
 																<h2>
 																	<a
-																		href="<spring:url value='productById02?pId=${product.pId}'/>"
-																		> ${product.pname}</a>
+																		href="<spring:url value='productById02?pId=${product.pId}'/>">
+																		${product.pname}</a>
 																</h2>
 																<!-- product description -->
 																<div class="pro_discrip">
@@ -218,9 +221,9 @@
 																				<!-- 																					data-original-title="Donec non est at" type="submit">加入購物車</button> -->
 																				<%-- 																				</form:form> --%>
 																				<a class="button_act button_act_2 button_act_hts"
-																					data-quick-id="45" href="<spring:url value='productById02?pId=${product.pId}'/>" 
-																					title=""
-																					data-toggle="tooltip"
+																					data-quick-id="45"
+																					href="<spring:url value='productById02?pId=${product.pId}'/>"
+																					title="" data-toggle="tooltip"
 																					data-original-title="Donec non est at">詳細資料</a>
 																			</div>
 																		</li>
@@ -254,7 +257,7 @@
 								</div>
 							</c:forEach>
 							<!-- foreach end line -->
-
+							<jsp:include page="/WEB-INF/views/fragment/rightIcon.jsp" />
 							<!-- change page -->
 
 							<table border="1"
