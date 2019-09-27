@@ -246,14 +246,15 @@
 		}
 	}
 
-	// 	individual date check
-	// 	function PDchk() {
-	// 		if ($('input[name=gender]:checked', '#PD').val() == undefined) {
-	// 			alert("未選擇性別");
-	// 			return false;
-	// 		}
-	// 		return true;
-	// 	}
+	function checkdate(){
+	var today = new Date();
+	var vdate = document.getElementById("edate").value;
+	if(today > vdate){
+		document.getElementById("dcheck").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>日期有誤";
+	}else{
+		
+	}
+	}
 </script>
 <style>
 .center {
@@ -663,7 +664,7 @@ background: rgb(191, 191, 191);
 						<p class="p1">新增信用卡</p>
 						<hr style="width: 60%">
 						<form:form method='POST' modelAttribute="CreditCardBean"
-							class='form-horizontal' enctype="multipart/form-data">
+							class='form-horizontal' enctype="multipart/form-data" onsubmit="return checkdate();">
 							<div style="padding-left: 150px; padding-top: 20px;">
 								<div class="form-group row ">
 									<label for="cname" class="col-sm-2 col-form-label">信用卡名稱：</label>
@@ -722,6 +723,7 @@ background: rgb(191, 191, 191);
 									<div class="col-auto">
 										<input class="form-control-plaintext" id="edate" name="date"
 											type='date' placeholder="未設定" />
+											<span id="dcheck"></span>
 									</div>
 								</div>
 
