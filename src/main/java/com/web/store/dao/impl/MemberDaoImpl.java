@@ -415,4 +415,23 @@ public class MemberDaoImpl implements MemberDao {
 		return exist;
 	}
 
+	@Override
+	public CouponBean getCouponBycId(Integer cId) {
+		// TODO Auto-generated method stub
+		CouponBean cb = null;
+		Session session = factory.getCurrentSession();
+		String hql = "FROM CouponBean WHERE cId =:cId";
+		cb = (CouponBean) session.createQuery(hql).setParameter("cId", cId).getSingleResult();
+		return cb;
+	}
+
+	@Override
+	public void resetCoupon(Integer cId) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		CouponBean cb = session.get(CouponBean.class, cId);
+		cb.setStatus(true);
+		session.saveOrUpdate(cb);
+	}
+
 }

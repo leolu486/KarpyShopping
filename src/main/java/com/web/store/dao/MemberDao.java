@@ -63,5 +63,9 @@ public interface MemberDao {
 	
 	void useCoupon(Integer cId);
 	
+	void resetCoupon(Integer cId);
+	
 	boolean couponExist(CouponBean cb);
+	
+	CouponBean getCouponBycId(Integer cId);
 }

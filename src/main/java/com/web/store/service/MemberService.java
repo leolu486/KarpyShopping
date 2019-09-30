@@ -61,4 +61,8 @@ public interface MemberService {
 	int getCoupon(CouponBean cb);
 	
 	void useCoupon(Integer cId);
+	
+	void resetCoupon(Integer cId);
+	
+	CouponBean getCouponBycId(Integer cId);
 }

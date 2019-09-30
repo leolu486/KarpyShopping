@@ -81,22 +81,36 @@
           <div class="card p-2" style="height:120px">
           
             <div class="input-group">
+			<!-- coupon field -->
+			<c:if test="${empty cancelCoupon}"> 
             	<c:if test="${! empty couponList}">
-              <select>
-          		<c:forEach var="coupon" items="${couponList}">
-          		<option>所有${coupon.category} : ${coupon.discount*10}折 </option>
-          		</c:forEach>  	    	
-              </select>
-               
-              <div class="input-group-append">
-                <button id="useCoupon" class="btn btn-secondary m-3">使用折價券</button>
-              </div>
-              </c:if>
-             <c:if test="${empty couponList}">
-            	抱歉，您沒有可以使用的折價卷
+            	  	<select id="coupon-select">
+        	  			<c:forEach var="coupon" items="${couponList}">
+    	      				<option value="${coupon.cId}">所有${coupon.category} : ${coupon.discount*10}折 </option>
+ 	         			</c:forEach>  	    	
+              		</select>
+              		<div class="coupon-error-msg" style="color:red;">
+            	   		${errorCoupon}
+        	       	</div>
+					<!-- coupon button -->
+	              	<div class="input-group-append">
+                		<button id="useCoupon" class="btn btn-secondary m-3">使用折價券</button>
+              		</div>
+              	</c:if>
+             	<c:if test="${empty couponList}">
+            		抱歉，您沒有可以使用的折價卷
+            	</c:if>
             </c:if>
+            <c:if test="${! empty cancelCoupon}">
+            	<h3>感謝您使用折價卷</h3>
+            	<div class="input-group-append">
+            		<button id="cancelCoupon" class="btn btn-secondary m-3">取消折價卷</button>
+            	</div>
+            </c:if>
+            
+            
             </div>
-           
+           	
           </div>
         </div>
         
@@ -209,6 +223,8 @@
     
     </script>  
     
+
+    
   <script>
   
   	$("#toggleEz").on("click",function(){
@@ -216,14 +232,22 @@
   		$("#ezForm").toggle(1000);
 //   		$("#addr").val('');
 //   		$("#toggleEz").css("display","none");
-  	})
+  	});
   	
   	
   	$("#home").on("click",function(){
   		$("#addr").focus();
   		$("#ezForm").css("display","none");
 
-  	})
+  	});
+  	
+  	$("#useCoupon").on("click",function(){
+  		window.location.href="useCoupon?cId=" + $("#coupon-select").find(":selected").val(); 		
+  	});
+  	
+  	$("#cancelCoupon").on("click",function(){
+  		window.location.href="cancelCoupon?cId=${cancelCoupon}"; 		
+  	});
   
   </script>
   

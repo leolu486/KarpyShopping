@@ -41,6 +41,17 @@ public class ShoppingCart {
 			return false;
 		}
 	}
+	// 設定折扣
+	public boolean modifyDiscount(int pId, Double discount) {
+		if (cart.get(pId) != null) {
+			OrderItemBean oi = cart.get(pId);
+			oi.setDiscount(discount);
+			// cart.put(bookID, oi);
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	// 刪除某項商品
 	public int deleteProduct(int pId) {

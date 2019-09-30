@@ -179,6 +179,18 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		dao.useCoupon(cId);
 	}
+	@Transactional
+	@Override
+	public CouponBean getCouponBycId(Integer cId) {
+		// TODO Auto-generated method stub
+		return dao.getCouponBycId(cId);
+	}
+	@Transactional
+	@Override
+	public void resetCoupon(Integer cId) {
+		// TODO Auto-generated method stub
+		dao.resetCoupon(cId);
+	}
 
 
 }

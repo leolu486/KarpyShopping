@@ -182,9 +182,14 @@ public class OrderController {
 		
 		//Coupon code
 		//only get coupons which unused
+		StringBuilder errorCoupon = (StringBuilder) session.getAttribute("errorCoupon");
+		Integer cId=(Integer)session.getAttribute("cancelCoupon");
 		List<CouponBean> couponList = mservice.getCouponsBymId(((MemberBean)session.getAttribute("memberLoginOK")).getmId());
 		model.addAttribute("couponList", couponList);
-		
+		model.addAttribute("cancelCoupon",cId);
+		model.addAttribute("errorCoupon",errorCoupon);
+		session.removeAttribute("cancelCoupon");
+		session.removeAttribute("errorCoupon");
 		return "order/addOrder"; 
 	}
 	@RequestMapping("/ezship")
