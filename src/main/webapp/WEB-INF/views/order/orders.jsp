@@ -32,7 +32,8 @@
 body { 
 	opacity: 0; 
 	transition: opacity 2s; 
-} 
+}
+
 </style>
 <body onload="document.body.style.opacity='1'">
 <jsp:include page="/WEB-INF/views/fragment/top.jsp" />
@@ -58,7 +59,7 @@ body {
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">寄送地址</th>
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">收貨人</th>							
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">連絡電話</th>							
-									<th class="cell100 column2 font-weight-bold" style="border-style:none"></th>							
+									<th class="cell100 column2 font-weight-bold" style="border-style:none"><span style="font-size:1.4em;" class="fa fa-pencil-square-o"></span></th>							
 <!-- 									<th class="cell100 column2"></th>							 -->
 								</tr>
 							</thead>
@@ -92,7 +93,7 @@ body {
 												</c:when>
 										
 												<c:otherwise>
-												<a href="<spring:url value='/order/update?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>更新訂單 </a>
+												<a href="<spring:url value='/orderUpdate?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>更新訂單 </a>
 													<hr style="opacity:0">
 												<button id="cancelBtn" type="button" class="btn btn-danger" onclick="return cancel(${order.oId})">取消訂單</button>
 												</c:otherwise>
