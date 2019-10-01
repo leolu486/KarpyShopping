@@ -113,11 +113,6 @@ public class HomeController {
 		return "membertest";
 	}
 
-	@RequestMapping("/rightIcon2")
-	public String rightIcon2() {
-		return "fragment/rightIcon2";
-	}
-	
 	
 	@RequestMapping("/images")
 	public String sendListOfImages(HttpServletRequest request, Model model) {

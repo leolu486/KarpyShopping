@@ -57,7 +57,8 @@ public class LoginCheckingInterceptor implements HandlerInterceptor {
 						session.setAttribute("requestURI", requestURI + "?" + QueryString);
 					}
 				}
-				resp.sendRedirect(contextPath + "/AddorLogin");
+//				resp.sendRedirect(contextPath + "/AddorLogin");
+				resp.sendRedirect(contextPath + "/adminlogin");
 				return true;
 			}
 

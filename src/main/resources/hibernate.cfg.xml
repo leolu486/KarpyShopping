@@ -35,6 +35,7 @@
 		<mapping class="com.web.store.model.CreditCardBean"></mapping>
 		<mapping class="com.web.store.model.TaxIdBean"></mapping>
 		<mapping class="com.web.store.model.CouponBean"></mapping>
+		<mapping class="com.web.store.model.HotSearchBean"></mapping>
 
 
 	</session-factory>

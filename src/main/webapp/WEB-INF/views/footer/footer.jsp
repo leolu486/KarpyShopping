@@ -78,7 +78,7 @@ corresponding value from the list below*/
 						</div>
 						<div class="footer_menu">
 							<ul>
-								<li><a href="#">管理員</a></li>
+								<li><a href="admin">管理員</a></li>
 								<li><a href="#">卡痞購物商城</a></li>
 								<li><a href="#">卡痞團購網</a></li>
 

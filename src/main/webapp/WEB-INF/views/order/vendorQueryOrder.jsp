@@ -42,19 +42,19 @@ body {
 <%-- <jsp:include page="/WEB-INF/views/fragment/top.jsp" /> --%>
 
 
-<form:form id="orderTable">
+<form:form id="orderTable" method="Post" >
 <div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
 				<a class="btn btn-secondary" style="margin-bottom:10px" href='<c:url value="/"/>'>返回</a>
-				<span style="margin-left:20px;font-size:30px;font-weight:bold">賣場訂單查詢</span>
+				<span style="margin-left:20px;font-size:30px;font-weight:bold">賣場訂單查詢 </span>
+									
 			
 					<span style="margin-left:1100px;font-size:30px;font-weight:bold">搜尋: </span>
 					
 						<input id="searchOrder" name="oId" type='text' class='form-control' style="display:inline;margin-left:10px;border-bottom:black;" placeholder="請輸入訂單編號"/>
 						<input id="searchBtn" name="searchBtn" type='submit' class='btn btn-primary' style="display:inline;margin-bottom:5px;" value="送出" />
 <!-- 						<button id="searchBen"	name="searchBtn" type="button" class='btn btn-primary' style="display:inline;">送出</button>				 -->
-			
 				<div class="table100 ver2 m-b-110">
 					<div class="table100-head">
 						<table>
@@ -68,47 +68,21 @@ body {
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">寄件號碼</th>							
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">寄送地址</th>
 									<th class="cell100 column2 font-weight-bold" style="border-style:none">收貨人</th>							
-									<th class="cell100 column2 font-weight-bold" style="border-style:none">連絡電話</th>														
-									<th class="cell100 column2 font-weight-bold" style="border-style:none">
-										<span style="font-size:1.4em;" class="fa fa-pencil-square-o"></span>
-									</th>							
-															
+									<th class="cell100 column2 font-weight-bold" style="border-style:none">連絡電話</th>
+<%-- 									<c:if test="${order.status != '取貨完成' }">								 --%>
+										<th class="cell100 column2 font-weight-bold" style="border-style:none"><span style="font-size:1.4em;" class="fa fa-pencil-square-o"></span></th>							
+<%-- 									</c:if>							 --%>
 								</tr>
 							</thead>
 						</table>
 					</div>
-
-					<div class="table100-body js-pscroll">
-						<table>
-							
-								<tbody>	
-									<tr class="row100 body">
-										<td class="cell100 column1" style="border-style:none">${order.oId}</td>
-										<td class="cell100 column2" style="border-style:none">${order.odate}</td>
-										<td class="cell100 column2" style="border-style:none">
-											<a href="<spring:url value='/orderItemByOid?oId=${order.oId}' />" class="btn btn-info"> <span class="glyphicon-info-sigh glyphicon"></span>詳細資料 </a>
-										</td>									
-										<td class="cell100 column2" style="border-style:none">${order.price} 元</td>
-										<td class="cell100 column2" style="border-style:none">${order.status}</td>
-										<td class="cell100 column2" style="border-style:none">${order.shippingNo}</td>
-										<td class="cell100 column2" style="border-style:none">${order.addr}</td>
-										<td class="cell100 column2" style="border-style:none">${order.consignee}</td>
-										<td class="cell100 column2" style="border-style:none">${order.tel}</td>
-										<td class="cell100 column2" style="border-style:none">
-										<c:choose>
-											<c:when test="${order.status != '取貨完成' }">
-												<a href="<spring:url value='/order/VendorUpdate?oId=${order.oId}' />" class="btn btn-primary"> <span class="glyphicon-info-sigh glyphicon"></span>賣場更新訂單 </a>
-											</c:when>
-											<c:otherwise>
-												<img src="<c:url value='/order/images/check.jpg' />" >
-											</c:otherwise>
-										</c:choose>	
-										</td> 								
-									</tr>
-								</tbody>
-							
-						</table>
-					</div>
+					
+						<c:if test="${error != null }">
+							<script>
+								var err = '${error}';
+								alert(err);
+							</script>						
+						</c:if>
 				</div>
 			</div>
 		</div>
