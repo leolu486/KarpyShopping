@@ -71,11 +71,11 @@
 </head>
 
 <%
-response.setHeader( "Pragma", "no-cache" );
-response.addHeader( "Cache-Control", "must-revalidate" );
-response.addHeader( "Cache-Control", "no-cache" );
-response.addHeader( "Cache-Control", "no-store" );
-response.setDateHeader("Expires", 0);
+	response.setHeader("Pragma", "no-cache");
+	response.addHeader("Cache-Control", "must-revalidate");
+	response.addHeader("Cache-Control", "no-cache");
+	response.addHeader("Cache-Control", "no-store");
+	response.setDateHeader("Expires", 0);
 %>
 
 <body>
@@ -431,7 +431,7 @@ response.setDateHeader("Expires", 0);
 														</div>
 													</li>
 													<li>
-														<div class="new_act">
+														<div class="new_act" >
 															<a class="button_act" data-quick-id="45"
 																href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																title="" data-toggle="tooltip"
@@ -4218,7 +4218,7 @@ response.setDateHeader("Expires", 0);
 						<div class="fchered_area">
 							<div class="new_product">
 								<div class="product_heading">
-									<i class="fa fa-list-ol"></i> <span>Featured Catagories</span>
+									<i class="fa fa-list-ol"></i> <span>精選分類</span>
 								</div>
 							</div>
 						</div>
@@ -4230,15 +4230,15 @@ response.setDateHeader("Expires", 0);
 											<div class="fechered_pix">
 
 												<img
-													src="<c:url value="/images/featured-pic/f_pix_1.jpg" />"
+													src="<c:url value="/images/featured-pic/blog_pic_1.jpg" />"
 													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="#">Accessories</a>
+													<a href="<spring:url value='getProductsByCategory?searchBy=流行服飾'/>">流行服飾</a>
 												</h3>
 											</div>
-											<a class="view_button">View More</a>
+											<a href="<spring:url value='getProductsByCategory?searchBy=流行服飾'/>" class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -4250,10 +4250,10 @@ response.setDateHeader("Expires", 0);
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="#">Albums</a>
+													<a href="<spring:url value='getProductsByCategory?searchBy=3C產品'/>">3C產品</a>
 												</h3>
 											</div>
-											<a class="view_button">View More</a>
+											<a href="<spring:url value='getProductsByCategory?searchBy=3C產品'/>" class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -4265,70 +4265,67 @@ response.setDateHeader("Expires", 0);
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="#">Electronic</a>
+													<a href="<spring:url value='getProductsByCategory?searchBy=精品名錶'/>">精品名錶</a>
 												</h3>
 											</div>
-											<a class="view_button">View More</a>
+											<a href="<spring:url value='getProductsByCategory?searchBy=精品名錶'/>" class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
 												<img
-													src="<c:url value="/images/featured-pic/f_pix_4.jpg" />"
+													src="<c:url value="/images/featured-pic/f_pix_1.jpg" />"
 													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="#">Headlight</a>
+													<a href="<spring:url value='getProductsByCategory?searchBy=日常用品'/>">日常用品</a>
 												</h3>
 											</div>
-											<a class="view_button">View More</a>
+											<a href="<spring:url value='getProductsByCategory?searchBy=日常用品'/>" class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img
-													src="<c:url value="/images/featured-pic/f_pix_5.jpg" />"
+												<img src="<c:url value="/images/featured-pic/0.jpg" />"
 													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="#">Mirrors</a>
+													<a href="<spring:url value='getProductsByCategory?searchBy=飾品'/>">飾品</a>
 												</h3>
 											</div>
-											<a class="view_button">View More</a>
+											<a href="<spring:url value='getProductsByCategory?searchBy=飾品'/>" class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img
-													src="<c:url value="/images/featured-pic/f_pix_5.jpg" />"
+												<img src="<c:url value="/images/featured-pic/112234.jpg" />"
 													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="#">Accessories</a>
+													<a href="<spring:url value='getProductsByCategory?searchBy=食品'/>">食品</a>
 												</h3>
 											</div>
-											<a class="view_button">View More</a>
+											<a href="<spring:url value='getProductsByCategory?searchBy=食品'/>" class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="fchered_item">
 											<div class="fechered_pix">
-												<img
-													src="<c:url value="/images/featured-pic/f_pix_3.jpg" />"
+												<img src="<c:url value="/images/featured-pic/112232.png" />"
 													alt="">
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="#">Accessories</a>
+													<a href="<spring:url value='getProductsByCategory?searchBy=居家安全'/>">居家安全</a>
 												</h3>
 											</div>
-											<a class="view_button">View More</a>
+											<a href="<spring:url value='getProductsByCategory?searchBy=居家安全'/>" class="view_button">看我看更多</a>
 										</div>
 									</div>
 								</div>

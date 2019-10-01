@@ -124,7 +124,7 @@
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href='rightIcon2'>安安測試用</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 
