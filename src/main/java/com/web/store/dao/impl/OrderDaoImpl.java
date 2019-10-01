@@ -156,5 +156,10 @@ public class OrderDaoImpl implements OrderDao {
 			throw new OrderNotFoundException("無退訂紀錄");
 		return cancelOrders;
 	}
+	//1001 added by peter for backstage page
+	@Override
+	public Integer getOrdersCount() {
+		return factory.getCurrentSession().createQuery("FROM OrderBean").getResultList().size();
+	}
 
 }

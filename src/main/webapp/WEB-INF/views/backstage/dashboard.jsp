@@ -180,12 +180,12 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="panel panel-success">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								<i class="fa fa-users"></i> HotSearch Top 10
+								<i class="fa fa-users"></i> HotSearch Top 5
 							</h3>
 						</div>
 						<table class="table table-striped" style="text-align: center;">
@@ -198,58 +198,13 @@
 
 							</thead>
 							<tbody>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-								<tr>
-									<td>${ranks}</td>
-									<td>${wordrank}</td>
-									<td>${count}</td>
-								</tr>
-
-
+								<c:forEach var="key" items="${Top5}" varStatus="loop">
+									<tr>
+										<td>${loop.index+1}</td>
+										<td>${key.searchBy}</td>
+										<td>${key.searchCount+1}</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>

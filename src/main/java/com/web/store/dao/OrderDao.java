@@ -30,5 +30,8 @@ public interface OrderDao {
 	
 	//0918 Add for cancellation history query
 	public List<OrderBean> selectCancelOrders(Integer mId);
+	
+	//1001 added by peter for backstage page
+	Integer getOrdersCount();
 
 }
