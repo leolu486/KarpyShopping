@@ -71,11 +71,11 @@
 </head>
 
 <%
-response.setHeader( "Pragma", "no-cache" );
-response.addHeader( "Cache-Control", "must-revalidate" );
-response.addHeader( "Cache-Control", "no-cache" );
-response.addHeader( "Cache-Control", "no-store" );
-response.setDateHeader("Expires", 0);
+	response.setHeader("Pragma", "no-cache");
+	response.addHeader("Cache-Control", "must-revalidate");
+	response.addHeader("Cache-Control", "no-cache");
+	response.addHeader("Cache-Control", "no-store");
+	response.setDateHeader("Expires", 0);
 %>
 
 <body>
@@ -4360,12 +4360,13 @@ response.setDateHeader("Expires", 0);
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">Apple Watch Series 4 值不值得買？開箱體驗與比較心得告訴你！</a>
+											<a href="#">【電獺少女】Apple Watch Series 4
+												值不值得買？開箱體驗告訴你！</a>
 										</h3>
 										<div class="post-excerpt">
-											●內建 GPS 與 GLONASS <br>●雙核心處理器 <br>●W3 無線晶片 <br>●容量
-											16GB <br>●心率感測器 <br>●Ion-X 強化玻璃 😄 <br>●ISO
-											22810:2010 標準的防水 50 公尺等級
+											● 內建 GPS 與 GLONASS <br>● 雙核心處理器 <br>● W3 無線晶片 <br>●
+											容量 16GB <br>● 心率感測器 <br>● Ion-X 強化玻璃 😄 <br>●
+											ISO 22810:2010 標準的防水 50 公尺等級
 										</div>
 										<a href="<spring:url value='productById02?pId=109'/>"> <span
 											class="readmore-text">點此看商品</span>
@@ -4385,12 +4386,14 @@ response.setDateHeader("Expires", 0);
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">終於換新手機了! iPhoneXR上手一個月心得! ♥ 滴妹</a>
+											<a href="#">【滴妹】終於換新手機了！iPhoneXR上手一個月心得！</a>
 										</h3>
-										<div class="post-excerpt">• 6.1 吋 Liquid Retina 顯示器
-											(LCD) • IP67 等級防潑抗水與防塵功能 (在最深1公尺水中最長可達30分鐘) • 1200 萬像素相機
-											(具有光學影像穩定功能)，以及700萬像素原深感測前置相機，均具備人像模式、人像光線、景深控制與智慧型HDR功能 •
-											Face ID，用於安全認證與 Apple Pay • A12 仿生，具備新一代神經網路引擎</div>
+										<div class="post-excerpt">
+											● 6.1 吋 Liquid Retina 顯示器<br>● IP67 等級防潑抗水與防塵功能<br>●
+											1200 萬像素相機 <br> ●
+											700萬像素原深感測前置相機，均具備人像模式、人像光線、景深控制與智慧型HDR功能 <br>● Face
+											ID，用於安全認證與 Apple Pay<br>● A12 仿生，具備新一代神經網路引擎
+										</div>
 										<a href="<spring:url value='productById02?pId=107'/>"> <span
 											class="readmore-text">點此看商品</span>
 										</a>
@@ -4408,12 +4411,12 @@ response.setDateHeader("Expires", 0);
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">【3C老實說】Dyson V7 Trigger 手持式吸塵器：繼承 Dyson V8
-												系列靈魂的中階機種</a>
+											<a href="#">【3C老實說】Dyson V7 Trigger：繼承 Dyson V8
+												靈魂的中階機種</a>
 										</h3>
 										<div class="post-excerpt">
-											■ 動態負載感應器，根據不同地板改變馬達速度 <br> ■ 最新V11數位馬達 每秒監測系統效能8000次 <br>■
-											LCD螢幕 顯示效能、剩餘時間 <br>■ 優化電力及使用強勁電池,吸力提升20%(與v10相比) <br>■
+											● 動態負載感應器，根據不同地板改變馬達速度 <br> ● 最新V11數位馬達 每秒監測系統效能8000次 <br>●
+											LCD螢幕 顯示效能、剩餘時間 <br>● 優化電力及使用強勁電池,吸力提升20%(與v10相比) <br>●
 											可濾除99.97%微塵與過敏源
 										</div>
 										<a href="<spring:url value='productById02?pId=110'/>"> <span
@@ -4426,15 +4429,14 @@ response.setDateHeader("Expires", 0);
 								<div class="blog_next">
 									<div class="blog_thumb">
 										<iframe width="280px" height="200px"
-											src="https://www.youtube.com/embed/7TgWMEa1gH0"
+											src="https://www.youtube.com/embed/LuIvZVT_XAQ"
 											frameborder="0"
 											allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 											allowfullscreen></iframe>
-
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">無處不在的耳機 AirPods2代【值不值得買第331期】</a>
+											<a href="#">【3C TIM哥】Apple New Airpods(2代)藍芽耳機升級開箱！</a>
 										</h3>
 										<div class="post-excerpt">無線 AirPods，全新登場。
 											只須將它們拿出，就可以與你所有的 Apple 裝置配合使用。 戴上它們放入耳中，就能立刻連接。
