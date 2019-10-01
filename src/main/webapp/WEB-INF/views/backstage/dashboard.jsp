@@ -69,8 +69,8 @@
 				<div class="col-xs-12">
 
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li class="active"><a>DashBoard</a></li>
+						<li><a>Home</a></li>
+						<li><a>DashBoard</a></li>
 					</ol>
 				</div>
 			</div>
@@ -81,7 +81,7 @@
 						<div class="block-content">
 							<span class="banner-icon fa-stack fa-3x"> <i
 								class="fa fa-circle fa-stack-2x"></i> <i
-								class="fa fa-inbox fa-stack-1x fa-inverse"></i>
+								class="fa fa-users fa-stack-1x fa-inverse"></i>
 							</span>
 							<div class="banner-content">
 								<div class="title">${memberCount}</div>
@@ -99,7 +99,7 @@
 						<div class="block-content">
 							<span class="fa-stack fa-3x"> <i
 								class="fa fa-circle fa-stack-2x"></i> <i
-								class="fa fa-comments fa-stack-1x fa-inverse"></i>
+								class="fa fa-archive fa-stack-1x fa-inverse"></i>
 							</span>
 							<div class="banner-content">
 								<div class="title">${orderCount}</div>
@@ -116,7 +116,7 @@
 						<div class="block-content">
 							<span class="fa-stack fa-3x"> <i
 								class="fa fa-circle fa-stack-2x"></i> <i
-								class="fa fa-tags fa-stack-1x fa-inverse"></i>
+								class="fa fa-th-large fa-stack-1x fa-inverse"></i>
 							</span>
 							<div class="banner-content">
 								<div class="title">${productCount}</div>
@@ -134,7 +134,7 @@
 						<div class="block-content">
 							<span class="fa-stack fa-3x"> <i
 								class="fa fa-circle fa-stack-2x"></i> <i
-								class="fa fa-share-alt fa-stack-1x fa-inverse"></i>
+								class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
 							</span>
 							<div class="banner-content">
 								<div class="title">${adminCount}</div>
