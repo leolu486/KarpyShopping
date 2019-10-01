@@ -1,7 +1,7 @@
-﻿'屈臣氏抽取式衛生紙110抽10包入', 109, 1, 29, '日常用品', '2019-7-29', '2021-7-29', data/productImg/1/1.jpg, data/productImg/1/2.jpg
-'LEVIS 素面 小LOGO 短梯 TEE ', 880, 2, 3, '流行服飾', '2019-7-29', null, data/productImg/2/1.jpg, data/productImg/2/2.jpg
-'特力屋 淨味防霉全效乳膠漆 玫瑰白 5L', 783, 3, 568, '五金用品', '2019-7-29', '2022-7-29', data/productImg/3/1.jpg, data/productImg/3/2.jpg
-'三花1/2休閒襪', 75, 4, 1, '貼身衣物', '2019-7-29', null, data/productImg/4/1.jpg, data/productImg/4/2.jpg
+﻿'屈臣氏抽取式衛生紙110抽10包入', 109, 1, 29, '日常用品', '2019-7-29', '2021-7-29', data/productImg/1/1.jpg, data/productImg/1/2.jpg, •柔軟再升級，紙織柔化新技術<br>•棉絮般的柔軟舒適<br>•美洲進口處女紙漿<br>•不含螢光劑<br>•可在馬桶中分解
+'LEVIS 素面 小LOGO 短梯 TEE ', 880, 2, 3, '流行服飾', '2019-7-29', null, data/productImg/2/1.jpg, data/productImg/2/2.jpg, 尺寸：S/M/L/XL<br><br>參考數據：<br>S-肩寬38 胸圍46 衣長64<br>M-肩寬40 胸圍48 衣長66<br>L-肩寬42 胸圍50 衣長68<br>XL-肩寬44 胸圍52 衣長69<br>以上單位為公分cm <br>非專業測量會有1公分左有誤差
+'特力屋 淨味防霉全效乳膠漆 玫瑰白 5L', 783, 3, 568, '五金用品', '2019-7-29', '2022-7-29', data/productImg/3/1.jpg, data/productImg/3/2.jpg, •特力屋自有品牌產品<br>•淨味配方/超低VOC/超強防霉/防潮抗鹼/優異耐擦洗<br>•SGS 檢測驗證 (13項)<br>•符合 日本 JIS Z2911 防霉最高等級<br>•耐擦洗超越國家標準12倍
+'三花1/2休閒襪', 75, 4, 1, '貼身衣物', '2019-7-29', null, data/productImg/4/1.jpg, data/productImg/4/2.jpg, •襪口零壓力設計，天天都舒適<br>•特別適合-特別人士穿著<br>•零壓力舒壓織法，襪口輕盈
 '【CASIO】卡西歐 SHEEN 晶鑽時尚錶', 4700, 5, 1, '精品名錶', '2019-7-29', null, data/productImg/5/1.jpg, data/productImg/5/2.jpg
 '星辰錶 CITIZEN 光電時尚石英錶', 6500, 6, 1, '精品名錶', '2019-7-29', null, data/productImg/6/1.jpg, data/productImg/6/2.jpg
 '日本 AGF Maxim 濃郁即溶咖啡-100g ', 110, 7, 1586, '食品', '2019-7-29', '2020-7-29', data/productImg/7/1.jpg, data/productImg/7/2.jpg
@@ -144,4 +144,3 @@
 '精迷你電子鍋', 1683, 28, 20, '家電', '2017-10-21', '2019-12-18', data/productImg/144/1.jpg, data/productImg/144/2.jpg
 '微電腦全自動料理萬用鍋', 1790, 28, 20, '家電', '2017-10-21', '2019-12-18', data/productImg/145/1.jpg, data/productImg/145/2.jpg
 '節能免插電全自動氣泡水機', 2990, 28, 20, '家電', '2017-10-21', '2019-12-18', data/productImg/146/1.jpg, data/productImg/146/2.jpg
-'Dyson 360 Heuriest 智能吸塵機器人', 16800, 28, 20, '家電', '2017-10-21', '2019-12-18', data/productImg/147/1.jpg, data/productImg/147/2.jpg

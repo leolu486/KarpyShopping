@@ -108,6 +108,7 @@ public class EDMTableResetHibernate {
 					File file1 = new File(token[7].trim());
 					System.out.println("\\"+token[8].trim()+"\\");
 					File file2 = new File(token[8].trim());
+					String detail = token[9].trim();
 					Double rankSum = null;
 					Integer rankCount = null;
 					System.out.println(expdate);
@@ -116,10 +117,10 @@ public class EDMTableResetHibernate {
 					if (!expdate.equals("null")) {
 						System.out.println("not null");
 						pb = new ProductBean(null, pname, price, vId, amount, category, sdate, expdate, rankSum,
-								rankCount, file1, file2);
+								rankCount, file1, file2, detail);
 					} else {
 						System.out.println("is null");
-						pb = new ProductBean(null, pname, price, vId, amount, category, sdate, rankSum, rankCount, file1, file2);
+						pb = new ProductBean(null, pname, price, vId, amount, category, sdate, rankSum, rankCount, file1, file2, detail);
 					}
 					
 					VendorBean vb = session.get(VendorBean.class, pb.getvId());

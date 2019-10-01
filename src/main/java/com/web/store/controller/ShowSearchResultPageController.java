@@ -66,17 +66,14 @@ public class ShowSearchResultPageController {
 			for(ProductBean pb : subList) {
 			if (pb.getProductImage() != null && pb.getBase64Image() == null) {
 				Blob blob = pb.getProductImage();
-				Blob blob1 = pb.getProductImage1();
 				byte[] imageData = null;
-				byte[] imageData1 = null;
 				try {		
 					imageData = blob.getBytes(1, (int) blob.length());
-					imageData1 = blob1.getBytes(1, (int) blob.length());
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				pb.setBase64Image(Base64.getEncoder().encodeToString(imageData));
-				pb.setBase64Image1(Base64.getEncoder().encodeToString(imageData1));
 			}
 			
 			resultPage.add(pb);
@@ -133,17 +130,13 @@ public class ShowSearchResultPageController {
 			for(ProductBean pb : subList) {
 			if (pb.getProductImage() != null && pb.getBase64Image() == null) {
 				Blob blob = pb.getProductImage();
-				Blob blob1 = pb.getProductImage1();
 				byte[] imageData = null;
-				byte[] imageData1 = null;
 				try {		
 					imageData = blob.getBytes(1, (int) blob.length());
-					imageData1 = blob1.getBytes(1, (int) blob.length());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				pb.setBase64Image(Base64.getEncoder().encodeToString(imageData));
-				pb.setBase64Image1(Base64.getEncoder().encodeToString(imageData1));
 			}
 			
 			resultPage.add(pb);
