@@ -1,5 +1,8 @@
 package com.web.store.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -14,6 +17,7 @@ import java.util.Set;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +33,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.web.store.exception.OrderModificationException;
 import com.web.store.exception.OrderNotFoundException;
 import com.web.store.exception.ProductStockException;
@@ -50,8 +57,7 @@ public class OrderController {
 	@Autowired
 	MemberService mservice;
 	@Autowired
-	OrderService service;
-	// 測試用，需刪除
+	OrderService service;	
 	@Autowired
 	ProductService pserv;
 
@@ -92,14 +98,23 @@ public class OrderController {
 	public String selectByOid(Model model) {
 		OrderBean ob = new OrderBean();
 		model.addAttribute(ob);
-		return "order";
+		return "order/vendorQueryOrder";
 	}
 
 	// 查單筆訂單 ，0912 modification，賣家修改訂單 
 	@RequestMapping(value="/orderPage", method=RequestMethod.POST)
-	public String selectByOid(@RequestParam("oId") Integer oId, Model model) {
+	public String selectByOid( Model model,HttpServletRequest request) {
+		String param = request.getParameter("oId");		
+		Integer oId;
+		try {
+			oId = Integer.valueOf(param);
+			
+		}catch(NumberFormatException e) {
+			oId = null;
+		}
 		if(oId == null) {
-			return "order";
+			model.addAttribute("error", "查無此訂單");
+			return "order/vendorQueryOrder";
 		}
 		model.addAttribute("order", service.select(oId));
 		return "order/singleOrder"; 
@@ -109,7 +124,7 @@ public class OrderController {
 	@RequestMapping("/orders")
 	public String select(Model model) {
 		model.addAttribute("orders", service.select());
-		return "order/orders";
+		return "order/vendorQueryOrders";
 	}
 
 	// 依會員查全部訂單
@@ -240,18 +255,18 @@ public class OrderController {
 	}
 
 	// 買家更新頁面 ， 0918 checked
-	@RequestMapping("/order/update")
+	@RequestMapping("/orderUpdate")
 	public String updateOrder_Page(@RequestParam("oId") Integer oId, Model model) {
 		OrderBean ob = service.select(oId);
 		if(ob.getStatus().equals("已出貨")||ob.getStatus().equals("取貨完成")) {
 			return "redirect:/membercentre";
 		}
 		model.addAttribute("order", ob);
-		return "/order/updateOrder";
+		return "order/memberUpdateOrder"; //return "/order/updateOrder";
 	}
 
 	// 買家更新
-	@RequestMapping(value = "/order/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/orderUpdate", method = RequestMethod.POST)
 	public String updateOrder_buyer(@RequestParam("oId") Integer oId, @ModelAttribute("order") OrderBean ob,
 			Model model, BindingResult result) {
 		Integer mId =ob.getmId();
@@ -267,7 +282,7 @@ public class OrderController {
 			return "redirect:/home";
 		}
 		model.addAttribute("order", ob);
-		return "VendorUpdateOrder";
+		return "order/VendorUpdateOrder";
 	}
 
 	// 賣家更新
@@ -349,5 +364,95 @@ public class OrderController {
 		
 		return errorMessage;
 	}
+	
+	
+	
+		@RequestMapping(value = "/orderUpdateAJ", method = RequestMethod.POST)
+		public void updateOrderAJ(@RequestParam("oId") Integer oId,ServletRequest request,
+			Model model,HttpServletResponse response) {			
+			OrderBean ob = service.select(oId);
+			StringBuilder json = new StringBuilder();
+			String line = null;
+			try {
+				BufferedReader reader = request.getReader();
+				while ((line = reader.readLine()) != null) {
+					json.append(line);
+				}
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+			
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(json.toString());
+			JsonObject jsonObject = element.getAsJsonObject();
+			String tel = jsonObject.get("tel").getAsString();
+			String consignee = jsonObject.get("consignee").getAsString();
+			String addr = jsonObject.get("addr").getAsString();
+			PrintWriter out = null;
+			response.setContentType("application/json");
+			StringBuilder jsonString = new StringBuilder();		
+			if(tel.isEmpty() || consignee.isEmpty() || addr.isEmpty() ||tel.isBlank()|| consignee.isBlank()||addr.isBlank() ) {
+				try {
+					out = response.getWriter();
+					jsonString.append("{\"null\":\"修改資訊有誤，請再次確認!\"}");
+					out.print(jsonString.toString());					
+					out.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}else if(ob.getTel().equals(tel) && ob.getAddr().equals(addr) && ob.getConsignee().equals(consignee)) {
+				try {
+					out = response.getWriter();
+					jsonString.append("{\"unchanged\":\"修改資訊未變動，請再次確認!\"}");
+					out.print(jsonString.toString());					
+					out.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}else {
+				
+				
+				if(checkCharacter(tel)) {
+					try {
+						out = response.getWriter();
+						jsonString.append("{\"error\":\"電話號碼錯誤，請重新輸入!\"}");
+						out.print(jsonString.toString());						
+						out.flush();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}					
+				}else{
+					
+					ob.setTel(tel);
+					ob.setConsignee(consignee);
+					ob.setAddr(addr);
+					service.updateOrder(ob);
+					String newTel = ob.getTel();
+					String newAddr = ob.getAddr();
+					String newConsignee = ob.getConsignee();								
+					
+					try {
+						out = response.getWriter();
+						jsonString.append("{\"success\":\"成功更新訂單\", \"newTel\" : " + "\"" + newTel+ "\"" + ", \"newAddr\" : " + "\"" + newAddr + "\"" + ",\"newConsignee\":" + "\"" +newConsignee+ "\"" +" }");
+						out.print(jsonString.toString());						
+						out.flush();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				
+				}
+			}
+			
+			
+		}
+		
+		
+		public boolean checkCharacter(String stringToCheck) {
+			Boolean result = true;
+			if(stringToCheck.matches("\\d+")) {
+				result = false;
+			}					
+			return result;
+		}
 
 }
