@@ -1,5 +1,7 @@
 package com.web.store.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.web.store.model.HotSearchBean;
 import com.web.store.model.ManagerBean;
 import com.web.store.service.HotSearchService;
 import com.web.store.service.ManagerService;
@@ -33,12 +36,14 @@ public class BackStageController {
 	@RequestMapping("/admin")
 	public String adminPage(Model model, HttpSession session) {
 		Integer memberCount = mservice.getAllMember().size();
-//		Integer orderCount  =  oservice.select().size();
+		Integer orderCount = oservice.getOrdersCount();
 		Integer productCount = pservice.getAllProducts().size();
 		Integer adminCount = adminservice.getAllManager().size();
-
+		List<HotSearchBean> slist = hservice.getTop5();
+		
+		session.setAttribute("Top5", slist);
 		session.setAttribute("memberCount", memberCount);
-//		session.setAttribute("orderCount", orderCount);
+		session.setAttribute("orderCount", orderCount);
 		session.setAttribute("productCount", productCount);
 		session.setAttribute("adminCount", adminCount);
 

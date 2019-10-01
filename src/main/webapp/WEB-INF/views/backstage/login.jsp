@@ -57,7 +57,7 @@
 					<div class="control">
 						<div class="label">Account</div>
 						<form:input type="text" class="form-control" path="account"
-							placeholder="user" />
+							autocomplete="off" placeholder="user" autofocus="true"/>
 					</div>
 					<div class="control">
 						<div class="label">Password</div>

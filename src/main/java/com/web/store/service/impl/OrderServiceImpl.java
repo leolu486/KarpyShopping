@@ -79,6 +79,12 @@ public class OrderServiceImpl implements OrderService {
 		return dao.selectCancelOrders(mId);		
 	}
 
+	@Override
+	public Integer getOrdersCount() {
+		// TODO Auto-generated method stub
+		return dao.getOrdersCount();
+	}
+
 
 
 
