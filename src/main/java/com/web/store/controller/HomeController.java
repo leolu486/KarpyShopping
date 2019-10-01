@@ -113,6 +113,7 @@ public class HomeController {
 		return "membertest";
 	}
 
+	
 	@RequestMapping("/images")
 	public String sendListOfImages(HttpServletRequest request, Model model) {
 		List<ProductBean> list = service.getAllProducts();
@@ -143,4 +144,7 @@ public class HomeController {
 		return "ch01/showImages";
 	}
 
+	
+	
+	
 }
