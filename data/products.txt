@@ -2,17 +2,17 @@
 'LEVIS 素面 小LOGO 短梯 TEE ', 880, 2, 3, '流行服飾', '2019-7-29', null, data/productImg/2/1.jpg, data/productImg/2/2.jpg, 尺寸：S/M/L/XL<br><br>參考數據：<br>S-肩寬38 胸圍46 衣長64<br>M-肩寬40 胸圍48 衣長66<br>L-肩寬42 胸圍50 衣長68<br>XL-肩寬44 胸圍52 衣長69<br>以上單位為公分cm <br>非專業測量會有1公分左有誤差
 '特力屋 淨味防霉全效乳膠漆 玫瑰白 5L', 783, 3, 568, '五金用品', '2019-7-29', '2022-7-29', data/productImg/3/1.jpg, data/productImg/3/2.jpg, •特力屋自有品牌產品<br>•淨味配方/超低VOC/超強防霉/防潮抗鹼/優異耐擦洗<br>•SGS 檢測驗證 (13項)<br>•符合 日本 JIS Z2911 防霉最高等級<br>•耐擦洗超越國家標準12倍
 '三花1/2休閒襪', 75, 4, 1, '貼身衣物', '2019-7-29', null, data/productImg/4/1.jpg, data/productImg/4/2.jpg, •襪口零壓力設計，天天都舒適<br>•特別適合-特別人士穿著<br>•零壓力舒壓織法，襪口輕盈
-'【CASIO】卡西歐 SHEEN 晶鑽時尚錶', 4700, 5, 1, '精品名錶', '2019-7-29', null, data/productImg/5/1.jpg, data/productImg/5/2.jpg
-'星辰錶 CITIZEN 光電時尚石英錶', 6500, 6, 1, '精品名錶', '2019-7-29', null, data/productImg/6/1.jpg, data/productImg/6/2.jpg
-'日本 AGF Maxim 濃郁即溶咖啡-100g ', 110, 7, 1586, '食品', '2019-7-29', '2020-7-29', data/productImg/7/1.jpg, data/productImg/7/2.jpg
-'【靴下屋】薄紗透明短襪/日本職人手做', 333, 8, 3, '貼身衣物', '2019-7-29', null, data/productImg/8/1.jpg, data/productImg/8/2.jpg
-'【周大福】LINE FRIENDS白金手鍊', 4845, 9, 1, '飾品', '2019-7-29', null, data/productImg/9/1.jpg, data/productImg/9/2.PNG
-'直立手持兩用HEPA吸塵器', 699, 10, 761, '家電', '2019-7-30', null, data/productImg/10/1.jpg, data/productImg/10/2.PNG
-'【老媽拌麵、藍象系列】老成都担担麵', 75, 11, 41, '食品', '2019-7-30', '2020-7-30', data/productImg/11/1.jpg, data/productImg/11/2.jpg
-'【三菱】日本零食 咖姆咖姆糖袋裝', 50, 12, 1886, '食品', '2019-7-30', '2019-10-30', data/productImg/12/1.jpg, data/productImg/12/2.jpg
-'哈根達斯 迪士尼熱帶叢林探險迷你杯', 1299, 13, 61, '食品', '2019-7-30', '2019-9-30', data/productImg/13/1.jpg, data/productImg/13/2.jpg
-'【亞尼克】生乳捲雙捲禮盒', 525, 14, 3979, '食品', '2019-7-30', '2019-8-15', data/productImg/14/1.jpg, data/productImg/14/2.jpg
-'【快車肉乾】A1超薄芝麻杏仁香脆肉紙 ', 200, 15, 8788, '食品', '2019-7-30', '2019-9-30', data/productImg/15/1.jpg, data/productImg/15/2.jpg
+'【CASIO】卡西歐 SHEEN 晶鑽時尚錶', 4700, 5, 1, '精品名錶', '2019-7-29', null, data/productImg/5/1.jpg, data/productImg/5/2.jpg, •台灣代理商公司貨<br>•絕非平行輸入水貨<br>•原廠配件齊全<br>•收藏送禮最佳選擇
+'星辰錶 CITIZEN 光電時尚石英錶', 6500, 6, 1, '精品名錶', '2019-7-29', null, data/productImg/6/1.jpg, data/productImg/6/2.jpg, •原廠公司貨<br>•太陽能充電功能<br>•日期顯示<br>•不鏽鋼錶殼、錶帶<br>•安全折疊錶扣<br>•FE6015-56E
+'日本 AGF Maxim 濃郁即溶咖啡-100g ', 110, 7, 1586, '食品', '2019-7-29', '2020-7-29', data/productImg/7/1.jpg, data/productImg/7/2.jpg, •日本原裝進口<br>•知名日本咖啡品牌-AGF<br>•獨特日式香醇口感<br>•日本最暢銷咖啡 老饕一喝就愛上
+'【靴下屋】薄紗透明短襪/日本職人手做', 333, 8, 3, '貼身衣物', '2019-7-29', null, data/productImg/8/1.jpg, data/productImg/8/2.jpg, 【尺 碼】：22～24cm <br>•品質100% 不惜成本的用料 <br>•嚴格100% 嚴格檢驗 <br>•用心100% 用心對待買一雙襪子 <br>•堅持100% 堅持製造完美的襪子 
+'【周大福】LINE FRIENDS白金手鍊', 4845, 9, 1, '飾品', '2019-7-29', null, data/productImg/9/1.jpg, data/productImg/9/2.PNG, •正版授權<br>•LINE FRIENDS熊大<br>•18K白金 新品上市
+'直立手持兩用HEPA吸塵器', 699, 10, 761, '家電', '2019-7-30', null, data/productImg/10/1.jpg, data/productImg/10/2.PNG, •直立/手持式二合一<br>•可水洗式HEPA濾網<br>•免集塵袋<br>•旋風集塵<br>•電源線收納不費力
+'【老媽拌麵、藍象系列】老成都担担麵', 75, 11, 41, '食品', '2019-7-30', '2020-7-30', data/productImg/11/1.jpg, data/productImg/11/2.jpg, •宵夜好選擇 <br>•輕鬆調理快速上桌 <br>•美味好吃
+'【三菱】日本零食 咖姆咖姆糖袋裝', 50, 12, 1886, '食品', '2019-7-30', '2019-10-30', data/productImg/12/1.jpg, data/productImg/12/2.jpg, •可以咀嚼的糖果！ <br>•雙層口感雙重享受 <br>•使用國產梅與信州產巨峰果汁
+'哈根達斯 迪士尼熱帶叢林探險迷你杯', 1299, 13, 61, '食品', '2019-7-30', '2019-9-30', data/productImg/13/1.jpg, data/productImg/13/2.jpg, •內含迷你杯*14 保冷袋1只<br>•北法Arras農場頂級牛乳<br>•100%真材實料，不含人工添加
+'【亞尼克】生乳捲雙捲禮盒', 525, 14, 3979, '食品', '2019-7-30', '2019-8-15', data/productImg/14/1.jpg, data/productImg/14/2.jpg, •來自北海道的乳源，成就豐厚芳醇的自然風味 <br>•昭和蛋糕專用麵粉製成蛋糕
+'【快車肉乾】A1超薄芝麻杏仁香脆肉紙 ', 200, 15, 8788, '食品', '2019-7-30', '2019-9-30', data/productImg/15/1.jpg, data/productImg/15/2.jpg,
 '統一科學麵原味節令版40g*12', 120, 16, 750, '食品', '2019-7-30', '2020-3-30', data/productImg/16/1.jpg, data/productImg/16/2.jpg
 '若羌紅棗核桃 150g 臻御行', 144, 17, 9753, '食品', '2019-7-30', '2019-12-30', data/productImg/17/1.jpg, data/productImg/17/2.PNG
 'MOS摩斯漢堡_玉米濃湯粉限時免運', 475, 18, 96, '食品', '2019-7-30', '2020-3-30', data/productImg/18/1.jpg, data/productImg/18/2.PNG
