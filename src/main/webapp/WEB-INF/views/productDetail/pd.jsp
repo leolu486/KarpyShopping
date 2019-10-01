@@ -181,7 +181,7 @@
          <div  style="  background-color: #DDDDDD; width: 360px;height: 37px;">                     
                                                  <h3 style="font-weight: 500; ">售價:  ${product.price}</h3></div>
 						<div class="evavet_description">
-							<p>商品介紹:  ${product.detail}</p>
+							<p>商品介紹:<br>${product.detail}</p>
 						</div>
 
 
