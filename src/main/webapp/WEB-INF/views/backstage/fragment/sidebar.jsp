@@ -65,36 +65,43 @@
 		</div>
 
 		<ul class="menu">
-			<li class="submenu"><a href="#" class="active">
+			<li class="submenu"><a href="admin" class="active">
 					<div>
 						<i class="menu-icon fa fa-bar-chart"></i> <span class="menu-title">DashBoard</span>
 					</div>
 			</a></li>
-			<li class="submenu"><a href="#">
+			<li class="submenu"><a href="adminProducts">
 					<div>
 
 						<i class="menu-icon fa fa-th-large"></i> <span class="menu-title">Products</span>
 
 					</div>
 			</a></li>
-			<li class="submenu"><a href="#">
+						<li class="submenu"><a href="adminOrders">
 					<div>
 
-						<i class="menu-icon fa fa-desktop"></i> <span class="menu-title">Members</span>
+						<i class="menu-icon fa fa-archive"></i> <span class="menu-title">Orders</span>
 
 					</div>
 			</a></li>
-			<li class="submenu"><a href="#">
+			<li class="submenu"><a href="adminMembers">
 					<div>
 
-						<i class="menu-icon fa fa-table"></i> <span class="menu-title">Manager</span>
+						<i class="menu-icon fa fa-users"></i> <span class="menu-title">Members</span>
 
 					</div>
 			</a></li>
-			<li class="submenu"><a href="#">
+			<li class="submenu"><a href="adminManagers">
 					<div>
 
-						<i class="menu-icon fa fa-file-text-o"></i> <span
+						<i class="menu-icon fa fa-info-circle"></i> <span class="menu-title">Managers</span>
+
+					</div>
+			</a></li>
+			<li class="submenu"><a href="adminVendors">
+					<div>
+
+						<i class="menu-icon fa fa-truck"></i> <span
 							class="menu-title">Vendor</span>
 
 					</div>
