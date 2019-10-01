@@ -79,7 +79,7 @@ public class ManagerDaoImpl implements ManagerDao {
 					.setParameter("password", GlobalService.getMD5Endocing(GlobalService.encryptString(password)))
 					.getSingleResult();
 		} catch (NoResultException e) {
-			throw new ManagerNotFoundException("帳號或是密碼錯誤 : ", account);
+//			throw new ManagerNotFoundException("帳號或是密碼錯誤 : ", account);
 		}
 		return mb;
 
