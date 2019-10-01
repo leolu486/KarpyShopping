@@ -7,6 +7,9 @@
 
 <head>
 
+
+
+
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900'
 	rel='stylesheet' type='text/css' />
 
@@ -31,19 +34,50 @@
 	href="<c:url value='/backstage-source/css/theme.css'/>" />
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/jquery-2.1.3.min.js"></script>
+	src="<c:url value='/backstage-source/js/jquery-2.1.3.min.js'/>" /></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/Chart.min.js"></script>
+	src="<c:url value='/backstage-source/js/Chart.min.js'/>" /></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/bootstrap-select.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/main.js"></script>
-
+	src="<c:url value='/backstage-source/js/bootstrap-select.min.js'/>" /></script>
+<!-- <script type="text/javascript" -->
+<%-- 	src="<c:url value='/backstage-source/js/main.js'/>" /></script> --%>
 
 <!-- <script type="text/javascript" -->
-<%-- 	src="${pageContext.request.contextPath}/backstage-source/js/index.js"></script> --%>
+<%-- 	src="<c:url value='/backstage-source/js/index.js'/>" /></script> --%>
 
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/jquery-1.12.1.min.js'/>" /></script>
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/jquery-ui.min.js'/>" /></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/jquery-ui.css'/>" />
+<script>
+	$(function() {
 
+		$("#dialog-modal").hide();
+		$("#open-dialog").click(function() {
+
+			$("#dialog-modal").dialog({
+				width : 310,
+				height : 100,
+				modal : true,
+				open:function(){
+					$('.ui-widget-overlay').bind('click',function(){
+						$("#dialog-modal").dialog('close');
+					})
+				}
+			});
+		});
+		
+		$("#send").click(function() {
+			//dosomething
+			var msg = $("#dialog-msg").val();
+			alert(msg);
+			$("#dialog-modal").dialog('close');
+		});
+		
+	});
+</script>
 
 
 </head>
@@ -153,13 +187,19 @@
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<div class="panel-title">
-								<span> Admin Message<a href="#"
-									style="margin-left: 300x;">+</a>
+								<span> Admin Message<button id="open-dialog"
+									style="text-align:right;">+</button>
 								</span>
 							</div>
 
 						</div>
-
+						<!-- dialog -->
+						<div id="dialog-modal" title="Add Message">
+							<span> <input id="dialog-msg" type="text" /> <input
+								id="send" type="button" value="send" />
+							</span>
+						</div>
+						<!-- dialog end -->
 						<div class="panel-body no-padding">
 							<ul class="message-list">
 

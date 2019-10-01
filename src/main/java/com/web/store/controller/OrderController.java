@@ -203,6 +203,8 @@ public class OrderController {
 		model.addAttribute("couponList", couponList);
 		model.addAttribute("cancelCoupon",cId);
 		model.addAttribute("errorCoupon",errorCoupon);
+		//1001 by peter -> for order submit TODO: should remove it when useCoupon exist is false
+		session.setAttribute("couponID", cId);
 		session.removeAttribute("cancelCoupon");
 		session.removeAttribute("errorCoupon");
 		return "order/addOrder"; 
@@ -224,6 +226,7 @@ public class OrderController {
 			SessionStatus status) throws SQLException {
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK"); // 會員登入識別字串
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+		Integer cId = (Integer) session.getAttribute("couponID");
 		System.out.println("ShoppingCart===" + cart);
 		System.out.println("MemberBean===" + member);
 		//0912 新增
@@ -254,8 +257,11 @@ public class OrderController {
 		}else {
 			service.insertOrder(order);
 			status.setComplete();
-		}	
-
+		}
+		//1001 by peter -> set coupon as used while using coupon
+		if(cId!=null) {
+			mservice.useCoupon(cId);
+		}
 		return "redirect:/home";
 	}
 
