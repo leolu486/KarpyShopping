@@ -92,6 +92,9 @@ public class HomeController {
 			if(member!=null)
 				session.setAttribute("memberLoginOK", member);
 		}
+		//remove requestURI
+		session.removeAttribute("requestURI");
+		
 		return "index1";
 
 	}
