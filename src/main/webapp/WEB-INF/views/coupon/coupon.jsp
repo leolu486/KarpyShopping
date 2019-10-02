@@ -36,9 +36,11 @@
 					type : 'POST',
 					url : "http://localhost:8080/KarpyShopping/getCoupon",
 					data : data,
-					dataType : "text",
-					success : function() {
+					dataType : "json",
+					success : function(data) {
 
+						alert(data.result);
+						console.log(data);
 						console.log('${sessionScope.requestURI}');//取得攔截前的uri
 						//location.href = 'http://localhost:8080/KarpyShopping';
 					},
@@ -56,16 +58,14 @@
 		$("#use").click(function() {
 			//not login yet
 
-			var data = {
-				token : "abcde",
-			}
+			var data = {token : "abcde",}
 			$.ajax({
 				type : 'POST',
 				url : "http://localhost:8080/KarpyShopping/useCoupon",
 				data : data,
 				dataType : "text",
-				success : function() {
-
+				success : function(data) {
+					
 					console.log('${sessionScope.requestURI}');//取得攔截前的uri
 					//location.href = 'http://localhost:8080/KarpyShopping';
 				},

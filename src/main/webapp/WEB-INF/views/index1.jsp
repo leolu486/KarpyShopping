@@ -60,13 +60,21 @@
 	// 		data: "searchBy="+$("#searchBy").val(),
 	// 		dataType: "text",
 	// 		success: function(response) {
-
 	// 		},
 	// 		error: function(jqXHR, textStatus, errorThrown) {},
 	// 	});
 	// 	}
-</script>
+	
 
+		
+	
+</script>
+<style>
+.coupon_pic{
+	cursor:pointer;
+}
+
+</style>
 
 </head>
 
@@ -801,8 +809,8 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="plus_pic">
-						<div class="pix_new">
-							<a href="#"> <img
+						<div class="pix_new coupon_pic">
+							<a class="coupon-1"> <img
 								src="<c:url value="/images/differ-pic/1.jpg" />" alt="">
 							</a>
 						</div>
@@ -810,8 +818,8 @@
 				</div>
 				<div class="col-md-6">
 					<div class="plus_pic">
-						<div class="pix_new">
-							<a class="#" href="#"> <img
+						<div class="pix_new coupon_pic">
+							<a class="coupon-2"> <img
 								src="<c:url value="/images/differ-pic/differ_pic_5.jpg" />"
 								alt="">
 							</a>
@@ -4674,6 +4682,82 @@
 
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath }/js/time.js"></script>
+		
+		
+		<script>
+
+$(document).ready(function() {
+	var qualification = "${memberLoginOK}";
+
+	//getCoupon 1
+	$(".coupon-1").click(function() {
+		//not login yet
+		if (qualification == "") {
+			alert("Please login first.");
+			location.href = "memberLogin";
+		} else {
+			var data = {
+				category : "流行服飾",
+				discount : 0.8,
+				expdate : "2100-01-30",
+				token : "thankyou9527"
+			}
+			$.ajax({
+				type : 'POST',
+				url : "http://localhost:8080/KarpyShopping/getCoupon",
+				data : data,
+				dataType : "json",
+				success : function(data) {
+					alert(data.result);
+					console.log('${sessionScope.requestURI}');//取得攔截前的uri
+					//location.href = 'http://localhost:8080/KarpyShopping';
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log("jqXHR: " + jqXHR);
+					console.log("textStatus: " + textStatus);
+					console.log("errorThrown: " + errorThrown);
+
+				},
+			});
+		}
+	});
+
+	//getCoupon-2
+	$(".coupon-2").click(function() {
+		//not login yet
+		if (qualification == "") {
+			alert("Please login first.");
+			location.href = "memberLogin";
+		} else {
+			var data = {
+				category : "飾品",
+				discount : 0.7,
+				expdate : "2100-01-30",
+				token : "FQ"
+			}
+			$.ajax({
+				type : 'POST',
+				url : "http://localhost:8080/KarpyShopping/getCoupon",
+				data : data,
+				dataType : "json",
+				success : function(data) {
+					alert(data.result);
+					console.log('${sessionScope.requestURI}');//取得攔截前的uri
+					//location.href = 'http://localhost:8080/KarpyShopping';
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log("jqXHR: " + jqXHR);
+					console.log("textStatus: " + textStatus);
+					console.log("errorThrown: " + errorThrown);
+
+				},
+			});
+		}
+	});
+});
+
+</script>
+		
 </body>
 </html>
 
