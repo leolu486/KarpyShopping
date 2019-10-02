@@ -2,10 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 
 <head>
+
+
+
 
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900'
 	rel='stylesheet' type='text/css' />
@@ -31,19 +36,60 @@
 	href="<c:url value='/backstage-source/css/theme.css'/>" />
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/jquery-2.1.3.min.js"></script>
+	src="<c:url value='/backstage-source/js/jquery-2.1.3.min.js'/>" /></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/Chart.min.js"></script>
+	src="<c:url value='/backstage-source/js/Chart.min.js'/>" /></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/bootstrap-select.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/main.js"></script>
-
+	src="<c:url value='/backstage-source/js/bootstrap-select.min.js'/>" /></script>
+<!-- <script type="text/javascript" -->
+<%-- 	src="<c:url value='/backstage-source/js/main.js'/>" /></script> --%>
 
 <!-- <script type="text/javascript" -->
-<%-- 	src="${pageContext.request.contextPath}/backstage-source/js/index.js"></script> --%>
+<%-- 	src="<c:url value='/backstage-source/js/index.js'/>" /></script> --%>
 
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/jquery-1.12.1.min.js'/>" /></script>
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/jquery-ui.min.js'/>" /></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/jquery-ui.css'/>" />
+<script>
+	$(function() {
 
+		$("#dialog-modal").hide();
+		$("#open-dialog").click(function() {
+
+			$("#dialog-modal").dialog({
+				width : 310,
+				height : 100,
+				modal : true,
+				open : function() {
+					$('.ui-widget-overlay').bind('click', function() {
+						$("#dialog-modal").dialog('close');
+					})
+				}
+			});
+		});
+
+		$("#send").click(function() {
+			//dosomething
+			var id = ${LoginOK.id};
+			var name = "${LoginOK.name}";
+			var time = Date.now();
+			var msg = $("#dialog-msg").val();
+			$("#dialog-modal").dialog('close');
+// 			alert("addMessage?id="+id+"&name="+name+"&time=" + time + "&msg=" + msg);
+			window.location.href="addMessage?id="+id+"&name="+name+"&time=" + time + "&msg=" + msg;
+		});
+		$(".delete-msg").click(function() {
+			//dosomething
+			window.location.href="removeMessage?amId=" + $(this).next('input').val();
+		});
+		
+		
+
+	});
+</script>
 
 
 </head>
@@ -153,30 +199,47 @@
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<div class="panel-title">
-								<span> Admin Message<a href="#"
-									style="margin-left: 300x;">+</a>
-								</span>
+								<span> Admin Message</span>
+								<div class="buttons"
+									style="float: right; display: inline-block;">
+									<!-- 新增訊息 -->
+									<a id="open-dialog" href="#" style="color: white;" onclick="">+</a>
+								</div>
 							</div>
 
 						</div>
-
+						<!-- dialog -->
+						<div id="dialog-modal" title="Add Message">
+							<span> <input id="dialog-msg" type="text" /> <input
+								id="send" type="button" value="send" />
+							</span>
+						</div>
+						<!-- dialog end -->
 						<div class="panel-body no-padding">
+
 							<ul class="message-list">
-
-								<li><img
-									src="<c:url value='/backstage-source/images/profile.jpg'/>"
-									class="profile-img pull-left">
-									<div class="message-block">
-										<div>
-											<span class="username">${admin-name}</span> <span
-												class="message-datetime">${message-datetime}</span>
+								<c:forEach var="msg" items="${Last5Msg}">
+									<li><img
+										src="<c:url value='/images/default-img/default_member_image.jpg'/>"
+										class="profile-img pull-left">
+										<div class="message-block"
+											style="display: inline-block; padding-left: 5px;">
+											<div>
+												<span class="username">${msg.name}</span> <span
+													class="message-datetime"><fmt:formatDate
+														value="${msg.time}" pattern="yyyy/MM/dd HH:mm:ss" /></span>
+											</div>
+											<div class="message">${msg.message}</div>
 										</div>
-										<div class="message">${message}</div>
-									</div></li>
-
-
-
+										<div class="buttons"
+											style="float: right; display: inline-block; padding-top: 20px; padding-right: 10px;">
+											<!-- 刪除購物車商品 -->
+											<a class="delete-btn delete-msg" href="#">X</a> <input
+												type="hidden" class="amId" value="${msg.amId}">
+										</div></li>
+								</c:forEach>
 							</ul>
+
 						</div>
 					</div>
 				</div>

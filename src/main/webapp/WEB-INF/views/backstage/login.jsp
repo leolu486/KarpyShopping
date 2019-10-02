@@ -24,7 +24,7 @@
 	href="<c:url value='/backstage-source/css/theme.css'/>" />
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/jquery-2.1.3.min.js"></script>
+	src="<c:url value='/backstage-source/js/jquery-2.1.3.min.js'/>" /></script>
 
 </head>
 

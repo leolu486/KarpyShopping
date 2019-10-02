@@ -12,13 +12,13 @@
 '【三菱】日本零食 咖姆咖姆糖袋裝', 50, 12, 1886, '食品', '2019-7-30', '2019-10-30', data/productImg/12/1.jpg, data/productImg/12/2.jpg, •可以咀嚼的糖果！ <br>•雙層口感雙重享受 <br>•使用國產梅與信州產巨峰果汁
 '哈根達斯 迪士尼熱帶叢林探險迷你杯', 1299, 13, 61, '食品', '2019-7-30', '2019-9-30', data/productImg/13/1.jpg, data/productImg/13/2.jpg, •內含迷你杯*14 保冷袋1只<br>•北法Arras農場頂級牛乳<br>•100%真材實料，不含人工添加
 '【亞尼克】生乳捲雙捲禮盒', 525, 14, 3979, '食品', '2019-7-30', '2019-8-15', data/productImg/14/1.jpg, data/productImg/14/2.jpg, •來自北海道的乳源，成就豐厚芳醇的自然風味 <br>•昭和蛋糕專用麵粉製成蛋糕
-'【快車肉乾】A1超薄芝麻杏仁香脆肉紙 ', 200, 15, 8788, '食品', '2019-7-30', '2019-9-30', data/productImg/15/1.jpg, data/productImg/15/2.jpg,
-'統一科學麵原味節令版40g*12', 120, 16, 750, '食品', '2019-7-30', '2020-3-30', data/productImg/16/1.jpg, data/productImg/16/2.jpg
-'若羌紅棗核桃 150g 臻御行', 144, 17, 9753, '食品', '2019-7-30', '2019-12-30', data/productImg/17/1.jpg, data/productImg/17/2.PNG
-'MOS摩斯漢堡_玉米濃湯粉限時免運', 475, 18, 96, '食品', '2019-7-30', '2020-3-30', data/productImg/18/1.jpg, data/productImg/18/2.PNG
-'【買一送一】專科 完美防曬水凝膠80g', 510, 19, 3, '日常用品', '2019-7-30', '2020-6-30', data/productImg/19/1.PNG, data/productImg/19/2.PNG
-'【正心堂】 奇亞籽 1公斤(500克X2包)', 101, 20, 271, '食品', '2019-7-30', '2019-12-30', data/productImg/20/1.PNG, data/productImg/20/2.PNG
-'【鮮果日誌】智利富士蘋果',1350, 21, 100,'食品','2019-7-29','2019-8-15', data/productImg/21/1.jpg, data/productImg/21/2.jpg
+'【快車肉乾】A1超薄芝麻杏仁香脆肉紙 ', 200, 15, 8788, '食品', '2019-7-30', '2019-9-30', data/productImg/15/1.jpg, data/productImg/15/2.jpg, •超薄!挑戰你的味覺享受<br>•薄、酥、脆！最薄僅有0.01CM<br>•無添加防腐劑
+'統一科學麵原味節令版40g*12', 120, 16, 750, '食品', '2019-7-30', '2020-3-30', data/productImg/16/1.jpg, data/productImg/16/2.jpg, •隨時隨地可享用的零嘴麵<br>•香脆無法擋 
+'若羌紅棗核桃 150g 臻御行', 144, 17, 9753, '食品', '2019-7-30', '2019-12-30', data/productImg/17/1.jpg, data/productImg/17/2.PNG, •純手工去籽，填入低溫烘焙核桃<br>•滿足您挑惕的味蕾！<br>•每顆皆有單包裝<br>•嚴選華夏第一棗「若羌紅棗」！<br>•填入整顆核桃口感最好<br>•感謝各大媒體報導<br>•團購美食冠軍
+'MOS摩斯漢堡_玉米濃湯粉限時免運', 475, 18, 96, '食品', '2019-7-30', '2020-3-30', data/productImg/18/1.jpg, data/productImg/18/2.PNG, •玉米精華融入湯中<br>•充滿玉米香甜<br>•香氣濃郁<br>•口感滑順<br>•非基改玉米
+'【買一送一】專科 完美防曬水凝膠80g', 510, 19, 3, '日常用品', '2019-7-30', '2020-6-30', data/productImg/19/1.PNG, data/productImg/19/2.PNG, •化粧水般的清爽質地，水感舒適<br>•擁有最高防曬係數SPF50+ / PA++++<br>•添加天然蠶絲蛋白精華與雙重玻尿酸，防曬水潤不乾澀<br>•肥皂即可輕鬆卸除，適合每日使用<br>•無色素、無香料
+'【正心堂】 奇亞籽 1公斤(500克X2包)', 101, 20, 271, '食品', '2019-7-30', '2019-12-30', data/productImg/20/1.PNG, data/productImg/20/2.PNG, •1公斤大包裝=500克的2包，不論是自用，或跟朋友一起合購，都超划算唷!!<br>•奇異籽又稱奇亞籽、鼠尾草籽、白芽子，多種礦物質、蛋白質、低卡<br>•富含Omgea-3、膳食纖維，可增加飽足感<br>•增強體力，給予營養補給!可促進腸道蠕動<br>•無雜質、無灰塵、免沖洗可直接使用。不論添加在任何飲品或者食品上都很適合
+'【鮮果日誌】智利富士蘋果',1350, 21, 100,'食品','2019-7-29','2019-8-15', data/productImg/21/1.jpg, data/productImg/21/2.jpg, •脆甜多汁，一吃上癮<br>•新鮮美味品質保證，冷藏宅配到府
 '糖罐子V領後綁帶刺繡格紋上衣', 299, 22, 2696, '流行服飾', '2019-7-29', null, data/productImg/22/1.PNG, data/productImg/22/2.PNG,•V領提點浪漫氣息<br>•後綁帶造型綁帶注目度up<br>•經典格紋穿搭
 '【現貨】oversize男生t恤日系韓版短袖', 279, 23, 5039, '流行服飾', '2019-7-30', null, data/productImg/23/1.PNG, data/productImg/23/2.PNG,•【現貨】海外寄出<br>•下標2-3天寄出<br>•寄出4-7天到超商門市
 'ASUS 華碩 VivoBook L402 L402WA 14吋', 9600, 24, 10, '3C產品', '2019-7-30', null, data/productImg/24/1.png, data/productImg/24/2.png,•平實的 14 吋輕巧筆電<br>•其提供更大的顯示器<br>•更充足的儲存空間<br>•並充滿多種專為提升使用體驗而設計的技術<br>•是您日常生產工作與娛樂的最佳之選。
@@ -97,31 +97,31 @@
 '{送磁鐵+收納盒-日本松下㊣品NCR18650B國際牌 3400mah 18650鋰電池', 170, 27, 99, '居家安全', '2017-3-25', '2019-11-14', data/productImg/97/1.jpg, data/productImg/97/2.jpg
 '現貨！防身噴霧器紅色閃電【HOD7B1】防狼噴霧', 329, 27, 99, '居家安全', '2017-4-25', '2019-11-14', data/productImg/98/1.jpg, data/productImg/98/2.jpg
 '幼兒安全自動上鎖門欄', 2012, 27, 99, '居家安全', '2017-5-25', '2019-11-14', data/productImg/99/1.jpg, data/productImg/99/2.jpg
-'【防災專家】10年型電池 住宅式國台語火災警報器 ', 490, 27, 99, '居家安全', '2017-6-25', '2019-11-14', data/productImg/100/1.jpg, data/productImg/100/2.jpg
-'L2+COB工作檢修燈.(內附18650電池x1)', 300, 27, 99, '居家安全', '2017-7-25', '2019-11-14', data/productImg/101/1.jpg, data/productImg/101/2.jpg
-'群力消防器材 新型高效能(白鐵不銹鋼)', 1400, 27, 50, '居家安全', '2017-8-25', '2019-5-14', data/productImg/102/1.jpg, data/productImg/102/2.jpg
-'ABC類滅火 車用滅火器', 3280, 27, 99, '居家安全', '2017-9-25', '2019-5-14', data/productImg/103/1.jpg, data/productImg/103/2.jpg
-'密碼保險箱', 2243, 27, 99, '居家安全', '2017-10-25', '2019-11-14', data/productImg/104/1.jpg, data/productImg/104/2.jpg
-'狼牙棒手電筒', 299, 27, 50, '居家安全', '2017-1-25', '2019-11-14', data/productImg/105/1.jpg, data/productImg/105/2.jpg
-'Apple iphone XS (64G) 金色', 32400, 31, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/106/1.jpg, data/productImg/106/2.jpg
-'Apple iphone XR (128G) 白色', 22400, 31, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/107/1.jpg, data/productImg/107/2.jpg
-'Apple iphone XS Max (64G) 金色', 35900, 31, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/108/1.jpg, data/productImg/108/2.jpg
-'Apple Watch S4 GPS 44mm 金色', 12900, 31, 24, '3C產品', '2017-1-25', '2019-11-14', data/productImg/109/1.jpg, data/productImg/109/2.jpg
-'Dyson SV14 V11 Absolute 手持無線吸塵器', 24900, 28, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/110/1.jpg, data/productImg/110/2.jpg
-'Dyson V7 Mattress HH11 手持吸塵器', 9999, 28, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/111/1.jpg, data/productImg/111/2.jpg
-'羅技 G304 無線電競滑鼠(含鼠墊)', 1290, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/112/1.jpg, data/productImg/112/2.jpg
-'華碩 ROG Sica 電競滑鼠', 1090, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/113/1.jpg, data/productImg/113/2.jpg
-'HyperX Alloy FPS RGB 機械式電競鍵盤', 4990, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/114/1.jpg, data/productImg/114/2.jpg
-'ZMI紫米 傳輸充電線', 299, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/115/1.jpg, data/productImg/115/2.jpg
-'美國Blue Yeti 雪怪USB 麥克風 (霧黑)', 5600, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/116/1.jpg, data/productImg/116/2.jpg
-'羅技 M720 Triathlon 多工無線滑鼠', 1690, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/117/1.jpg, data/productImg/117/2.jpg
-'羅技 G102 PRODIGY 遊戲滑鼠', 599, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/118/1.jpg, data/productImg/118/2.jpg
-'AirPods 搭配無線充電盒', 5290, 31, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/119/1.png, data/productImg/119/2.jpg
-'AirPods 搭配有線充電盒', 4990, 31, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/120/1.png, data/productImg/120/2.jpg
-'Creative GigaWorks T40II 二件式喇叭', 4990, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/121/1.jpg, data/productImg/121/2.jpg
-'Edifier R1600TIII 二件式喇叭', 3190, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/122/1.jpg, data/productImg/122/2.jpg
-'Wacom Intuos Basic 繪圖板(黑)', 1990, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/123/1.jpg, data/productImg/123/2.jpg
-'Wacom Cintiq 22 繪圖液晶顯示器', 5600, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/124/1.jpg, data/productImg/124/2.jpg
+'ΣSmoke 智慧偵煙預警器 ', 1959, 27, 99, '居家安全', '2017-6-25', '2019-11-14', data/productImg/100/1.png, data/productImg/100/2.jpg,‧煙霧即時警報<br>‧可當作獨立警報器使用<br>‧同步發送手機通知 第一時間警示家人<br>‧光電式煙霧感應 即早預警<br>‧無需佈線安裝容易<br>‧支援Σlink功能，可與不同裝置連動
+'聲寶 VK-XC3568HS 戶外防護罩型監視攝影機', 3680, 27, 99, '居家安全', '2017-7-25', '2019-11-14', data/productImg/101/1.jpg, data/productImg/101/2.jpg,‧1080P HD高畫質攝影機<br>‧AHD or 1280H影像輸出<br>‧HD高畫質影像傳輸，畫面不會延遲或破損<br>‧超長距離傳輸，施工佈線可達500M<br>‧可使用網路線(絞線傳輸器)施工佈線<br>‧內建ICR濾光片自動切換<br>‧3DNR/2DNR
+'D-Link DCS-8600LH 戶外室內無線網路攝影機', 4999, 27, 50, '居家安全', '2017-8-25', '2019-5-14', data/productImg/102/1.jpg, data/productImg/102/2.jpg,•IP65防水防塵認證<br>•支援雲錄影功能<br>•內建無線網卡，Full HD影像傳輸更順暢<br>•內建麥克風及喇叭，支援雙向語音<br>•內建紅外線LED燈，支援7公尺夜視距離<br>•聲音/移動偵測錄影，可選擇儲存至雲端錄影或MicroSD 記憶卡<br>•支援藍牙無線快速安裝方式<br>•mydlink app即時監看可設定情境與排程
+'ABC類滅火 車用滅火器', 3280, 27, 99, '居家安全', '2017-9-25', '2019-5-14', data/productImg/103/1.jpg, data/productImg/103/2.jpg,•新型設計，美觀輕巧<br>•適用A、B、C類火災<br>•業界唯一產品通過SGS認證<br>•業界唯一提供台灣產物保險產品險保障
+'密碼保險箱', 2243, 27, 99, '居家安全', '2017-10-25', '2019-11-14', data/productImg/104/1.jpg, data/productImg/104/2.jpg,•三門栓，更安全<br>•可安裝至衣櫃、地面、牆面<br>•提供鑰匙及密碼兩種開鎖方法
+'狼牙棒手電筒', 299, 27, 50, '居家安全', '2017-1-25', '2019-11-14', data/productImg/105/1.jpg, data/productImg/105/2.jpg,•採用美國CREE-XPE芯片，亮度超亮<br>•凸透镜，不易破損<br>•六角菱形燈頭，防身用<br>•長短可伸縮調節<br>•尾部錐形安全錘 緊急時可破窗逃生
+'Apple iphone XS (64G) 金色', 32400, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/106/1.jpg, data/productImg/106/2.jpg,•5.8 吋超 Retina 顯示器(OLED)，具備 HDR<br>•IP68 等級防塵與防潑抗水功能 (在最深2公尺水中最長可達30分鐘)<br>•1200 萬像素雙鏡頭相機 (配備光學影像穩定雙鏡頭)，以及700萬像素原深感測前置相機，均具備人像模式、人像光線、景深控制與智慧型 HDR 功能<br>•Face ID，用於安全認證與 Apple Pay<br>•A12 仿生，具備新一代神經網路引擎<br>•無線充電 (可搭配 Qi 充電器)<br>•iOS 12，具備Memoji、螢幕使用時間、Siri捷徑與群組FaceTime功能
+'Apple iphone XR (128G) 白色', 22400, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/107/1.jpg, data/productImg/107/2.jpg,•6.1 吋 Liquid Retina 顯示器(LCD)<br>•IP67 等級防潑抗水與防塵功能 (在最深1公尺水中最長可達30分鐘)<br>•1200 萬像素相機 (具有光學影像穩定功能)，以及700萬像素原深感測前置相機，均具備人像模式、人像光線、景深控制與智慧型HDR功能<br>•Face ID，用於安全認證與 Apple Pay<br>•A12 仿生，具備新一代神經網路引擎<br>•無線充電 (可搭配 Qi 充電器)<br>•iOS 12，具備Memoji、螢幕使用時間、Siri捷徑與群組FaceTime功能
+'Apple iphone XS Max (64G) 金色', 35900, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/108/1.jpg, data/productImg/108/2.jpg,•6.5 吋超 Retina 顯示器(OLED)，具備 HDR<br>•IP68 等級防塵與防潑抗水功能 (在最深2公尺水中最長可達30分鐘)<br>•1200 萬像素雙鏡頭相機(配備光學影像穩定雙鏡頭)，以及700萬像素原深感測前置相機，均具備人像模式、人像光線、景深控制與智慧型HDR功能<br>•Face ID，用於安全認證與 Apple Pay<br>•A12 仿生，具備新一代神經網路引擎<br>•無線充電 (可搭配 Qi 充電器)<br>•iOS 12，具備Memoji、螢幕使用時間、Siri捷徑與群組FaceTime功能
+'Apple Watch S4 GPS 44mm 金色', 12900, 24, 24, '3C產品', '2017-1-25', '2019-11-14', data/productImg/109/1.jpg, data/productImg/109/2.jpg,•顯示器面積增加超過 30%<br>•揚聲器音量提升 50%<br>•配備更快 64 位元雙核心處理器的 S4 SiP<br>•更佳的加速感測器與陀螺儀，具備跌倒偵測功能<br>•具有觸覺回饋功能的全新「數位錶冠」<br>•有低心率通知、高心率通知、「跌倒偵測」與「SOS 緊急服務」等功能，及全新「呼吸」錶面<br>
+'Dyson SV14 V11 Absolute 手持無線吸塵器', 24900, 28, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/110/1.jpg, data/productImg/110/2.jpg,•動態負載感應器，根據不同地板改變馬達速度<br>•最新V11數位馬達 每秒監測系統效能8000次<br>•LCD螢幕 顯示效能、剩餘時間<br>•優化電力及使用強勁電池，吸力提升20%(與v10相比)<br>•可濾除99.97%微塵與過敏源<br>•0.54L集塵筒容量<br>•60分鐘強勁吸力<br>•一鍵彈出清空集塵筒<br>•全機過濾系統：排放的空氣比呼吸的空氣還乾淨<br>•靜音設計
+'Dyson V7 Mattress HH11 手持吸塵器', 9999, 28, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/111/1.jpg, data/productImg/111/2.jpg,•HEPA等級過濾效果<br>•全機過濾系統：排放的空氣比呼吸的空氣還乾淨<br>•新研發鋰電池科技<br>•第七代戴森數位馬達DDM V7<br>•註冊送兩年保固
+'羅技 G304 無線電競滑鼠(含鼠墊)', 1290, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/112/1.jpg, data/productImg/112/2.jpg,•LIGHTSPEED無線技術<br>•1毫秒回報速率<br>•新一代HERO感應器<br>•400~12000dpi，高達10倍省電效能<br>•內建記憶體<br>•6個可自訂按鍵
+'華碩 ROG Sica 電競滑鼠', 1090, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/113/1.jpg, data/productImg/113/2.jpg,•雙切鍵設計，提升反應能力<br>•獨家專利微動插槽，可依照喜好更換相容微動開關<br>•內建快閃記憶體，可儲存偏好設定檔<br>•PMW3310 5000 DPI 光學感應器，呈現迅速無比的像素級精確度<br>•原廠兩年保固
+'HyperX Alloy FPS RGB 機械式電競鍵盤', 4990, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/114/1.jpg, data/productImg/114/2.jpg,•RGB炫彩背光<br>•可拆式電源線<br>•耐用實鋼框架結構<br>•Kailh凱華極速銀軸<br>•額外USB充電埠<br>•可儲存設定檔至內建記憶體<br>•遊戲模式全鍵無衝
+'ZMI紫米 傳輸充電線', 299, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/115/1.jpg, data/productImg/115/2.jpg,•蘋果MFi認證通過<br>•適用所有Lightning接頭設備<br>•支援任一版本iOS系統<br>•支援2.4A快充，可傳輸及充電<br>•100cm長度適中，方便攜帶
+'美國Blue Yeti 雪怪USB 麥克風 (霧黑)', 5600, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/116/1.jpg, data/productImg/116/2.jpg,•歐美最暢銷的USB電容式麥克風<br>•輕鬆卻專業的錄製各種音源<br>•三個振膜艙和四種收音模式<br>•不需驅動程式，隨插即用，可直接錄音到MAC或PC電腦<br>•採用了高品質類比-數位轉換器<br>•監聽零時差：內置了耳機擴大機<br>•直接控制音量、收音模式、靜音開關以及麥克風增益
+'羅技 M720 Triathlon 多工無線滑鼠', 1690, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/117/1.jpg, data/productImg/117/2.jpg,•多台裝置輕鬆切換<br>•藍牙與Unifying無線連接<br>•24個月的電池壽命<br>•自訂按鍵個性化操作<br>•持久耐用合手設計
+'羅技 G102 PRODIGY 遊戲滑鼠', 599, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/118/1.jpg, data/productImg/118/2.jpg,•遊戲等級光學感應器<br>•1000次/每秒回報速率，即時的按鍵回饋<br>•先進的按鍵張力系統<br>•1680萬色可自訂RGB背光<br>•內建記憶體<br>•6個可自訂按鍵
+'AirPods 搭配無線充電盒', 5290, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/119/1.png, data/productImg/119/2.jpg,•充電盒可利用與 Qi 相容的充電板進行無線充電<br>•輕點一下可為Apple裝置進行設定<br>•輕點兩下可快速存取 Siri 功能<br>•置於充電盒中可快速充電<br>•豐富、高品質的音訊與聲音表現<br>•可於不同裝置間順暢切換使用
+'AirPods 搭配有線充電盒', 4990, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/120/1.png, data/productImg/120/2.jpg,•輕點一下可為Apple裝置進行設定<br>•輕點兩下可快速存取 Siri 功能<br>•置於充電盒中可快速充電<br>•豐富、高品質的音訊與聲音表現<br>•可於不同裝置間順暢切換使用
+'Creative GigaWorks T40II 二件式喇叭', 4990, 24, 10, '3C產品','2017-1-25', '2019-11-14', data/productImg/121/1.jpg, data/productImg/121/2.jpg,•音響等級的MTM單體組態設計<br>•採絲膜球頂高音單元<br>•先進低音再生技術<br>•面板有耳機輸出<br>•獨立高低音控制
+'Edifier R1600TIII 二件式喇叭', 3190, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/122/1.jpg, data/productImg/122/2.jpg,•雙RCA立體聲輸入<br>•木質音箱<br>•4吋Nomex複合材料低音單體，低音震撼有力<br>•高、低音可調<br>•內建DSP(數位訊號處理器)<br>•附紅外線遙控
+'Wacom Intuos Basic 繪圖板(黑)', 1990, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/123/1.jpg, data/productImg/123/2.jpg,•進化的Wacom 4K 感壓筆<br>•4個可自訂的ExpressKeys™快捷鍵<br>•全新設計更薄、更輕、更小的繪圖板<br>•左右手皆可使用<br>•無支援藍牙無線連接<br>•支援Mac和Windows
+'Wacom Cintiq 22 繪圖液晶顯示器', 5600, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/124/1.jpg, data/productImg/124/2.jpg,•8192 級壓感，低起始壓力和傾斜辨識<br>•Wacom Pro Pen 2 具備良好的精準度與操控性且無需充電<br>•1920 x 1080 Full HD顯示器，具備防眩光膜、降低視差<br>•可折疊支腳等設計，使工作更輕鬆<br>•堅固耐用防刮<br>•自訂側邊快捷鍵快捷 輕鬆連接喜愛的軟體
 'SanDisk Ultra USB Type-C 隨身碟 256GB', 1299, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/125/1.jpg, data/productImg/125/2.jpg,‧USB 3.1 高速傳輸<br>‧讀取速度最高可達 150 MB/s<br>‧USB TYPE-C 和 USB TYPE-A 雙連接埠<br>‧使用SanDisk Memory Zone 應用程式輕鬆管理檔案<br>‧從USB Type-C智慧手機、平板或電腦傳輸檔案以釋放空間<br>‧適用於支援 USB Type-C 裝置的隨身碟<br>‧代理商公司貨，首選有保障
 'SanDisk ExtremePRO USB 3.1 高速碟 256GB', 2599, 24, 10, '3C產品', '2017-1-25', '2019-11-14', data/productImg/126/1.jpg, data/productImg/126/2.jpg,‧高速USB3.1(Gen 1)效能<br>‧讀取速度最高達420MB/s，寫入速度最高達380MB/s<br>‧傳輸檔案與USB 2.0隨身碟快35倍<br>‧向下相容USB3.0與USB2.0<br>‧SanDisk SecureAcces 檔案加密軟體<br>‧公司貨，首選有保障
 'TESCOM專業型大風量負離子吹風機', 799, 28, 10, '家電', '2017-1-25', '2019-11-14', data/productImg/127/1.jpg, data/productImg/127/2.jpg,‧4個負離子釋放點<br>‧9種風量模式，冷風定型、溫熱護理<br>‧雙氣流吹嘴，速乾與吹整模式兩種選擇<br>‧可調成護髮模式<br>‧大風量速乾節省吹髮時間<br>‧折疊式機身，使用收納輕鬆方便

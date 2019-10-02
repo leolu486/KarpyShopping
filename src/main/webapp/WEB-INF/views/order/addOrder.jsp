@@ -85,6 +85,7 @@
 			<c:if test="${empty cancelCoupon}"> 
             	<c:if test="${! empty couponList}">
             	  	<select id="coupon-select">
+            	  			<option value="">請選擇折價卷</option>
         	  			<c:forEach var="coupon" items="${couponList}">
     	      				<option value="${coupon.cId}">所有${coupon.category} : ${coupon.discount*10}折 </option>
  	         			</c:forEach>  	    	
@@ -102,7 +103,7 @@
             	</c:if>
             </c:if>
             <c:if test="${! empty cancelCoupon}">
-            	<h3>感謝您使用折價卷</h3>
+            	
             	<div class="input-group-append">
             		<button id="cancelCoupon" class="btn btn-secondary m-3">取消折價卷</button>
             	</div>
@@ -190,7 +191,7 @@
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
         'use strict';
-
+        $("#coupon-select").hide();
         window.addEventListener('load', function() {
           // Fetch all the forms we want to apply custom Bootstrap validation styles to
           var forms = document.getElementsByClassName('needs-validation');
@@ -205,7 +206,7 @@
               form.classList.add('was-validated');
             }, false);
           });
-        }, false);
+        }, false);    
       })();
     </script>
     
@@ -242,11 +243,17 @@
   	});
   	
   	$("#useCoupon").on("click",function(){
-  		window.location.href="useCoupon?cId=" + $("#coupon-select").find(":selected").val(); 		
+  		$("#coupon-select").show();
+  		$("#useCoupon").hide();
   	});
   	
+  	$("#coupon-select").on("change",function(){
+  		window.location.href="useCoupon?cId=" + $("#coupon-select").find(":selected").val(); 
+  	});
   	$("#cancelCoupon").on("click",function(){
-  		window.location.href="cancelCoupon?cId=${cancelCoupon}"; 		
+  		window.location.href="cancelCoupon?cId=${cancelCoupon}";
+//   		$("#useCoupon").show();
+//   		$("#cancelCoupon").hide();
   	});
   
   </script>

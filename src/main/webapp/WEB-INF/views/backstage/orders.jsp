@@ -31,18 +31,16 @@
 	href="<c:url value='/backstage-source/css/theme.css'/>" />
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/jquery-2.1.3.min.js"></script>
+	src="<c:url value='/backstage-source/js/jquery-2.1.3.min.js'/>" /></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/Chart.min.js"></script>
+	src="<c:url value='/backstage-source/js/Chart.min.js'/>" /></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/bootstrap-select.min.js"></script>
+	src="<c:url value='/backstage-source/js/bootstrap-select.min.js'/>" /></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/backstage-source/js/main.js"></script>
+	src="<c:url value='/backstage-source/js/main.js'/>" /></script>
 
-
-<!-- <script type="text/javascript" -->
-<%-- 	src="${pageContext.request.contextPath}/backstage-source/js/index.js"></script> --%>
-
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/index.js'/>" /></script>
 
 
 

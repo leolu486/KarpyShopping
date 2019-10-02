@@ -128,13 +128,15 @@ public class CouponController {
 		}
 		// Judge coupon can be use or not
 		if (exist) {
-			mservice.useCoupon(cId);
+//			mservice.useCoupon(cId);
 		} else {
 			error.append("您的購物車內沒有" + cb.getCategory()+"的商品").toString();
+			session.removeAttribute("couponID");
 			session.setAttribute("errorCoupon", error);
 			return "redirect:/addOrder";
 		}
 		session.setAttribute("cancelCoupon", cId);
+		session.setAttribute("checkcoupon", 1);
 		model.addAttribute("ShoppingCart", sc);
 		return "redirect:/addOrder";
 	}
@@ -146,7 +148,7 @@ public class CouponController {
 		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
 		ShoppingCart sc = (ShoppingCart) session.getAttribute("ShoppingCart");
 		// get coupon object
-		mservice.resetCoupon(cId);
+//		mservice.resetCoupon(cId);
 		// reset discount to OrderItems from cart
 		Iterator<Integer> it = sc.getContent().keySet().iterator();
 		while (it.hasNext()) {

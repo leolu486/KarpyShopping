@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.store.dao.ManagerDao;
+import com.web.store.model.AdminMessageBean;
 import com.web.store.model.ManagerBean;
 import com.web.store.service.ManagerService;
 @Service
@@ -42,6 +43,24 @@ public class ManagerServiceImpl implements ManagerService {
 	public void changePassWord(ManagerBean mb,String newPW) {
 		// TODO Auto-generated method stub
 		dao.changePassWord(mb,newPW);
+	}
+	@Transactional
+	@Override
+	public List<AdminMessageBean> getLastFiveMessage() {
+		// TODO Auto-generated method stub
+		return dao.getLastFiveMessage();
+	}
+	@Transactional
+	@Override
+	public int addMessage(AdminMessageBean ambean) {
+		// TODO Auto-generated method stub
+		return dao.addMessage(ambean);
+	}
+	@Transactional
+	@Override
+	public void deleteMessage(Integer amId) {
+		// TODO Auto-generated method stub
+		dao.deleteMessage(amId);
 	}
 
 
