@@ -387,6 +387,16 @@
 	
 	
 	</script>
-	
+	<script type="text/javascript">
+				var amount = ${product.amount};
+				var value = document.getElementById("quantity").value;
+				function amountVSquantity() {
+					
+					if(value > amount){
+						alert("庫存不足");
+					}
+					
+				}
+				</script>
 	
 </body>
