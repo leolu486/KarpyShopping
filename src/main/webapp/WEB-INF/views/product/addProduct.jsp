@@ -97,15 +97,6 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='category'>
-						詳細資料: </label>
-					<div class="col-lg-10">
-						<form:input id="detail" path="detail" type="textarea"
-							class='form:input-large' />
-					</div>
-				</div>
 				
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='category'>
@@ -140,6 +131,15 @@ fieldset {
 					<div class="col-lg-10">
 						<form:input id="productImageTemp3" path="productImageTemp3" type="file"
 							class='form:input-large' />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2" for='category'>
+						詳細資料: </label>
+					<div class="col-lg-10">
+						<form:textarea id="detail" path="detail" rows="15" cols="30" />
+
 					</div>
 				</div>
 

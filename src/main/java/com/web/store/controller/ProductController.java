@@ -314,6 +314,15 @@ public class ProductController {
 				e.printStackTrace();
 			}
 		}
+		
+		if (pb.getDetail() != null && !pb.getDetail().isEmpty()) {
+			String str = pb.getDetail();
+			 while (str.indexOf("\n") != -1) {
+				  str = str.substring(0, str.indexOf("\n")) + "<br>"
+				    + str.substring(str.indexOf("\n") + 1);
+				 }
+			 pb.setDetail(str);
+		}
 //		long sizeInBytes = 0;
 //		InputStream is = null;
 //		Blob blob;
