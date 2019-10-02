@@ -2,13 +2,17 @@
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.NoResultException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.web.store.dao.ManagerDao;
 import com.web.store.exception.ManagerNotFoundException;
+import com.web.store.model.AdminMessageBean;
 import com.web.store.model.ManagerBean;
 
 import _00_init.util.GlobalService;
@@ -100,6 +104,39 @@ public class ManagerDaoImpl implements ManagerDao {
 			throw new ManagerNotFoundException("修改密碼發生錯誤");
 		}
 
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<AdminMessageBean> getLastFiveMessage() {
+		String hql = "FROM AdminMessageBean ORDER BY time DESC";
+		List<AdminMessageBean> list = null;
+		Session session = factory.getCurrentSession();
+
+		list = session.createQuery(hql).setMaxResults(5).getResultList();
+
+		return list;
+	}
+
+	@Override
+	public int addMessage(AdminMessageBean ambean) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		ManagerBean mb = session.get(ManagerBean.class, ambean.getmId());
+		ambean.setManagerBean(mb);
+		int pk = (int) session.save(ambean);
+		System.out.println("pk : " + pk);
+		return pk;
+
+	}
+
+	@Override
+	public void deleteMessage(Integer amId) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		AdminMessageBean ambean = session.get(AdminMessageBean.class, amId);
+		ambean.setManagerBean(null);// prevent foreign key problem
+		session.delete(ambean);
 	}
 
 }

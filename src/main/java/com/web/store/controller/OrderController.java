@@ -53,11 +53,11 @@ import com.web.store.service.ProductService;
 @SessionAttributes(value = { "ShoppingCart" })
 public class OrderController {
 
-	//this service for coupon
+	// this service for coupon
 	@Autowired
 	MemberService mservice;
 	@Autowired
-	OrderService service;	
+	OrderService service;
 	@Autowired
 	ProductService pserv;
 
@@ -82,7 +82,7 @@ public class OrderController {
 		mv.setViewName("errorPage/orderModificationError");
 		return mv;
 	}
-	
+
 	@ExceptionHandler(ProductStockException.class)
 	public ModelAndView PrductStockError(HttpServletRequest request, ProductStockException exception) {
 		ModelAndView mv = new ModelAndView();
@@ -101,23 +101,23 @@ public class OrderController {
 		return "order/vendorQueryOrder";
 	}
 
-	// 查單筆訂單 ，0912 modification，賣家修改訂單 
-	@RequestMapping(value="/orderPage", method=RequestMethod.POST)
-	public String selectByOid( Model model,HttpServletRequest request) {
-		String param = request.getParameter("oId");		
+	// 查單筆訂單 ，0912 modification，賣家修改訂單
+	@RequestMapping(value = "/orderPage", method = RequestMethod.POST)
+	public String selectByOid(Model model, HttpServletRequest request) {
+		String param = request.getParameter("oId");
 		Integer oId;
 		try {
 			oId = Integer.valueOf(param);
-			
-		}catch(NumberFormatException e) {
+
+		} catch (NumberFormatException e) {
 			oId = null;
 		}
-		if(oId == null) {
+		if (oId == null) {
 			model.addAttribute("error", "查無此訂單");
 			return "order/vendorQueryOrder";
 		}
 		model.addAttribute("order", service.select(oId));
-		return "order/singleOrder"; 
+		return "order/singleOrder";
 	}
 
 	// 查全部訂單
@@ -137,14 +137,14 @@ public class OrderController {
 	@RequestMapping("/ordersBymId")
 	public String selectMemberOrders(@RequestParam("mId") Integer mId, Model model) {
 		model.addAttribute("orders", service.selectMemberOrders(mId));
-		return "order/orders"; 
+		return "order/orders";
 	}
 
 	// 依訂單編號查細項
 	@RequestMapping("/orderItemByOid")
 	public String displayItems(@RequestParam("oId") Integer oId, Model model) {
 		model.addAttribute("items", service.queryItems(oId));
-		return "order/orderDetail"; 
+		return "order/orderDetail";
 	}
 
 	// TODO--for新增訂單測試，需刪除
@@ -164,42 +164,51 @@ public class OrderController {
 //	}
 
 	// 新增訂單表單，0921商品庫存檢查
-	@RequestMapping("/addOrder") 
-	public String persistOrder(Model model,HttpSession session,HttpServletRequest request) {
+	@RequestMapping("/addOrder")
+	public String persistOrder(Model model, HttpSession session, HttpServletRequest request) {
 		OrderBean order = new OrderBean();
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
-		if(cart == null) {
+		if (cart == null) {
 			return "redirect:/home";
 		}
-		Map<Integer,OrderItemBean> items = cart.getContent();
-		Set<Integer> productIdSet =  items.keySet();
+
+		Map<Integer, OrderItemBean> items = cart.getContent();
+		Set<Integer> productIdSet = items.keySet();
 		Iterator<Integer> it = productIdSet.iterator();
 		ProductBean pb = null;
 		StringBuilder error = new StringBuilder();
-		while(it.hasNext()) {
-			Integer productId = (Integer)it.next();		
+		while (it.hasNext()) {
+			Integer productId = (Integer) it.next();
+			// reset discount
+			if (session.getAttribute("checkcoupon") == null) {
+				items.get(productId).setDiscount(1.0);
+			}
 			pb = pserv.getProductById(productId);
 			Integer itemQty = items.get(productId).getQuantity();
-			System.out.println("pb.getAmount()=="+pb.getAmount());
-			System.out.println("itemQty=="+itemQty);
-			if(pb.getAmount()-itemQty < 0 || pb.getAmount() == 0) {
-				error.append(pb.getPname()+"，庫存不足，庫存量:"+ pb.getAmount()+"，請重新選購!").toString();
+			System.out.println("pb.getAmount()==" + pb.getAmount());
+			System.out.println("itemQty==" + itemQty);
+			if (pb.getAmount() - itemQty < 0 || pb.getAmount() == 0) {
+				error.append(pb.getPname() + "，庫存不足，庫存量:" + pb.getAmount() + "，請重新選購!").toString();
 
 				request.setAttribute("errorMsg", error);
 				return "/cartConfirm";
-			}else if(itemQty == 0) {
-				error.append("您尚未選擇"+ pb.getPname() + "的購買數量").toString();
+			} else if (itemQty == 0) {
+				error.append("您尚未選擇" + pb.getPname() + "的購買數量").toString();
 				request.setAttribute("errorMsg", error);
 				return "/cartConfirm";
 			}
 		}
+		if (session.getAttribute("checkcoupon") != null) {
+			session.removeAttribute("checkcoupon");
+		}
 		model.addAttribute("order", order);
-		
-		//Coupon code
-		//only get coupons which unused
+
+		// Coupon code
+		// only get coupons which unused
 		StringBuilder errorCoupon = (StringBuilder) session.getAttribute("errorCoupon");
-		Integer cId=(Integer)session.getAttribute("cancelCoupon");
-		List<CouponBean> couponList = mservice.getCouponsBymId(((MemberBean)session.getAttribute("memberLoginOK")).getmId());
+		Integer cId = (Integer) session.getAttribute("cancelCoupon");
+		List<CouponBean> couponList = mservice
+				.getCouponsBymId(((MemberBean) session.getAttribute("memberLoginOK")).getmId());
 		model.addAttribute("couponList", couponList);
 		model.addAttribute("cancelCoupon",cId);
 		model.addAttribute("errorCoupon",errorCoupon);
@@ -207,13 +216,14 @@ public class OrderController {
 		session.setAttribute("couponID", cId);
 		session.removeAttribute("cancelCoupon");
 		session.removeAttribute("errorCoupon");
-		return "order/addOrder"; 
+		return "order/addOrder";
 	}
+
 	@RequestMapping("/ezship")
-	public String ezship(Model model,HttpSession session,HttpServletRequest request) {
+	public String ezship(Model model, HttpSession session, HttpServletRequest request) {
 		OrderBean order = new OrderBean();
 		String name = request.getParameter("stName");
-		String ezShip = "exist";		
+		String ezShip = "exist";
 		request.setAttribute("name", name);
 		model.addAttribute("order", order);
 		model.addAttribute("ezShip", ezShip);
@@ -226,12 +236,11 @@ public class OrderController {
 			SessionStatus status) throws SQLException {
 		MemberBean member = (MemberBean) session.getAttribute("memberLoginOK"); // 會員登入識別字串
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
-		Integer cId = (Integer) session.getAttribute("couponID");
 		System.out.println("ShoppingCart===" + cart);
 		System.out.println("MemberBean===" + member);
-		//0912 新增
-		Map<String,String> insertError = errMsg(order,cart);
-		if(insertError.get("emptyCart") != null ) {
+		// 0912 新增
+		Map<String, String> insertError = errMsg(order, cart);
+		if (insertError.get("emptyCart") != null) {
 			model.addAttribute("insertError", insertError);
 			return "order/addOrder";
 		}
@@ -250,17 +259,19 @@ public class OrderController {
 			items.add(oib);
 			order.setItems(items);
 		}
-		//0912 新增
-		if(insertError.size()>0) {
+		// 0912 新增
+		if (insertError.size() > 0) {
 			model.addAttribute("insertError", insertError);
 			return "order/addOrder";
-		}else {
+		} else {
 			service.insertOrder(order);
 			status.setComplete();
 		}
 		//1001 by peter -> set coupon as used while using coupon
+		Integer cId = (Integer) session.getAttribute("couponID");
 		if(cId!=null) {
 			mservice.useCoupon(cId);
+			session.removeAttribute("couponID");
 		}
 		return "redirect:/home";
 	}
@@ -269,18 +280,18 @@ public class OrderController {
 	@RequestMapping("/orderUpdate")
 	public String updateOrder_Page(@RequestParam("oId") Integer oId, Model model) {
 		OrderBean ob = service.select(oId);
-		if(ob.getStatus().equals("已出貨")||ob.getStatus().equals("取貨完成")) {
+		if (ob.getStatus().equals("已出貨") || ob.getStatus().equals("取貨完成")) {
 			return "redirect:/membercentre";
 		}
 		model.addAttribute("order", ob);
-		return "order/memberUpdateOrder"; //return "/order/updateOrder";
+		return "order/memberUpdateOrder"; // return "/order/updateOrder";
 	}
 
 	// 買家更新
 	@RequestMapping(value = "/orderUpdate", method = RequestMethod.POST)
 	public String updateOrder_buyer(@RequestParam("oId") Integer oId, @ModelAttribute("order") OrderBean ob,
 			Model model, BindingResult result) {
-		Integer mId =ob.getmId();
+		Integer mId = ob.getmId();
 		service.updateOrder(ob);
 		return "redirect:/ordersBymId?mId=" + mId;
 	}
@@ -289,7 +300,7 @@ public class OrderController {
 	@RequestMapping("/order/VendorUpdate")
 	public String VendorUpdateOrder_Page(@RequestParam("oId") Integer oId, Model model) {
 		OrderBean ob = service.select(oId);
-		if(ob.getStatus().equals("取貨完成")) {
+		if (ob.getStatus().equals("取貨完成")) {
 			return "redirect:/home";
 		}
 		model.addAttribute("order", ob);
@@ -312,158 +323,150 @@ public class OrderController {
 		service.delete(oId);
 		return "redirect:/cancelHistory?mId=" + mId;
 	}
-	
-	//0912 買過商品查詢
+
+	// 0912 買過商品查詢
 	@RequestMapping("/queryOrderItemsHistory")
-	public String purchaseItemsHistory(@RequestParam("mId") Integer mId,Model model) {
+	public String purchaseItemsHistory(@RequestParam("mId") Integer mId, Model model) {
 		List<OrderBean> orders = service.selectMemberOrders(mId);
-		List<OrderItemBean> orderItems = null;		
-		System.out.println("oId=====" +orders.size());
+		List<OrderItemBean> orderItems = null;
+		System.out.println("oId=====" + orders.size());
 		List<OrderItemBean> copy = new ArrayList<OrderItemBean>();
-		for(OrderBean ob : orders) {
+		for (OrderBean ob : orders) {
 			orderItems = service.queryItems(ob.getoId());
-			copy.addAll(orderItems);			
+			copy.addAll(orderItems);
 		}
 		model.addAttribute("items", copy);
 		return "/order/orderItemsHistory";
-	}	
-	
-	
-	
-	//0916取貨確認
+	}
+
+	// 0916取貨確認
 	@RequestMapping("/orderCompletion")
 	public String orderCompletion(@RequestParam("oId") Integer oId, Model model) {
 		OrderBean ob = service.select(oId);
 		Integer mId = ob.getmId();
-		if(ob.getStatus().equals("已出貨")) {
+		if (ob.getStatus().equals("已出貨")) {
 			ob.setStatus("取貨完成");
 			service.orderCompletion(ob);
 			return "redirect:/ordersBymId?mId=" + mId;
-		}else if(ob.getStatus().equals("取貨完成")) {
+		} else if (ob.getStatus().equals("取貨完成")) {
 			return "/membercentre";
-		}
-		else {
-			throw new OrderModificationException("訂單編號: " + oId +  "，" + ob.getStatus() + "，無法修改訂單");
+		} else {
+			throw new OrderModificationException("訂單編號: " + oId + "，" + ob.getStatus() + "，無法修改訂單");
 		}
 	}
-	
-	
-	//0918退訂查詢
+
+	// 0918退訂查詢
 	@RequestMapping("/cancelHistory")
 	public String cancelHistory(@RequestParam("mId") Integer mId, Model model) {
 		model.addAttribute("orders", service.selectCancelOrders(mId));
 		return "order/cancelHistory";
 	}
-	
-	
-	
-	//0912 error message for order persistence
-	public Map<String,String> errMsg(OrderBean order,ShoppingCart cart){
-		Map<String,String> errorMessage = new HashMap<String,String>();
-		if(order.getTel()==null || order.getTel().equals("")) {
+
+	// 0912 error message for order persistence
+	public Map<String, String> errMsg(OrderBean order, ShoppingCart cart) {
+		Map<String, String> errorMessage = new HashMap<String, String>();
+		if (order.getTel() == null || order.getTel().equals("")) {
 			errorMessage.put("emptyTel", "此欄位不可為空白");
 		}
-		if(order.getAddr()==null || order.getAddr().equals("")) {
+		if (order.getAddr() == null || order.getAddr().equals("")) {
 			errorMessage.put("emptyAddr", "此欄位不可為空白");
 		}
-		if(order.getConsignee()==null || order.getConsignee().equals("")) {
+		if (order.getConsignee() == null || order.getConsignee().equals("")) {
 			errorMessage.put("emptyConsignee", "此欄位不可為空白");
 		}
-		if(cart== null || cart.getContent().size()==0 ) {
-			errorMessage.put("emptyCart", "請挑選商品");			
+		if (cart == null || cart.getContent().size() == 0) {
+			errorMessage.put("emptyCart", "請挑選商品");
 		}
-		
+
 		return errorMessage;
 	}
-	
-	
-	
-		@RequestMapping(value = "/orderUpdateAJ", method = RequestMethod.POST)
-		public void updateOrderAJ(@RequestParam("oId") Integer oId,ServletRequest request,
-			Model model,HttpServletResponse response) {			
-			OrderBean ob = service.select(oId);
-			StringBuilder json = new StringBuilder();
-			String line = null;
+
+	@RequestMapping(value = "/orderUpdateAJ", method = RequestMethod.POST)
+	public void updateOrderAJ(@RequestParam("oId") Integer oId, ServletRequest request, Model model,
+			HttpServletResponse response) {
+		OrderBean ob = service.select(oId);
+		StringBuilder json = new StringBuilder();
+		String line = null;
+		try {
+			BufferedReader reader = request.getReader();
+			while ((line = reader.readLine()) != null) {
+				json.append(line);
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		JsonParser parser = new JsonParser();
+		JsonElement element = parser.parse(json.toString());
+		JsonObject jsonObject = element.getAsJsonObject();
+		String tel = jsonObject.get("tel").getAsString();
+		String consignee = jsonObject.get("consignee").getAsString();
+		String addr = jsonObject.get("addr").getAsString();
+		PrintWriter out = null;
+		response.setContentType("application/json");
+		StringBuilder jsonString = new StringBuilder();
+		if (tel.isEmpty() || consignee.isEmpty() || addr.isEmpty() || tel.isBlank() || consignee.isBlank()
+				|| addr.isBlank()) {
 			try {
-				BufferedReader reader = request.getReader();
-				while ((line = reader.readLine()) != null) {
-					json.append(line);
-				}
-			} catch (Exception e) {
-				System.out.println(e.toString());
+				out = response.getWriter();
+				jsonString.append("{\"null\":\"修改資訊有誤，請再次確認!\"}");
+				out.print(jsonString.toString());
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			
-			JsonParser parser = new JsonParser();
-			JsonElement element = parser.parse(json.toString());
-			JsonObject jsonObject = element.getAsJsonObject();
-			String tel = jsonObject.get("tel").getAsString();
-			String consignee = jsonObject.get("consignee").getAsString();
-			String addr = jsonObject.get("addr").getAsString();
-			PrintWriter out = null;
-			response.setContentType("application/json");
-			StringBuilder jsonString = new StringBuilder();		
-			if(tel.isEmpty() || consignee.isEmpty() || addr.isEmpty() ||tel.isBlank()|| consignee.isBlank()||addr.isBlank() ) {
+		} else if (ob.getTel().equals(tel) && ob.getAddr().equals(addr) && ob.getConsignee().equals(consignee)) {
+			try {
+				out = response.getWriter();
+				jsonString.append("{\"unchanged\":\"修改資訊未變動，請再次確認!\"}");
+				out.print(jsonString.toString());
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+
+			if (checkCharacter(tel)) {
 				try {
 					out = response.getWriter();
-					jsonString.append("{\"null\":\"修改資訊有誤，請再次確認!\"}");
-					out.print(jsonString.toString());					
+					jsonString.append("{\"error\":\"電話號碼錯誤，請重新輸入!\"}");
+					out.print(jsonString.toString());
 					out.flush();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}else if(ob.getTel().equals(tel) && ob.getAddr().equals(addr) && ob.getConsignee().equals(consignee)) {
+			} else {
+
+				ob.setTel(tel);
+				ob.setConsignee(consignee);
+				ob.setAddr(addr);
+				service.updateOrder(ob);
+				String newTel = ob.getTel();
+				String newAddr = ob.getAddr();
+				String newConsignee = ob.getConsignee();
+
 				try {
 					out = response.getWriter();
-					jsonString.append("{\"unchanged\":\"修改資訊未變動，請再次確認!\"}");
-					out.print(jsonString.toString());					
+					jsonString
+							.append("{\"success\":\"成功更新訂單\", \"newTel\" : " + "\"" + newTel + "\"" + ", \"newAddr\" : "
+									+ "\"" + newAddr + "\"" + ",\"newConsignee\":" + "\"" + newConsignee + "\"" + " }");
+					out.print(jsonString.toString());
 					out.flush();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}else {
-				
-				
-				if(checkCharacter(tel)) {
-					try {
-						out = response.getWriter();
-						jsonString.append("{\"error\":\"電話號碼錯誤，請重新輸入!\"}");
-						out.print(jsonString.toString());						
-						out.flush();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}					
-				}else{
-					
-					ob.setTel(tel);
-					ob.setConsignee(consignee);
-					ob.setAddr(addr);
-					service.updateOrder(ob);
-					String newTel = ob.getTel();
-					String newAddr = ob.getAddr();
-					String newConsignee = ob.getConsignee();								
-					
-					try {
-						out = response.getWriter();
-						jsonString.append("{\"success\":\"成功更新訂單\", \"newTel\" : " + "\"" + newTel+ "\"" + ", \"newAddr\" : " + "\"" + newAddr + "\"" + ",\"newConsignee\":" + "\"" +newConsignee+ "\"" +" }");
-						out.print(jsonString.toString());						
-						out.flush();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				
-				}
+
 			}
-			
-			
 		}
-		
-		
-		public boolean checkCharacter(String stringToCheck) {
-			Boolean result = true;
-			if(stringToCheck.matches("\\d+")) {
-				result = false;
-			}					
-			return result;
+
+	}
+
+	public boolean checkCharacter(String stringToCheck) {
+		Boolean result = true;
+		if (stringToCheck.matches("\\d+")) {
+			result = false;
 		}
+		return result;
+	}
 
 }

@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.store.model.AdminMessageBean;
 import com.web.store.model.HotSearchBean;
 import com.web.store.model.ManagerBean;
 import com.web.store.service.HotSearchService;
@@ -33,6 +35,11 @@ public class BackStageController {
 	HotSearchService hservice;
 
 	// dashboard
+	/**
+	 * @param model
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/admin")
 	public String adminPage(Model model, HttpSession session) {
 		Integer memberCount = mservice.getAllMember().size();
@@ -40,7 +47,8 @@ public class BackStageController {
 		Integer productCount = pservice.getAllProducts().size();
 		Integer adminCount = adminservice.getAllManager().size();
 		List<HotSearchBean> slist = hservice.getTop5();
-		
+		List<AdminMessageBean> msglist = adminservice.getLastFiveMessage();
+		session.setAttribute("Last5Msg", msglist);
 		session.setAttribute("Top5", slist);
 		session.setAttribute("memberCount", memberCount);
 		session.setAttribute("orderCount", orderCount);
@@ -100,6 +108,26 @@ public class BackStageController {
 		}
 		session.setAttribute("LoginOK", manager);
 		System.out.println(manager.toString());
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = "/addMessage")
+	public String addMessage(@RequestParam("id") Integer id, @RequestParam("name") String name,
+			@RequestParam("time") long time, @RequestParam("msg") String msg, Model model,
+			HttpSession session) {
+		AdminMessageBean ambean = new AdminMessageBean();
+		ambean.setmId(id);
+		ambean.setName(name);
+		ambean.setTime(new java.sql.Timestamp(time));
+		ambean.setMessage(msg);
+		adminservice.addMessage(ambean);
+		return "redirect:/admin";
+	}
+	
+	@RequestMapping(value = "/removeMessage")
+	public String addMessage(@RequestParam("amId") Integer amId, Model model,
+			HttpSession session) {
+		adminservice.deleteMessage(amId);
 		return "redirect:/admin";
 	}
 
