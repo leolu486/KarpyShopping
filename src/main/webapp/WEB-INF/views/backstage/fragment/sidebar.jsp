@@ -63,24 +63,28 @@
 		</div>
 
 		<ul class="menu">
-			<li class="submenu"><a href="admin" class="active">
+			<li class="submenu"><a id="adminDashBoard" href="/KarpyShopping/admin">
 					<div>
 						<i class="menu-icon fa fa-bar-chart"></i> <span class="menu-title">DashBoard</span>
 					</div>
 			</a></li>
-			<li class="submenu"><a href="adminProducts">
+			<li class="submenu"><a id="adminProducts" href="/KarpyShopping/adminProducts">
 					<div>
 
 						<i class="menu-icon fa fa-th-large"></i> <span class="menu-title">Products</span>
 
 					</div>
 			</a></li>
-						<li class="submenu dropdown"><a href="orders" class="dropdown-toggle" data-toggle="dropdown">
+
+						<li class="submenu dropdown"><a href="/KarpyShopping/orders" class="dropdown-toggle" data-toggle="dropdown">
+
+
 					<div>
 
 						<i class="menu-icon fa fa-archive"></i> <span class="menu-title">Orders</span>
 
 					</div>
+
 					</a>
 					
 					<ul class="dropdown-menu">
@@ -103,21 +107,22 @@
 				</ul>
 					
 			</li>
-			<li class="submenu"><a href="adminMembers">
+			<li class="submenu"><a href="/KarpyShopping/adminMembers">
+
 					<div>
 
 						<i class="menu-icon fa fa-users"></i> <span class="menu-title">Members</span>
 
 					</div>
 			</a></li>
-			<li class="submenu"><a href="adminManagers">
+			<li class="submenu"><a id="adminManagers" href="/KarpyShopping/adminManagers">
 					<div>
 
 						<i class="menu-icon fa fa-info-circle"></i> <span class="menu-title">Managers</span>
 
 					</div>
 			</a></li>
-			<li class="submenu"><a href="adminVendors">
+			<li class="submenu"><a id="adminVendors" href="/KarpyShopping/adminVendors">
 					<div>
 
 						<i class="menu-icon fa fa-truck"></i> <span

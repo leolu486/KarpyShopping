@@ -1,6 +1,7 @@
 package com.web.store.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -17,6 +18,7 @@ import java.util.Set;
 import javax.persistence.NoResultException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.text.RandomStringGenerator;
@@ -80,7 +82,7 @@ public class CouponController {
 	@RequestMapping(value = "/getCoupon")
 	public void getCoupon(@RequestParam("category") String category, @RequestParam("discount") Double discount,
 			@RequestParam("expdate") @DateTimeFormat(pattern = "yyyy/MM/dd") String expdate,
-			@RequestParam("token") String token, Model model, HttpServletRequest request) {
+			@RequestParam("token") String token, Model model, HttpServletRequest request,HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
 		if (mb != null) {
@@ -95,9 +97,25 @@ public class CouponController {
 			cb.setStatus(true);
 			cb.setToken(token);
 			int pk = mservice.getCoupon(cb);
-			if (pk == 0) {
-				System.out.println("折價卷已存在");
+			
+			PrintWriter out = null;
+			response.setContentType("application/json");
+			StringBuilder jsonString = new StringBuilder();
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			if (pk == 0) {
+				System.out.println("已擁有折價卷");
+				jsonString.append("{\"result\":\"抱歉，您已經擁有此折價卷囉!\"}");
+			}else {
+				System.out.println("未擁有折價卷");
+				jsonString.append("{\"result\":\"您取得了折價卷，未來還請多多支持KarpyShopping!\"}");
+			}
+			out.print(jsonString.toString());
+			out.flush();
 		}
 
 	}

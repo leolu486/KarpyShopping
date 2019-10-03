@@ -13,7 +13,9 @@ public interface VendorService {
 	VendorBean getVendorByvname(String vname);
 
 	VendorBean getVendorByvId(Integer vId);
-	
+
 	void updateVendor(VendorBean vb);
+
+	void removeVendor(Integer vId);
 
 }

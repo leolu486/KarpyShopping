@@ -130,7 +130,7 @@ input:focus::-webkit-input-placeholder {
 	<c:set var="managerName" value="${LoginOK.name}" />
 	<!-- 移除放在session物件內的屬性物件以及圖片-->
 	<c:remove var="LoginOK" scope="session" />
-
+	<c:remove var="requestURI" scope="session"/>
 	<!-- 下列敘述設定變數funcName的值為OUT，top.jsp 會用到此變數 -->
 	<c:set var="funcName" value="OUT" scope="session" />
 	<!-- 引入共同的頁首 -->
