@@ -74,13 +74,13 @@ corresponding value from the list below*/
 				<div class="col-md-3 col-sm-6">
 					<div class="footer_menu">
 						<div class="news_heading_2">
-							<h3>管理員中心</h3>
+							<h3>開發者專區</h3>
 						</div>
 						<div class="footer_menu">
 							<ul>
-								<li><a href="admin">管理員</a></li>
-								<li><a href="#">卡痞購物商城</a></li>
-								<li><a href="#">卡痞團購網</a></li>
+								<li><a href="admin">開發者中心</a></li>
+<!-- 								<li><a href="#">卡痞購物商城</a></li> -->
+<!-- 								<li><a href="#">卡痞團購網</a></li> -->
 
 							</ul>
 						</div>
@@ -96,8 +96,8 @@ corresponding value from the list below*/
 								<a href="#">訂單查詢</a></li>
 							<li><i class="fa fa-envelope"></i>
 								<a href="memberQandA">FAQ常見問題</a></li>
-							<li><i class="fa fa-phone"></i>
-								<a href="memberQandA">語音服務</a></li>
+<!-- 							<li><i class="fa fa-phone"></i> -->
+<!-- 								<a href="memberQandA">語音服務</a></li> -->
 							<li><i class="fa fa-comment-o"></i>
 								<a href="#">聯絡我們</a></li>
 						</ul>
