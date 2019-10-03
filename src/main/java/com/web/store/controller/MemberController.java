@@ -68,12 +68,13 @@ public class MemberController {
 		return mv;
 	}
 
-	@RequestMapping("/members")
+	@RequestMapping("/membersall")
 	public String list(Model model) {
 		List<MemberBean> list = service.getAllMember();
 		model.addAttribute("members", list);
-		return "member/members";
+		return "backstage/members";
 	}
+
 
 	@RequestMapping("/member")
 	public String getMemberById(@RequestParam("account") String account, Model model) {
@@ -223,7 +224,7 @@ public class MemberController {
 	public String deleteMember(@ModelAttribute("MemberBean") MemberBean mb, BindingResult result,
 			HttpServletRequest request) {
 		service.deleteMember(mb);
-		return "redirect:/members";
+		return "member/members";
 	}
 
 	// 登出控制器
@@ -380,7 +381,8 @@ public class MemberController {
 		System.gc();
 		return "member/memberchange";
 	}
-
+	
+	
 	@RequestMapping(value = "/memberchange", method = RequestMethod.POST)
 
 	public String Changemember1(@ModelAttribute("CreditCardBean") CreditCardBean cb,
