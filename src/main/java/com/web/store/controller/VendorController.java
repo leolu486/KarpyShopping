@@ -29,7 +29,6 @@ public class VendorController {
 
 	@Autowired
 	VendorService service;
-
 	@Autowired
 	ServletContext context;
 
@@ -72,6 +71,7 @@ public class VendorController {
 		service.addVendor(vb);
 		return "redirect:/vendors";
 	}
+
 //更新廠商控制器
 	@RequestMapping(value = "/vendor/update", method = RequestMethod.GET)
 	public String getUpdateVendorForm(Model model) {
@@ -85,5 +85,46 @@ public class VendorController {
 			HttpServletRequest request) {
 		service.updateVendor(vb);
 		return "redirect:/vendors";
+	}
+
+//刪除廠商控制器
+	@RequestMapping(value = "/removeVendor")
+	public String removeVendor(@RequestParam("vId") Integer vId, Model model) {
+
+		service.removeVendor(vId);
+		System.out.println("vId:" + vId);
+		return "redirect:/adminVendors";
+	}
+
+//後台更新廠商
+	@RequestMapping(value = "/updateVendor")
+	public String updateVendor(@RequestParam("vId") Integer vId, @RequestParam("vname") String vname,
+			@RequestParam("addr") String addr, @RequestParam("tel") String tel, @RequestParam("email") String email,
+			Model model) {
+
+		VendorBean vb = new VendorBean();
+		vb.setvId(vId);
+		vb.setVname(vname);
+		vb.setAddr(addr);
+		vb.setTel(tel);
+		vb.setEmail(email);
+		service.updateVendor(vb);
+
+		return "redirect:/adminVendors";
+	}
+
+// 後台新增廠商
+	@RequestMapping(value = "/addVendor")
+	public String addVendor(@RequestParam("vname") String vname, @RequestParam("addr") String addr,
+			@RequestParam("tel") String tel, @RequestParam("email") String email, Model model) {
+
+		VendorBean vb = new VendorBean();
+		vb.setVname(vname);
+		vb.setAddr(addr);
+		vb.setTel(tel);
+		vb.setEmail(email);
+		service.addVendor(vb);
+
+		return "redirect:/adminVendors";
 	}
 }

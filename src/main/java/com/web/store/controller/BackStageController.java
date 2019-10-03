@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.web.store.model.AdminMessageBean;
 import com.web.store.model.HotSearchBean;
 import com.web.store.model.ManagerBean;
+import com.web.store.model.VendorBean;
 import com.web.store.service.HotSearchService;
 import com.web.store.service.ManagerService;
 import com.web.store.service.MemberService;
 import com.web.store.service.OrderService;
 import com.web.store.service.ProductService;
+import com.web.store.service.VendorService;
 
 @Controller
 public class BackStageController {
@@ -33,6 +35,8 @@ public class BackStageController {
 	OrderService oservice;
 	@Autowired
 	HotSearchService hservice;
+	@Autowired
+	VendorService vservice;
 
 	// dashboard
 	/**
@@ -85,6 +89,8 @@ public class BackStageController {
 	// vendors
 	@RequestMapping("/adminVendors")
 	public String vendorsPage(Model model, HttpSession session) {
+		List<VendorBean> vlist = vservice.getAllVendor();
+		model.addAttribute("vlist", vlist);
 		return "backstage/vendors";
 	}
 
@@ -113,8 +119,7 @@ public class BackStageController {
 
 	@RequestMapping(value = "/addMessage")
 	public String addMessage(@RequestParam("id") Integer id, @RequestParam("name") String name,
-			@RequestParam("time") long time, @RequestParam("msg") String msg, Model model,
-			HttpSession session) {
+			@RequestParam("time") long time, @RequestParam("msg") String msg, Model model, HttpSession session) {
 		AdminMessageBean ambean = new AdminMessageBean();
 		ambean.setmId(id);
 		ambean.setName(name);
@@ -123,10 +128,9 @@ public class BackStageController {
 		adminservice.addMessage(ambean);
 		return "redirect:/admin";
 	}
-	
+
 	@RequestMapping(value = "/removeMessage")
-	public String addMessage(@RequestParam("amId") Integer amId, Model model,
-			HttpSession session) {
+	public String addMessage(@RequestParam("amId") Integer amId, Model model, HttpSession session) {
 		adminservice.deleteMessage(amId);
 		return "redirect:/admin";
 	}
