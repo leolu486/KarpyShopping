@@ -86,7 +86,7 @@ public class ShowSearchResultPageController {
 		System.out.println("+++++++++++++++++++++++++++++++++++++");
 		ManagerBean LoginOK = (ManagerBean) session.getAttribute("LoginOK");
 		if(LoginOK != null) {
-			return "/product/ManageProducts";
+			return "/backstage/ManageProducts";
 		}else {
 			return "/product/products";
 		}
@@ -149,7 +149,7 @@ public class ShowSearchResultPageController {
 		System.out.println("+++++++++++++++++++++++++++++++++++++");
 		ManagerBean LoginOK = (ManagerBean) session.getAttribute("LoginOK");
 		if(LoginOK != null) {
-			return "/product/ManageProducts";
+			return "/backstage/ManageProducts";
 		}else {
 			return "/product/products";
 		}
