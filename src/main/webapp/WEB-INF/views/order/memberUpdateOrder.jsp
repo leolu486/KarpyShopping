@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
@@ -64,13 +65,24 @@
  }
 
  #btn{
-    
-     width: 50%;
-     height: 50px;
-     background-color: #fc4a03;
-     border-radius: 40px;
+     margin-left:85px;
+     width: 25%;
+     height: 30%;
+     background-color: #fc4a03; 
+     border-radius: 10px;
      border: none;
-      position: relative; 
+     position: relative; 
+/*      left:25%; */
+/*      right:25% */
+ }
+ 
+ #details{
+ 	 width: 25%;
+     height: 30%;
+/*      background-color: #fc4a03; */
+     border-radius: 10px;
+     border: none;
+     position: relative; 
      left:25%;
      right:25%
  }
@@ -137,6 +149,7 @@ h5{
 
 }
 
+
 body { 
 	opacity: 0; 
 	transition: opacity 2s; 
@@ -144,12 +157,13 @@ body {
 
 
 </style>
+
 <body onload="document.body.style.opacity='1'">
 	<div>
    		<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
     </div>
     <div id="form_wrapper1" class="form_wrapper">
-    	<div style="margin-left:660px;"><a id="details" class="btn btn-secondary" style="margin-bottom:10px" href='<c:url value="ordersBymId?mId=${order.mId}" />'>返回訂單查詢</a></div>
+<%--     	<div style="margin-left:660px;"><a id="details" class="btn btn-secondary" style="margin-bottom:10px" href='<c:url value="ordersBymId?mId=${order.mId}" />'>返回訂單查詢</a></div> --%>
         <div class="form_content" >
 <!--             <span id="closeBtn" class="close">&times;</span><p>  -->				
                 <h2>修改訂單</h2> 
@@ -158,7 +172,7 @@ body {
                 <h5 style="display:inline-block">訂單編號: ${order.oId}</h5> <a href="<spring:url value='/orderItemByOid?oId=${order.oId}' />" class="btn btn-info orderInfoBtn"> <span class="glyphicon-info-sigh glyphicon"></span>詳細資料 </a>
                 <h5>會員: ${order.memberBean.name}</h5>
                 <h5>日期: ${order.odate}</h5>
-                <h5>金額: ${order.price}</h5>
+                <h5>金額: <fmt:formatNumber value="${order.price}" pattern="#,###,###" />元</h5>
                 <h5>貨單號碼: ${order.shippingNo}</h5>
                 </div>             
                 <div class="inner">                
@@ -170,9 +184,13 @@ body {
                 <div class="inner">
                 	<i class="material-icons">house</i><input id="addr" class="input_border" type="text" placeholder="地址" value="${order.addr}" required/>
 				</div>				
-					<input id="oid" value="${order.oId }" type="hidden"/>				
-                	<input class="btn btn-secondary btnOK" id="btn" type="submit" value="確定"/>
-            	
+					<input id="oid" value="${order.oId }" type="hidden"/>
+					
+					<div style="width:70%;display:inline-block;float:right;margin-top:50px;">				
+            			<a id="details" class="btn btn-secondary" href='<c:url value="ordersBymId?mId=${order.mId}" />'>返回</a>
+                		<input class="btn btn-secondary btnOK" id="btn" type="submit" value="確定"/>
+            		</div>
+            		
             </form>
         </div>  
     </div>
@@ -183,7 +201,7 @@ body {
     
     
      <div id="form_wrapper2" class="form_wrapper" style="display:none;">
-    	<div style="margin-left:660px;"><a id="details" class="btn btn-secondary" style="margin-bottom:10px" href='<c:url value="ordersBymId?mId=${order.mId}" />'>返回訂單查詢</a></div>
+<%--     	<div style="margin-left:660px;"><a id="details" class="btn btn-secondary" style="margin-bottom:10px" href='<c:url value="ordersBymId?mId=${order.mId}" />'>返回訂單查詢</a></div> --%>
         <div class="form_content">
 <!--             <span id="closeBtn" class="close">&times;</span><p>  -->				
                 <h2>訂單</h2> 
@@ -192,11 +210,12 @@ body {
                 <h5 style="display:inline-block;padding-bottom:20px;">訂單編號: ${order.oId}</h5> <a href="<spring:url value='/orderItemByOid?oId=${order.oId}' />" class="btn btn-info orderInfoBtn"> <span class="glyphicon-info-sigh glyphicon"></span>詳細資料 </a>
                 <h5 style="padding-bottom:20px;">會員: ${order.memberBean.name}</h5>
                 <h5 style="padding-bottom:20px;">日期: ${order.odate}</h5>
-                <h5 style="padding-bottom:20px;">金額: ${order.price}</h5>
+                <h5 style="padding-bottom:20px;">金額: <fmt:formatNumber value="${order.price}" pattern="#,###,###" />元</h5>
                 <h5 style="padding-bottom:20px;">貨單號碼: ${order.shippingNo}</h5>
                 <h5 id="newTel" style="padding-bottom:20px;"></h5>
                 <h5 id="newConsignee" style="padding-bottom:20px;"></h5>
                 <h5 id="newAddr" style="padding-bottom:20px;"></h5>
+            	<a id="" class="btn btn-secondary"  href='<c:url value="ordersBymId?mId=${order.mId}" />'>返回訂單查詢</a>
                 </div>                
 
             </form>

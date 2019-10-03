@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +76,7 @@
 									<td class="cell100 column1" style="border-style:none">${item.orderBean.odate}</td>
 									<td class="cell100 column2" style="border-style:none">${item.productId}</td>
 									<td class="cell100 column3" style="border-style:none;"><img class="pic${item.productId}" width='75px' height='75px' src="<c:url value='/getPicture/${item.productId}'/>" /><span style="margin-left:25px">${item.description}</span></td>
-									<td class="cell100 column2" style="border-style:none">${item.unitPrice}元</td>
+									<td class="cell100 column2" style="border-style:none"><fmt:formatNumber value="${item.unitPrice}" pattern="#,###,###" />元</td>
 									<td class="cell100 column2" style="border-style:none">${item.quantity}</td>
 												
 								</tr>

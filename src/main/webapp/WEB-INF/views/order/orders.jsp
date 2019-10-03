@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +77,7 @@ body {
 										<td class="cell100 column2" style="border-style:none">
 											<a href="<spring:url value='/orderItemByOid?oId=${order.oId}' />" class="btn btn-info"> <span class="glyphicon-info-sigh glyphicon"></span>詳細資料 </a>
 										</td>									
-										<td class="cell100 column2" style="border-style:none">${order.price} 元</td>
+										<td class="cell100 column2" style="border-style:none"><fmt:formatNumber value="${order.price}" pattern="#,###,###" />元</td>
 										<td class="cell100 column2" style="border-style:none">${order.status}</td>
 										<td class="cell100 column2" style="border-style:none">${order.shippingNo}</td>
 										<td class="cell100 column2" style="border-style:none">${order.addr}</td>
