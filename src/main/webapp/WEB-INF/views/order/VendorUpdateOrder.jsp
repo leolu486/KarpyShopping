@@ -165,7 +165,7 @@ body {
                 <c:choose>              
                 	<c:when test="${order.status != '已出貨'}">
 	                	<h5 style="padding-bottom:0;">運送狀態: </h5>
-	                		<select class="custom-select my-1 mr-sm-2" id="status" name="status">   	 						
+	                		<select class="form-control" id="status" name="status">   	 						
 	    						<option>未出貨</option>
 	    						<option>已出貨</option>    						
 	  						</select>               
@@ -198,6 +198,7 @@ body {
     <div>
     	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
 	</div>
+
 
 
 </body>

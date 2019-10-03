@@ -98,7 +98,7 @@ public class OrderController {
 	public String selectByOid(Model model) {
 		OrderBean ob = new OrderBean();
 		model.addAttribute(ob);
-		return "order/vendorQueryOrder";
+		return "backstage/VendorQueryOrder"; // return "order/vendorQueryOrder";
 	}
 
 	// 查單筆訂單 ，0912 modification，賣家修改訂單
@@ -114,17 +114,17 @@ public class OrderController {
 		}
 		if (oId == null) {
 			model.addAttribute("error", "查無此訂單");
-			return "order/vendorQueryOrder";
+			return "backstage/VendorQueryOrder"; //return "order/vendorQueryOrder";
 		}
 		model.addAttribute("order", service.select(oId));
-		return "order/singleOrder";
+		return "backstage/singleOrder"; //return "order/singleOrder";
 	}
 
 	// 查全部訂單
 	@RequestMapping("/orders")
 	public String select(Model model) {
 		model.addAttribute("orders", service.select());
-		return "order/vendorQueryOrders";
+		return "backstage/VendorQueryOrders"; //return "order/vendorQueryOrders";
 	}
 
 	// 依會員查全部訂單
@@ -143,8 +143,14 @@ public class OrderController {
 	// 依訂單編號查細項
 	@RequestMapping("/orderItemByOid")
 	public String displayItems(@RequestParam("oId") Integer oId, Model model) {
-		model.addAttribute("items", service.queryItems(oId));
+		model.addAttribute("items", service.queryItems(oId));		
 		return "order/orderDetail";
+	}
+	
+	@RequestMapping("/orderItemByOidBackStage")
+	public String displayItemsBackStage(@RequestParam("oId") Integer oId, Model model) {
+		model.addAttribute("items", service.queryItems(oId));		
+		return "backstage/orderDetailsBackStage";
 	}
 
 	// TODO--for新增訂單測試，需刪除
@@ -297,23 +303,23 @@ public class OrderController {
 	}
 
 	// 賣家更新頁面
-	@RequestMapping("/order/VendorUpdate")
+	@RequestMapping("/VendorUpdateOrder")
 	public String VendorUpdateOrder_Page(@RequestParam("oId") Integer oId, Model model) {
 		OrderBean ob = service.select(oId);
 		if (ob.getStatus().equals("取貨完成")) {
-			return "redirect:/home";
+			return "redirect:/orders";
 		}
 		model.addAttribute("order", ob);
-		return "order/VendorUpdateOrder";
+		return "backstage/VendorUpdateOrder"; //return "order/VendorUpdateOrder";
 	}
 
 	// 賣家更新
-	@RequestMapping(value = "/order/VendorUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/VendorUpdateOrder", method = RequestMethod.POST)
 	public String updateOrder_Vendor(@RequestParam("oId") Integer oId, @ModelAttribute("order") OrderBean ob,
 			Model model, HttpServletRequest request, BindingResult result) {
 		ob.setStatus(request.getParameter("status"));
 		service.VendorUpdateOrder(ob);
-		return "redirect:/";
+		return "redirect:/orders";
 	}
 
 	// 取消訂單

@@ -75,14 +75,40 @@
 
 					</div>
 			</a></li>
-						<li class="submenu"><a href="/KarpyShopping/adminOrders">
+
+						<li class="submenu dropdown"><a href="/KarpyShopping/orders" class="dropdown-toggle" data-toggle="dropdown">
+
+
 					<div>
 
 						<i class="menu-icon fa fa-archive"></i> <span class="menu-title">Orders</span>
 
 					</div>
-			</a></li>
-			<li class="submenu"><a id="adminMembers" href="/KarpyShopping/adminMembers">
+
+					</a>
+					
+					<ul class="dropdown-menu">
+					<li><a href="orderPage">
+							<div>
+
+								<i class="menu-icon fa fa-bar-chart"></i> <span
+									class="menu-sub-title">單筆訂單查詢</span>
+
+							</div>
+					</a></li>
+					<li><a href="orders">
+							<div>
+
+								<i class="menu-icon fa fa-bar-chart"></i> <span
+									class="menu-sub-title">全部訂單查詢</span>
+
+							</div>
+					</a></li>
+				</ul>
+					
+			</li>
+			<li class="submenu"><a href="/KarpyShopping/adminMembers">
+
 					<div>
 
 						<i class="menu-icon fa fa-users"></i> <span class="menu-title">Members</span>

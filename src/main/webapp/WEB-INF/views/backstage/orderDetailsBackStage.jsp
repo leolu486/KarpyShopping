@@ -1,19 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>訂單明細</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-<%-- 	<link rel="icon" type="image/png" href="<c:url value='/order/images/icons/favicon.ico' />"/> --%>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<c:url value='/order/vendor/bootstrap/css/bootstrap.min.css' />">
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900'
+	rel='stylesheet' type='text/css' />
+
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/bootstrap.min.css'/>" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/animate.css'/>" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/font-awesome.min.css'/>" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/bootstrap-select.min.css'/>" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/awesome-bootstrap-checkbox.css'/>" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/select2.css'/>" />
+<!-- ? -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/style.css'/>" />
+
+<!-- ? -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/backstage-source/css/theme.css'/>" />
+
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/jquery-2.1.3.min.js'/>" /></script>
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/Chart.min.js'/>" /></script>
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/bootstrap-select.min.js'/>" /></script>
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/main.js'/>" /></script>
+
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/index.js'/>" /></script>
+	
+	
+	
+	
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/order/fonts/font-awesome-4.7.0/css/font-awesome.min.css' />">
 <!--===============================================================================================-->
@@ -29,29 +63,54 @@
 </head>
 
 <style>
+	.table100{
+		animation:transitionIn 1s;
+	}
 
-.transition {
-    -webkit-transform: scale(1.6); 
-    -moz-transform: scale(1.6);
-    -o-transform: scale(1.6);
-    transform: scale(2.0);
-}
-
-body { 
-	opacity: 0; 
-	transition: opacity 2s; 
-} 
+	@keyframes transitionIn{
+		from{		
+			opacity:0;
+			transform:rotateX(-10deg);
+		}		
+		
+		to{
+			opacity:1;
+			transform:rotateX(0);
+		}
+	}
 </style>
 
-<body onload="document.body.style.opacity='1'">
-<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
-<div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
-<%-- 				<a class="btn btn-secondary" style="margin-bottom:10px" href="<spring:url value='/ordersBymId?mId=${memberLoginOK.mId}' />" >返回訂單查詢</a> --%>
-				<a class="btn btn-secondary" style="margin-bottom:10px" href='<c:url value="${header.referer }"/>' >返回</a>
-				<span style="margin-left:20px;font-size:30px;font-weight:bold">訂單明細</span>
-				<div class="table100 ver2 m-b-110">
+<body class="flat-blue sidebar-collapse">
+
+
+	<jsp:include page="/WEB-INF/views/backstage/fragment/sidebar.jsp" />
+
+	<jsp:include page="/WEB-INF/views/backstage/fragment/navi.jsp" />
+
+
+	<!-- 	 page content  -->
+	<div class="content-container wrap">
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<span class="page-title red"><h2>訂單</h2></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+
+					<ol class="breadcrumb">
+						<li><a href="admin">Home</a></li>
+						<li><a href="orders">訂單查詢</a></li>
+						<li><a>訂單細項</a></li>
+					</ol>
+				</div>
+			</div>
+			
+			
+			
+			<div class="table100 ver2 m-b-110" style="margin-top:10px;">
 					<div class="table100-head">
 						<table>
 							<thead>
@@ -82,11 +141,18 @@ body {
 						</table>
 					</div>
 				</div>
-			</div>
-<%-- 			<a class="btn btn-primary" href='<c:url value="${header.referer }"/>'>返回</a> --%>
+			
+			
+			
+			
 		</div>
 	</div>
-	<jsp:include page="/WEB-INF/views/footer/footer.jsp" />
+
+	<footer class="footer">
+		<span>Copyright by KarpyShopping</span>
+	</footer>
+	
+	
 	<!--===============================================================================================-->	
 	<script src="<c:url value='/order/vendor/jquery/jquery-3.2.1.min.js' />"></script>
 <!--===============================================================================================-->
@@ -109,16 +175,18 @@ body {
 	</script>
 <!--===============================================================================================-->
 	<script src="<c:url value='/order/js/main.js' />"></script>
+	
 	<script>
 	
 	$(document).ready(function(){
-    $('.column3 img').hover(function() {
-        $(this).addClass('transition');
-    
-    }, function() {
-        $(this).removeClass('transition');
-    });
-});
+	    $('.column3 img').hover(function() {
+	        $(this).addClass('transition');
+	    
+	    }, function() {
+	        $(this).removeClass('transition');
+	    	});
+	});
 	</script>
 </body>
+
 </html>
