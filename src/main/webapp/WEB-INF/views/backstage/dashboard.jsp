@@ -70,7 +70,11 @@
 				}
 			});
 		});
-
+		$(document).on('keypress', function(e) {
+			if (e.which == 13 & $("#dialog-msg").is(":focus")) {
+				$("#send").click();
+			}
+		});
 		$("#send").click(function() {
 			//dosomething
 			var id = ${LoginOK.id};
@@ -101,6 +105,9 @@
 
 	<jsp:include page="/WEB-INF/views/backstage/fragment/navi.jsp" />
 
+	<script>
+ 	$("#adminDashBoard").addClass("active");
+	</script>
 
 	<!-- 	 page content  -->
 	<div class="content-container wrap">

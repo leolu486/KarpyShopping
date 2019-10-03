@@ -49,5 +49,11 @@ public class VendorServiceImpl implements VendorService {
 		dao.updateVendor(vb);
 
 	}
+	@Transactional
+	@Override
+	public void removeVendor(Integer vId) {
+		// TODO Auto-generated method stub
+		dao.removeVendor(vId);
+	}
 
 }

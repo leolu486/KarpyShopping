@@ -15,4 +15,6 @@ public interface VendorDao {
 	VendorBean getVendorByvId(Integer vId);
 	
 	void updateVendor(VendorBean vb);
+	
+	void removeVendor(Integer vId);
 }

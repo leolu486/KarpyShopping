@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.web.store.dao.VendorDao;
 import com.web.store.exception.VendorErrorException;
+import com.web.store.model.ProductBean;
 import com.web.store.model.VendorBean;
 
 @Repository
@@ -40,7 +41,7 @@ public class VendorDaoImpl implements Serializable, VendorDao {
 		String hql = "FROM VendorBean WHERE vname =:vname";
 		try {
 			session.createQuery(hql).setParameter("vname", vb.getVname()).getSingleResult();
-			throw new VendorErrorException("此廠商已存在 : ", vb.getVname());
+//			throw new VendorErrorException("此廠商已存在 : ", vb.getVname());
 		} catch (NoResultException e) {
 			session.save(vb);
 		}
@@ -75,8 +76,32 @@ public class VendorDaoImpl implements Serializable, VendorDao {
 		Session session = factory.getCurrentSession();
 
 		VendorBean vbb = getVendorByvId(vb.getvId());
-		vbb.setVname(vb.getVname());
+		if (vb.getVname() != null && vb.getVname().trim().length() > 0)
+			vbb.setVname(vb.getVname());
+		if (vb.getAddr() != null && vb.getAddr().trim().length() > 0)
+			vbb.setAddr(vb.getAddr());
+		if (vb.getTel() != null && vb.getTel().trim().length() > 0)
+			vbb.setTel(vb.getTel());
+		if (vb.getEmail() != null && vb.getEmail().trim().length() > 0)
+			vbb.setEmail(vb.getEmail());
+		
 		session.saveOrUpdate(vbb);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void removeVendor(Integer vId) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		String hql = "FROM ProductBean WHERE vId =:vId";
+		List<ProductBean> list = session.createQuery(hql).setParameter("vId", vId).getResultList();
+		System.out.println(list.size());
+		for (ProductBean pb : list) {
+			pb.setVendorBean(null); // prevent foreign key problem
+			session.delete(pb);
+		}
+		VendorBean vb = session.get(VendorBean.class, vId);
+		session.delete(vb);
 	}
 
 }
