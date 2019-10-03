@@ -76,7 +76,7 @@
 					</div>
 			</a></li>
 
-						<li class="submenu dropdown"><a href="/KarpyShopping/orders" class="dropdown-toggle" data-toggle="dropdown">
+						<li class="submenu dropdown"><a id="adminOrders" href="/KarpyShopping/orders"  class="dropdown-toggle" data-toggle="dropdown">
 
 
 					<div>

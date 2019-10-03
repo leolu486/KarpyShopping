@@ -218,6 +218,9 @@ h5{
 
 	<jsp:include page="/WEB-INF/views/backstage/fragment/navi.jsp" />
 
+	<script>
+ 		$("#adminOrders").addClass("active");
+	</script>
 
 	<!-- 	 page content  -->
 	<div class="content-container wrap">
