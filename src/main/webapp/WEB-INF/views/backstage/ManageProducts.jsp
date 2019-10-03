@@ -42,6 +42,7 @@
 <script type="text/javascript"
 	src="<c:url value='/backstage-source/js/index.js'/>" /></script>
 
+
 <script>
 	var total = ${totalPages};
 	$(function() {
@@ -60,10 +61,10 @@
 	});
 </script>
 
-
 </head>
 
 <body class="flat-blue sidebar-collapse">
+
 
 
 	<jsp:include page="/WEB-INF/views/backstage/fragment/sidebar.jsp" />
@@ -106,7 +107,7 @@
 	<section class="container">
 		<div class="row">
 		<c:if test="${empty resultPage}">
-		<h1 style="text-align: center;">查無商品資料MDFK</h1>
+		<h1 style="text-align: center;">查無商品資料</h1>
 		</c:if>
 			<c:forEach var="product" items='${resultPage}'>
 				<div class="col-sm-6 col-md-3" style="width: 360px; height: 360px">
