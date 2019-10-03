@@ -92,7 +92,7 @@ public class ProductController {
 		if (service.getProductById(pId).getRankCount() != null) {
 			model.addAttribute("rankAVG", service.getProductRankAVGById(pId));
 		}
-		return "/product/product";
+		return "/backstage/product";
 	}
 
 	@RequestMapping("/productByName")
@@ -179,7 +179,7 @@ public class ProductController {
 //	}
 	@RequestMapping(value = "/getProductsByManage")
 	public String getProductsByManage() {
-		return "/product/getProductsBy";
+		return "/backstage/getProductsBy";
 	}
 	
 	@RequestMapping(value = "/backToSearchResult")
@@ -258,7 +258,7 @@ public class ProductController {
 	public String getAddNewProductForm(Model model) {
 		ProductBean pb = new ProductBean();
 		model.addAttribute("productBean", pb);
-		return "/product/addProduct";
+		return "/backstage/addProduct";
 	}
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
@@ -267,7 +267,10 @@ public class ProductController {
 			@RequestParam("expdate1") @DateTimeFormat(pattern = "yyyy/MM/dd") String expdate, BindingResult result,
 			HttpServletRequest request) {
 		pb.setSdate(new java.sql.Timestamp(java.sql.Date.valueOf(sdate).getTime()));
+		System.out.println("-+--+-+-++-++-+-+-+-+-+-+" + expdate);
+		if(expdate != null && !expdate.equals("") && expdate != "") {
 		pb.setExpdate(new java.sql.Timestamp(java.sql.Date.valueOf(expdate).getTime()));
+		}
 
 		//----------------handling image
 		if (pb.getProductImageTemp() != null && !pb.getProductImageTemp().isEmpty()) {
@@ -460,6 +463,15 @@ public class ProductController {
 			}
 			session.setAttribute("productImage3", Base64.getEncoder().encodeToString(imageData));
 		}
+		
+		if (pb.getDetail() != null && !pb.getDetail().isEmpty()) {
+			String str = pb.getDetail();
+			 while (str.indexOf("\n") != -1) {
+				  str = str.substring(0, str.indexOf("\n")) + "<br>"
+				    + str.substring(str.indexOf("\n") + 1);
+				 }
+			 pb.setDetail(str);
+		}
 //--------------------------------------------------------------------------------------------------
 //		Blob[] blob = new Blob[4];
 //		int token = 0;
@@ -511,7 +523,7 @@ public class ProductController {
 		System.out.println("get pb image: ");
 		System.out.println(pb.getProductImage() == null);
 
-		return "/product/updateProduct";
+		return "/backstage/updateProduct";
 	}
 
 	@RequestMapping(value = "/product/update", method = RequestMethod.POST)

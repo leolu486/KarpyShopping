@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +39,7 @@ public class ProductBean implements Serializable {
 	private java.sql.Timestamp expdate; // expired date
 	private Double rankSum; // rank point summary
 	private Integer rankCount; // rank user summary
+	
 	private String detail;
 
 	private VendorBean vendorBean;
@@ -125,7 +127,7 @@ public class ProductBean implements Serializable {
 		this.expdate = new Timestamp(java.sql.Date.valueOf(expdate).getTime());
 		this.rankSum = rankSum;
 		this.rankCount = rankCount;
-		this.detail = detail;
+
 		try {
 			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
 			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());
@@ -153,7 +155,7 @@ public class ProductBean implements Serializable {
 		this.sdate = new Timestamp(java.sql.Date.valueOf(sdate).getTime());
 		this.rankSum = rankSum;
 		this.rankCount = rankCount;
-		this.detail = detail;
+
 		try {
 			this.productImage = SystemUtils2019.fileToBlob(new FileInputStream(file1), file1.length());
 			this.productImage1 = SystemUtils2019.fileToBlob(new FileInputStream(file2), file2.length());
@@ -334,6 +336,7 @@ public class ProductBean implements Serializable {
 		this.rankCount = rankCount;
 	}
 
+	@Column(columnDefinition = "varchar(max)")
 	public String getDetail() {
 		return detail;
 	}

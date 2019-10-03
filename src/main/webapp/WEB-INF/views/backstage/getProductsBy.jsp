@@ -44,6 +44,7 @@
 
 
 
+
 </head>
 
 <body class="flat-blue sidebar-collapse">
@@ -54,7 +55,7 @@
 	<jsp:include page="/WEB-INF/views/backstage/fragment/navi.jsp" />
 
 	<script>
- 	$("#adminOrders").addClass("active");
+ 		$("#adminProducts").addClass("active");
 	</script>
 
 	<!-- 	 page content  -->
@@ -63,7 +64,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
-					<span class="page-title red"><h2>Orders</h2></span>
+					<span class="page-title red"><h2>Products</h2></span>
 				</div>
 			</div>
 			<div class="row">
@@ -71,11 +72,28 @@
 
 					<ol class="breadcrumb">
 						<li><a>Home</a></li>
-						<li><a>Orders</a></li>
+						<li><a>Products</a></li>
 					</ol>
 				</div>
 			</div>
 			
+	<section>
+		<div class="container">
+			<h1 style="text-align: center">請輸入欲修改的商品</h1>
+		</div>
+	</section>
+	<hr
+		style="height: 1px; border: none; color: #333; background-color: #333;">
+	<section class="container">
+		<!--       三個地方要完全一樣 -->
+		<form class="new_search" role="search" action="getProductsByNoSearchCount"
+							method="POST">
+							<input id="searchBy" class="search-field"
+								placeholder="請輸入搜尋資料..." name="searchBy" title="Search for:"
+								type="text"> <input id="searchBtn" value="Search"
+								type="submit">
+						</form>
+	</section>
 		</div>
 	</div>
 

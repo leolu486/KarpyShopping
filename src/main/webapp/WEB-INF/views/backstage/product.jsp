@@ -44,6 +44,7 @@
 
 
 
+
 </head>
 
 <body class="flat-blue sidebar-collapse">
@@ -54,7 +55,7 @@
 	<jsp:include page="/WEB-INF/views/backstage/fragment/navi.jsp" />
 
 	<script>
- 	$("#adminOrders").addClass("active");
+ 		$("#adminProducts").addClass("active");
 	</script>
 
 	<!-- 	 page content  -->
@@ -63,7 +64,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
-					<span class="page-title red"><h2>Orders</h2></span>
+					<span class="page-title red"><h2>Products</h2></span>
 				</div>
 			</div>
 			<div class="row">
@@ -71,11 +72,43 @@
 
 					<ol class="breadcrumb">
 						<li><a>Home</a></li>
-						<li><a>Orders</a></li>
+						<li><a>Products</a></li>
 					</ol>
 				</div>
 			</div>
 			
+	<section>
+		<div>
+			<div class="container" style="text-align: center">
+				<h2>商品詳細資料</h2>
+			</div>
+		</div>
+	</section>
+	<section class="container">
+		<div class="row">
+
+			<div class="col-md-5">
+				<p>
+					<b style='font-size: 16px;'>ProductId:${product.pId}</b>
+				</p>
+				<p>商品名稱:${product.pname}</p>
+				<p>商品價錢:${product.price}</p>
+				<p>商品庫存:${product.amount}</p>
+				<p>商品評價:${rankAVG}</p>
+				<p>
+					<a href="<spring:url value='backToSearchResult' />" class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span>返回
+					</a>
+					<a href="<spring:url value='product/update?pId=${product.pId}' />" class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span>修改
+					</a>
+					<a href="<spring:url value='product/delete?pId=${product.pId}' />" class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span>刪除
+					</a>
+				</p>
+			</div>
+		</div>
+	</section>
 		</div>
 	</div>
 

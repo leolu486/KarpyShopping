@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
 <html>
+
 <head>
 
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900'
@@ -38,26 +40,16 @@
 <script type="text/javascript"
 	src="<c:url value='/backstage-source/js/main.js'/>" /></script>
 
-<!-- <script type="text/javascript" -->
-<%-- 	src="<c:url value='/backstage-source/js/index.js'/>" /></script> --%>
+<script type="text/javascript"
+	src="<c:url value='/backstage-source/js/index.js'/>" /></script>
 
-<!-- <link rel='stylesheet' -->
-<%-- 	href='${pageContext.request.contextPath}/css/styles.css' --%>
-<!-- 	type="text/css" /> -->
-<meta charset="UTF-8">
-<!-- <link rel="stylesheet" -->
-<!-- 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
-<style type="text/css">
-fieldset {
-	border: 1px solid rgb(255, 232, 57);
-	width: 400px;
-	margin: auto;
-}
-</style>
-<title>addProduct</title>
-<%-- <link rel='stylesheet' href="<c:url value='css/styles.css'/>" type="text/css" /> --%>
+
+
+
 </head>
-<body>
+
+<body class="flat-blue sidebar-collapse">
+
 
 	<jsp:include page="/WEB-INF/views/backstage/fragment/sidebar.jsp" />
 
@@ -67,14 +59,27 @@ fieldset {
  		$("#adminProducts").addClass("active");
 	</script>
 
-	<section>
-		<div class="container">
-			<h1 style="text-align: center">新增商品</h1>
-		</div>
-	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
+	<!-- 	 page content  -->
+	<div class="content-container wrap">
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<span class="page-title red"><h2>Products</h2></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+
+					<ol class="breadcrumb">
+						<li><a>Home</a></li>
+						<li><a>Products</a></li>
+					</ol>
+				</div>
+			</div>
+			
+			<div>
+					<section class="container">
 		<!--       三個地方要完全一樣 -->
 		<form:form method='POST' modelAttribute="productBean"
 			class='form-horizontal' enctype="multipart/form-data">
@@ -161,23 +166,23 @@ fieldset {
 					</div>
 				</div>
 				
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='category'>
-						商品圖片3: </label>
-					<div class="col-lg-10">
-						<form:input id="productImageTemp2" path="productImageTemp2" type="file"
-							class='form:input-large' />
-					</div>
-				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label class="control-label col-lg-2 col-lg-2" for='category'> -->
+<!-- 						商品圖片3: </label> -->
+<!-- 					<div class="col-lg-10"> -->
+<%-- 						<form:input id="productImageTemp2" path="productImageTemp2" type="file" --%>
+<%-- 							class='form:input-large' /> --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
 				
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='category'>
-						商品圖片4: </label>
-					<div class="col-lg-10">
-						<form:input id="productImageTemp3" path="productImageTemp3" type="file"
-							class='form:input-large' />
-					</div>
-				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label class="control-label col-lg-2 col-lg-2" for='category'> -->
+<!-- 						商品圖片4: </label> -->
+<!-- 					<div class="col-lg-10"> -->
+<%-- 						<form:input id="productImageTemp3" path="productImageTemp3" type="file" --%>
+<%-- 							class='form:input-large' /> --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
 				
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='category'>
@@ -197,5 +202,14 @@ fieldset {
 			</fieldset>
 		</form:form>
 	</section>
+			</div>
+			
+		</div>
+	</div>
+
+	<footer class="footer">
+		<span>Copyright by KarpyShopping</span>
+	</footer>
 </body>
+
 </html>
