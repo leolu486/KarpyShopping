@@ -69,21 +69,16 @@
 	//input type limit function
 	(function($) {
 		$.fn.inputFilter = function(inputFilter) {
-			return this
-					.on(
-							"input keydown keyup mousedown mouseup select contextmenu drop",
-							function() {
-								if (inputFilter(this.value)) {
-									this.oldValue = this.value;
-									this.oldSelectionStart = this.selectionStart;
-									this.oldSelectionEnd = this.selectionEnd;
-								} else if (this.hasOwnProperty("oldValue")) {
-									this.value = this.oldValue;
-									this.setSelectionRange(
-											this.oldSelectionStart,
-											this.oldSelectionEnd);
-								}
-							});
+			return this.on("input keydown keyup mousedown mouseup select contextmenu drop",function() {
+				if (inputFilter(this.value)) {
+					this.oldValue = this.value;
+					this.oldSelectionStart = this.selectionStart;
+					this.oldSelectionEnd = this.selectionEnd;
+				} else if (this.hasOwnProperty("oldValue")) {
+					this.value = this.oldValue;
+					this.setSelectionRange(this.oldSelectionStart,this.oldSelectionEnd);
+				}
+			});
 		};
 	}(jQuery));
 
@@ -122,14 +117,17 @@
 		//input limit [0-9]
 		$("#cnumber1, #cnumber2, #cnumber3, #cnumber4, #pin").inputFilter(function(value) {
 			return /^\d*$/.test(value);
+		});		
+		//changePassword
+		$("#passwordcheck").click(function() {
+	 		if(CheckOpw() & CheckNpw() &CheckRnpw()){
+				$("#chgpwd").submit();
+	 		}
 		});
 
 	});
 
 	document.addEventListener("DOMContentLoaded", function() {
-
-		document.getElementById("passwordcheck").addEventListener("click",
-				submit);
 
 		document.getElementById("opw").addEventListener("focus", function() {
 			this.style.backgroundColor = "lightyellow";
@@ -170,10 +168,12 @@
 			document.getElementById("opw").style.backgroundColor = "pink";
 			document.getElementById("error1").style.color = "red";
 			document.getElementById("error1").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>請輸入原密碼";
+			return false;
 		} else {
 			document.getElementById("opw").style.backgroundColor = "lightgreen";
 			document.getElementById("opw").style.color = "green";
 			document.getElementById("error1").innerHTML = "<img width='15px' src='<c:url value='/images/icon/correct.jpg'/>'/>";
+			return true;
 		}
 	}
 
@@ -213,6 +213,7 @@
 				document.getElementById("npw").style.backgroundColor = "lightgreen";
 				document.getElementById("npw").style.color = "green";
 				document.getElementById("error2").innerHTML = "<img width='15px' src='<c:url value='/images/icon/correct.jpg'/>'/>";
+				return true;
 			} else if (!flag3) {
 				document.getElementById("npw").style.backgroundColor = "pink";
 				document.getElementById("npw").style.color = "red";
@@ -223,6 +224,7 @@
 				document.getElementById("error2").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>密碼須包含數字及英文字母";
 			}
 		}
+		return false;
 	}
 
 	function CheckRnpw() {
@@ -238,23 +240,26 @@
 			document.getElementById("rnpw").style.backgroundColor = "lightgreen";
 			document.getElementById("rnpw").style.color = "green";
 			document.getElementById("error3").innerHTML = "<img width='15px' src='<c:url value='/images/icon/correct.jpg'/>'/>";
+			return true;
 		} else if (document.getElementById("rnpw").value != document
 				.getElementById("npw").value) {
 			document.getElementById("rnpw").style.backgroundColor = "pink";
 			document.getElementById("rnpw").style.color = "red";
 			document.getElementById("error3").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>與新密碼不相符";
 		}
+		return false;
+	}	
+	function checkdate(){
+		var today = new Date();
+		var vdate = document.getElementById("edate").value;
+		if(today > vdate){
+			document.getElementById("dcheck").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>日期有誤";
+		}else{
+		
+		}
 	}
 
-	function checkdate(){
-	var today = new Date();
-	var vdate = document.getElementById("edate").value;
-	if(today > vdate){
-		document.getElementById("dcheck").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>日期有誤";
-	}else{
-		
-	}
-	}
+
 </script>
 <style>
 .center {
@@ -577,7 +582,7 @@ background: rgb(191, 191, 191);
 					<hr style="width: 100%">
 
 					<form:form method='POST' id="chgpwd" class='form-horizontal'
-						enctype="multipart/form-data" onsubmit="return CheckPwd();"
+						enctype="multipart/form-data"
 						style="margin-top:100px;">
 						<div class="st1">
 							<label><input type="password" name="oldPW" id="opw"
@@ -598,7 +603,7 @@ background: rgb(191, 191, 191);
 							</label>
 						</div>
 						<div class="form_btn">
-							<button type=submit id="passwordcheck" style="width: 296px;">送出</button>
+							<button type="button" id="passwordcheck" style="width: 296px;">送出</button>
 						</div>
 						<input name="form" type='hidden' value='2' />
 						<input name="name" placeholder="姓名" type="hidden">
