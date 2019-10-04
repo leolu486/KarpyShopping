@@ -68,4 +68,6 @@ public interface MemberDao {
 	boolean couponExist(CouponBean cb);
 	
 	CouponBean getCouponBycId(Integer cId);
+	
+	int deleteMember(Integer mId);
 }

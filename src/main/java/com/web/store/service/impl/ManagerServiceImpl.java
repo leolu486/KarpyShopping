@@ -36,9 +36,16 @@ public class ManagerServiceImpl implements ManagerService {
 	
 	@Transactional
 	@Override
+	public int deleteManager(Integer id) {
+		return dao.deleteManager(id);
+	}
+	
+	@Transactional
+	@Override
 	public int deleteManager(ManagerBean mb) {
 		return dao.deleteManager(mb);
 	}
+	
 	
 	@Transactional
 	@Override

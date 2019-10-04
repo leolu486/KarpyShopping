@@ -14,9 +14,12 @@ import org.springframework.stereotype.Repository;
 
 import com.web.store.dao.MemberDao;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.exception.OrderNotFoundException;
 import com.web.store.model.CouponBean;
 import com.web.store.model.CreditCardBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.OrderBean;
+import com.web.store.model.OrderItemBean;
 import com.web.store.model.TaxIdBean;
 
 import _00_init.util.GlobalService;
@@ -108,6 +111,7 @@ public class MemberDaoImpl implements MemberDao {
 		return mb;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public int deleteMember(MemberBean mb) {
 		int count = 0;
@@ -116,6 +120,32 @@ public class MemberDaoImpl implements MemberDao {
 			MemberBean member = session.get(MemberBean.class, mb.getmId());
 			session.delete(member);
 		}
+		count++;
+		return count;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public int deleteMember(Integer mId) {
+		int count = 0;
+		Session session = factory.getCurrentSession();
+
+		String hql = "FROM OrderBean where mId = :mId";
+		List<OrderBean> orders = session.createQuery(hql).setParameter("mId", mId).getResultList();
+		System.out.println("order size:" + orders.size());
+		for (OrderBean ob : orders) {
+			
+			String hql1 = "FROM OrderItemBean where FK_OrderBean_orderNo = :FK_OrderBean_orderNo";
+			List<OrderItemBean> orderitems = session.createQuery(hql1).setParameter("FK_OrderBean_orderNo", ob.getoId()).getResultList();
+			for (OrderItemBean oib : orderitems) {
+				oib.setOrderBean(null);
+				session.delete(oib);
+			}
+			ob.setMemberBean(null);
+			session.saveOrUpdate(ob);
+		}
+		MemberBean member = session.get(MemberBean.class, mId);
+		session.delete(member);
 		count++;
 		return count;
 	}

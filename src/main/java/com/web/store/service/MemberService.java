@@ -19,6 +19,8 @@ public interface MemberService {
 	MemberBean updateMember(MemberBean mb);
 
 	int deleteMember(MemberBean mb);
+	
+	int deleteMember(Integer mId);
 
 	void changePassword(MemberBean mb, String newPw);
 

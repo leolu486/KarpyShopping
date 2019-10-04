@@ -125,7 +125,8 @@ public class BackStageController {
 
 	@RequestMapping(value = "/addMessage")
 	public String addMessage(@RequestParam("id") Integer id, @RequestParam("name") String name,
-			@RequestParam("time") long time, @RequestParam("msg") String msg, Model model, HttpSession session) {
+			@RequestParam("time") long time, @RequestParam("msg") String msg, Model model,
+			HttpSession session) {
 		AdminMessageBean ambean = new AdminMessageBean();
 		ambean.setmId(id);
 		ambean.setName(name);
@@ -134,18 +135,27 @@ public class BackStageController {
 		adminservice.addMessage(ambean);
 		return "redirect:/admin";
 	}
-
+	
 	@RequestMapping(value = "/removeMessage")
-	public String addMessage(@RequestParam("amId") Integer amId, Model model, HttpSession session) {
+	public String addMessage(@RequestParam("amId") Integer amId, Model model,
+			HttpSession session) {
 		adminservice.deleteMessage(amId);
 		return "redirect:/admin";
 	}
-
+	
 	@RequestMapping(value = "/removemanager")
-	public String deletemanager(@RequestParam("ManagerBean") ManagerBean mb, Model model,
+	public String deletemanager(@RequestParam("id") Integer id, Model model,
 			HttpSession session) {
-		adminservice.deleteManager(mb);
+		adminservice.deleteManager(id);
 		return "redirect:/adminManagers";
 	}
 	
+	@RequestMapping(value = "/removemember")
+	public String deletemember(@RequestParam("mId") Integer mId, Model model,
+			HttpSession session) {
+		System.out.println(mId);
+		System.out.println(mservice.getMemberBymId(mId).toString());
+		mservice.deleteMember(mId);
+		return "redirect:/adminMembers";
+	}
 }

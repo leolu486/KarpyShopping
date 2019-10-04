@@ -63,11 +63,31 @@ public class MemberController {
 		mv.addObject("invalidAccount", exception.getAccount());
 		mv.addObject("exception", exception);
 		mv.addObject("errorMessage", exception.getMessage());
+		System.out.println(exception.getMessage());
 		mv.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
-		mv.setViewName("errorPage/memberNotFound");
+
+		String a1 = "此帳號已存在 : ";
+		String a2 = "欄位不可為空";
+		String a3 = "帳號或是密碼錯誤 : ";
+		if(exception.getMessage() .equals(a1)) {
+			mv.setViewName("errorPage/memberNotFound2");
+			
+		}else if(exception.getMessage() .equals(a2)) {
+			mv.setViewName("errorPage/memberNotFound");
+			return mv;
+		}else if (exception.getMessage().equals(a3)) {
+			mv.setViewName("errorPage/memberLoginError");
+		}
+		
+//		
+//		mv.setViewName("errorPage/memberNotFound");
+//		mv.setViewName("errorPage/memberLoginError");
 		return mv;
 	}
 
+	
+	
+	
 	@RequestMapping("/membersall")
 	public String list(Model model) {
 		List<MemberBean> list = service.getAllMember();
