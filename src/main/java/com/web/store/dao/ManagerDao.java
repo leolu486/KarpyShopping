@@ -24,5 +24,7 @@ public interface ManagerDao {
 	
 	void deleteMessage(Integer amId);
 	
+	int deleteManager(Integer id);
+
 	int deleteManager(ManagerBean mb);
 }

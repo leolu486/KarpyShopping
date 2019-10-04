@@ -45,6 +45,12 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(MemberBean mb) {
 		return dao.deleteMember(mb);
 	}
+	
+	@Transactional
+	@Override
+	public int deleteMember(Integer mId) {
+		return dao.deleteMember(mId);
+	}
 
 	@Transactional
 	@Override

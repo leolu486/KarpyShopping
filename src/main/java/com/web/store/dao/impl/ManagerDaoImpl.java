@@ -142,6 +142,21 @@ public class ManagerDaoImpl implements ManagerDao {
 	}
 
 	@Override
+	public int deleteManager(Integer id) {
+		// TODO Auto-generated method stub
+		int count = 0;
+
+		Session session = factory.getCurrentSession();
+		ManagerBean manager = session.get(ManagerBean.class, id);
+		
+		if (manager != null)
+			session.delete(manager);
+
+		count++;
+		return count;
+	}
+	
+	@Override
 	public int deleteManager(ManagerBean mb) {
 		// TODO Auto-generated method stub
 		int count = 0;

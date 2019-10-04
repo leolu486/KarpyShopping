@@ -14,6 +14,8 @@ public interface ManagerService {
 
 	int addManager(ManagerBean manager);
 
+	int deleteManager(Integer id);
+	
 	int deleteManager(ManagerBean mb);
 		
 	ManagerBean checkIdPassword(String account, String password);

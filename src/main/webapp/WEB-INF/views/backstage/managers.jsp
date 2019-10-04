@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
@@ -85,9 +86,9 @@ function modify_vendor(){
 	//do modify_vendor
 }
 
-function delete_vendor(){
+function delete_manager(id){
 	if(confirm("確定刪除資料嗎?")){
-		//do remove vendor
+		window.location.href="removemanager?id="+id;
 		alert("刪除成功.");
 	}else{
 		alert("取消成功.");
@@ -97,42 +98,47 @@ function delete_vendor(){
 
 
 $(function() {
-
-	$("#dialog-modal").hide();
+	$("#modifyvendor").hide();
+	$("#addvendor").hide();
 	$("#open-dialog").click(function() {
 
-		$("#dialog-modal").dialog({
-			width : 310,
-			height : 100,
+		$("#addvendor").dialog({
+			width : 400,
+			height : 350,
 			modal : true,
 			open : function() {
 				$('.ui-widget-overlay').bind('click', function() {
-					$("#dialog-modal").dialog('close');
+					$("#addvendor").dialog('close');
 				})
 			}
 		});
 	});
+	
+	//dialog actions
+	$("#m-btn-submit").click(function(){
+		//update vendor
+		window.location.href="updateVendor?vId="+$("#vid").val()+"&vname="+$("#vname").val()+"&addr=" +$("#addr").val()+"&tel="+$("#tel").val()+"&email="+$("#email").val();
+	});
+	$("#m-btn-cancel").click(function(){
+		$("#modifyvendor").dialog('close');
+	});
+	//-----//
+	$("#add-btn-submit").click(function(){
+		//add vendor
+		window.location.href="addVendor?vname="+$("#vname1").val()+"&addr=" +$("#addr1").val()+"&tel="+$("#tel1").val()+"&email="+$("#email1").val();
+	});
+	$("#add-btn-cancel").click(function(){
+		$("#addvendor").dialog('close');
+	});
+
+	
+	
+	
 	$(document).on('keypress', function(e) {
 		if (e.which == 13 & $("#dialog-msg").is(":focus")) {
 			$("#send").click();
 		}
 	});
-// 	$("#send").click(function() {
-// 		//dosomething
-// 		var id = ${LoginOK.id};
-// 		var name = "${LoginOK.name}";
-// 		var time = Date.now();
-// 		var msg = $("#dialog-msg").val();
-// 		$("#dialog-modal").dialog('close');
-// //			alert("addMessage?id="+id+"&name="+name+"&time=" + time + "&msg=" + msg);
-// 		window.location.href="addMessage?id="+id+"&name="+name+"&time=" + time + "&msg=" + msg;
-// 	});
-// 	$(".delete-msg").click(function() {
-// 		//dosomething
-// 		window.location.href="removeMessage?amId=" + $(this).next('input').val();
-// 	});
-	
-	
 
 });
 
@@ -180,12 +186,48 @@ $(function() {
                             
                         </div>
                         
-                        <!-- dialog -->
-						<div id="dialog-modal" title="Add Vendor">
-							<span> <input id="dialog-msg" type="text" /> <input
-								id="send" type="button" value="send" />
-							</span>
+                       <!-- dialog -->
+						<div id="addvendor" title="Add Vendor" class="modal-body">
+							<p>
+								<label for="vname">Vendor Name : </label><input id="vname1" name="vname" type="text">
+							</p>
+							<p>
+								<label for="addr">Address: </label><input id="addr1" name="addr" type="text">
+							</p>
+							<p>
+								<label for="tel">Tel : </label><input id="tel1" name="tel" type="text">
+							</p>	
+							<p>		
+								<label for="email">Email:</label><input id="email1" name="email" type="email">
+							</p>
+							<p style="text-align:right">
+								<span style="text-align:left;"><input type="button" id="add-btn-submit" value="submit">
+								<input type="button" id="add-btn-cancel" value="cancel"></span>
+							</p>							
 						</div>
+						
+						  <!-- modify vendor -->
+                     	<div id="modifyvendor" title="Modify Vendor" class="modal-body">
+							<p>
+								<label for="vid">Vendor ID : </label><input id="vid" name="vid" type="text" readonly="readonly">
+							</p>
+							<p>
+								<label for="vname">Vendor Name : </label><input id="vname" name="vname" type="text">
+							</p>
+							<p>
+								<label for="addr">Address: </label><input id="addr" name="addr" type="text">
+							</p>
+							<p>
+								<label for="tel">Tel : </label><input id="tel" name="tel" type="text">
+							</p>	
+							<p>		
+								<label for="email">Email:</label><input id="email" name="email" type="email">
+							</p>
+							<p style="text-align:right">
+								<span style="text-align:left;"><input type="button" id="m-btn-submit" value="submit">
+								<input type="button" id="m-btn-cancel" value="cancel"></span>
+							</p>							
+						</div>   
 						<!-- dialog end -->
 						
                         <table class="table table-striped" style="">
@@ -212,9 +254,9 @@ $(function() {
 										<div class="btn-group">
                                     		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Edit&nbsp;<span class="caret"></span></button>
                                 		    <ul class="dropdown-menu" role="menu">
-                            		            <li><a href="home" onclick='modify_vendor()'>修改</a></li>
+                            		            <li><a onclick='modify_vendor()'>修改</a></li>
     	                        	            <li class="divider"></li>
-	                            	            <li><a href="removemanager" onclick='delete_vendor()'>刪除</a>
+	                            	            <li><a onclick='delete_manager(${managers.id})'>刪除</a>
                                		         	</li>
                                 	    	</ul>
                                			</div>

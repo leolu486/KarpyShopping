@@ -49,7 +49,7 @@ response.setDateHeader("Expires", 0);
 				<div class="col-md-3">
 					<div class="logo_area">
 						<a href="home"><img
-							src="<c:url value="/images/logo-pic/logo1.png" />" alt="image" /></a>
+							src="<c:url value="/images/logo-pic/logo.png" />" alt="image" /></a>
 					</div>
 				</div>
 				<div class="col-md-9">

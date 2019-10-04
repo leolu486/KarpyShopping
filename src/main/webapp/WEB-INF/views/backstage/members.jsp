@@ -86,12 +86,12 @@ function modify_vendor(){
 	//do modify_vendor
 }
 
-function delete_vendor(){
-	if(confirm("Are you sure removing this Vendor?")){
-		//do remove vendor
-		alert("Remove vendor success.");
+function delete_member(mId){
+	if(confirm("確定刪除此會員嗎?")){
+		window.location.href="removemember?mId="+mId;
+		alert("刪除成功.");
 	}else{
-		alert("Operate cancelled.");
+		alert("取消成功.");
 	}
 	
 }
@@ -221,7 +221,7 @@ $(function() {
                                 		    <ul class="dropdown-menu" role="menu">
                             		            <li><a onclick='modify_vendor()'>修改</a></li>
     	                        	            <li class="divider"></li>
-	                            	            <li><a onclick='delete_vendor()'>刪除</a>
+	                            	            <li><a onclick='delete_member(${member.mId})'>刪除</a>
                                		         	</li>
                                 	    	</ul>
                                			</div>
