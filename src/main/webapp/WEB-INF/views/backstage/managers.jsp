@@ -154,7 +154,7 @@ $(function() {
 	<jsp:include page="/WEB-INF/views/backstage/fragment/navi.jsp" />
 
 	<script>
- 	$("#adminVendors").addClass("active");
+ 	$("#adminManagers").addClass("active");
 	</script>
 		<!-- 	 page content  -->
 	<div class="content-container wrap">

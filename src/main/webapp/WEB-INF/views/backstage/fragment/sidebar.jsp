@@ -63,142 +63,148 @@
 		</div>
 
 		<ul class="menu">
-			<li class="submenu"><a id="adminDashBoard" href="/KarpyShopping/admin">
+			<!-- DashBoard -->
+			<li class="submenu">
+				<a id="adminDashBoard" href="/KarpyShopping/admin">
 					<div>
-						<i class="menu-icon fa fa-bar-chart"></i> <span class="menu-title">DashBoard</span>
+						<i class="menu-icon fa fa-bar-chart"></i> 
+						<span class="menu-title">DashBoard</span>
 					</div>
-			</a></li>
-						<li class="submenu dropdown"><a id="adminProducts" href="/KarpyShopping/adminProducts" class="dropdown-toggle"
-				data-toggle="dropdown">
-					<div>
-
-						<i class="menu-icon fa fa-th-large"></i> <span class="menu-title">Products</span>
-
-					</div>
-			</a>
-			<ul class="dropdown-menu">
-					<li><a href="/KarpyShopping/product/add">
-							<div>
-
-								<i class="menu-icon fa fa-sign-in"></i> <span
-									class="menu-sub-title">add product</span>
-
-							</div>
-					</a></li>
-					<li><a href="/KarpyShopping/getProductsByManage">
-							<div>
-
-								<i class="menu-icon fa fa-pencil-square-o"></i> <span
-									class="menu-sub-title">edit product</span>
-
-							</div>
-					</a></li>
-				</ul></li>
-
-						<li class="submenu dropdown"><a id="adminOrders" href="/KarpyShopping/orders"  class="dropdown-toggle" data-toggle="dropdown">
-
-
-					<div>
-
-						<i class="menu-icon fa fa-archive"></i> <span class="menu-title">Orders</span>
-
-					</div>
-
-					</a>
-					
-					<ul class="dropdown-menu">
-					<li><a href="orderPage">
-							<div>
-
-								<i class="menu-icon fa fa-bar-chart"></i> <span
-									class="menu-sub-title">單筆訂單查詢</span>
-
-							</div>
-					</a></li>
-					<li><a href="orders">
-							<div>
-
-								<i class="menu-icon fa fa-bar-chart"></i> <span
-									class="menu-sub-title">全部訂單查詢</span>
-
-							</div>
-					</a></li>
-				</ul>
-					
+				</a>
 			</li>
-			<li class="submenu"><a href="/KarpyShopping/adminMembers">
-
+			<!-- Vendors -->
+			<li class="submenu">
+				<a id="adminVendors" href="/KarpyShopping/adminVendors">
 					<div>
-
-						<i class="menu-icon fa fa-users"></i> <span class="menu-title">Members</span>
-
+						<i class="menu-icon fa fa-truck"></i> 
+						<span class="menu-title">Vendor</span>
 					</div>
-			</a></li>
-			<li class="submenu"><a id="adminManagers" href="/KarpyShopping/adminManagers">
+				</a>
+			</li>
+			<!-- Member -->
+			<li class="submenu">
+				<a id="adminMembers" href="/KarpyShopping/adminMembers">
 					<div>
-
-						<i class="menu-icon fa fa-info-circle"></i> <span class="menu-title">Managers</span>
-
+						<i class="menu-icon fa fa-users"></i>
+						<span class="menu-title">Members</span>
 					</div>
-			</a></li>
-			<li class="submenu"><a id="adminVendors" href="/KarpyShopping/adminVendors">
+				</a>
+			</li>
+			<!-- Manger -->
+			<li class="submenu">
+				<a id="adminManagers" href="/KarpyShopping/adminManagers">
 					<div>
-
-						<i class="menu-icon fa fa-truck"></i> <span
-							class="menu-title">Vendor</span>
-
+						<i class="menu-icon fa fa-info-circle"></i>
+						<span class="menu-title">Managers</span>
 					</div>
-			</a></li>
-
-			<li class="submenu dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown">
+				</a>
+			</li>
+			
+			<!-- Orders -->
+			<li class="submenu dropdown">
+				<a id="adminOrders" href="/KarpyShopping/orders"  class="dropdown-toggle" data-toggle="dropdown">
 					<div>
-
-						<i class="menu-icon fa fa-slack"></i> <span class="menu-title">Page
-							Example</span>
-
+						<i class="menu-icon fa fa-archive"></i>
+						<span class="menu-title">Orders</span>
 					</div>
-			</a>
+				</a>
 				<ul class="dropdown-menu">
-					<li><a href="#">
+					<li>
+						<a href="orderPage">
 							<div>
-
-								<i class="menu-icon fa fa-sign-in"></i> <span
-									class="menu-sub-title">Login</span>
-
+								<i class="menu-icon fa fa-bar-chart"></i> 
+								<span class="menu-sub-title">單筆訂單查詢</span>
 							</div>
-					</a></li>
-					<li><a href="#">
+						</a>
+					</li>
+					<li>
+						<a href="orders">
 							<div>
-
-								<i class="menu-icon fa fa-pencil-square-o"></i> <span
-									class="menu-sub-title">Register</span>
-
+								<i class="menu-icon fa fa-bar-chart"></i> 
+								<span class="menu-sub-title">全部訂單查詢</span>
 							</div>
-					</a></li>
-				</ul></li>
-			<li class="submenu dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown">
+						</a>
+					</li>
+				</ul>	
+			</li>
+			<!--Products-->
+			<li class="submenu dropdown">
+				<a id="adminProducts" href="/KarpyShopping/adminProducts" class="dropdown-toggle" data-toggle="dropdown">
 					<div>
-						<i class="menu-icon fa fa-magic"></i> <span class="menu-title">Custom
-							Elements</span>
+						<i class="menu-icon fa fa-th-large"></i> 
+						<span class="menu-title">Products</span>
 					</div>
-			</a>
-
-
+				</a>
 				<ul class="dropdown-menu">
-					<li><a href="#">
+					<li>
+						<a href="/KarpyShopping/product/add">
 							<div>
-
-								<i class="menu-icon fa fa-bar-chart"></i> <span
-									class="menu-sub-title">Dashboard</span>
-
+								<i class="menu-icon fa fa-sign-in"></i> <span class="menu-sub-title">add product</span>
 							</div>
-					</a></li>
-				</ul></li>
+						</a>
+					</li>
+					<li>
+						<a href="/KarpyShopping/getProductsByManage">
+							<div>
+								<i class="menu-icon fa fa-pencil-square-o"></i> 
+								<span class="menu-sub-title">edit product</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</li>
+			
+			
+
+<!-- 			<li class="submenu dropdown"><a href="#" class="dropdown-toggle" -->
+<!-- 				data-toggle="dropdown"> -->
+<!-- 					<div> -->
+
+<!-- 						<i class="menu-icon fa fa-slack"></i> <span class="menu-title">Page -->
+<!-- 							Example</span> -->
+
+<!-- 					</div> -->
+<!-- 			</a> -->
+<!-- 				<ul class="dropdown-menu"> -->
+<!-- 					<li><a href="#"> -->
+<!-- 							<div> -->
+
+<!-- 								<i class="menu-icon fa fa-sign-in"></i> <span -->
+<!-- 									class="menu-sub-title">Login</span> -->
+
+<!-- 							</div> -->
+<!-- 					</a></li> -->
+<!-- 					<li><a href="#"> -->
+<!-- 							<div> -->
+
+<!-- 								<i class="menu-icon fa fa-pencil-square-o"></i> <span -->
+<!-- 									class="menu-sub-title">Register</span> -->
+
+<!-- 							</div> -->
+<!-- 					</a></li> -->
+<!-- 				</ul></li> -->
+<!-- 			<li class="submenu dropdown"><a href="#" class="dropdown-toggle" -->
+<!-- 				data-toggle="dropdown"> -->
+<!-- 					<div> -->
+<!-- 						<i class="menu-icon fa fa-magic"></i> <span class="menu-title">Custom -->
+<!-- 							Elements</span> -->
+<!-- 					</div> -->
+<!-- 			</a> -->
+
+
+<!-- 				<ul class="dropdown-menu"> -->
+<!-- 					<li><a href="#"> -->
+<!-- 							<div> -->
+
+<!-- 								<i class="menu-icon fa fa-bar-chart"></i> <span -->
+<!-- 									class="menu-sub-title">Dashboard</span> -->
+
+<!-- 							</div> -->
+<!-- 					</a></li> -->
+<!-- 				</ul></li> -->
 		</ul>
 	</div>
 </body>
 
 </html>
->>>>>>> refs/remotes/upstream/master
+

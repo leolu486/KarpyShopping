@@ -122,8 +122,16 @@
 		$("#passwordcheck").click(function() {
 	 		if(CheckOpw() & CheckNpw() &CheckRnpw()){
 				$("#chgpwd").submit();
+	 		}else{
+	 			alert("資料有誤，請您再次確認");
 	 		}
 		});
+		
+		var changeError = "${wrongpw}";
+		if(changeError!=""){
+			alert("您輸入的舊密碼是錯誤的，請再次確認");
+			<c:remove var="wrongpw"/>
+		}
 
 	});
 
@@ -164,12 +172,13 @@
 	}
 
 	function CheckOpw() {
+		var oldPW = "${memberLoginOK.password}";
 		if (document.getElementById("opw").value == "") {
 			document.getElementById("opw").style.backgroundColor = "pink";
 			document.getElementById("error1").style.color = "red";
 			document.getElementById("error1").innerHTML = "<img width='15px' src='<c:url value='/images/icon/error.jpg'/>'/>請輸入原密碼";
 			return false;
-		} else {
+		}else {
 			document.getElementById("opw").style.backgroundColor = "lightgreen";
 			document.getElementById("opw").style.color = "green";
 			document.getElementById("error1").innerHTML = "<img width='15px' src='<c:url value='/images/icon/correct.jpg'/>'/>";

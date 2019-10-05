@@ -88,8 +88,9 @@ public class MemberDaoImpl implements MemberDao {
 			member.setName(mb.getName());
 		if (mb.getSaddr() != null && mb.getSaddr().trim().length() > 0)
 			member.setSaddr(mb.getSaddr());
+		//encrpyt password
 		if (mb.getPassword() != null && mb.getPassword().trim().length() > 0)
-			member.setPassword(mb.getPassword());
+			member.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(mb.getPassword())));
 
 		session.update(member);
 

@@ -39,7 +39,7 @@ public class HomeController {
 		return "welcome";
 	}
 
-	@RequestMapping("/")
+	@RequestMapping("/testpage")
 	public String index() {
 		return "index";
 	}
@@ -57,7 +57,7 @@ public class HomeController {
 		return "ch01/serverTime";
 	}
 
-	@RequestMapping(value = "home")
+	@RequestMapping(value = {"home","/"})
 	public String home(Model model, HttpServletRequest request) {
 
 		List<ProductBean> list = service.getAllProducts();

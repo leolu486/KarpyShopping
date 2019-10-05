@@ -37,6 +37,7 @@ import com.web.store.model.MemberBean;
 import com.web.store.model.TaxIdBean;
 import com.web.store.service.MemberService;
 
+import _00_init.util.GlobalService;
 import _00_init.util.SystemUtils2019;
 
 @Controller
@@ -139,6 +140,7 @@ public class MemberController {
 
 		if (!form) {
 			int mId = service.addMember(mb);
+			mb.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(mb.getPassword())));
 			mb.setmId(mId);
 			System.out.println(mb.toString());
 			session.setAttribute("memberLoginOK", mb);
@@ -441,7 +443,13 @@ public class MemberController {
 		// 修改密碼
 		else if (form.equals("2")) {
 			// TODO: memberLoginOK should be updated as latest password
+			if(!GlobalService.getMD5Endocing(GlobalService.encryptString(oldPW)).equals(memberbean.getPassword())){
+				session.setAttribute("wrongpw", "舊密碼錯誤");
+				return "redirect:/memberchange";
+			}
 			service.changePassword(service.checkIdPassword(memberbean.getAccount(), oldPW), newPW);
+			//update memberLoginOK
+			session.setAttribute("memberLoginOK", service.getMemberBymId(memberbean.getmId()));
 		}
 		// 新增會員信用卡
 		else if (form.equals("3")) {
