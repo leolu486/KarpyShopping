@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.web.store.model.AdminMessageBean;
 import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 
 public interface ManagerDao {
 
@@ -22,4 +23,8 @@ public interface ManagerDao {
 	int addMessage(AdminMessageBean ambean);
 	
 	void deleteMessage(Integer amId);
+	
+	int deleteManager(Integer id);
+
+	int deleteManager(ManagerBean mb);
 }

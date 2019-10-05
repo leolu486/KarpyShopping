@@ -54,6 +54,9 @@
 
 	<jsp:include page="/WEB-INF/views/backstage/fragment/navi.jsp" />
 
+	<script>
+ 		$("#adminProducts").addClass("active");
+	</script>
 
 	<!-- 	 page content  -->
 	<div class="content-container wrap">
@@ -74,6 +77,10 @@
 				</div>
 			</div>
 			
+			<div>
+			<a href='product/add'><button style="height:50px;width:100px;display:inline-block;margin:10px;">新增商品</button></a>
+			<a href='getProductsByManage'><button style="height:50px;width:200px;display:inline-block;margin:10px;">修改、刪除商品</button></a>
+			</div>
 		</div>
 	</div>
 

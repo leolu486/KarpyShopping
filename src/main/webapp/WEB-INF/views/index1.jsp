@@ -60,21 +60,13 @@
 	// 		data: "searchBy="+$("#searchBy").val(),
 	// 		dataType: "text",
 	// 		success: function(response) {
+
 	// 		},
 	// 		error: function(jqXHR, textStatus, errorThrown) {},
 	// 	});
 	// 	}
-	
-
-		
-	
 </script>
-<style>
-.coupon_pic{
-	cursor:pointer;
-}
 
-</style>
 
 </head>
 
@@ -104,7 +96,7 @@
 						<div id="ensign-nivoslider" class="slides">
 
 							<img alt="" title="#slider-caption-1"
-								src="<c:url value="/images/slider/xrlogo.png"  />"> <img
+								src="<c:url value="/images/slider/x11logo.jpg"  />"> <img
 								alt="" title="#slider-caption-2"
 								src="<c:url value="/images/slider/dyson.png" />">
 						</div>
@@ -114,16 +106,16 @@
 							<div class="slider-progress"></div>
 							<div class="tld-f1">
 								<div class="layer-1-1 animated fadeInDown">
-									<h1>$28000</h1>
+									<h1>$37900</h1>
 								</div>
 								<div class="layer-1-2 animated flipInX">
-									<h2>$22400</h2>
+									<h2>$34110</h2>
 								</div>
 								<div class="layer-1-3 animated rotateInUpLeft">
-									<h1>Iphone XR</h1>
+									<h1 style="color: #FFFFFF;">Iphone X11</h1>
 								</div>
 								<div class="layer-1-4  animated rotateInUpLeft">
-									<h3>SALE UO TO 20%</h3>
+									<h3 style="color: red;">SALE UO TO 10%</h3>
 								</div>
 								<div class="layer-1-5 animated rotateInUpLeft">
 									<a href="<spring:url value='productById02?pId=107'/>">點我下單</a>
@@ -132,7 +124,7 @@
 							<div class="tld-f2">
 								<div class="layer-1-6 animated zoomIn">
 
-									<img src="<c:url value="/images/slider/IPHONEXR.png"/>">
+									<img src="<c:url value="/images/slider/xrlogo1.png"/>">
 								</div>
 							</div>
 						</div>
@@ -153,7 +145,7 @@
 									<h3>SALE UO TO 30%</h3>
 								</div>
 								<div class="layer-2-5 animated bounceInUp">
-									<a href="<spring:url value='productById02?pId=147'/>">點我下單</a>
+									<a href="<spring:url value='productById02?pId=145'/>">點我下單</a>
 								</div>
 							</div>
 							<div class="sld-fr">
@@ -269,17 +261,6 @@
 															<a href="#">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a class="not-rated" href="#"> <i
-																class="fa fa-star-o" aria-hidden="true"></i>
-															</a> <a class="not-rated" href="#"><i
-																class="fa fa-star-o" aria-hidden="true"></i></a>
-														</div>
-													</div>
 													<div class="price_box">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -341,17 +322,7 @@
 													<a href="#">${product01.pname}</a>
 												</h2>
 											</div>
-											<div class="product_price">
-												<div class="price_rating">
-													<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-														class="fa fa-star"></i></a> <a href="#"> <i
-														class="fa fa-star"></i>
-													</a> <a href="#"><i class="fa fa-star"></i></a> <a
-														class="not-rated" href="#"> <i class="fa fa-star-o"
-														aria-hidden="true"></i>
-													</a>
-												</div>
-											</div>
+											<div class="product_price"></div>
 											<div class="price_box">
 												<span class="spical-price">商品價錢 : ${product01.price}</span>
 											</div>
@@ -412,17 +383,6 @@
 													<a href="#">${product01.pname}</a>
 												</h2>
 											</div>
-											<div class="product_price">
-												<div class="price_rating">
-													<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-														class="fa fa-star"></i></a> <a href="#"> <i
-														class="fa fa-star"></i>
-													</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-														aria-hidden="true"></i>
-													</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"></i>
-													</a>
-												</div>
-											</div>
 											<div class="price_box">
 												<span class="<spical-></spical->price">商品價錢 :
 													${product01.price}</span>
@@ -439,7 +399,7 @@
 														</div>
 													</li>
 													<li>
-														<div class="new_act" >
+														<div class="new_act">
 															<a class="button_act" data-quick-id="45"
 																href="<spring:url value='productById02?pId=${product01.pId}'/>"
 																title="" data-toggle="tooltip"
@@ -488,15 +448,7 @@
 													<a href="#">${product01.pname}</a>
 												</h2>
 											</div>
-											<div class="product_price">
-												<div class="price_rating">
-													<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-														class="fa fa-star"></i></a> <a href="#"><i
-														class="fa fa-star"></i></a> <a href="#"><i
-														class="fa fa-star"></i></a> <a class="not-rated" href="#"><i
-														class="fa fa-star-o" aria-hidden="true"></i></a>
-												</div>
-											</div>
+
 											<div class="price_box">
 												<span class="<spical-></spical->price">商品價錢 :
 													${product01.price}</span>
@@ -559,17 +511,7 @@
 													<a href="#">${product01.pname}</a>
 												</h2>
 											</div>
-											<div class="product_price">
-												<div class="price_rating">
-													<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-														class="fa fa-star"></i></a> <a href="#"> <i
-														class="fa fa-star"></i>
-													</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-														class="not-rated" href="#"> <i class="fa fa-star-o"
-														aria-hidden="true"></i>
-													</a>
-												</div>
-											</div>
+
 											<div class="price_box">
 												<span class="spical-price"> 商品價錢 : ${product01.price}</span>
 											</div>
@@ -648,17 +590,7 @@
 													<a href="#">${product01.pname}</a>
 												</h2>
 											</div>
-											<div class="product_price">
-												<div class="price_rating">
-													<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-														class="fa fa-star"></i></a> <a href="#"> <i
-														class="fa fa-star"></i>
-													</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-														class="not-rated" href="#"> <i class="fa fa-star-o"
-														aria-hidden="true"></i>
-													</a>
-												</div>
-											</div>
+
 											<div class="price_box price_box_dgr">
 												<span class="spical-price">商品價錢 : ${product01.price}</span>
 											</div>
@@ -707,14 +639,7 @@
 									<a href="#">${product01.pname}</a>
 								</h2>
 							</div>
-							<div class="product_price">
-								<div class="price_rating">
-									<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-										class="fa fa-star"></i></a> <a href="#"> <i class="fa fa-star"></i>
-									</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-										class="fa fa-star"></i> </a>
-								</div>
-							</div>
+
 							<div class="price_box price_box_dgr">
 								<span class="spical-price">商品價錢 : ${product01.price}</span>
 							</div>
@@ -763,16 +688,7 @@
 									<a href="#">${product01.pname}</a>
 								</h2>
 							</div>
-							<div class="product_price">
-								<div class="price_rating">
-									<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-										class="fa fa-star"></i></a> <a href="#"> <i class="fa fa-star"></i>
-									</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-										class="not-rated" href="#"> <i class="fa fa-star-o"
-										aria-hidden="true"></i>
-									</a>
-								</div>
-							</div>
+
 							<div class="price_box price_box_dgr">
 								<span class="spical-price">商品價錢 : ${product01.price}</span>
 							</div>
@@ -888,18 +804,7 @@
 																	<a href="#">${product01.pname}</a>
 																</h2>
 															</div>
-															<div class="product_price">
-																<div class="price_rating">
-																	<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																		class="fa fa-star"></i></a> <a href="#"> <i
-																		class="fa fa-star"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a>
-																</div>
-															</div>
+
 															<div class="price_box">
 																<span class="spical-price"> 商品價錢 :
 																	${product01.price}</span>
@@ -966,18 +871,7 @@
 																	<a href="#">${product01.pname}</a>
 																</h2>
 															</div>
-															<div class="product_price">
-																<div class="price_rating">
-																	<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																		class="fa fa-star"></i></a> <a href="#"> <i
-																		class="fa fa-star"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a>
-																</div>
-															</div>
+
 															<div class="price_box">
 																<span class="spical-price"> 商品價錢 :
 																	${product01.price}</span>
@@ -1043,18 +937,7 @@
 																	<a href="#">${product01.pname}</a>
 																</h2>
 															</div>
-															<div class="product_price">
-																<div class="price_rating">
-																	<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																		class="fa fa-star"></i></a> <a href="#"> <i
-																		class="fa fa-star"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a>
-																</div>
-															</div>
+
 															<div class="price_box">
 																<span class="spical-price"> 商品價錢 :
 																	${product01.price}</span>
@@ -1120,18 +1003,7 @@
 																	<a href="#">${product01.pname}</a>
 																</h2>
 															</div>
-															<div class="product_price">
-																<div class="price_rating">
-																	<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																		class="fa fa-star"></i></a> <a href="#"> <i
-																		class="fa fa-star"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a>
-																</div>
-															</div>
+
 															<div class="price_box">
 																<span class="spical-price"> 商品價錢 :
 																	${product01.price}</span>
@@ -1197,18 +1069,7 @@
 																	<a href="#">${product01.pname}</a>
 																</h2>
 															</div>
-															<div class="product_price">
-																<div class="price_rating">
-																	<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																		class="fa fa-star"></i></a> <a href="#"> <i
-																		class="fa fa-star"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a>
-																</div>
-															</div>
+
 															<div class="price_box">
 																<span class="spical-price"> 商品價錢 :
 																	${product01.price}</span>
@@ -1274,18 +1135,7 @@
 																	<a href="#">${product01.pname}</a>
 																</h2>
 															</div>
-															<div class="product_price">
-																<div class="price_rating">
-																	<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																		class="fa fa-star"></i></a> <a href="#"> <i
-																		class="fa fa-star"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a> <a class="not-rated" href="#"> <i
-																		class="fa fa-star-o"></i>
-																	</a>
-																</div>
-															</div>
+
 															<div class="price_box">
 																<span class="spical-price"> 商品價錢 :
 																	${product01.price}</span>
@@ -1358,17 +1208,7 @@
 																	<a href="#">${product01.pname}</a>
 																</h2>
 															</div>
-															<div class="product_price">
-																<div class="price_rating">
-																	<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																		class="fa fa-star"></i></a> <a href="#"> <i
-																		class="fa fa-star"></i>
-																	</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																		class="not-rated" href="#"> <i
-																		class="fa fa-star-o" aria-hidden="true"></i>
-																	</a>
-																</div>
-															</div>
+
 															<div class="price_box">
 																<span class="spical-price">商品價錢 :
 																	${product01.price}</span>
@@ -1432,18 +1272,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
+
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -1505,18 +1334,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
+
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -1578,18 +1396,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
+
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -1651,18 +1458,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
+
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -1724,18 +1520,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
+
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -1797,18 +1582,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
+
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -1870,18 +1644,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
+
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -1943,18 +1706,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
+
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -2016,91 +1768,7 @@
 														<a href="#">${product01.pname}</a>
 													</h2>
 												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
-												<div class="price_box">
-													<span class="spical-price">商品價錢 : ${product01.price}</span>
-												</div>
-												<div class="last_button_area">
-													<ul class="add-to-links clearfix">
-														<li class="addwishlist">
-															<div class="yith-wcwl-add-button show">
-																<a class="add_to_wishlist" href="" rel="nofollow"
-																	data-product-id="45" data-product-type="external"
-																	data-toggle="tooltip" title=""
-																	data-original-title="Add to Wishlist"><i
-																	class="fa fa-heart"></i></a>
-															</div>
-														</li>
-														<li>
-															<div class="new_act">
-																<a class="button_act" data-quick-id="45"
-																	href="<spring:url value='productById02?pId=${product01.pId}'/>"
-																	title="" data-toggle="tooltip"
-																	data-original-title="Donec non est at">詳細頁面</a>
-															</div>
-														</li>
-														<li class="addcompare">
-															<div class="woocommerce product compare-button">
-																<a class="compare button" href="" data-product_id="45"
-																	rel="nofollow" data-toggle="tooltip" title=""
-																	data-original-title="Compare"><i
-																	class="fa fa-refresh"></i></a>
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="125"
-								end="125">
-								<div class="col-md-12">
-									<div class="all-pros all-pros-3 animated fadeInUp">
-										<div class="single_product">
-											<span>New</span>
-										</div>
-										<div class="sinle_pic">
-											<a
-												href="<spring:url value='productById02?pId=${product01.pId}'/>">
-												<img class="primary-img"
-												src="data:image/jpg;base64,${product01.base64Image}" alt="">
-												<img class="secondary-img"
-												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
-											</a>
-										</div>
 
-										<div class="product_content">
-											<div class="usal_pro">
-												<div class="product_name_2">
-													<h2>
-														<a href="#">${product01.pname}</a>
-													</h2>
-												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
 												<div class="price_box">
 													<span class="spical-price">商品價錢 : ${product01.price}</span>
 												</div>
@@ -2138,79 +1806,8 @@
 									</div>
 								</div>
 							</c:forEach>
-							<c:forEach var="product01" items='${products}' begin="124"
-								end="124">
-								<div class="col-md-12">
-									<div class="all-pros all-pros-3 animated fadeInUp">
-										<div class="single_product">
-											<span>New</span>
-										</div>
-										<div class="sinle_pic">
-											<a
-												href="<spring:url value='productById02?pId=${product01.pId}'/>">
-												<img class="primary-img"
-												src="data:image/jpg;base64,${product01.base64Image}" alt="">
-												<img class="secondary-img"
-												src="data:image/jpg;base64,${product01.base64Image1}" alt="">
-											</a>
-										</div>
 
-										<div class="product_content">
-											<div class="usal_pro">
-												<div class="product_name_2">
-													<h2>
-														<a href="#">${product01.pname}</a>
-													</h2>
-												</div>
-												<div class="product_price">
-													<div class="price_rating">
-														<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-															class="fa fa-star"></i></a> <a href="#"> <i
-															class="fa fa-star"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a> <a class="not-rated" href="#"> <i
-															class="fa fa-star-o" aria-hidden="true"></i>
-														</a>
-													</div>
-												</div>
-												<div class="price_box">
-													<span class="spical-price">商品價錢 : ${product01.price}</span>
-												</div>
-												<div class="last_button_area">
-													<ul class="add-to-links clearfix">
-														<li class="addwishlist">
-															<div class="yith-wcwl-add-button show">
-																<a class="add_to_wishlist" href="" rel="nofollow"
-																	data-product-id="45" data-product-type="external"
-																	data-toggle="tooltip" title=""
-																	data-original-title="Add to Wishlist"><i
-																	class="fa fa-heart"></i></a>
-															</div>
-														</li>
-														<li>
-															<div class="new_act">
-																<a class="button_act" data-quick-id="45"
-																	href="<spring:url value='productById02?pId=${product01.pId}'/>"
-																	title="" data-toggle="tooltip"
-																	data-original-title="Donec non est at">詳細頁面</a>
-															</div>
-														</li>
-														<li class="addcompare">
-															<div class="woocommerce product compare-button">
-																<a class="compare button" href="" data-product_id="45"
-																	rel="nofollow" data-toggle="tooltip" title=""
-																	data-original-title="Compare"><i
-																	class="fa fa-refresh"></i></a>
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
+
 						</div>
 					</div>
 				</div>
@@ -2309,17 +1906,7 @@
 																	<a href="#">${product01.pname}</a>
 																</h2>
 															</div>
-															<div class="product_price">
-																<div class="price_rating">
-																	<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																		class="fa fa-star"></i></a> <a href="#"> <i
-																		class="fa fa-star"></i>
-																	</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-																		class="not-rated" href="#"> <i
-																		class="fa fa-star-o" aria-hidden="true"></i>
-																	</a>
-																</div>
-															</div>
+
 															<div class="price_box">
 																<span class="spical-price">商品價錢 :
 																	${product01.price}</span>
@@ -2382,18 +1969,7 @@
 										<a href="#">${product01.pname}</a>
 									</h2>
 								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
+
 								<div class="price_box">
 									<span class="spical-price">商品價錢 : ${product01.price}</span>
 								</div>
@@ -2453,18 +2029,7 @@
 										<a href="#">${product01.pname}</a>
 									</h2>
 								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
+
 								<div class="price_box">
 									<span class="spical-price">商品價錢 : ${product01.price}</span>
 								</div>
@@ -2524,18 +2089,7 @@
 										<a href="#">${product01.pname}</a>
 									</h2>
 								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
+
 								<div class="price_box">
 									<span class="spical-price">商品價錢 : ${product01.price}</span>
 								</div>
@@ -2595,18 +2149,7 @@
 										<a href="#">${product01.pname}</a>
 									</h2>
 								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
+
 								<div class="price_box">
 									<span class="spical-price">商品價錢 : ${product01.price}</span>
 								</div>
@@ -2666,18 +2209,7 @@
 										<a href="#">${product01.pname}</a>
 									</h2>
 								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
+
 								<div class="price_box">
 									<span class="spical-price">商品價錢 : ${product01.price}</span>
 								</div>
@@ -2717,864 +2249,6 @@
 		</div>
 	</div>
 	</div>
-	<div role="tabpanel" class="tab-pane" id="acc">
-		<div class="row">
-			<div class="feature-carousel indicator-brand-3">
-				<div class="col-md-12">
-					<div class="all-pros all-pros-2 animated fadeInUp">
-						<div class="single_product">
-							<span>New</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_3.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_4.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Duis convallis</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$100.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-3 animated fadeInUp">
-						<div class="single_product">
-							<span>New</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_5.jpg" />"
-								alt=""><img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Adipiscing cursus eu</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a> <a class="not-rated" href="#"><i class="fa fa-star-o"
-											aria-hidden="true"></i> </a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$300.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-4 animated fadeInUp">
-						<div class="single_product single_product_2">
-							<span>hot</span>
-						</div>
-						<div class="single_product_3 ">
-							<span>sale</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_7.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_6.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Cras nec nisl ut erat</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="old-price">$250.00</span> <span
-										class="spical-price">$200.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-5 animated fadeInUp">
-						<div class="single_product">
-							<span>New</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Nam fringilla augue</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$150.00-$170.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-6 animated fadeInUp">
-						<div class="single_product_3 ">
-							<span>sale</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Metus nisi posuere nisl</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$150.00-$200.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-10 animated fadeInUp">
-						<div class="single_product single_product_2">
-							<span>hot</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Duis convallis</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$200.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div role="tabpanel" class="tab-pane" id="head">
-		<div class="row">
-			<div class="feature-carousel indicator-brand-3">
-				<div class="col-md-12">
-					<div class="all-pros animated fadeInUp">
-						<div class="single_product">
-							<span>New</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Donec non est at</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a> <a class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$250.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros animated fadeInUp">
-						<div class="single_product">
-							<span>New</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Duis convallis</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$100.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-5 animated fadeInUp">
-						<div class="single_product">
-							<span>New</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Nam fringilla augue</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$150.00-$170.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-6 animated fadeInUp">
-						<div class="single_product_3 ">
-							<span>sale</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt=""><img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Metus nisi posuere nisl</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$150.00-$200.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-6 animated fadeInUp">
-						<div class="single_product single_product_2">
-							<span>hot</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt=""><img class="secondary-img"
-								src="<c:url value="/images/product-pic/product_pic_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Ligula euismod eget</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="spical-price">$200.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="all-pros all-pros-7 animated fadeInUp">
-						<div class="single_product_3 ">
-							<span>sale</span>
-						</div>
-						<div class="sinle_pic">
-							<a href="#"> <img class="primary-img"
-								src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
-								alt=""> <img class="secondary-img"
-								src="<c:url value="/images/cosmatics-pic/cosmatic_pix_1.jpg" />"
-								alt="">
-							</a>
-						</div>
-						<div class="product-action" data-toggle="modal"
-							data-target="#myModal">
-							<button type="button" class="btn btn-info btn-lg quickview"
-								data-toggle="tooltip" title="Quickview">Quick View</button>
-						</div>
-						<div class="product_content">
-							<div class="usal_pro">
-								<div class="product_name_2">
-									<h2>
-										<a href="#">Etiam gravida</a>
-									</h2>
-								</div>
-								<div class="product_price">
-									<div class="price_rating">
-										<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-											class="fa fa-star"></i></a> <a href="#"> <i
-											class="fa fa-star"></i>
-										</a> <a href="#"><i class="fa fa-star"></i> </a> <a
-											class="not-rated" href="#"> <i class="fa fa-star-o"
-											aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-								<div class="price_box">
-									<span class="old- price">$250.00</span> <span
-										class="spical-price">$150.00</span>
-								</div>
-								<div class="last_button_area">
-									<ul class="add-to-links clearfix">
-										<li class="addwishlist">
-											<div class="yith-wcwl-add-button show">
-												<a class="add_to_wishlist" href="" rel="nofollow"
-													data-product-id="45" data-product-type="external"
-													data-toggle="tooltip" title=""
-													data-original-title="Add to Wishlist"><i
-													class="fa fa-heart"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="new_act">
-												<a class="button_act" data-quick-id="45" href="" title=""
-													data-toggle="tooltip"
-													data-original-title="Donec non est at">Add To Cart</a>
-											</div>
-										</li>
-										<li class="addcompare">
-											<div class="woocommerce product compare-button">
-												<a class="compare button" href="" data-product_id="45"
-													rel="nofollow" data-toggle="tooltip" title=""
-													data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	</div>
 	</div>
 	</div>
@@ -3591,7 +2265,7 @@
 						<div class="pix_new">
 
 							<a href="#"> <img
-								src="<c:url value="/images/differ-pic/differ_pic_6.jpg" />"
+								src="<c:url value="/images/differ-pic/RAZER.jpg" />"
 								alt="">
 							</a>
 						</div>
@@ -3609,7 +2283,7 @@
 					<div class="rate-extra">
 						<div class="new_product">
 							<div class="product_heading">
-								<i class="fa fa-shopping-bag"></i> <span>Top Rate</span>
+								<i class="fa fa-shopping-bag"></i> <span>排名商品</span>
 							</div>
 						</div>
 					</div>
@@ -3641,16 +2315,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div
-														class="product_price product_price_new product_price_new_3">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new price_box_new_3">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -3683,15 +2348,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price"> 商品價錢 :
 															${product01.price}</span>
@@ -3724,15 +2381,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -3765,15 +2414,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -3806,15 +2447,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price"> 商品價錢 :
 															${product01.price}</span>
@@ -3854,15 +2487,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -3899,15 +2524,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -3940,15 +2557,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -3981,15 +2590,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -4022,15 +2623,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -4068,16 +2661,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div
-														class="product_price product_price_new product_price_new_3">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new price_box_new_3">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -4111,15 +2695,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -4153,15 +2729,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -4195,15 +2763,7 @@
 																href="<spring:url value='productById02?pId=${product01.pId}'/>">${product01.pname}</a>
 														</h2>
 													</div>
-													<div class="product_price product_price_new">
-														<div class="price_rating">
-															<a href="#"><i class="fa fa-star"></i></a> <a href="#"><i
-																class="fa fa-star"></i></a> <a href="#"> <i
-																class="fa fa-star"></i>
-															</a> <a href="#"><i class="fa fa-star"></i> </a> <a href="#"><i
-																class="fa fa-star"></i> </a>
-														</div>
-													</div>
+
 													<div class="price_box price_box_new">
 														<span class="spical-price">商品價錢 :
 															${product01.price}</span>
@@ -4243,10 +2803,13 @@
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="<spring:url value='getProductsByCategory?searchBy=流行服飾'/>">流行服飾</a>
+													<a
+														href="<spring:url value='getProductsByCategory?searchBy=流行服飾'/>">流行服飾</a>
 												</h3>
 											</div>
-											<a href="<spring:url value='getProductsByCategory?searchBy=流行服飾'/>" class="view_button">看我看更多</a>
+											<a
+												href="<spring:url value='getProductsByCategory?searchBy=流行服飾'/>"
+												class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -4258,10 +2821,13 @@
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="<spring:url value='getProductsByCategory?searchBy=3C產品'/>">3C產品</a>
+													<a
+														href="<spring:url value='getProductsByCategory?searchBy=3C產品'/>">3C產品</a>
 												</h3>
 											</div>
-											<a href="<spring:url value='getProductsByCategory?searchBy=3C產品'/>" class="view_button">看我看更多</a>
+											<a
+												href="<spring:url value='getProductsByCategory?searchBy=3C產品'/>"
+												class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -4273,10 +2839,13 @@
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="<spring:url value='getProductsByCategory?searchBy=精品名錶'/>">精品名錶</a>
+													<a
+														href="<spring:url value='getProductsByCategory?searchBy=精品名錶'/>">精品名錶</a>
 												</h3>
 											</div>
-											<a href="<spring:url value='getProductsByCategory?searchBy=精品名錶'/>" class="view_button">看我看更多</a>
+											<a
+												href="<spring:url value='getProductsByCategory?searchBy=精品名錶'/>"
+												class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -4288,10 +2857,13 @@
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="<spring:url value='getProductsByCategory?searchBy=日常用品'/>">日常用品</a>
+													<a
+														href="<spring:url value='getProductsByCategory?searchBy=日常用品'/>">日常用品</a>
 												</h3>
 											</div>
-											<a href="<spring:url value='getProductsByCategory?searchBy=日常用品'/>" class="view_button">看我看更多</a>
+											<a
+												href="<spring:url value='getProductsByCategory?searchBy=日常用品'/>"
+												class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -4302,10 +2874,13 @@
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="<spring:url value='getProductsByCategory?searchBy=飾品'/>">飾品</a>
+													<a
+														href="<spring:url value='getProductsByCategory?searchBy=飾品'/>">飾品</a>
 												</h3>
 											</div>
-											<a href="<spring:url value='getProductsByCategory?searchBy=飾品'/>" class="view_button">看我看更多</a>
+											<a
+												href="<spring:url value='getProductsByCategory?searchBy=飾品'/>"
+												class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -4316,10 +2891,13 @@
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="<spring:url value='getProductsByCategory?searchBy=食品'/>">食品</a>
+													<a
+														href="<spring:url value='getProductsByCategory?searchBy=食品'/>">食品</a>
 												</h3>
 											</div>
-											<a href="<spring:url value='getProductsByCategory?searchBy=食品'/>" class="view_button">看我看更多</a>
+											<a
+												href="<spring:url value='getProductsByCategory?searchBy=食品'/>"
+												class="view_button">看我看更多</a>
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -4330,10 +2908,13 @@
 											</div>
 											<div class="fechered_heading">
 												<h3>
-													<a href="<spring:url value='getProductsByCategory?searchBy=居家安全'/>">居家安全</a>
+													<a
+														href="<spring:url value='getProductsByCategory?searchBy=居家安全'/>">居家安全</a>
 												</h3>
 											</div>
-											<a href="<spring:url value='getProductsByCategory?searchBy=居家安全'/>" class="view_button">看我看更多</a>
+											<a
+												href="<spring:url value='getProductsByCategory?searchBy=居家安全'/>"
+												class="view_button">看我看更多</a>
 										</div>
 									</div>
 								</div>
@@ -4365,8 +2946,7 @@
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">【電獺少女】Apple Watch Series 4
-												值不值得買？開箱體驗告訴你！</a>
+											<a href="#">【電獺少女】Apple Watch Series 4 值不值得買？開箱體驗告訴你！</a>
 										</h3>
 										<div class="post-excerpt">
 											● 內建 GPS 與 GLONASS <br>● 雙核心處理器 <br>● W3 無線晶片 <br>●
@@ -4416,8 +2996,7 @@
 									</div>
 									<div class="blog_info">
 										<h3 class="post-title">
-											<a href="#">【3C老實說】Dyson V7 Trigger：繼承 Dyson V8
-												靈魂的中階機種</a>
+											<a href="#">【3C老實說】Dyson V7 Trigger：繼承 Dyson V8 靈魂的中階機種</a>
 										</h3>
 										<div class="post-excerpt">
 											● 動態負載感應器，根據不同地板改變馬達速度 <br> ● 最新V11數位馬達 每秒監測系統效能8000次 <br>●
@@ -4443,9 +3022,11 @@
 										<h3 class="post-title">
 											<a href="#">【3C TIM哥】Apple New Airpods(2代)藍芽耳機升級開箱！</a>
 										</h3>
-										<div class="post-excerpt">無線 AirPods，全新登場。
-											只須將它們拿出，就可以與你所有的 Apple 裝置配合使用。 戴上它們放入耳中，就能立刻連接。
-											對著它們講話，你的聲音聽起來清晰透澈。 簡約與科技，前所未有地完美融合，結果，絕對令人驚歎。</div>
+										<div class="post-excerpt">●輕點一下可為Apple裝置進行設定<br>●輕點兩下可快速存取 Siri 功能<br>
+										●置於充電盒中可快速充電<br>
+										●豐富、高品質的音訊與聲音表現<br>
+										●可於不同裝置間順暢切換使用
+										</div>
 										<a href="<spring:url value='productById02?pId=119'/>"> <span
 											class="readmore-text">點此看商品</span>
 										</a>
@@ -4466,9 +3047,11 @@
 										<h3 class="post-title">
 											<a href="#">【阿哲】我買了人生中第三台筆電 [#044]</a>
 										</h3>
-										<div class="post-excerpt">Razer Blade
-											15承襲Blade系列筆電廣獲盛讚的外型設計，以簡潔的霧面黑搭配鋁金屬材質，打造出時尚和耐用度兼具的筆電，在不到2公分的厚度和2公斤的重量下，又搭載了高效能的硬體規格，只需些微調整設定，便可順利運行當前所有熱門遊戲，不管是外型，還是效能，Razer
-											Blade 15在兩者中找到一個完美的平衡點。</div>
+										<div class="post-excerpt">
+										●Razer Blade 15承襲Blade系列筆電廣獲盛讚的外型設計<br>
+										●簡潔的霧面黑搭配鋁金屬材質，打造出時尚和耐用度兼具的筆電<br>
+										●2公分的厚度和2公斤的重量下，又搭載了高效能的硬體規格<br>
+										●RazerBlade 15在外型與效能中找到一個完美的平衡點。</div>
 										<a href="<spring:url value='productById02?pId=92'/>"> <span
 											class="readmore-text">點此看商品</span>
 										</a>
@@ -4684,79 +3267,77 @@
 		src="${pageContext.request.contextPath }/js/time.js"></script>
 		
 		
-		<script>
+	<script>
+		$(document).ready(function() {
+			var qualification = "${memberLoginOK}";
 
-$(document).ready(function() {
-	var qualification = "${memberLoginOK}";
+			//getCoupon 1
+			$(".coupon-1").click(function() {
+				//not login yet
+				if (qualification == "") {
+					alert("Please login first.");
+					location.href = "memberLogin";
+				} else {
+					var data = {
+						category : "流行服飾",
+						discount : 0.8,
+						expdate : "2100-01-30",
+						token : "thankyou9527"
+					}
+					$.ajax({
+						type : 'POST',
+						url : "http://localhost:8080/KarpyShopping/getCoupon",
+						data : data,
+						dataType : "json",
+						success : function(data) {
+							alert(data.result);
+							console.log('${sessionScope.requestURI}');//取得攔截前的uri
+							//location.href = 'http://localhost:8080/KarpyShopping';
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							console.log("jqXHR: " + jqXHR);
+							console.log("textStatus: " + textStatus);
+							console.log("errorThrown: " + errorThrown);
 
-	//getCoupon 1
-	$(".coupon-1").click(function() {
-		//not login yet
-		if (qualification == "") {
-			alert("Please login first.");
-			location.href = "memberLogin";
-		} else {
-			var data = {
-				category : "流行服飾",
-				discount : 0.8,
-				expdate : "2100-01-30",
-				token : "thankyou9527"
-			}
-			$.ajax({
-				type : 'POST',
-				url : "http://localhost:8080/KarpyShopping/getCoupon",
-				data : data,
-				dataType : "json",
-				success : function(data) {
-					alert(data.result);
-					console.log('${sessionScope.requestURI}');//取得攔截前的uri
-					//location.href = 'http://localhost:8080/KarpyShopping';
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					console.log("jqXHR: " + jqXHR);
-					console.log("textStatus: " + textStatus);
-					console.log("errorThrown: " + errorThrown);
-
-				},
+						},
+					});
+				}
 			});
-		}
-	});
 
-	//getCoupon-2
-	$(".coupon-2").click(function() {
-		//not login yet
-		if (qualification == "") {
-			alert("Please login first.");
-			location.href = "memberLogin";
-		} else {
-			var data = {
-				category : "飾品",
-				discount : 0.7,
-				expdate : "2100-01-30",
-				token : "FQ"
-			}
-			$.ajax({
-				type : 'POST',
-				url : "http://localhost:8080/KarpyShopping/getCoupon",
-				data : data,
-				dataType : "json",
-				success : function(data) {
-					alert(data.result);
-					console.log('${sessionScope.requestURI}');//取得攔截前的uri
-					//location.href = 'http://localhost:8080/KarpyShopping';
-				},
-				error : function(jqXHR, textStatus, errorThrown) {
-					console.log("jqXHR: " + jqXHR);
-					console.log("textStatus: " + textStatus);
-					console.log("errorThrown: " + errorThrown);
+			//getCoupon-2
+			$(".coupon-2").click(function() {
+				//not login yet
+				if (qualification == "") {
+					alert("Please login first.");
+					location.href = "memberLogin";
+				} else {
+					var data = {
+						category : "飾品",
+						discount : 0.7,
+						expdate : "2100-01-30",
+						token : "FQ"
+					}
+					$.ajax({
+						type : 'POST',
+						url : "http://localhost:8080/KarpyShopping/getCoupon",
+						data : data,
+						dataType : "json",
+						success : function(data) {
+							alert(data.result);
+							console.log('${sessionScope.requestURI}');//取得攔截前的uri
+							//location.href = 'http://localhost:8080/KarpyShopping';
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							console.log("jqXHR: " + jqXHR);
+							console.log("textStatus: " + textStatus);
+							console.log("errorThrown: " + errorThrown);
 
-				},
+						},
+					});
+				}
 			});
-		}
-	});
-});
-
-</script>
+		});
+	</script>	
 		
 </body>
 </html>

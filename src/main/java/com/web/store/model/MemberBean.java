@@ -5,11 +5,14 @@ import java.sql.Blob;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -37,13 +40,13 @@ public class MemberBean implements Serializable {
 	private String line; // third party login with line
 	private String vehicle;//發票載具
 
+
 	@Transient
 	private String base64Image;
 
 	public String getBase64Image() {
 		return base64Image;
 	}
-
 
 
 //	public String getTaxId() {
@@ -251,5 +254,6 @@ public class MemberBean implements Serializable {
 		}
 		return null;
 	}
+
 
 }

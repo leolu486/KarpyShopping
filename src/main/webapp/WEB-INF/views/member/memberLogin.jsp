@@ -289,7 +289,7 @@ input:focus::-webkit-input-placeholder {
 						</dl>
 						<dl>
 							<dd>
-								<a><input id="submit" type="submit" value="註冊"
+								<a ><input id="submit" type="submit" value="註冊"
 									style="font-size: 20px; width: 450px; height: 60px;"></a>
 							</dd>
 						</dl>

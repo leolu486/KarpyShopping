@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 
 import com.web.store.dao.ManagerDao;
 import com.web.store.exception.ManagerNotFoundException;
+import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.AdminMessageBean;
 import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 
 import _00_init.util.GlobalService;
 
@@ -138,5 +140,36 @@ public class ManagerDaoImpl implements ManagerDao {
 		ambean.setManagerBean(null);// prevent foreign key problem
 		session.delete(ambean);
 	}
+
+	@Override
+	public int deleteManager(Integer id) {
+		// TODO Auto-generated method stub
+		int count = 0;
+
+		Session session = factory.getCurrentSession();
+		ManagerBean manager = session.get(ManagerBean.class, id);
+		
+		if (manager != null)
+			session.delete(manager);
+
+		count++;
+		return count;
+	}
+	
+	@Override
+	public int deleteManager(ManagerBean mb) {
+		// TODO Auto-generated method stub
+		int count = 0;
+
+		Session session = factory.getCurrentSession();
+		ManagerBean manager = session.get(ManagerBean.class, mb.getId());
+		
+		if (manager != null)
+			session.delete(manager);
+
+		count++;
+		return count;
+	}
+
 
 }

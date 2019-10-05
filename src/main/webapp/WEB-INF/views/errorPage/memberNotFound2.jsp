@@ -138,14 +138,14 @@ input:focus::-webkit-input-placeholder {
 			<div class="rigth1">
 				<div id="login">
 						<h4 class="h11" style="font-weight:bold;" >
-							<font><BR> 請填入正確資料<br>所有欄位必須填寫<BR>
+							<font><br>帳號已註冊過<br>請重新登入<BR>
 							</font>
 						</h4>
 						<dl>
 							<dd>
 								<div>
-									<a href="<spring:url value='memberLogin' />" class="btn btn-default" style="margin-left:40px;">
-										請重新註冊 </a>
+									<a href="<spring:url value='memberLogin' />" class="btn btn-default" style="margin-left:50px;">
+										請重新登入 </a>
 								</div>
 							</dd>
 						</dl>

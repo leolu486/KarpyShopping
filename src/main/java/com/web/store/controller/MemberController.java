@@ -63,17 +63,38 @@ public class MemberController {
 		mv.addObject("invalidAccount", exception.getAccount());
 		mv.addObject("exception", exception);
 		mv.addObject("errorMessage", exception.getMessage());
+		System.out.println(exception.getMessage());
 		mv.addObject("url", request.getRequestURL() + "?" + request.getQueryString());
-		mv.setViewName("errorPage/memberNotFound");
+
+		String a1 = "此帳號已存在 : ";
+		String a2 = "欄位不可為空";
+		String a3 = "帳號或是密碼錯誤 : ";
+		if(exception.getMessage() .equals(a1)) {
+			mv.setViewName("errorPage/memberNotFound2");
+			
+		}else if(exception.getMessage() .equals(a2)) {
+			mv.setViewName("errorPage/memberNotFound");
+			return mv;
+		}else if (exception.getMessage().equals(a3)) {
+			mv.setViewName("errorPage/memberLoginError");
+		}
+		
+//		
+//		mv.setViewName("errorPage/memberNotFound");
+//		mv.setViewName("errorPage/memberLoginError");
 		return mv;
 	}
 
-	@RequestMapping("/members")
+	
+	
+	
+	@RequestMapping("/membersall")
 	public String list(Model model) {
 		List<MemberBean> list = service.getAllMember();
 		model.addAttribute("members", list);
-		return "member/members";
+		return "backstage/members";
 	}
+
 
 	@RequestMapping("/member")
 	public String getMemberById(@RequestParam("account") String account, Model model) {
@@ -223,7 +244,7 @@ public class MemberController {
 	public String deleteMember(@ModelAttribute("MemberBean") MemberBean mb, BindingResult result,
 			HttpServletRequest request) {
 		service.deleteMember(mb);
-		return "redirect:/members";
+		return "member/members";
 	}
 
 	// 登出控制器
@@ -380,7 +401,8 @@ public class MemberController {
 		System.gc();
 		return "member/memberchange";
 	}
-
+	
+	
 	@RequestMapping(value = "/memberchange", method = RequestMethod.POST)
 
 	public String Changemember1(@ModelAttribute("CreditCardBean") CreditCardBean cb,

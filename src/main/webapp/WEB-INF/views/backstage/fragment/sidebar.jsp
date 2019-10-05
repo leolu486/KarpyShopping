@@ -68,13 +68,32 @@
 						<i class="menu-icon fa fa-bar-chart"></i> <span class="menu-title">DashBoard</span>
 					</div>
 			</a></li>
-			<li class="submenu"><a id="adminProducts" href="/KarpyShopping/adminProducts">
+						<li class="submenu dropdown"><a id="adminProducts" href="/KarpyShopping/adminProducts" class="dropdown-toggle"
+				data-toggle="dropdown">
 					<div>
 
 						<i class="menu-icon fa fa-th-large"></i> <span class="menu-title">Products</span>
 
 					</div>
-			</a></li>
+			</a>
+			<ul class="dropdown-menu">
+					<li><a href="/KarpyShopping/product/add">
+							<div>
+
+								<i class="menu-icon fa fa-sign-in"></i> <span
+									class="menu-sub-title">add product</span>
+
+							</div>
+					</a></li>
+					<li><a href="/KarpyShopping/getProductsByManage">
+							<div>
+
+								<i class="menu-icon fa fa-pencil-square-o"></i> <span
+									class="menu-sub-title">edit product</span>
+
+							</div>
+					</a></li>
+				</ul></li>
 
 						<li class="submenu dropdown"><a id="adminOrders" href="/KarpyShopping/orders"  class="dropdown-toggle" data-toggle="dropdown">
 
@@ -182,3 +201,4 @@
 </body>
 
 </html>
+>>>>>>> refs/remotes/upstream/master

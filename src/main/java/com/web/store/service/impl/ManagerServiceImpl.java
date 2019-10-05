@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.web.store.dao.ManagerDao;
 import com.web.store.model.AdminMessageBean;
 import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 import com.web.store.service.ManagerService;
 @Service
 public class ManagerServiceImpl implements ManagerService {
@@ -32,6 +33,20 @@ public class ManagerServiceImpl implements ManagerService {
 		// TODO Auto-generated method stub
 		return dao.addManager(manager);
 	}
+	
+	@Transactional
+	@Override
+	public int deleteManager(Integer id) {
+		return dao.deleteManager(id);
+	}
+	
+	@Transactional
+	@Override
+	public int deleteManager(ManagerBean mb) {
+		return dao.deleteManager(mb);
+	}
+	
+	
 	@Transactional
 	@Override
 	public ManagerBean checkIdPassword(String account, String password) {

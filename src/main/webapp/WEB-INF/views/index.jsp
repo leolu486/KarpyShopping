@@ -94,7 +94,7 @@
 			<td width="350"><p align="center" /> <a href='manager/change'>管理員密碼變更測試</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">
-			<td width="350"><p align="center" /> <a href=''>&nbsp;</a></td>
+			<td width="350"><p align="center" /> <a href='deletemanagers'>刪除管理員測試</a></td>
 			<td width="350"><p align="center" /> <a href=''>&nbsp;</a>
 		</tr>
 		<tr height="52" bgcolor="lightblue" align="center">

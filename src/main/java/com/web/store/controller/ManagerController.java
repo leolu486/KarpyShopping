@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.web.store.exception.ManagerNotFoundException;
 import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 import com.web.store.service.ManagerService;
 
 @Controller
@@ -133,4 +134,20 @@ public class ManagerController {
 		return "redirect:/managers";
 	}
 
+	//刪除管理員控制器
+	@RequestMapping(value = "/deletemanagers", method = RequestMethod.GET)
+	public String deleteManagerBean(Model model) {
+		ManagerBean mb = new ManagerBean();
+		model.addAttribute("ManagerBean", mb);
+		return "account/deleteManagers";
+	}
+
+	@RequestMapping(value = "/deletemanagers", method = RequestMethod.POST)
+	public String deleteManagerBean(@ModelAttribute("ManagerBean") ManagerBean mb, BindingResult result,
+			HttpServletRequest request) {
+		System.out.println("id:"+mb.getId());
+		service.deleteManager(mb);
+		return "backstage/managers";
+	}
+	
 }

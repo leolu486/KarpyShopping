@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.web.store.model.AdminMessageBean;
 import com.web.store.model.ManagerBean;
+import com.web.store.model.MemberBean;
 
 public interface ManagerService {
 
@@ -13,6 +14,10 @@ public interface ManagerService {
 
 	int addManager(ManagerBean manager);
 
+	int deleteManager(Integer id);
+	
+	int deleteManager(ManagerBean mb);
+		
 	ManagerBean checkIdPassword(String account, String password);
 
 	void changePassWord(ManagerBean mb, String newPW);
