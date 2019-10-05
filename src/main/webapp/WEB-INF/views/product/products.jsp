@@ -117,20 +117,20 @@ response.setDateHeader("Expires", 0);
 			<div class="row">
 				<div class="col-md-12">
 					<div class="bar">
-						<p class="result_show">Showing 1–15 of 21 results</p>
-						<div class="bar_box">
+						<p class="result_show">Showing ${(currentPageNo - 1) * 5 + 1} of ${listSize} results</p>
+						<div class="bar_box" style="height: 50px">
 							<form action="#">
-								<select>
-									<option value="Default sorting">Default sorting</option>
-									<!-- 									<option value="Sort by popularity">Sort by popularity</option> -->
-									<!-- 									<option value="Sort by average rating">Sort by average -->
-									<!-- 										rating</option> -->
-									<!-- 									<option value="Sort by newness">Sort by newness</option> -->
-									<!-- 									<option value="Sort by price: low to high">Sort by -->
-									<!-- 										price: low to high</option> -->
-									<!-- 									<option value="Sort by price: low to low">Sort by -->
-									<!-- 										price: low to low</option> -->
-								</select>
+<!-- 								<select> -->
+<!-- 									<option value="Default sorting">Default sorting</option> -->
+<!-- 																		<option value="Sort by popularity">Sort by popularity</option> -->
+<!-- 																		<option value="Sort by average rating">Sort by average -->
+<!-- 																			rating</option> -->
+<!-- 																		<option value="Sort by newness">Sort by newness</option> -->
+<!-- 																		<option value="Sort by price: low to high">Sort by -->
+<!-- 																			price: low to high</option> -->
+<!-- 																		<option value="Sort by price: low to low">Sort by -->
+<!-- 																			price: low to low</option> -->
+<!-- 								</select> -->
 							</form>
 						</div>
 
@@ -140,7 +140,9 @@ response.setDateHeader("Expires", 0);
 							<div class="row"></div>
 						</div>
 						<div role="tabpanel" class="tab-pane active" id="profile">
-
+					<c:if test="${empty resultPage}">
+						<h1 style="text-align: center;">查無商品資料</h1>
+						</c:if>
 							<!--foreach start line -->
 							<c:forEach var="product" items='${resultPage}'>
 								<div class="row">
