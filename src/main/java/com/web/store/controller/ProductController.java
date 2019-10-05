@@ -320,12 +320,20 @@ public class ProductController {
 		
 		if (pb.getDetail() != null && !pb.getDetail().isEmpty()) {
 			String str = pb.getDetail();
-			 while (str.indexOf("\n") != -1) {
-				  str = str.substring(0, str.indexOf("\n")) + "<br>"
-				    + str.substring(str.indexOf("\n") + 1);
+			 if (str.indexOf("\n") != -1) {
+				  str = str.replaceAll("\n", "<br>");
 				 }
 			 pb.setDetail(str);
 		}
+		
+//		if (pb.getDetail() != null && !pb.getDetail().isEmpty()) {
+//			String str = pb.getDetail();
+//			 while (str.indexOf("\n") != -1) {
+//				  str = str.substring(0, str.indexOf("\n")) + "<br>"
+//				    + str.substring(str.indexOf("\n") + 1);
+//				 }
+//			 pb.setDetail(str);
+//		}
 //		long sizeInBytes = 0;
 //		InputStream is = null;
 //		Blob blob;
@@ -466,9 +474,8 @@ public class ProductController {
 		
 		if (pb.getDetail() != null && !pb.getDetail().isEmpty()) {
 			String str = pb.getDetail();
-			 while (str.indexOf("\n") != -1) {
-				  str = str.substring(0, str.indexOf("\n")) + "<br>"
-				    + str.substring(str.indexOf("\n") + 1);
+			 if (str.indexOf("<br>") != -1) {
+				  str = str.replaceAll("<br>", "\n");
 				 }
 			 pb.setDetail(str);
 		}
@@ -597,6 +604,23 @@ public class ProductController {
 				e.printStackTrace();
 			}
 		}
+		
+		if (pb.getDetail() != null && !pb.getDetail().isEmpty()) {
+			String str = pb.getDetail();
+			 if (str.indexOf("\n") != -1) {
+				  str = str.replaceAll("\n", "<br>");
+				 }
+			 pb.setDetail(str);
+		}
+		
+//		if (pb.getDetail() != null && !pb.getDetail().isEmpty()) {
+//			String str = pb.getDetail();
+//			 while (str.indexOf("\n") != -1) {
+//				  str = str.substring(0, str.indexOf("\n")) + "<br>"
+//				    + str.substring(str.indexOf("\n") + 1);
+//				 }
+//			 pb.setDetail(str);
+//		}
 
 //		if (pb.getProductImageTemp() != null) {
 //
