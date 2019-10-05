@@ -9,13 +9,16 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.web.store.dao.ManagerDao;
 import com.web.store.exception.ManagerNotFoundException;
 import com.web.store.exception.MemberNotFoundException;
+import com.web.store.exception.VendorErrorException;
 import com.web.store.model.AdminMessageBean;
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.VendorBean;
 
 import _00_init.util.GlobalService;
 
@@ -46,6 +49,33 @@ public class ManagerDaoImpl implements ManagerDao {
 
 		} catch (NoResultException e) {
 			throw new ManagerNotFoundException("查無帳號為 " + account + " 的管理員", account);
+		}
+		return mb;
+	}
+   
+
+	@Override
+	public void updateManager(ManagerBean mb) {
+		Session session = factory.getCurrentSession();
+
+		ManagerBean mbb = getManagerByid(mb.getId());
+		if (mb.getName() != null && mb.getName().trim().length() > 0)
+			mbb.setName(mb.getName());
+		if (mb.getAccount() != null && mb.getAccount().trim().length() > 0)
+			mbb.setAccount(mb.getAccount());
+		if (mb.getPassword() != null && mb.getPassword().trim().length() > 0)
+			mbb.setPassword(GlobalService.getMD5Endocing(GlobalService.encryptString(mb.getPassword())));
+		
+		session.saveOrUpdate(mbb);
+	}
+	
+	
+	@Override
+	public ManagerBean getManagerByid(Integer id) {
+		Session session = factory.getCurrentSession();
+		ManagerBean mb = session.get(ManagerBean.class, id);
+		if (id == null) {
+			throw new VendorErrorException("查無此管理員",id.toString());
 		}
 		return mb;
 	}
@@ -170,6 +200,7 @@ public class ManagerDaoImpl implements ManagerDao {
 		count++;
 		return count;
 	}
+
 
 
 }

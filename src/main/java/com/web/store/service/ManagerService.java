@@ -5,6 +5,7 @@ import java.util.List;
 import com.web.store.model.AdminMessageBean;
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.VendorBean;
 
 public interface ManagerService {
 
@@ -27,5 +28,9 @@ public interface ManagerService {
 	int addMessage(AdminMessageBean ambean);
 
 	void deleteMessage(Integer amId);
+	
+	void updateManager(ManagerBean managers);
+
+	ManagerBean getManagerByid(Integer id);
 
 }
