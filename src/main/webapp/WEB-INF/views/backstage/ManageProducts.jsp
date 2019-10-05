@@ -153,12 +153,12 @@
 				</div>
 			</td>
 			<!-- select -->
-			<td width='76'>
-				<div id="pselect">
-					<select class="selectPage" id="selectPage">
-					</select>
-				</div>
-			</td>
+<!-- 			<td width='76'> -->
+<!-- 				<div id="pselect"> -->
+<!-- 					<select class="selectPage" id="selectPage"> -->
+<!-- 					</select> -->
+<!-- 				</div> -->
+<!-- 			</td> -->
 
 			<!-- next -->
 			<td width='76'>
