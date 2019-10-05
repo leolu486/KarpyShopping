@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.web.store.exception.ManagerNotFoundException;
 import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
+import com.web.store.model.VendorBean;
 import com.web.store.service.ManagerService;
 
 @Controller
@@ -150,4 +151,40 @@ public class ManagerController {
 		return "backstage/managers";
 	}
 	
+	// 後台新增管理員
+		@RequestMapping(value = "/addManager")
+		public String addManager(@RequestParam("name") String name,
+				@RequestParam("account") String account, @RequestParam("password") String password, Model model) {
+			System.out.println("name:"+name+",account:"+account+",password:"+password);
+			ManagerBean mb = new ManagerBean();
+			mb.setAccount(account);
+			System.out.println(account);
+			mb.setName(name);
+			System.out.println(name);
+			mb.setPassword(password);
+			System.out.println(password);
+			service.addManager(mb);
+
+			return "redirect:/adminManagers";
+		}
+		
+		
+		//後台更新管理員
+		@RequestMapping(value = "/updateManager")
+		public String updateManager(@RequestParam("id") Integer id, @RequestParam("name") String name,
+				@RequestParam("account") String account, @RequestParam("password") String password, Model model) {
+
+			ManagerBean mb = new ManagerBean();
+			mb.setId(id);
+			System.out.println(id + "id");
+			mb.setName(name);
+			System.out.println(name + "name");
+			mb.setAccount(account);
+			System.out.println(account + "account");
+			mb.setPassword(password);
+			System.out.println(password + "password");
+			service.updateManager(mb);
+
+			return "redirect:/adminManagers";
+		}
 }

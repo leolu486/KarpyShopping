@@ -27,6 +27,13 @@ public class ManagerServiceImpl implements ManagerService {
 	public ManagerBean getManagerByAccount(String account) {
 		return dao.getManagerByAccount(account);
 	}
+	
+	@Transactional
+	@Override
+	public ManagerBean getManagerByid(Integer id) {
+		return dao.getManagerByid(id);
+	}
+	
 	@Transactional
 	@Override
 	public int addManager(ManagerBean manager) {
@@ -76,6 +83,13 @@ public class ManagerServiceImpl implements ManagerService {
 	public void deleteMessage(Integer amId) {
 		// TODO Auto-generated method stub
 		dao.deleteMessage(amId);
+	}
+	
+	@Transactional
+	@Override
+	public void updateManager(ManagerBean managers) {
+		// TODO Auto-generated method stub
+		dao.updateManager(managers);
 	}
 
 
