@@ -144,6 +144,7 @@ $(function() {
 		});
 	});
 
+	
 	//dialog actions
 	$("#m-btn-submit").click(function(){
 		//update member
