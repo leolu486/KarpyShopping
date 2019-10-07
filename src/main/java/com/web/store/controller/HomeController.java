@@ -116,6 +116,18 @@ public class HomeController {
 		return "membertest";
 	}
 
+	@RequestMapping("/privacy")
+	public String privacy() {
+
+		return "footer/privacy";
+	}
+	
+	@RequestMapping("/userterms")
+	public String userterms() {
+
+		return "footer/userterms";
+	}
+	
 	
 	@RequestMapping("/images")
 	public String sendListOfImages(HttpServletRequest request, Model model) {

@@ -24,7 +24,7 @@
 	<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
 
 
-
+<jsp:include page="/WEB-INF/views/fragment/rightIcon.jsp" />
 	<div class="my_account_area">
 		<div class="container">
 
