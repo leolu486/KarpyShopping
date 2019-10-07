@@ -110,7 +110,7 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="orderPage">
+						<a href="/KarpyShopping/orderPage">
 							<div>
 								<i class="menu-icon fa fa-bar-chart"></i> 
 								<span class="menu-sub-title">單筆訂單查詢</span>
@@ -118,7 +118,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="orders">
+						<a href="/KarpyShopping/orders">
 							<div>
 								<i class="menu-icon fa fa-bar-chart"></i> 
 								<span class="menu-sub-title">全部訂單查詢</span>

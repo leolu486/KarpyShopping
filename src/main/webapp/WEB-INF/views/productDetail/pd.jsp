@@ -201,7 +201,7 @@
 							<p>庫存:  ${product.amount}</P>
 						</div>
 						<form id="cartForm" class="cart-btn-area" method="POST" enctype="multipart/form-data">
-                                <input type="number" name="quantity" id="quantity" min="1" max="10" value="1" />
+                                <input type="number" name="quantity" id="quantity" min="1" max="99" value="1" style="width: 80px" />
 <%--                                 <input id="productId" name="pId" type="hidden" value="${product.pId }"/> --%>
 <%--                                 <input id="productName" name="pname" type="hidden" value="${product.pname }"/> --%>
 <%--                                 <input id="productPrice" name="price" type="hidden" value="${product.price }"/> --%>

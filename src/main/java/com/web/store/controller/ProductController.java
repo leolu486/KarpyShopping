@@ -200,7 +200,7 @@ public class ProductController {
 			}else if(pb.getCategory().toLowerCase().indexOf(search.toLowerCase()) != -1) {
 				checkSet.add(pb);
 				System.out.println("----------------"+search+"==="+pb.getCategory());
-			}else if(pb.getVendorBean().getVname().toLowerCase().indexOf(search.toLowerCase()) != -1) {
+			}else if(pb.getVendorBean()!=null && pb.getVendorBean().getVname().toLowerCase().indexOf(search.toLowerCase()) != -1) {
 				checkSet.add(pb);
 				System.out.println("----------------"+search+"==="+pb.getVendorBean().getVname());
 			}
