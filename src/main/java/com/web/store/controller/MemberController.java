@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.web.store.exception.MemberNotFoundException;
 import com.web.store.model.CreditCardBean;
+import com.web.store.model.ManagerBean;
 import com.web.store.model.MemberBean;
 import com.web.store.model.TaxIdBean;
 import com.web.store.service.MemberService;
@@ -70,32 +71,28 @@ public class MemberController {
 		String a1 = "此帳號已存在 : ";
 		String a2 = "欄位不可為空";
 		String a3 = "帳號或是密碼錯誤 : ";
-		if(exception.getMessage() .equals(a1)) {
+		if (exception.getMessage().equals(a1)) {
 			mv.setViewName("errorPage/memberNotFound2");
-			
-		}else if(exception.getMessage() .equals(a2)) {
+
+		} else if (exception.getMessage().equals(a2)) {
 			mv.setViewName("errorPage/memberNotFound");
 			return mv;
-		}else if (exception.getMessage().equals(a3)) {
+		} else if (exception.getMessage().equals(a3)) {
 			mv.setViewName("errorPage/memberLoginError");
 		}
-		
+
 //		
 //		mv.setViewName("errorPage/memberNotFound");
 //		mv.setViewName("errorPage/memberLoginError");
 		return mv;
 	}
 
-	
-	
-	
 	@RequestMapping("/membersall")
 	public String list(Model model) {
 		List<MemberBean> list = service.getAllMember();
 		model.addAttribute("members", list);
 		return "backstage/members";
 	}
-
 
 	@RequestMapping("/member")
 	public String getMemberById(@RequestParam("account") String account, Model model) {
@@ -175,6 +172,10 @@ public class MemberController {
 		return "redirect:/members";
 	}
 
+	
+	
+	
+	
 //修改會員控制器
 	@RequestMapping(value = "/updatemember", method = RequestMethod.GET)
 	public String Changemamber(Model model, HttpServletRequest request) {
@@ -192,16 +193,81 @@ public class MemberController {
 		System.out.println("=====date = " + date);
 		HttpSession session = request.getSession();
 		MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
-//		memberBean.setName(mb.getName());
-//		memberBean.setMemberImage(mb.getMemberImage());
-//		memberBean.setEmail(mb.getEmail());
-//		memberBean.setTel(mb.getTel());
-//		memberBean.setBirthday(mb.getBirthday());
 		memberBean.setBirthday(new java.sql.Timestamp(date.getTime()));
 		memberBean.setGender(gender);
 		memberBean.setAddr(county + city + addr);
 		service.updateMember(memberBean);
 		return "redirect:/home";
+	}
+
+		
+	
+	//後台會員修改控制器
+//		@RequestMapping(value = "/updatemember1", method = RequestMethod.GET)
+//		public void updateMember(Model model, HttpServletRequest request) {
+//			HttpSession session = request.getSession();
+//			MemberBean mb = (MemberBean) session.getAttribute("memberLoginOK");
+//			model.addAttribute("memberBean", mb);
+//		}
+//
+//		@RequestMapping(value = "/updatemember1", method = RequestMethod.POST)
+//		public String updateMember(@ModelAttribute("memberBean") MemberBean mb, 
+//				 @RequestParam("addr") String addr, @RequestParam("gender") String gender,
+//				@RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date, BindingResult result,
+//				HttpServletRequest request) {
+//			System.out.println("=====date = " + date);
+//			HttpSession session = request.getSession();
+//			MemberBean memberBean = (MemberBean) session.getAttribute("memberLoginOK");
+//			memberBean.setBirthday(new java.sql.Timestamp(date.getTime()));
+//			memberBean.setGender(gender);
+//			memberBean.setAddr(addr);
+//			service.updateMember(memberBean);
+//			return "redirect:/adminMembers";
+//		}
+
+	//後台新增會員
+
+		@RequestMapping(value = "/addMember")
+		public String addMember(@RequestParam("mId") Integer mId, @RequestParam("name") String name,
+				@RequestParam("account") String account, @RequestParam("password") String password,
+				@RequestParam("email") String email, @RequestParam("addr") String addr,
+				@RequestParam("gender") String gender,@RequestParam("tel") String tel,
+				@RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date, Model model) {
+			MemberBean mb =new MemberBean();
+			mb.setmId(mId);
+			mb.setName(name);
+			mb.setAccount(account);
+			mb.setPassword(password);
+			mb.setEmail(email);
+			mb.setAddr(addr);
+			mb.setGender(gender);
+			mb.setTel(tel);
+			mb.setBirthday(new java.sql.Timestamp(date.getTime()));		
+			service.addMember(mb);
+			return "redirect:/adminMembers";
+		}
+	
+	// 後台更新會員
+	@RequestMapping(value = "/updateMember1")
+	public String updateMember(@RequestParam("mId") Integer mId, @RequestParam("name") String name,
+			@RequestParam("account") String account, @RequestParam("password") String password,
+			@RequestParam("email") String email, @RequestParam("addr") String addr,
+			@RequestParam("gender") String gender,@RequestParam("tel") String tel,
+			@RequestParam("date") @DateTimeFormat(pattern = "yyyy/MM/dd") Date date, Model model) {
+
+		MemberBean mb = new MemberBean();
+		mb.setmId(mId);
+		mb.setName(name);
+		mb.setAccount(account);
+		mb.setPassword(password);
+		mb.setTel(tel);
+		mb.setAddr(addr);
+		mb.setBirthday(new java.sql.Timestamp(date.getTime()));
+		mb.setEmail(email);
+		mb.setGender(gender);
+		service.updateMember(mb);
+
+		return "redirect:/adminMembers";
 	}
 
 //變更密碼控制器
@@ -403,8 +469,7 @@ public class MemberController {
 		System.gc();
 		return "member/memberchange";
 	}
-	
-	
+
 	@RequestMapping(value = "/memberchange", method = RequestMethod.POST)
 
 	public String Changemember1(@ModelAttribute("CreditCardBean") CreditCardBean cb,
@@ -443,12 +508,12 @@ public class MemberController {
 		// 修改密碼
 		else if (form.equals("2")) {
 			// TODO: memberLoginOK should be updated as latest password
-			if(!GlobalService.getMD5Endocing(GlobalService.encryptString(oldPW)).equals(memberbean.getPassword())){
+			if (!GlobalService.getMD5Endocing(GlobalService.encryptString(oldPW)).equals(memberbean.getPassword())) {
 				session.setAttribute("wrongpw", "舊密碼錯誤");
 				return "redirect:/memberchange";
 			}
 			service.changePassword(service.checkIdPassword(memberbean.getAccount(), oldPW), newPW);
-			//update memberLoginOK
+			// update memberLoginOK
 			session.setAttribute("memberLoginOK", service.getMemberBymId(memberbean.getmId()));
 		}
 		// 新增會員信用卡
@@ -560,7 +625,7 @@ public class MemberController {
 			service.updateVehicle(mb);
 			member.setVehicle(mb.getVehicle());
 		}
-		session.setAttribute("memberLoginOK",member);
+		session.setAttribute("memberLoginOK", member);
 		return "redirect:/receiptDetail";
 	}
 

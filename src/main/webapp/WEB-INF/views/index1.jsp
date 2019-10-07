@@ -115,10 +115,10 @@
 									<h1 style="color: #FFFFFF;">Iphone X11</h1>
 								</div>
 								<div class="layer-1-4  animated rotateInUpLeft">
-									<h3 style="color: red;">SALE UO TO 10%</h3>
+									<h3 style="color: red;">SALE UP TO 10%</h3>
 								</div>
 								<div class="layer-1-5 animated rotateInUpLeft">
-									<a href="<spring:url value='productById02?pId=107'/>">點我下單</a>
+									<a href="<spring:url value='productById02?pId=108'/>">點我下單</a>
 								</div>
 							</div>
 							<div class="tld-f2">
@@ -142,10 +142,10 @@
 									<h1>Dyson吸塵機器人</h1>
 								</div>
 								<div class="layer-2-4 animated slideInLeft">
-									<h3>SALE UO TO 30%</h3>
+									<h3>SALE UP TO 30%</h3>
 								</div>
 								<div class="layer-2-5 animated bounceInUp">
-									<a href="<spring:url value='productById02?pId=145'/>">點我下單</a>
+									<a href="<spring:url value='productById02?pId=147'/>">點我下單</a>
 								</div>
 							</div>
 							<div class="sld-fr">
