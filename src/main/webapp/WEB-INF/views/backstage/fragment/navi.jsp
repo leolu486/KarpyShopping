@@ -73,7 +73,7 @@
 										<h4 class="user-name">${LoginOK.name}</h4>
 										<p>AdimID:${LoginOK.id}</p>
 										<div class="btn-group margin-bottom-2x" role="group">
-											<a href="managerLogout"><button type="button"
+											<a href="/KarpyShopping/managerLogout"><button type="button"
 													class="btn btn-default">
 													<i class="fa fa-sign-out"></i> Logout
 												</button></a>
