@@ -63,8 +63,8 @@ corresponding value from the list below*/
 						</div>
 						<div class="footer_menu">
 							<ul>
-								<li><a href="#">個人隱私保密政策</a></li>
-								<li><a href="#">客戶權利義務</a></li>
+								<li><a href="privacy">個人隱私保密政策</a></li>
+								<li><a href="userterms">使用者條款</a></li>
 								<li><a href="#">網路安全標章</a></li>
 								<li><a href="#">防詐騙須知</a></li>
 							</ul>
@@ -79,8 +79,8 @@ corresponding value from the list below*/
 						<div class="footer_menu">
 							<ul>
 								<li><a href="admin">開發者中心</a></li>
-<!-- 								<li><a href="#">卡痞購物商城</a></li> -->
-<!-- 								<li><a href="#">卡痞團購網</a></li> -->
+								<!-- 								<li><a href="#">卡痞購物商城</a></li> -->
+								<!-- 								<li><a href="#">卡痞團購網</a></li> -->
 
 							</ul>
 						</div>
@@ -92,14 +92,12 @@ corresponding value from the list below*/
 							<h3>客戶服務</h3>
 						</div>
 						<ul>
-							<li><i class="fa fa-home"></i>
-								<a href="#">訂單查詢</a></li>
-							<li><i class="fa fa-envelope"></i>
-								<a href="memberQandA">FAQ常見問題</a></li>
-<!-- 							<li><i class="fa fa-phone"></i> -->
-<!-- 								<a href="memberQandA">語音服務</a></li> -->
-							<li><i class="fa fa-comment-o"></i>
-								<a href="#">聯絡我們</a></li>
+							<li><i class="fa fa-home"></i> <a
+								href="<spring:url value='/ordersBymId?mId=${memberLoginOK.mId}' />">訂單查詢</a></li>
+							<li><i class="fa fa-envelope"></i> <a href="memberQandA">FAQ常見問題</a></li>
+							<!-- 							<li><i class="fa fa-phone"></i> -->
+							<!-- 								<a href="memberQandA">語音服務</a></li> -->
+							<li><i class="fa fa-comment-o"></i> <a href="#">聯絡我們</a></li>
 						</ul>
 					</div>
 				</div>
@@ -117,7 +115,7 @@ corresponding value from the list below*/
 	<!--footer bottom area start-->
 	<div class="footer-bottom">
 		<div class="container">
-			<div class="widget-copyright text-center" style="margin-right:20px;">
+			<div class="widget-copyright text-center" style="margin-right: 20px;">
 				防詐騙提醒，卡痞購物絕不會以電話或簡訊通知訂單/分期出錯、或變更付款方式,更不會
 				要您前往ATM進行操作與轉帳!不應在卡痞以外的地方輸入卡痞的帳號密碼，以免影響您的權益。</div>
 		</div>

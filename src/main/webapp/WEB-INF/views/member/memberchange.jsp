@@ -420,6 +420,7 @@ background: rgb(191, 191, 191);
 <body>
 
 	<jsp:include page="/WEB-INF/views/fragment/top.jsp" />
+	<jsp:include page="/WEB-INF/views/fragment/rightIcon.jsp" />
 	<!-- <div class="d-flex justify-content-center align-items-center w-100"> -->
 	<br>
 	<div style="font-family: 'Noto Sans TC', sans-serif;">

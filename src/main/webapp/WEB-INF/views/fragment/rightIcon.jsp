@@ -26,6 +26,11 @@
 			<div class="row">
 				<div class="social_design on_right">
 					<ul>
+												<li><a class="mail-to" 
+							href="home"> <span> <i
+									class="fa fa-home"></i> <span class="social-text">首頁</span>
+							</span>
+						</a></li>
 						<li><a style="background-color: #db4a39"  href="cartConfirm"> <span>
 									<i class="fa fa-shopping-cart"></i> <span class="social-text">購物車</span>
 									
@@ -39,11 +44,7 @@
 									<i class="fa fa-neuter"></i> <span class="social-text">常見問題</span>
 							</span>
 						</a></li>
-								<li><a class="mail-to" 
-							href="#"> <span> <i
-									class="fa fa-envelope-o"></i> <span class="social-text">寄信給卡痞</span>
-							</span>
-						</a></li>
+						
 					</ul>
 				</div>
 			</div>
