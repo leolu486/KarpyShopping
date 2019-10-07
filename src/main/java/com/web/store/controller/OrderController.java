@@ -371,13 +371,13 @@ public class OrderController {
 	// 0912 error message for order persistence
 	public Map<String, String> errMsg(OrderBean order, ShoppingCart cart) {
 		Map<String, String> errorMessage = new HashMap<String, String>();
-		if (order.getTel() == null || order.getTel().equals("")) {
+		if (order.getTel() == null || order.getTel().trim().equals("")) {
 			errorMessage.put("emptyTel", "此欄位不可為空白");
 		}
-		if (order.getAddr() == null || order.getAddr().equals("")) {
+		if (order.getAddr() == null || order.getAddr().trim().equals("")) {
 			errorMessage.put("emptyAddr", "此欄位不可為空白");
 		}
-		if (order.getConsignee() == null || order.getConsignee().equals("")) {
+		if (order.getConsignee() == null || order.getConsignee().trim().equals("")) {
 			errorMessage.put("emptyConsignee", "此欄位不可為空白");
 		}
 		if (cart == null || cart.getContent().size() == 0) {
@@ -411,8 +411,7 @@ public class OrderController {
 		PrintWriter out = null;
 		response.setContentType("application/json");
 		StringBuilder jsonString = new StringBuilder();
-		if (tel.isEmpty() || consignee.isEmpty() || addr.isEmpty() || tel.isBlank() || consignee.isBlank()
-				|| addr.isBlank()) {
+		if (tel.trim().isEmpty() || consignee.trim().isEmpty() || addr.trim().isEmpty()) {
 			try {
 				out = response.getWriter();
 				jsonString.append("{\"null\":\"修改資訊有誤，請再次確認!\"}");
@@ -432,7 +431,7 @@ public class OrderController {
 			}
 		} else {
 
-			if (checkCharacter(tel)) {
+			if (checkCharacter(tel.trim())) {
 				try {
 					out = response.getWriter();
 					jsonString.append("{\"error\":\"電話號碼錯誤，請重新輸入!\"}");
