@@ -115,6 +115,13 @@
     }
 
     </style>
+    
+    <style>
+    .detail{
+    	line-height: 30px;
+    }
+    
+    </style>
 
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 <body>
@@ -164,7 +171,7 @@
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 						<div class="elav_titel">
 							<div class="elv_heading">
-								<h4>${product.pname}</h4>
+								<h1>${product.pname}</h1>
 							
 							</div>
 							<div class="price_rating">
@@ -181,7 +188,7 @@
          <div  style="  background-color: #DDDDDD; width: 360px;height: 37px;">                     
                                                  <h3 style="font-weight: 500; ">售價:  ${product.price}</h3></div>
 						<div class="evavet_description">
-							<p>商品介紹:<br>${product.detail}</p>
+							<h4 class="detail">商品介紹:<br>${product.detail}</h4>
 						</div>
 
 
@@ -189,7 +196,7 @@
 						<div class="elavetor_social">
 
 							<div class="evavet_description">
-								<p>供應商  ${product.vendorBean.vname}</P>
+								<h4>供應商:  ${product.vendorBean.vname}</h4>
 
 							</div>
 
