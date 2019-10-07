@@ -127,7 +127,7 @@ $(function() {
 
 		$("#addmanager").dialog({
 			width : 400,
-			height : 350,
+			height : 250,
 			modal : true,
 			open : function() {
 				$('.ui-widget-overlay').bind('click', function() {
@@ -147,10 +147,6 @@ $(function() {
 	});
 	//-----//
 	$("#add-btn-submit").click(function(){
-		//add manager
-// 		var account = $("#account").val();
-// 		var pasword = $("#password").val();
-// 		var name = $("#name").val();
 
 		window.location.href="addManager?account="+$("#account").val()+"&name="+$("#name").val()+"&password="+$("#password").val();
 	});

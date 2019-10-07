@@ -18,6 +18,7 @@ public interface MemberService {
 
 	MemberBean updateMember(MemberBean mb);
 
+	
 	int deleteMember(MemberBean mb);
 	
 	int deleteMember(Integer mId);
